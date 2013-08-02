@@ -1,0 +1,176 @@
+API:
+url: /api/user/add
+url: /api/user/change
+url: /api/user/delete
+url: /api/user/get
+url: /api/users
+url: /api/users/count
+
+SITE:
+""
+"home"
+"user/:id"
+"user/change/:id"
+"user/add"
+
+Добавление именинника
+------------------------------------------------------------
+
+type: POST
+url: '/api/user/add'
+field:
+	dateBirthday: {
+		year: 1986,
+		month: 11,
+		date: 25
+	}
+	name: "Vitalii"
+	surname: "Mishchenko"
+	middleName: "Анатольевич"
+	phones: ['066-71-75-163', '095-211-33-12']
+	emails: ['mue@kologlobal.com', 'mue.miv@gmail.com']
+	skypes: ['mueees']
+	realAdres: [
+		"город Киев, ул. Потасенко, кв. 59",
+		"город Харьков, ул. Октобенка, кв. 4"
+	],
+	photo: binarData,
+	wishes: [
+		'самолет',
+		'вертолет'
+	],
+	events['id1', 'id2', 'id3']
+
+Requied fields:
+	name
+	dateBirthday
+
+Response:
+	200
+	data: {
+		id: '123234'
+	}
+
+
+Редактирование юзера полное
+------------------------------------------------------------
+
+type: POST
+url: /api/user/change
+
+field:
+	id: '126548'б
+	+ все поля указанные при добавлении юзера
+
+Requied fields:
+	id
+	name
+	dateBirthday
+
+Response:
+	200
+	data: null
+
+
+Удаление юзера
+------------------------------------------------------------
+type: POST
+url: /api/user/delete
+	field: 
+		id: '26645'
+
+
+Requied fields:
+	id
+
+Response:
+	200
+	data: null
+
+
+Получение данных об одном имениннике
+------------------------------------------------------------
+
+type: GET
+url: /api/user/get
+field:
+	id
+	
+Requied fields:
+	id: '12345'
+
+Response:
+	200
+	data: {
+		dateBirthday: : {
+			year: 1986,
+			month: 11,
+			date: 25
+		},
+		dateAddUser: '2012-11-13',
+		name: 'Vitalii',
+		surname: "Mishchenko",
+		middleName: "Анатольевич",
+		phones: ['066-71-75-163', '095-211-33-12'],
+		emails: ['mue@kologlobal.com', 'mue.miv@gmail.com'],
+		skypes: ['mueees'],
+		realAdres: [
+			"город Киев, ул. Потасенко, кв. 59",
+			"город Харьков, ул. Октобенка, кв. 4"
+		],
+		photo: '/users/45/profile_45.jpg',
+		wishes: [
+			'самолет',
+			'вертолет'
+		],
+		events['id1', 'id2', 'id3']
+	}
+
+
+Получение данных про несколько юзеров по критериям
+------------------------------------------------------------
+
+type: GET
+url: /api/users
+field:
+	date: {
+		month [1, 5, 12, 10],
+		year: [1986, 1985, 2001]
+	}
+
+Requied fields:
+	none
+
+Response:
+	200
+	data:[
+		{
+			Данные про одного юзера
+		},
+		{
+			Данные про другого юзера
+		}
+	]
+
+info:
+Если временной промежуток не указан, приходят все юзеры
+
+
+Получение количества зарегестрированных юзеров
+------------------------------------------------------------
+
+type: GET
+url: /api/users/count
+
+field:
+	date: {
+		month [1, 5, 12, 10],
+		year: [1986, 1985, 2001]
+	}
+
+Requied fields:
+	none
+
+Response:
+	200
+	data: 200
