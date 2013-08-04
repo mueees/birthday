@@ -29,6 +29,16 @@
 .standart input {
   display: block;
 }
+.standart input.error {
+  border-color: #e9322d;
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+}
 .standart .inputMargin input {
   margin-bottom: 10px;
+}
+.standart .error {
+  color: #f00;
+  margin: 10px 0 0 0;
 }

@@ -4,9 +4,14 @@ requirejs.config({
 
     paths: {
         app: '../app',
+        plugins: '../plugins',
         jasmine: 'jasmine/jasmine',
         jasmineHtml: 'jasmine/jasmine-html',
-        marionette: 'marionette'
+        marionette: 'marionette',
+
+        /*plugins*/
+        validate: '../plugins/jquery/jquery.validate',
+        datepicker: '../plugins/bootstrap-datepicker'
     },
 
     shim:{
@@ -27,6 +32,15 @@ requirejs.config({
         marionette:{
             deps: ['backbone', 'underscore'],
             exports: "Marionette"
+        },
+
+        /*plugins*/
+        validate: {
+            deps: ['jquery'],
+            exports: 'jQuery'
+        },
+        datepicker: {
+            deps: ['jquery']
         }
     }
 });

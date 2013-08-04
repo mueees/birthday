@@ -9,21 +9,21 @@
             <div class="row">
                 <div class="span12">
 
-                    <form class="form-horizontal standart">
+                    <form class="form-horizontal standart addNewUserForm">
 
                         <legend>Name user</legend>
 
                         <div class="control-group">
                             <label class="control-label" for="name">Name</label>
                             <div class="controls">
-                                <input name="name" type="text" id="name" placeholder="Name">
+                                <input name="name" type="text" id="name" placeholder="Name" required >
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="secondName">Second Name</label>
+                            <label class="control-label" for="surName">Surname</label>
                             <div class="controls">
-                                <input name="secondName" type="text" id="secondName" placeholder="Second Name">
+                                <input name="surName" type="text" id="surName" placeholder="Surname">
                             </div>
                         </div>
 
@@ -37,9 +37,9 @@
                         <legend>Birthday user</legend>
 
                         <div class="control-group">
-                            <label class="control-label" for="middleName">Birthday date</label>
+                            <label class="control-label" for="birthday">Birthday date</label>
                             <div class="controls">
-                                <input type="text" name="bithday" value="02-16-2012" class="datepicker">
+                                <input data-date-format="dd-mm-yyyy" id="birthday" type="text" name="birthday" value="" placeholder="Birthday date" class="datepicker" required>
                             </div>
                         </div>
 
@@ -50,8 +50,10 @@
                             <div class="controls">
                                 <div class="wishes">
                                     <input name="wishes[]" type="text" id="Wishes" placeholder="Wish">
+                                    <input name="wishes[]" type="text"  placeholder="Wish">
+                                    <input name="wishes[]" type="text"  placeholder="Wish">
                                 </div>
-                                <a href="#add/user" class="btn">Add wish</a>
+                                <a href="#add/user" class="btn addWish">Add wish</a>
                             </div>
                         </div>
 
@@ -64,7 +66,7 @@
                                     <input name="phones[]" type="text" id="Phone" placeholder="Phone">
                                     <input name="phones[]" type="text"  placeholder="Phone">
                                 </div>
-                                <a class="btn">Add phone</a>
+                                <a class="btn addPhone">Add phone</a>
                             </div>
                         </div>
 
@@ -73,8 +75,9 @@
                             <div class="controls">
                                 <div class="emails">
                                     <input name="emails[]" type="text" id="Emails" placeholder="Email">
+                                    <input name="emails[]" type="text" placeholder="Email">
                                 </div>
-                                <a class="btn">Add email</a>
+                                <a class="btn addEmail">Add email</a>
                             </div>
                         </div>
 
@@ -84,7 +87,7 @@
                                 <div class="skypes">
                                     <input name="skypes[]" type="text" id="Skypes" placeholder="Skype">
                                 </div>
-                                <a class="btn">Add skype</a>
+                                <a class="btn addSkype">Add skype</a>
                             </div>
                         </div>
 
@@ -92,9 +95,9 @@
                             <label class="control-label" for="Adresses">Adress</label>
                             <div class="controls">
                                 <div class="adresses">
-                                    <input name="adresses[]" type="text" id="Adresses" placeholder="Adress">
+                                    <input name="realAddresses[]" type="text" id="Adresses" placeholder="Adress">
                                 </div>
-                                <a class="btn">Add adress</a>
+                                <a class="btn btnAddAddress">Add adress</a>
                             </div>
                         </div>
 
@@ -105,6 +108,9 @@
                             </div>
                         </div>-->
 
+                        <div class="submit">
+                            <a class="btn btn-success btnCreateNewUser" href="#">Create new User</a>
+                        </div>
 
                     </form>
 
