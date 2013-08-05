@@ -18,6 +18,64 @@
     </div> -->
 </header>
 <section class="main">
+
+    <div class="userList">
+        <div class="container">
+            <div class="page-header">
+                <h1>User List</h1>
+            </div>
+            <div class="row search">
+                <div class="span12">
+                    <h2>Search</h2>
+                </div>
+                <div class="fio span4">
+                    <label for="fio">User's FIO</label>
+                    <input name="fio" type="text" id="fio" placeholder="FIO" >
+                </div>
+                <div class="year span4">
+                    <label for="year">Birthday Year</label>
+                    <input name="year" type="text" id="year" placeholder="Year Birthday" >
+                </div>
+                <div class="month span4">
+                    <label for="month">Month Year</label>
+                    <input name="month" type="text" id="month" placeholder="Month Birthday" >
+                </div>
+            </div>
+            <div class="users row">
+                <div class="span12">
+                    <h2>Users</h2>
+                    <ul class="unstyled">
+                        <li>
+                            <h4 class="fio">
+                                <span class="surName">Мищенко</span>
+                                <span class="name">Виталий</span>
+                                <span class="middleName">Анатольевич</span>
+                            </h4>
+                            <div class="birthday">
+                                <span class="day">13</span>
+                                <span class="month">11</span>
+                                <span class="year">1986</span>
+                            </div>
+                            <div class="buttons">
+                                <a class="btn btn-small" href="#">edit</a>
+                                <a class="btn btn-small btn-danger" href="#">delete</a>
+                            </div>
+                        </li>
+                        <li>
+                            <h4 class="name">Потапов Арсен Петрович</h4>
+                            <div class="birthday">25 November 1986</div>
+                            <div class="buttons">
+                                <a class="btn btn-small" href="#">edit</a>
+                                <a class="btn btn-small btn-danger" href="#">delete</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!-- <div class="home">
         <div class="container">
             <div class="page-header">
@@ -51,13 +109,11 @@
 
 <script type="text/javascript" src="js/require.js"></script>
 <script type="text/javascript">
-    require([
+/*    require([
         './js/commonConfig'
     ], function(){
-
         require(['app/main'])
-
-    });
+    });*/
 </script>
 <script type="text/javascript" data-main="js/app/general" src="js/require.js"></script>
 
