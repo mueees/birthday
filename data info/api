@@ -22,15 +22,15 @@ field:
 	dateBirthday: {
 		year: 1986,
 		month: 11,
-		date: 25
+		day: 25
 	}
 	name: "Vitalii"
-	surname: "Mishchenko"
+	surName: "Mishchenko"
 	middleName: "Анатольевич"
 	phones: ['066-71-75-163', '095-211-33-12']
 	emails: ['mue@kologlobal.com', 'mue.miv@gmail.com']
 	skypes: ['mueees']
-	realAdres: [
+	realAddresses: [
 		"город Киев, ул. Потасенко, кв. 59",
 		"город Харьков, ул. Октобенка, кв. 4"
 	],
@@ -105,7 +105,7 @@ Response:
 		dateBirthday: : {
 			year: 1986,
 			month: 11,
-			date: 25
+			day: 25
 		},
 		dateAddUser: '2012-11-13',
 		name: 'Vitalii',

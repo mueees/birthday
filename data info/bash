@@ -1,1 +1,4 @@
-cd Dropbox/web/sites/birthday/project
+cd Dropbox/web/sites/birthday/project/marukp\ bootstrap
+grunt
+
+chromium-browser --disable-web-security
