@@ -65,20 +65,16 @@ define([
                     var success = _.bind(this._saveNewUserSuccess, this);
                     var error = _.bind(this._saveNewUserError, this);
 
+                    $.when( App.request('user:saveNewUser', data)).fail( error ).done( success );
 
-                    $.ajax({
-                        url: App.config.api.addUser,
-                        type: "POST",
-                        data: data,
-                        success: success,
-                        error: error
-                    })
                 },
 
-                _saveNewUserSuccess: function(){
+                _saveNewUserSuccess: function( data ){
+                    console.log(data);
                 },
 
-                _saveNewUserError: function(){
+                _saveNewUserError: function( data ){
+                    console.log(data);
                 },
 
                 changeUser: function(){
@@ -86,10 +82,10 @@ define([
                 },
 
                 showUser: function(){
-                    var done = _.bind(this._showUserSuccess, this);
-                    var fail = _.bind(this._showUserError, this);
+                    var success = _.bind(this._showUserSuccess, this);
+                    var error = _.bind(this._showUserError, this);
 
-                    var def = $.when( App.request('user:getById', 50) ).fail(fail).done(done);
+                    var def = $.when( App.request('user:getById', 50) ).fail(error).done(success);
                 },
 
                 _showUserSuccess: function( data ){
@@ -99,7 +95,6 @@ define([
 
                 _showUserError: function(){
                     Backbone.history.navigate("/");
-                    console.log("ERROR USER APP")
                 },
 
                 _getAddUserView: function(){

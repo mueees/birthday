@@ -1,51 +1,72 @@
 define([
-	'jquery',
-	'backbone',
-	'marionette',
-	'app/app',
-	'app/entities/_base/collection',
-	'app/entities/_base/model'
-	], function(jQuery, Backbone,  Marionette, App){
-		
-		var UserModel = App.Entities.Model.extend({});
-		var UserCollection = App.Entities.Collection.extend({
-			model: UserModel
-		});
+    'jquery',
+    'backbone',
+    'marionette',
+    'app/app',
 
-		var API = {
+    'app/collections/user/users',
+    'app/models/user/user'
+], function(jQuery, Backbone, Marionette, App, UserCollection, UserModel){
 
-			getUserById: function(id){
-				var deferred = $.Deferred();
-				this._getUserById(id, deferred);
-				return deferred.promise();
-			},
+    var API = {
 
-			_getUserById: function(id, deferred){
-				var ajax = jQuery.ajax({
-					url: App.config.api.remove,
-					type: 'GET',
-					success: function(data){
-						deferred.resolve({
-							data: data,
-							ajax: ajax,
-							model: new UserModel(data)
-						})
-					},
-					error: function(data){
-						deferred.reject({
-							data: data,
-							ajax: ajax,
-							model: new UserModel(data)
-						})
-					}
-				})
+        getUserById: function(id){
+            var deferred = $.Deferred();
+            this._getUserById(id, deferred);
+            return deferred.promise();
+        },
 
-			}
+        saveNewUser: function( data ){
+            var user = new UserModel(data);
+            var deferred = $.Deferred();
 
-		}
+            user.save(null,{
+                success: function(){
+                    deferred.resolve({
+                        model: user
+                    })
+                },
+                error: function(model, xhr){
+                    deferred.reject({
+                        model: user,
+                        xhr: xhr
+                    })
+                }
+            });
 
-		App.reqres.setHandler('user:getById', function(id){
-			return API.getUserById( id );
-		})
+
+            return deferred.promise();
+        },
+
+        _getUserById: function(id, deferred){
+            var ajax = jQuery.ajax({
+                url: App.config.api.remove,
+                type: 'GET',
+                success: function(data){
+                    deferred.resolve({
+                        data: data,
+                        ajax: ajax,
+                        model: new UserModel(data)
+                    })
+                },
+                error: function(data){
+                    deferred.reject({
+                        data: data,
+                        ajax: ajax
+                    })
+                }
+            })
+
+        }
+
+    }
+
+    App.reqres.setHandler('user:getById', function(id){
+        return API.getUserById( id );
+    })
+
+    App.reqres.setHandler('user:saveNewUser', function( data ){
+        return API.saveNewUser( data );
+    })
 
 })
