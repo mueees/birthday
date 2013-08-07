@@ -1,8 +1,10 @@
 var _ = require('underscore');
-var db = require("../../db");
+var connection = require("../../db");
 
-function Model(){
-    this.db = db;
-}
+function Model(){}
+
+_.extend(Model.prototype, {
+	connection: connection
+})
 
 module.exports = Model;

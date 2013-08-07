@@ -8,6 +8,6 @@ module.exports = function(app) {
   app.get('/', rootController.home);
 
   //api
-  app.get('/api/user/add', apiController.user.add);
+  app.post('/api/user/add', apiController.user.add);
 
 };

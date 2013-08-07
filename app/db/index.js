@@ -10,7 +10,7 @@ var getConnection= function getConnection(callback){
     else{
 
         var connURL = "mongodb://"+ config.database.dbIp +":" + config.database.dbPort + "/" + config.database.dbName;
-        console.log(connURL)
+        
         MongoClient.connect(connURL,function(err,db){
 
             if(err){
@@ -18,7 +18,7 @@ var getConnection= function getConnection(callback){
             }else{
                 db_singleton = db;
             }
-            console.log(db_singleton)
+            
             callback(err, db_singleton);
             return;
         });
