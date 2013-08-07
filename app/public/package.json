@@ -1,0 +1,9 @@
+{
+  "name": "for-experiment",
+  "version": "0.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-stylus": "~0.6.0",
+    "grunt-contrib-watch": "~0.5.1"
+  }
+}

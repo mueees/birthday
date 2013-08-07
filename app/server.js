@@ -1,21 +1,16 @@
 var express = require('express'),
     app = express(),
-    db = require("./db_connect");
+    db = require("./db"),
+    route = require('./routes/route');
 
-app.listen(3000, function () {
-    console.log('Listening on port ', 3000)
-})
+app.configure(function(){
+    app.use(express.static(__dirname + '/public'));
+    app.set('view engine', 'handlebars');
+    app.use(express.bodyParser());
+});
 
-app.get('/', function (req, res) {
-    db(function(err, connection){
+route(app);
 
-        var test = connection.db('test');
-        var image = test.collection("images");
-
-
-        image.findOne(function(err, item){
-            console.log(item);
-        })
-
-    })
+app.listen(56897, function (err) {
+    console.log(err)
 })
