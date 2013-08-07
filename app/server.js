@@ -7,10 +7,9 @@ app.listen(3000, function () {
 })
 
 app.get('/', function (req, res) {
-    db(function(err, connection){
+    db(function(err, db){
 
-        var test = connection.db('test');
-        var image = test.collection("images");
+        var image = db.collection("images");
 
 
         image.findOne(function(err, item){
