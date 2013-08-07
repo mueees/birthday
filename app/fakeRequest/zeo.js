@@ -6,6 +6,10 @@ var options = {
     port: 6539
 };
 
+var headers = [
+    {}
+];
+
 callback = function(response) {
     var str = '';
 
