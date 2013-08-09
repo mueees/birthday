@@ -3,10 +3,10 @@ define([
     'marionette',
     'app/models/user/user',
     'app/collections/_base/collection'
-],function(Backbone, Marionette, BaseModel, BaseColletion){
+],function(Backbone, Marionette, UserModel, BaseColletion){
 
     return BaseColletion.extend({
-        model: BaseModel
+        model: UserModel
     })
 
 })

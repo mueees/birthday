@@ -1,6 +1,6 @@
 define([
 	'marionette',
-	'text!app/templates/user/users_list/layout'
+	'text!app/templates/user/users_list/layout.html'
 	
 	], function(Marionette, LayoutTemp){
 

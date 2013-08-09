@@ -16,28 +16,32 @@ define([
 			var API = {
 				display: function( region ){
 
-					var view = Controller.getView();
+					Controller.displayView( region )
 
 				}
 			}
 
         	var Controller = {
-        		getView: function(){
+        		displayView: function( region ){
 
         			//получить данные про всех юзеров
-        			var success = _.bind(this._showUserSuccess, this);
-                    var error = _.bind(this._showUserError, this);
+        			var success = _.bind(this._getViewSuccess, this);
+                    var error = _.bind(this._getViewError, this);
 
-                    var def = $.when( App.request('user:getById', 50) ).fail(error).done(success);
+                    $.when( App.request('user:getUsers') ).fail(error).done(function(collection){ success(collection, region) });
 
-        			//отрендерить их
+        		},
 
-        			//вставить в лайаут
+        		_getViewSuccess: function( collection, region ){
+        			
+        		},
 
-        			//отдать результат
-
+        		_getViewError: function( data ){
+        			debugger
         		}
         	}
+
+        	Users_list.Api = API;
 
         }
 

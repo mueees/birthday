@@ -40,8 +40,26 @@ define([
 
         getUsers: function( data ){
             var deferred = $.Deferred();
-            this._getUsers( data, deffender );
-            return 
+            this._getUsers( data, deferred );
+            return deferred.promise();
+        },
+
+        _getUsers: function(data, deferred){
+            var ajax = jQuery.ajax({
+                type: "GET",
+                url: App.config.api.getUsers,
+                data: data,
+                success: function(data){
+                    deferred.resolve(new UserCollection(data))
+                },
+                error: function(data){
+                    deferred
+                    deferred.reject({
+                        data: data,
+                        ajax: ajax
+                    })
+                },
+            })
         },
 
         _getUserById: function(id, deferred){

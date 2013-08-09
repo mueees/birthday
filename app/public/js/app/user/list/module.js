@@ -2,7 +2,8 @@ define([
     'app/app',
     './list_layout',
     
-    '../search/module'
+    '../search/module',
+    '../users_list/module'
 ], function(App, Layout){
 
     App.module("User.List", {
@@ -24,7 +25,7 @@ define([
                     App.User.Search.Api.display( layout.search )
 
                     //append users to layout
-                    
+                    App.User.Users_list.Api.display( layout.users )
 
 
 				}
