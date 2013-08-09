@@ -97,7 +97,6 @@ _.extend(User, BaseModel, {
             }
         })
     },
-
     _getUsers: function( data, db, cb ){
         var _this = this;
 
@@ -114,10 +113,12 @@ _.extend(User, BaseModel, {
                 $in: data.year
             }
         }
-        debugger
 
+        console.log(query);
 
         db.collection('user').find(query).toArray( function(err, result){
+
+            //console.log(result);
 
             if(err){
                 cb(err)
@@ -126,7 +127,33 @@ _.extend(User, BaseModel, {
             }
         })
 
-        
+
+
+    },
+
+    getCount: function( cb ){
+
+        var _this = this;
+
+        this.connection(function(err, db){
+            if( err ){
+                cb(err)
+            }else{
+                _this._getCount( db, cb);
+            }
+        })
+
+    },
+    _getCount: function( db, cb){
+
+        db.collection('user').count(function(err, count){
+              if( err ){
+                  cb(err);
+              }else{
+                  console.log(count);
+                  cb(null, count);
+              }
+        })
 
     }
 });

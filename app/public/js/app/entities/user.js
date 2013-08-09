@@ -38,6 +38,12 @@ define([
             return deferred.promise();
         },
 
+        getUsers: function( data ){
+            var deferred = $.Deferred();
+            this._getUsers( data, deffender );
+            return 
+        },
+
         _getUserById: function(id, deferred){
             var ajax = jQuery.ajax({
                 url: App.config.api.remove,
@@ -67,6 +73,10 @@ define([
 
     App.reqres.setHandler('user:saveNewUser', function( data ){
         return API.saveNewUser( data );
+    })
+
+    App.reqres.setHandler('user:getUsers', function( data ){
+        return API.getUsers( data );
     })
 
 })

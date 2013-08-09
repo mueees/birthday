@@ -4,15 +4,17 @@ define([
     'marionette', 
     'app/app',
     'app/modules/cache/cache_app',
+    './list/module',
 
     './views/addUser',
     './views/showUser'
-    ], function(jQuery, Backbone, Marionette, App, cache_app, addUserView, showUserView){
+    ], function(jQuery, Backbone, Marionette, App, cache_app, ListModule, addUserView, showUserView){
 
 	App.module("User", {
 		startWithParent: false,
 
 		define: function( User, App, Backbone, Marionette, $, _ ){
+
 
             //create Router
             var Router = Marionette.AppRouter.extend({
@@ -29,7 +31,9 @@ define([
 
                     "user/change/:id": 'changeUser',
 
-                    'user/:id' : 'showUser'
+                    'user/:id' : 'showUser',
+
+                    "users" : "showUsers"
                 }
 
             })
@@ -46,6 +50,10 @@ define([
 
                 showUser: function(){
                     User.Controller.showUser();
+                },
+
+                showUsers: function(){
+                    User.List.Controller.showUsers();
                 }
             }
 
@@ -58,21 +66,6 @@ define([
 
                     addUserView.on('addNewUser', saveNewUser);
                     App.main.show(addUserView);
-
-                    $.ajax({
-                        type: "GET",
-                        url: "api/users",
-                        data: {
-                            month: ['06'],
-                            year: ['2014']
-                        },
-                        success: function(){
-                            debugger
-                        },
-                        error: function(){
-
-                        }
-                    })
                 },
 
                 saveNewUser: function( data ){

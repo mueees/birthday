@@ -11,6 +11,10 @@ define([], function(){
             getCountUsers: '/api/users/count',
 
 			remove: 'http://google.com/?get=345'
+		},
+
+		chanel: {
+			
 		}
 
 	}

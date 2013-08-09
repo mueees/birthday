@@ -1,5 +1,6 @@
 var UserModel = require('../models/user/user'),
-    url = require('url');
+    url = require('url'),
+    _ = require('underscore');
 
 var controller = {
 	user: {
@@ -71,9 +72,15 @@ var controller = {
 
             if( parts.query['month[]'] ){
                 data.month = parts.query['month[]']
+                if( !_.isArray(data.month) ){
+                    data.year = [data.year];
+                }
             }
             if( parts.query['year[]'] ){
                 data.year = parts.query['year[]']
+                if( !_.isArray(data.year) ){
+                    data.year = [data.year];
+                }
             }
 
             UserModel.getUsers(data, function(err, users){
@@ -84,14 +91,31 @@ var controller = {
 
         _users: function( err, users, response){
 
-
-            debugger
-
             if( err ){
-                response(err)
+                response.statusCode = 400;
+                response.send(err)
             }else{
 
-                response(users);
+                response.send(users);
+            }
+
+        },
+
+        count: function(request, response){
+            UserModel.getCount( function(err, count){
+                controller.user._count( err, count, response )
+            })
+        },
+
+        _count: function(err, count, response){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send({
+                    count: count
+                });
             }
 
         }
