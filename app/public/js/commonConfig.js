@@ -42,5 +42,7 @@ requirejs.config({
         datepicker: {
             deps: ['jquery']
         }
-    }
+    },
+
+    urlArgs: "bust=" + (new Date()).getTime()
 });

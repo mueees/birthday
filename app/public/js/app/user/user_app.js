@@ -58,6 +58,21 @@ define([
 
                     addUserView.on('addNewUser', saveNewUser);
                     App.main.show(addUserView);
+
+                    $.ajax({
+                        type: "GET",
+                        url: "api/users",
+                        data: {
+                            month: ['06'],
+                            year: ['2014']
+                        },
+                        success: function(){
+                            debugger
+                        },
+                        error: function(){
+
+                        }
+                    })
                 },
 
                 saveNewUser: function( data ){

@@ -44,7 +44,6 @@ define([
         },
 
         initialize: function(){
-
         },
 
         addWish: function(e){
@@ -103,7 +102,9 @@ define([
                 wishes: this.getValuesFromElement( this.ui.wishesInput )
 
             }
-            this.trigger("addNewUser", data);
+
+            return data;
+
         },
 
         getValuesFromElement: function( elementes ){
@@ -128,12 +129,28 @@ define([
 
         btnCreateNewUser: function(e){
             e.preventDefault();
+            debugger;
 
-            if( this.valid() ){
+            $.ajax({
+                type: "POST",
+                url: "/api/user/delete",
+                data: {
+                    id: "520261d6efa224623f000001"
+                },
+                success: function(data){
+                    debugger
+                },
+                error: function(){
+                    debugger
+                }
+            })
+
+            /*if( this.valid() ){
                 var data = this.getData();
+                this.trigger("addNewUser", data);
             }else{
                 console.log(2)
-            }
+            }*/
 
 
             return false;

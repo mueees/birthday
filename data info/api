@@ -1,7 +1,7 @@
 API:
 url: /api/user/add
 url: /api/user/change
-url: /api/user/delete
+url: /api/user/deleteUser
 url: /api/user/get
 url: /api/users
 url: /api/users/count
@@ -75,7 +75,7 @@ Response:
 Удаление юзера
 ------------------------------------------------------------
 type: POST
-url: /api/user/delete
+url: /api/user/deleteUser
 	field: 
 		id: '26645'
 
@@ -107,6 +107,7 @@ Response:
 			month: 11,
 			day: 25
 		},
+		dateBirthdayObj: Date object,
 		dateAddUser: '2012-11-13',
 		name: 'Vitalii',
 		surname: "Mishchenko",
