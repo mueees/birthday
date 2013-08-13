@@ -13,16 +13,18 @@ define([
 	        define: function(List, App, Backbone, Marionette, $, _){
 
 	        	var Controller = {
-	        		showUsers: function(){
-
-	        		}
+                    getView: function( deferred ){
+                        var searchView = new SearchView();
+                        deferred.resolve( searchView );
+                    }
 	        	}
 
 	        	var API = {
-	        		display: function( region ){
-	        			var searchView = new SearchView();
-	        			region.show( searchView );
-	        		}
+                    getView: function (){
+                        var deferred = new $.Deferred();
+                        Controller.getView( deferred );
+                        return deferred.promise();
+                    }
 	        	}
 
 				List.Api = API;

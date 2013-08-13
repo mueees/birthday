@@ -1451,6 +1451,8 @@ var Marionette = (function(global, Backbone, _){
             this.triggerMethod("before:render", this);
             this.triggerMethod("item:before:render", this);
 
+
+
             var data = this.serializeData();
             data = this.mixinTemplateHelpers(data);
 

@@ -53,12 +53,11 @@ define([
                     deferred.resolve(new UserCollection(data))
                 },
                 error: function(data){
-                    deferred
                     deferred.reject({
                         data: data,
                         ajax: ajax
                     })
-                },
+                }
             })
         },
 

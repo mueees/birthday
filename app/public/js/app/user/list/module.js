@@ -1,7 +1,7 @@
 define([
     'app/app',
     './list_layout',
-    
+
     '../search/module',
     '../users_list/module'
 ], function(App, Layout){
@@ -11,25 +11,37 @@ define([
 
         define: function(List, App, Backbone, Marionette, $, _){
 
-			List.Controller = {
-				showUsers: function(){
+            List.Controller = {
+                showUsers: function(){
 
-					//get Layout
-					var layout = new Layout();
+                    var done = _.bind(this._showUsersSuccess, this)
+                    var error = _.bind(this._showUsersError, this)
+
+                    $.when(
+                        App.User.Search.Api.getView(),
+                        App.User.Users_list.Api.getView()
+                    ).done( done ).fail( error );
+
+                },
+
+                _showUsersSuccess: function( searchView, usersLayout ){
+
+                    //get Layout
+                    var layout = new Layout();
                     layout.render();
 
                     //append layout to DOM
-                    App.main.show( layout );          
+                    App.main.show( layout );
 
-					//append search view
-                    App.User.Search.Api.display( layout.search )
+                    layout.search.show( searchView );
+                    layout.$el.find(".users").append(usersLayout.$el)
 
-                    //append users to layout
-                    App.User.Users_list.Api.display( layout.users )
+                },
 
-
-				}
-			}
+                _showUsersError: function(){
+                    debugger
+                }
+            }
 
 
         }

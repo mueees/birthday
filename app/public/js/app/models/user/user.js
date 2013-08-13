@@ -6,6 +6,17 @@ define([
 ],function(App, Backbone, Marionette, BaseModel){
 
     return BaseModel.extend({
+        defaults: {
+            name: "",
+            surName: "",
+            middleName: "",
+
+            dateBirthday: {
+                day: "day",
+                month: "month",
+                year: "year"
+            }
+        },
         idAttribute: '_id',
         url: App.config.api.addUser
     })
