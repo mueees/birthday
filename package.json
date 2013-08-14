@@ -7,6 +7,6 @@
         "util": "0",
         "underscore": "1",
         "handlebars": "1",
-        "node-inspector": "0"
+        "node-inspector": "0" 
     }
 }
