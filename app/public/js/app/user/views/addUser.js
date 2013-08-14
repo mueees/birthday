@@ -129,28 +129,12 @@ define([
         btnCreateNewUser: function(e){
             e.preventDefault();
 
-            /*$.ajax({
-                type: "POST",
-                url: "/api/user/deleteUser",
-                data: {
-                    id: "520261f4efa224623f000002"
-                },
-                success: function(data){
-                    debugger
-                },
-                error: function(){
-                    debugger
-                }
-            })*/
-
             if( this.valid() ){
                 var data = this.getData();
                 this.trigger("addNewUser", data);
             }else{
                 console.log(2)
             }
-
-
             return false;
         }
     })

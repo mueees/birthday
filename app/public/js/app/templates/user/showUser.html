@@ -1,0 +1,201 @@
+<div class="userPage">
+    <div class="container">
+        <div class="page-header">
+            <h1>User page:<%= surName%> <%= name%> <%= middleName%></h1>
+        </div>
+
+        <div class="row">
+            <div class="span12">
+                <a class="btn editUser">Edit User</a>
+                <a class="btn btn-danger deleteUser">Delete User</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span6">
+                <div class="page-header">
+                    <h2>Wishes</h2>
+                </div>
+
+                <div class="wishesList">
+                    <% if( wishes.length ) {%>
+                    <table class="table table-striped">
+                        <tbody>
+                        <%for( var i = 0; i < wishes.length; i++ ){%>
+                        <tr>
+                            <td><%= wishes[i]%></td>
+                        </tr>
+                        <%}%>
+                        <!--<tr>
+                            <td>Автомобиль</td>
+                            <td><a class="btn btn-mini editWish">edit</a></td>
+                            <td><a class="btn btn-danger btn-mini deleteWish">delete</a></td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                    <% }else{ %>
+                    <div>No Wishes</div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="span1"></div>
+            <div class="span5">
+                <div class="page-header">
+                    <h2>User Info</h2>
+                </div>
+
+                <div class="field">
+                    <div class="title-h3">Birthday</div>
+                    <div class="value">
+                        <%= dateBirthday.day %> - <%= dateBirthday.month %> - <%= dateBirthday.year %>
+                        <!--<input type="text" name="bithday" value="02-16-2012" class="datepicker">-->
+                    </div>
+                </div>
+
+                <!--<div class="field">
+                    <img src="http://placehold.it/360x270" alt="User info"/>
+                </div>-->
+
+                <div class="field">
+                    <div class="title-h3">Phone</div>
+                    <div class="value">
+                        <% if( phones.length ) {%>
+                        <table class="table table-striped">
+                            <tbody>
+                            <%for( var i = 0; i < phones.length; i++ ){%>
+                            <% if( phones[i].length ) {%>
+                            <tr>
+                                <td><%= phones[i]%></td>
+                                <td><a class="btn btn-mini editPhone">edit</a></td>
+                                <td><a class="btn btn-danger btn-mini deletePhone">delete</a></td>
+                            </tr>
+                            <%}%>
+
+                            <%}%>
+                            </tbody>
+                        </table>
+                        <%}else{%>
+                            No phones
+                        <%}%>
+
+                    </div>
+                    <!--<div class="add">
+                         <div class="input-append addField">
+                            <input class="span2" type="text" placeholder='Phone number'>
+                            <button class="btn btn-success savePhone" type="button">Save</button>
+                            <button class="btn cancelSavePhone" type="button">Cancel</button>
+                        </div>
+                        <div class="showAddPhone">
+                            <a href="#" class="btn">Add phone</a>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="field">
+                    <div class="title-h3">Emails</div>
+                    <div class="value">
+                        <% if( phones.length ) {%>
+                        <table class="table table-striped">
+                            <tbody>
+                            <%for( var i = 0; i < emails.length; i++ ){%>
+                            <% if( emails[i].length ) {%>
+                            <tr>
+                                <td><div class="email"><%= emails[i]%></div></td>
+                                <td><a class="btn btn-mini editEmail">edit</a></td>
+                                <td><a class="btn btn-danger btn-mini deleteEmail">delete</a></td>
+                            </tr>
+                            <%}%>
+                            <%}%>
+                            </tbody>
+                        </table>
+                        <%}else{%>
+                        No emails
+                        <%}%>
+
+                    </div>
+                    <!--<div class="add">
+                        <div class="input-append addField">
+                           <input class="span2" type="text" placeholder='Email'>
+                           <button class="btn btn-success saveEmail" type="button">Save</button>
+                           <button class="btn cancelSaveEmail" type="button">Cancel</button>
+                       </div>
+                        <div class="showAddEmail">
+                            <a href="#" class="btn">Add email</a>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="field">
+                    <div class="title-h3">Skypes</div>
+                    <div class="value">
+                        <% if( skypes.length ) {%>
+                        <table class="table table-striped">
+                            <tbody>
+                            <%for( var i = 0; i < skypes.length; i++ ){%>
+                            <% if( skypes[i].length ) {%>
+                            <tr>
+                                <td><div class="email"><%= skypes[i]%></div></td>
+                                <td><a class="btn btn-mini editSkype">edit</a></td>
+                                <td><a class="btn btn-danger btn-mini deleteSkype">delete</a></td>
+                            </tr>
+                            <% }%>
+                            <%}%>
+                            </tbody>
+                        </table>
+                        <%}else{%>
+                        No skypes
+                        <%}%>
+
+                    </div>
+                    <!--<div class="add">
+                        <div class="input-append addField">
+                           <input class="span2" type="text" placeholder='Email'>
+                           <button class="btn btn-success saveEmail" type="button">Save</button>
+                           <button class="btn cancelSaveEmail" type="button">Cancel</button>
+                       </div>
+                        <div class="showAddEmail">
+                            <a href="#" class="btn">Add email</a>
+                        </div>
+                    </div>-->
+                </div>
+
+                <div class="field">
+                    <div class="title-h3">Real Address</div>
+                    <div class="value">
+                        <% if( realAddresses.length ) {%>
+                        <table class="table table-striped">
+                            <tbody>
+                            <%for( var i = 0; i < realAddresses.length; i++ ){%>
+                            <% if( realAddresses[i].length ) {%>
+                            <tr>
+                                <td><div class="email"><%= realAddresses[i]%></div></td>
+                                <td><a class="btn btn-mini editRealAddresse">edit</a></td>
+                                <td><a class="btn btn-danger btn-mini deleteRealAddresse">delete</a></td>
+                            </tr>
+                            <% }%>
+                            <%}%>
+                            </tbody>
+                        </table>
+                        <%}else{%>
+                        No RealAddresses
+                        <%}%>
+
+                    </div>
+                    <!--<div class="add">
+                        <div class="input-append addField">
+                           <input class="span2" type="text" placeholder='Email'>
+                           <button class="btn btn-success saveEmail" type="button">Save</button>
+                           <button class="btn cancelSaveEmail" type="button">Cancel</button>
+                       </div>
+                        <div class="showAddEmail">
+                            <a href="#" class="btn">Add email</a>
+                        </div>
+                    </div>-->
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

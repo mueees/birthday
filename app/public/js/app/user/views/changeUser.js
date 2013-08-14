@@ -1,23 +1,20 @@
 define([
     'backbone',
     'marionette',
-    'text!../templates/addUser.html',
-    'text!../templates/addWish.html',
+    'text!app/templates/user/changeUser.html',
     'validate',
     'datepicker'
-], function(Backbone, Marionette, templateView, addWishTemp){
+], function(Backbone, Marionette, templateView){
 
-    var AddUserView = Marionette.ItemView.extend({
+    var ChangeUserView = Marionette.ItemView.extend({
         template: _.template( templateView ),
-        addWishTemp: _.template(addWishTemp),
 
         events: {
-            'click .btnCreateNewUser': "btnCreateNewUser",
-            'click .addWish': 'addWish'
+            'click .btnChangeUser': "btnChangeUser"
         },
 
         ui: {
-            'form': "form.addNewUserForm",
+            'form': "form.changeUserForm",
             'datepicker': '.datepicker',
 
             /*input*/
@@ -43,15 +40,7 @@ define([
             'btnAddAddress': '.addAdress'
         },
 
-        initialize: function(){
-        },
-
-        addWish: function(e){
-            e.preventDefault();
-            var view = this.addWishTemp();
-            this.ui.wishes.append( view );
-            return false;
-        },
+        initialize: function(){},
 
         onRender: function(){
             //addValidate
@@ -84,11 +73,6 @@ define([
 
         },
 
-        valid: function(){
-            var form = this.ui.form;
-            return form.valid();
-        },
-
         getData: function(){
             var data = {
                 name: this.ui.nameInput.val(),
@@ -102,9 +86,7 @@ define([
                 wishes: this.getValuesFromElement( this.ui.wishesInput )
 
             }
-
             return data;
-
         },
 
         getValuesFromElement: function( elementes ){
@@ -127,36 +109,27 @@ define([
 
         },
 
-        btnCreateNewUser: function(e){
+        valid: function(){
+            var form = this.ui.form;
+            return form.valid();
+        },
+
+        btnChangeUser: function(e){
             e.preventDefault();
-            debugger;
 
-            $.ajax({
-                type: "POST",
-                url: "/api/user/delete",
-                data: {
-                    id: "520261d6efa224623f000001"
-                },
-                success: function(data){
-                    debugger
-                },
-                error: function(){
-                    debugger
-                }
-            })
 
-            /*if( this.valid() ){
+
+            if( this.valid() ){
                 var data = this.getData();
-                this.trigger("addNewUser", data);
+                this.trigger("changeUser", data);
             }else{
-                console.log(2)
-            }*/
-
+                console.log('error chnage')
+            }
 
             return false;
         }
     })
 
-    return AddUserView
+    return ChangeUserView
 
 })

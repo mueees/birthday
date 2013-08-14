@@ -1,19 +1,20 @@
 define([
     'jquery',
     'backbone',
-    'marionette', 
+    'marionette',
     'app/app',
     'app/modules/cache/cache_app',
     './list/module',
 
     './views/addUser',
-    './views/showUser'
-    ], function(jQuery, Backbone, Marionette, App, cache_app, ListModule, addUserView, showUserView){
+    './views/showUser',
+    './views/changeUser'
+], function(jQuery, Backbone, Marionette, App, cache_app, ListModule, addUserView, showUserView, changeUserView){
 
-	App.module("User", {
-		startWithParent: false,
+    App.module("User", {
+        startWithParent: false,
 
-		define: function( User, App, Backbone, Marionette, $, _ ){
+        define: function( User, App, Backbone, Marionette, $, _ ){
 
 
             //create Router
@@ -44,8 +45,8 @@ define([
                     User.Controller.addUser();
                 },
 
-                changeUser: function(){
-                    User.Controller.changeUser();
+                changeUser: function( id ){
+                    User.Controller.changeUser( id );
                 },
 
                 showUser: function(id){
@@ -85,8 +86,15 @@ define([
                     console.log(data);
                 },
 
-                changeUser: function(){
-                    
+                saveChangeUser: function(data){
+                    debugger
+                },
+
+                changeUser: function(id){
+                    var success = _.bind(this._showChangeUserView, this);
+                    var error = _.bind(this._routeToHome, this);
+
+                    $.when( App.request('user:getById', id) ).fail(error).done(success);
                 },
 
                 showUser: function(id){
@@ -98,8 +106,9 @@ define([
                 },
 
                 _showUserSuccess: function( data ){
-                    debugger
-                    var showUserView = this._getShowUserView();
+
+                    var model = data.model;
+                    var showUserView = this._getShowUserView( model );
                     App.main.show(showUserView);
                 },
 
@@ -111,8 +120,25 @@ define([
                     return new addUserView();
                 },
 
-                _getShowUserView: function(){
-                  return new showUserView();  
+                _getShowUserView: function(model){
+                    return new showUserView({model: model});
+                },
+
+                _getChangeUserView: function(model){
+                    return new changeUserView({model: model});
+                },
+
+                _showChangeUserView: function( data ){
+                    var model = data.model;
+                    var changeUserView = this._getChangeUserView( model );
+                    var saveChangeUser = _.bind(this.saveChangeUser, this);
+
+                    changeUserView.on('changeUser', saveChangeUser)
+                    App.main.show(changeUserView);
+                },
+
+                _routeToHome: function( data ){
+                    Backbone.history.navigate("/");
                 }
             }
 
@@ -122,8 +148,8 @@ define([
                 })
             })
 
-		}
+        }
 
-	})
+    })
 
 })

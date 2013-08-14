@@ -1,7 +1,7 @@
 define([
 	'backbone',
 	'marionette',
-	'text!../templates/showUser.html'
+	'text!app/templates/user/showUser.html'
 	], function(Backbone, Marionette, templateView){
 
 		var ShowUserView = Marionette.ItemView.extend({
