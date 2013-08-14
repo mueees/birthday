@@ -18,7 +18,7 @@ define([
             }
         },
         idAttribute: '_id',
-        url: App.config.api.addUser
+        urlRoot: App.config.api.user
     })
 
 })

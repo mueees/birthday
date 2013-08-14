@@ -28,9 +28,9 @@ var controller = {
         },
 
         deleteUser: function(request, response){
-            var data = request.body;
+            var id = request.params.id;
 
-            UserModel.deleteUser( data.id, function(err, result){
+            UserModel.deleteUser( id, function(err, result){
                 controller.user._deleteUser( err, result, response )
             });
         },
@@ -40,7 +40,13 @@ var controller = {
                 response.statusCode = 400;
                 response.send(null);
             }else{
-                response.send(result);
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send();
+
             }
         },
 

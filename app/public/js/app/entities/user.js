@@ -63,8 +63,9 @@ define([
 
         _getUserById: function(id, deferred){
             var ajax = jQuery.ajax({
-                url: App.config.api.remove,
+                url: App.config.api.getOneUser,
                 type: 'GET',
+                data: {id: id},
                 success: function(data){
                     deferred.resolve({
                         data: data,

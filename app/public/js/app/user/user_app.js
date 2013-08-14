@@ -48,8 +48,8 @@ define([
                     User.Controller.changeUser();
                 },
 
-                showUser: function(){
-                    User.Controller.showUser();
+                showUser: function(id){
+                    User.Controller.showUser(id);
                 },
 
                 showUsers: function(){
@@ -89,14 +89,16 @@ define([
                     
                 },
 
-                showUser: function(){
+                showUser: function(id){
+
                     var success = _.bind(this._showUserSuccess, this);
                     var error = _.bind(this._showUserError, this);
 
-                    var def = $.when( App.request('user:getById', 50) ).fail(error).done(success);
+                    $.when( App.request('user:getById', id) ).fail(error).done(success);
                 },
 
                 _showUserSuccess: function( data ){
+                    debugger
                     var showUserView = this._getShowUserView();
                     App.main.show(showUserView);
                 },
