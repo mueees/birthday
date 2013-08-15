@@ -10,6 +10,10 @@ define([
 	
 	App.config = globalConfig;
 
+    //add Chanels
+    App.chanels = {}
+    App.chanels.main = _.extend({}, Backbone.Events);
+
     App.addRegions({
         body: 'body',
         header: '.header',

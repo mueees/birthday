@@ -5,7 +5,8 @@ var connection = require("../../db");
 function Model(){}
 
 _.extend(Model.prototype, {
-	connection: connection
+	connection: connection,
+    ObjectID: mongodb.ObjectID
 })
 
 _.extend(Model, {

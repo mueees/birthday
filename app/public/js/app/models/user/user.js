@@ -15,7 +15,12 @@ define([
                 day: "day",
                 month: "month",
                 year: "year"
-            }
+            },
+            wishes: [],
+            skypes: [],
+            phones: [],
+            realAddresses: [],
+            emails: []
         },
         idAttribute: '_id',
         urlRoot: App.config.api.user

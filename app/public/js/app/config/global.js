@@ -3,17 +3,23 @@ define([], function(){
 	return {
 
 		api:{
+
             user: '/api/user',
-			addUser: '/api/user/add',
-            changeUser: '/api/user/change',
-            deleteUser: '/api/user/deleteUser',
-            getOneUser: '/api/user/get',
             getUsers: '/api/users',
-            getCountUsers: '/api/users/count'
+            getCountUsers: '/api/users/count',
+            getOneUser: '/api/user/get',
+
+			//не работают
+            deleteUser: '/api/user/deleteUser',
+            changeUser: '/api/user/change',
+            addUser: '/api/user/add'
+
 		},
 
-		chanel: {
-			
+		chanels: {
+			main: {
+                searchFilterChanged: "searchFilterChanged"
+            }
 		}
 
 	}

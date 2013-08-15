@@ -16,14 +16,36 @@ define([
             return deferred.promise();
         },
 
+        _getUserById: function(id, deferred){
+            var ajax = jQuery.ajax({
+                url: App.config.api.getOneUser,
+                type: 'GET',
+                data: {id: id},
+                success: function(data){
+                    deferred.resolve({
+                        data: data,
+                        ajax: ajax,
+                        model: new UserModel(data)
+                    })
+                },
+                error: function(data){
+                    deferred.reject({
+                        data: data,
+                        ajax: ajax
+                    })
+                }
+            })
+
+        },
+
         saveNewUser: function( data ){
             var user = new UserModel(data);
             var deferred = $.Deferred();
 
             user.save(null,{
-                success: function(){
+                success: function(model, data){
                     deferred.resolve({
-                        model: user
+                        model: new UserModel(data)
                     })
                 },
                 error: function(model, xhr){
@@ -59,30 +81,7 @@ define([
                     })
                 }
             })
-        },
-
-        _getUserById: function(id, deferred){
-            var ajax = jQuery.ajax({
-                url: App.config.api.getOneUser,
-                type: 'GET',
-                data: {id: id},
-                success: function(data){
-                    deferred.resolve({
-                        data: data,
-                        ajax: ajax,
-                        model: new UserModel(data)
-                    })
-                },
-                error: function(data){
-                    deferred.reject({
-                        data: data,
-                        ajax: ajax
-                    })
-                }
-            })
-
         }
-
     }
 
     App.reqres.setHandler('user:getById', function(id){

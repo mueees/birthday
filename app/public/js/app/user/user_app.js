@@ -79,15 +79,25 @@ define([
                 },
 
                 _saveNewUserSuccess: function( data ){
-                    console.log(data);
+                    var user = data.model;
+                    Backbone.history.navigate("/#user/" + user.get('_id'));
                 },
 
                 _saveNewUserError: function( data ){
                     console.log(data);
                 },
 
-                saveChangeUser: function(data){
-                    debugger
+                saveChangeUser: function(newData, model){
+                    model.set(newData);
+
+                    model.save({}, {
+                        success: function( model, response, options ){
+                            Backbone.history.navigate("/#user/" + model.get('_id'));
+                        },
+                        error: function(model, response, options){
+                            debugger
+                        }
+                    });
                 },
 
                 changeUser: function(id){
@@ -133,7 +143,9 @@ define([
                     var changeUserView = this._getChangeUserView( model );
                     var saveChangeUser = _.bind(this.saveChangeUser, this);
 
-                    changeUserView.on('changeUser', saveChangeUser)
+                    changeUserView.on('changeUser', function( newData ){
+                        saveChangeUser( newData, model );
+                    })
                     App.main.show(changeUserView);
                 },
 

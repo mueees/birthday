@@ -12,8 +12,11 @@ module.exports = function(app) {
     //user
     app.post('/api/user', apiController.user.add);
     app.delete('/api/user/:id', apiController.user.deleteUser);
-    app.get('/api/user/get', apiController.user.get);
+    app.put('/api/user/:id', apiController.user.changeUser);
     app.get('/api/users', apiController.user.users);
     app.get('/api/users/count', apiController.user.count);
+
+    app.get('/api/user/get', apiController.user.get);
+
 
 };

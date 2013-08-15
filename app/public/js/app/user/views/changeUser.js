@@ -86,7 +86,23 @@ define([
                 wishes: this.getValuesFromElement( this.ui.wishesInput )
 
             }
+            return this.filterData(data);
+        },
+
+        filterData: function(data){
+
+            var key, value, isArray, isString;
+
+            for( key in data ){
+                value = data[key];
+
+                if( value.length == 0 ){
+                    delete data[key]
+                }
+            }
+
             return data;
+
         },
 
         getValuesFromElement: function( elementes ){
@@ -116,8 +132,6 @@ define([
 
         btnChangeUser: function(e){
             e.preventDefault();
-
-
 
             if( this.valid() ){
                 var data = this.getData();

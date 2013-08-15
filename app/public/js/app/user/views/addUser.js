@@ -103,13 +103,33 @@ define([
                 wishes: this.getValuesFromElement( this.ui.wishesInput )
 
             }
+
+
+            return this.filterData(data);
+        },
+
+        filterData: function(data){
+
+            var key, value, isArray, isString;
+
+            for( key in data ){
+                value = data[key];
+
+                if( value.length == 0 ){
+                    delete data[key]
+                }
+            }
+
             return data;
+
         },
 
         getValuesFromElement: function( elementes ){
             var result = [];
             for( var i = 0; i < elementes.length; i++ ){
-                result.push( elementes[i].value )
+                if( elementes[i].value != "" ){
+                    result.push( elementes[i].value )
+                }
             }
 
             return result;

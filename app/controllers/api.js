@@ -22,7 +22,7 @@ var controller = {
                 response.statusCode = 400;
                 response.send(null);
             }else{
-                response.send(result);
+                response.send(result[0]);
             }
 
         },
@@ -46,7 +46,6 @@ var controller = {
                     response.statusCode = 400;
                 }
                 response.send();
-
             }
         },
 
@@ -124,6 +123,34 @@ var controller = {
                 });
             }
 
+        },
+
+        changeUser: function( request, response ){
+
+            var data = request.body;
+
+            data['dateBirthdayObj'] = new Date( data.dateBirthday.year, data.dateBirthday.month, data.dateBirthday.day);
+            var user = new UserModel( data );
+            user.update( function(err, result){
+                controller.user._changeUser( err, result, response, user );
+            })
+        },
+
+        _changeUser: function( err, result, response, user ){
+
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, user.data);
+            }
         }
 	}
 }
