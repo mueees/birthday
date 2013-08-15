@@ -33,8 +33,6 @@ define([
                 monthConcurrence = true,
                 yearConcurrence = true;
 
-            debugger
-
             if( data.fio ){
                 fioConcurrence = this.isFioConcurrence(data.fio)
             }
@@ -54,8 +52,29 @@ define([
 
         },
 
-        isFioConcurrence: function( fio ){
-            return true;
+        isFioConcurrence: function( value ){
+
+            var name = this.model.get('name');
+            var middleName = this.model.get('middleName');
+            var surName = this.model.get('surName');
+
+            name = name.toLowerCase();
+            middleName = middleName.toLowerCase();
+            surName = surName.toLowerCase();
+            value = value.toLowerCase();
+
+            var reg = new RegExp("^" + value);
+
+            var nameConcurrence = name.search(reg);
+            var middleNameConcurrence = middleName.search(reg);
+            var surNameConcurrence = surName.search(reg);
+
+            if( nameConcurrence === 0 || middleNameConcurrence == 0 || surNameConcurrence == 0 ){
+                return true
+            }else{
+                return false
+            }
+
         },
 
         isMonthConcurrence: function(month){

@@ -48,9 +48,10 @@ define([
         },
 
         addWish: function(e){
-            e.preventDefault();
+            if(e) e.preventDefault();
             var view = this.addWishTemp();
             this.ui.wishes.append( view );
+            this.bindUIElements();
             return false;
         },
 

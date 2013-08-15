@@ -2,15 +2,30 @@ define([
     'backbone',
     'marionette',
     'text!app/templates/user/changeUser.html',
+    'text!../templates/addWish.html',
+    'text!../templates/addPhone.html',
+    'text!../templates/addEmail.html',
+    'text!../templates/addSkype.html',
+    'text!../templates/addAdress.html',
     'validate',
     'datepicker'
-], function(Backbone, Marionette, templateView){
+], function(Backbone, Marionette, templateView, addWishTemp, addPhoneTemp, addEmailTemp, addSkypeTemp, addAdressTemp){
 
     var ChangeUserView = Marionette.ItemView.extend({
         template: _.template( templateView ),
+        addWishTemp: _.template(addWishTemp),
+        addPhoneTemp: _.template(addPhoneTemp),
+        addEmailTemp: _.template(addEmailTemp),
+        addSkypeTemp: _.template(addSkypeTemp),
+        addAdressTemp: _.template(addAdressTemp),
 
         events: {
-            'click .btnChangeUser': "btnChangeUser"
+            'click .btnChangeUser': "btnChangeUser",
+            'click .addWish': 'addWish',
+            'click .addPhone': "addPhone",
+            'click .addEmail': "addEmail",
+            'click .addSkype': "addSkype",
+            'click .addAddress': "addAdress"
         },
 
         ui: {
@@ -31,6 +46,10 @@ define([
 
             /*area*/
             'wishes': '.wishes',
+            'phones': '.phones',
+            'emails': '.emails',
+            'skypes': '.skypes',
+            'adresses': '.adresses',
 
             /*button*/
             'btnAddWish': '.addWish',
@@ -90,9 +109,7 @@ define([
         },
 
         filterData: function(data){
-
-            var key, value, isArray, isString;
-
+            var key, value;
             for( key in data ){
                 value = data[key];
 
@@ -100,13 +117,13 @@ define([
                     delete data[key]
                 }
             }
-
             return data;
 
         },
 
         getValuesFromElement: function( elementes ){
             var result = [];
+
             for( var i = 0; i < elementes.length; i++ ){
                 result.push( elementes[i].value )
             }
@@ -140,6 +157,46 @@ define([
                 console.log('error chnage')
             }
 
+            return false;
+        },
+
+        addWish: function(e){
+            if(e) e.preventDefault();
+            var view = this.addWishTemp();
+            this.ui.wishes.append( view );
+            this.bindUIElements();
+            return false;
+        },
+
+        addPhone: function(e){
+            if(e) e.preventDefault();
+            var view = this.addPhoneTemp();
+            this.ui.phones.append( view );
+            this.bindUIElements();
+            return false;
+        },
+
+        addEmail: function(e){
+            if(e) e.preventDefault();
+            var view = this.addEmailTemp();
+            this.ui.emails.append( view );
+            this.bindUIElements();
+            return false;
+        },
+
+        addSkype: function(e){
+            if(e) e.preventDefault();
+            var view = this.addSkypeTemp();
+            this.ui.skypes.append( view );
+            this.bindUIElements();
+            return false;
+        },
+
+        addAdress: function(e){
+            if(e) e.preventDefault();
+            var view = this.addAdressTemp();
+            this.ui.adresses.append( view );
+            this.bindUIElements();
             return false;
         }
     })

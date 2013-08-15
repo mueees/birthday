@@ -1,0 +1,106 @@
+Event:
+_____________
+
+title (string)
+
+dateStart (Date)
+    minutes
+    hour
+    day
+    month
+    year
+
+repeat
+    type:
+        'no'
+        'every week'
+            days: выбрать дни
+                пн, вт, ср, чт, пт, сб, вс
+        'every month'
+            каждый месяц в опеределенное число
+        'every year'
+            каждый год в определенный месяц и определенное число
+
+description (string)
+
+users (array)
+    [idUser, idUser, idUser]
+
+
+К примеру вывести все события за определенные даты
+
+1 января - 31 января 2013
+
+. просмотреть все ивенты с dateStart подпадающим в этот диапазон и repeat = 'no'
+dateShow будет равнятся dateStart
+[
+    {
+        dateStart: date,
+        dateShow: date,
+        repeat: 'no',
+        description: 'bla bla',
+        users: [idUser, idUser, idUser]
+    }
+]
+
+. 1 найти все ивенты у которых repeat = 'every week'
+  2 из них найти ивенты у которых dateStart не позже чем конечная дата диапазона ('31 января 2013')
+  3 пройтись по этому найденому массиву и сформировать окончательный массив с ивентами и  'dateShow' куда будет прописана точная дата
+
+    тоесть получается что на выходе из п.2 у нас будет несколько 'ивентов-архивов', каждый из которых не хранит точную дату
+    когда он должен быть показан а хранит логику для построения точной даты
+    из каждого такого 'ивента-архива ' надо построить окончательные ивенты
+
+  [
+    {
+        dateStart: date,
+        dateShow: dateShow,
+        repeat: {
+            type: 'every week',
+            days: [0, 2, 6]
+        },
+        description: 'bla bla',
+        users: [idUser, idUser, idUser]
+    }
+  ]
+
+.   1 найти все ивенты у которых repeat = 'every month'
+    2 из них найти ивенты у которых dateStart не позже чем конечная дата диапазона ('января 2013')
+    3 сформировать из них окончательные ивенты
+
+    В отличии от ивентов с repeat = 'every week', ивенты с 'every month' не являются архивами. Так как из одного такого ивента
+    можно создать только один ивент на выходе
+
+[
+    {
+        dateStart: date,
+        dateShow: dateShow,
+        repeat: {
+            type: 'every month',
+            day: 23
+        },
+        description: 'bla bla',
+        users: [idUser, idUser, idUser]
+    }
+  ]
+
+
+.   1 найти все ивенты у которых repeat = 'every year'
+  2 из них найти ивенты у которых dateStart  (месяц и число попадают в выбранный диапазон) не позже чем конечная дата диапазона ('2013')
+  3 сформировать из них окончательные ивенты
+
+  Из одного такого ивента можно создать только один ивент на выходе
+
+  [
+      {
+          dateStart: date,
+          dateShow: dateShow,
+          repeat: {
+              type: 'every year',
+              month: 02,
+              day: 23
+          },
+          description: 'bla bla',
+          users: [idUser, idUser, idUser]
+      }
+    ]

@@ -12,7 +12,8 @@ define([
             events: {
                 "keyup #fio" : "notify",
                 "change #month": "notify",
-                "change #year": "notify"
+                "change #year": "notify",
+                'click .clearSearch': "clearSearch"
             },
 
             ui: {
@@ -37,7 +38,11 @@ define([
                     format: " mm",
                     viewMode: "months",
                     minViewMode: "months"
-                }).on("changeDate", function(){_this.notify()})
+                }).on("changeDate", function(){
+                        setTimeout(function(){
+                            _this.notify();
+                        }, 200)
+                    })
             },
 
             addDatePickerYear: function(){
@@ -47,24 +52,39 @@ define([
                     format: " yyyy",
                     viewMode: "years",
                     minViewMode: "years"
-                }).on("changeDate", function(){_this.notify()})
+                }).on("changeDate", function(){
+                        setTimeout(function(){
+                            _this.notify();
+                        }, 200)
+                    })
             },
 
             getData:function(){
 
                 var data = {
-                    fio: this.ui.fio.val(),
-                    year: this.ui.year.val(),
-                    month: this.ui.month.val()
+                    fio: $.trim(this.ui.fio.val()),
+                    year: $.trim(this.ui.year.val()),
+                    month: $.trim(this.ui.month.val())
                 }
 
                 return data;
             },
 
             notify: function(){
-
                 var data = this.getData();
                 this.trigger('filterChange', data);
+            },
+
+            clearSearch: function(e){
+                if(e) e.preventDefault();
+
+                this.ui.fio.val("");
+                this.ui.year.val("");
+                this.ui.month.val("");
+
+                this.notify();
+
+                return false;
             }
 		})
 
