@@ -1,0 +1,129 @@
+<div class="addEvent">
+    <div class="container">
+        <div class="page-header">
+            <h1>Add Event</h1>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <form class="form-horizontal standart addEventForm">
+
+                    <legend>Title</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="title">Title</label>
+                        <div class="controls">
+                            <input  id="title" type="text" name="title" placeholder="Title" required>
+                        </div>
+                    </div>
+
+                    <legend>Date</legend>
+
+                    <div class="control-group">
+                        <label class="control-label" for="date">Start</label>
+                        <div class="controls">
+                            <input class="datepicker" data-date-format="dd-mm-yyyy" name="date" type="text" id="date" placeholder="Date" required >
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="hour">Hour</label>
+                        <div class="controls">
+                            <input class="datepicker"  name="hour" type="text" id="hour" placeholder="Hour">
+                        </div>
+                    </div>
+
+
+                    <legend>Wishes user</legend>
+
+                    <div class="control-group inputMargin">
+                        <label class="control-label" for="Wishes">Wish</label>
+                        <div class="controls">
+                            <div class="wishes">
+                                <% if( wishes.length ) {%>
+                                <%for( var i = 0; i < wishes.length; i++ ){%>
+                                <% if( wishes[i].length ) {%>
+                                <input value="<%=wishes[i]%>" name="wishes[]" type="text"  placeholder="Wish">
+                                <%}%>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <a href="#add/user" class="btn addWish">Add wish</a>
+                        </div>
+                    </div>
+
+                    <legend>Contact Info</legend>
+
+                    <div class="control-group inputMargin">
+                        <label class="control-label" for="Phone">Phone</label>
+                        <div class="controls">
+                            <div class="phones">
+                                <% if( phones.length ) {%>
+                                <%for( var i = 0; i < phones.length; i++ ){%>
+                                <% if( phones[i].length ) {%>
+                                <input value="<%=phones[i]%>" name="phones[]" type="text"  placeholder="Phone">
+                                <%}%>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <a class="btn addPhone">Add phone</a>
+                        </div>
+                    </div>
+
+                    <div class="control-group inputMargin">
+                        <label class="control-label" for="Emails">Email</label>
+                        <div class="controls">
+                            <div class="emails">
+                                <% if( emails.length ) {%>
+                                <%for( var i = 0; i < emails.length; i++ ){%>
+                                <% if( emails[i].length ) {%>
+                                <input value="<%=emails[i]%>" name="emails[]" type="text" placeholder="Email">
+                                <%}%>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <a class="btn addEmail">Add email</a>
+                        </div>
+                    </div>
+
+                    <div class="control-group inputMargin">
+                        <label class="control-label" for="Skypes">Skype</label>
+                        <div class="controls">
+                            <div class="skypes">
+                                <% if( skypes.length ) {%>
+                                <%for( var i = 0; i < skypes.length; i++ ){%>
+                                <% if( skypes[i].length ) {%>
+                                <input value="<%=skypes[i]%>" name="skypes[]" type="text"  placeholder="Skype">
+                                <%}%>
+                                <%}%>
+                                <%}%>
+                            </div>
+                            <a class="btn addSkype">Add skype</a>
+                        </div>
+                    </div>
+
+                    <div class="control-group inputMargin">
+                        <label class="control-label" for="Adresses">Adress</label>
+                        <div class="controls">
+                            <div class="adresses">
+                                <% if( realAddresses.length ) {%>
+                                <%for( var i = 0; i < realAddresses.length; i++ ){%>
+                                <% if( realAddresses[i].length ) {%>
+                                <input value="<%=realAddresses[i]%>" name="realAddresses[]" type="text" id="Adresses" placeholder="Adress">
+                                <%}%>
+                                <%}%>
+                                <%}%>
+
+                            </div>
+                            <a class="btn addAddress">Add adress</a>
+                        </div>
+                    </div>
+
+                    <div class="submit">
+                        <a class="btn btn-success btnChangeUser" href="#">Save Change</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
