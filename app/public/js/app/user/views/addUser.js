@@ -148,13 +148,13 @@ define([
         },
 
         btnCreateNewUser: function(e){
-            e.preventDefault();
+            if(e) e.preventDefault();
 
             if( this.valid() ){
                 var data = this.getData();
                 this.trigger("addNewUser", data);
             }else{
-                console.log(2)
+                console.log('WTF!');
             }
             return false;
         }

@@ -1,0 +1,211 @@
+define([
+    'marionette',
+    'text!app/templates/event/addEvent/addEvent.html',
+
+    'validate',
+    'datepickerTime',
+    'datepicker'
+], function(Marionette, template){
+
+    return Marionette.ItemView.extend({
+        template: _.template(template),
+
+        events: {
+            "change #repeatType": "selectRepeatType",
+            "click .btnAddEvent": "btnAddEvent",
+            "click .ends .never" : "neverCheckbox",
+            "click .ends .on" : "onCheckbox"
+        },
+
+        ui: {
+            "repeatType": "#repeatType",
+            "date": "#date",
+            "dateRepeatEnd": "#dateRepeatEnd",
+            "hour": "#hour",
+            "daysArea" : ".days",
+            "daysInput" : ".weekDays",
+            "endsArea" : ".ends",
+            "form" : ".addEventForm",
+            "title" : "#title",
+            "description": "#description",
+            "endsInput": ".repeatEnds"
+        },
+
+        initialize: function(){
+
+        },
+
+        onRender: function(){
+            this.addValidate();
+            this.addDatePickerDate();
+        },
+
+        addValidate: function(){
+
+            var form = this.ui.form;
+
+            form.validate({
+                rules: {
+                    title: {
+                        minlength: 3
+                    },
+                    date:{
+                        required: true
+                    }
+                }
+            });
+
+        },
+
+        addDatePickerDate: function(){
+            this.ui.date.datetimepicker({});
+            this.ui.dateRepeatEnd.datepicker({});
+        },
+
+        selectRepeatType: function(){
+            var repeatType = this.ui.repeatType.val();
+            if( !repeatType ) return false;
+
+            /*ends*/
+            if( repeatType == "no" ){
+                this.hideEnds();
+            }else{
+                this.showEnds();
+            }
+
+            /*days*/
+            if( repeatType == 2 ){
+                this.showDays();
+            }else{
+                this.hideDays();
+                this.clearDays()
+            }
+        },
+
+        neverCheckbox: function(){
+            this.ui.dateRepeatEnd.hide();
+            this.ui.dateRepeatEnd.val("");
+        },
+
+        onCheckbox: function(){
+            this.ui.dateRepeatEnd.show();
+        },
+
+        showDays: function(){
+            this.ui.daysArea.show();
+        },
+        hideDays: function(){
+            this.ui.daysArea.hide();
+        },
+        clearDays: function(){
+            this.ui.daysInput.prop('checked', false);
+        },
+        showEnds: function(){
+            this.ui.endsArea.show();
+        },
+        hideEnds: function(){
+            this.ui.endsArea.hide();
+        },
+
+        getData: function(){
+
+            var repeatType = this.ui.repeatType.val();
+
+            var data = {
+                title: this.ui.title.val(),
+                description: this.ui.description.val(),
+                dateStart: this.getDateStart(),
+                repeat: {
+                    repeatType: repeatType
+                }
+            }
+
+            if( repeatType != 'no' ){
+
+                data.repeat.repeatEnds = this.ui.endsInput.filter(":checked").val();
+
+                //we should have end date
+                if( data.repeat.repeatEnds == 2 ){
+                    data.repeat.dateRepeatEnd = this.getDateRepeatEnd();
+                }
+
+                //this is every week
+                if( repeatType == 2 ){
+                    data.repeat.repeatDays = this.getDays();
+                }
+
+                //this is Every weekday (Monday to Friday)
+                if( repeatType == 3 ){
+                    data.repeat.repeatDays = [2, 3, 4, 5, 6];
+                }
+
+                //this is Every Monday, Wednesday, Friday
+                if( repeatType == 4 ){
+                    data.repeat.repeatDays = [2, 4, 6];
+                }
+
+                //this is Every Tuesday, Thursday
+                if( repeatType == 5 ){
+                    data.repeat.repeatDays = [3, 5];
+                }
+
+            }
+
+            return data;
+        },
+
+        getDays: function(){
+            var elements = this.ui.daysInput.filter(":checked");
+            var result = [];
+
+            for( var i = 0; i < elements.length; i++ ){
+                result.push( elements[i].value )
+            }
+
+            return result;
+        },
+
+        getDateStart: function(){
+            var value = this.ui.date.val();
+            var match = value.match(/(\d\d)-(\d\d)-(\d\d\d\d) (\d\d):(\d\d)/);
+            return{
+                fullValue: value,
+                year: match[3],
+                month: match[2],
+                day: match[1],
+                hour: match[4],
+                minute: match[5]
+            }
+        },
+
+        getDateRepeatEnd: function(){
+            var value = this.ui.dateRepeatEnd.val();
+            var match = value.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
+            return {
+                fullValue: value,
+                year: match[3],
+                month: match[2],
+                day: match[1]
+            }
+        },
+
+        valid: function(){
+            var form = this.ui.form;
+            return form.valid();
+        },
+
+        btnAddEvent: function(e){
+            if(e) e.preventDefault();
+
+            if( this.valid() ){
+                var data = this.getData();
+                this.trigger("addNewEvent", data);
+            }else{
+                console.log('WTF!');
+            }
+            return false;
+        }
+
+    })
+
+})

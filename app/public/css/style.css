@@ -42,3 +42,8 @@
   color: #f00;
   margin: 10px 0 0 0;
 }
+.addEvent .days,
+.addEvent .ends,
+.addEvent #dateRepeatEnd {
+  display: none;
+}

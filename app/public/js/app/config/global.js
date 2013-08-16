@@ -1,27 +1,30 @@
 define([], function(){
 
-	return {
+    return {
 
-		api:{
+        api:{
 
             user: '/api/user',
             getUsers: '/api/users',
             getCountUsers: '/api/users/count',
             getOneUser: '/api/user/get',
 
-			//не работают
+            //не работают
             deleteUser: '/api/user/deleteUser',
             changeUser: '/api/user/change',
-            addUser: '/api/user/add'
+            addUser: '/api/user/add',
 
-		},
+            /*event*/
+            event: '/api/event'
 
-		chanels: {
-			main: {
+        },
+
+        chanels: {
+            main: {
                 searchFilterChanged: "searchFilterChanged"
             }
-		}
+        }
 
-	}
+    }
 
 })

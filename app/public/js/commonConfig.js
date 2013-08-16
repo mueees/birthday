@@ -11,7 +11,8 @@ requirejs.config({
 
         /*plugins*/
         validate: '../plugins/jquery/jquery.validate',
-        datepicker: '../plugins/bootstrap-datepicker'
+        datepicker: '../plugins/bootstrap-datepicker',
+        datepickerTime: '../plugins/bootstrap-datetimepicker'
     },
 
     shim:{
@@ -40,6 +41,9 @@ requirejs.config({
             exports: 'jQuery'
         },
         datepicker: {
+            deps: ['jquery']
+        },
+        datepickerTime: {
             deps: ['jquery']
         }
     },
