@@ -1,4 +1,5 @@
 var UserModel = require('../models/user/user'),
+    EventModel = require('../models/event/event'),
     url = require('url'),
     _ = require('underscore');
 
@@ -152,7 +153,33 @@ var controller = {
                 response.send(status, user.data);
             }
         }
-	}
+	},
+
+    event: {
+
+        add: function(request, response){
+
+            var data = request.body;
+            //data['dateBirthdayObj'] = new Date( data.dateBirthday.year, data.dateBirthday.month, data.dateBirthday.day);
+
+
+            var event = new EventModel( data );
+            event.save(function(err, result){
+                controller.event._add( err, result, response )
+            });
+        },
+
+        _add: function( err, result, response ){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+
+        }
+    }
 }
 
 module.exports = controller;

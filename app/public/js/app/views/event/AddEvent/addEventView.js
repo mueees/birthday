@@ -4,7 +4,8 @@ define([
 
     'validate',
     'datepickerTime',
-    'datepicker'
+    'datepicker',
+    'timepicker'
 ], function(Marionette, template){
 
     return Marionette.ItemView.extend({
@@ -20,6 +21,8 @@ define([
         ui: {
             "repeatType": "#repeatType",
             "date": "#date",
+            "hourStart": "#hourStart",
+            "hourEnd": "#hourEnd",
             "dateRepeatEnd": "#dateRepeatEnd",
             "hour": "#hour",
             "daysArea" : ".days",
@@ -58,8 +61,28 @@ define([
         },
 
         addDatePickerDate: function(){
-            this.ui.date.datetimepicker({});
-            this.ui.dateRepeatEnd.datepicker({});
+
+            var _this = this;
+
+            this.ui.dateRepeatEnd.datepicker({
+            });
+
+            this.ui.date.datepicker().on("changeDate", function(e){
+
+                var data = e.date.getFullYear() +"-"+ e.date.getMonth() +"-"+ e.date.getDate();
+                $('#dateRepeatEnd').datepicker('setStartDate', '2014-01-01');
+            });
+            this.ui.hourStart.timepicker({
+                minuteStep: 30,
+                showMeridian: false
+            });
+            this.ui.hourEnd.timepicker({
+                minuteStep: 30,
+                showMeridian: false
+            });
+
+
+
         },
 
         selectRepeatType: function(){

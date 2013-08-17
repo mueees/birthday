@@ -16,6 +16,11 @@ module.exports = function(app) {
     app.get('/api/users', apiController.user.users);
     app.get('/api/users/count', apiController.user.count);
 
+    //event
+    app.post("/api/event", apiController.event.add);
+
+
+
     app.get('/api/user/get', apiController.user.get);
 
 

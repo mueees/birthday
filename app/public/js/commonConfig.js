@@ -12,7 +12,11 @@ requirejs.config({
         /*plugins*/
         validate: '../plugins/jquery/jquery.validate',
         datepicker: '../plugins/bootstrap-datepicker',
-        datepickerTime: '../plugins/bootstrap-datetimepicker'
+        datepickerTime: '../plugins/bootstrap-datetimepicker',
+        timepicker: '../plugins/bootstrap-timepicker',
+
+        /*libs*/
+        bootstrap: "bootstrap/bootstrap"
     },
 
     shim:{
@@ -35,7 +39,13 @@ requirejs.config({
             exports: "Marionette"
         },
 
+        /*libs*/
+        bootstrap: {
+            deps: ['jquery']
+        },
+
         /*plugins*/
+
         validate: {
             deps: ['jquery'],
             exports: 'jQuery'
@@ -45,6 +55,9 @@ requirejs.config({
         },
         datepickerTime: {
             deps: ['jquery']
+        },
+        timepicker: {
+            deps: ['jquery', 'bootstrap']
         }
     },
 
