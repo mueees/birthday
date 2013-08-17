@@ -16,7 +16,7 @@ define([
 
         initialize: function(){
             this.listenTo(this.model, 'destroy', this.removeFromDom)
-            this.listenTo( App.chanels.main, App.config.chanels.main.searchFilterChanged, this.searchFilter )
+            this.listenTo( App.channels.main, App.config.eventName.main.searchFilterChanged, this.searchFilter )
         },
 
         searchFilter: function(data){

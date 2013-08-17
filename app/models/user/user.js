@@ -98,7 +98,6 @@ _.extend(User, BaseModel, {
         })
     },
     _getUsers: function( data, db, cb ){
-        var _this = this;
 
         var query = {};
 
@@ -114,12 +113,7 @@ _.extend(User, BaseModel, {
             }
         }
 
-        console.log(query);
-
         db.collection('user').find(query).toArray( function(err, result){
-
-            //console.log(result);
-
             if(err){
                 cb(err)
             }else{

@@ -86,7 +86,6 @@ define([
             });
 
 
-
         },
 
         selectRepeatType: function(){
@@ -201,7 +200,7 @@ define([
             var matchStart = start.match(/(\d\d):(\d\d)/);
             var matchEnd = end.match(/(\d\d):(\d\d)/);
 
-            return{
+            return {
                 year: matchData[3],
                 month: matchData[2],
                 day: matchData[1],
@@ -212,7 +211,9 @@ define([
                 end: {
                     hour: matchEnd[1],
                     minute: matchEnd[2]
-                }
+                },
+                dateStartObj: new Date( matchData[3], matchData[2], matchData[1] )
+
             }
         },
 
@@ -220,7 +221,7 @@ define([
             var value = this.ui.dateRepeatEnd.val();
             var match = value.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
             return {
-                fullValue: value,
+                repeatEndsObj: new Date( match[3], match[2], match[1]),
                 year: match[3],
                 month: match[2],
                 day: match[1]

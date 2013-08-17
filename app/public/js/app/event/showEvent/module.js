@@ -1,7 +1,18 @@
 define([
     'app/app',
-    'marionette'
-], function(App, Marionette){
+    'marionette',
+
+    /*layouts*/
+    'app/layouts/event/showEvent/layout',
+
+    /*components*/
+    'app/components/views/calendar/calendar',
+
+    /*modules*/
+    'app/modules/tab_event_range/module',
+    'app/modules/eventsViewManage/module'
+
+], function(App, Marionette, ShowLayout, CalendarView){
 
 
     App.module("Event.ShowEvent", {
@@ -16,10 +27,34 @@ define([
                 tabs: ['agenda']
             }
 
+            var TabEvents =  App.module('TabEvents');
+            var EventsViewManage =  App.module('EventsViewManage');
+
 
             var Controller = {
                 showEvents: function( tab ){
+
+                    //получить Layout
+                    var layout = new ShowLayout();
+
+                    //получить TabEvents View
+                    var tabsView = TabEvents.API.getTabView();
+
+                    //получить Calendar View
+                    var calendar = new CalendarView();
+
+                    //определить название tab для запроса
                     tab = Controller.determineTab(tab);
+
+                    layout.render();
+                    App.main.show( layout );
+                    EventsViewManage.API.setRegion( layout.content );
+
+                    layout.sidebarLeft.show(calendar);
+                    layout.header.show(tabsView);
+
+                    tabsView.setTab( tab );
+
                 },
 
                 determineTab: function(tab){

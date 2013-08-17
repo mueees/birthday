@@ -15,13 +15,16 @@ define([], function(){
             addUser: '/api/user/add',
 
             /*event*/
-            event: '/api/event'
+            event: '/api/event',
+            getEventToShow: "/api/getEventToShow"
 
         },
 
-        chanels: {
+        eventName: {
             main: {
-                searchFilterChanged: "searchFilterChanged"
+                searchFilterChanged: "searchFilterChanged",
+                tabEventChanged: "tabEventChanged",
+                calendarChanged: "calendarChanged"
             }
         }
 

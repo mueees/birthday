@@ -160,7 +160,16 @@ var controller = {
         add: function(request, response){
 
             var data = request.body;
-            //data['dateBirthdayObj'] = new Date( data.dateBirthday.year, data.dateBirthday.month, data.dateBirthday.day);
+
+            if(data.dateStart.dateStartObj) data.dateStart.dateStartObj = new Date(data.dateStart.dateStartObj);
+
+
+            if( data.repeat.repeatType != 'no' ){
+                console.log(new Date(data.repeat.repeatEnds.repeatEndsObj));
+
+                data.repeat.repeatEnds.repeatEndsObj = new Date(data.repeat.repeatEnds.repeatEndsObj);
+            }
+
 
 
             var event = new EventModel( data );

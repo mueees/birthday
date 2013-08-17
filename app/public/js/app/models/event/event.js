@@ -22,12 +22,19 @@ define([
                 end: {
                     hour: "",
                     minute: ""
-                }
+                },
+
+                dateStartObj: ""
             },
 
             repeat: {
                 repeatType: "",
-                repeatEnds: "",
+                repeatEnds: {
+                    repeatEndsObj: "",
+                    year: "",
+                    month: "",
+                    day: ""
+                },
                 repeatDays: []
             }
         },

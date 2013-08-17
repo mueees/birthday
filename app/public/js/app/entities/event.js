@@ -5,8 +5,12 @@ define([
     'app/app',
 
     'app/collections/event/event',
-    'app/models/event/event'
-], function(jQuery, Backbone, Marionette, App, EventCollection, EventModel){
+    'app/models/event/event',
+
+    'app/collections/event/eventToShow',
+    'app/models/event/eventToShow'
+
+], function(jQuery, Backbone, Marionette, App, EventCollection, EventModel, EventToShowCollection, EventToShowModel){
 
     var API = {
 
@@ -54,27 +58,25 @@ define([
             return deferred.promise();
         },
 
-        getEvents: function( data ){
+        getEventsToShow: function( data ){
             var deferred = $.Deferred();
-            this._getUsers( data, deferred );
+            this._getEventsToShow(data, deferred);
             return deferred.promise();
         },
 
-        _getEvents: function(data, deferred){
-            var ajax = jQuery.ajax({
-                type: "GET",
-                url: App.config.api.getUsers,
+        _getEventsToShow: function(data, deferred){
+            var eventToShowCollection = new EventToShowCollection();
+            eventToShowCollection.fetch({
                 data: data,
-                success: function(data){
-                    deferred.resolve(new UserCollection(data))
+                success: function(){
+                    debugger
+                    deferred.resolve({});
                 },
-                error: function(data){
-                    deferred.reject({
-                        data: data,
-                        ajax: ajax
-                    })
+                error: function(){
+                    debugger
+                    deferred.resolve({});
                 }
-            })
+            });
         }
     }
 
@@ -90,8 +92,8 @@ define([
         return API.saveNewEvent( data );
     })
 
-    App.reqres.setHandler('event:getEvents', function( data ){
-        return API.getUsers( data );
+    App.reqres.setHandler('event:getEventsToShow', function( data ){
+        return API.getEventsToShow( data );
     })
 
 })

@@ -16,7 +16,7 @@ define([
                     getView: function( deferred ){
                         var searchView = new SearchView();
                         searchView.on("filterChange", function( data ){
-                            App.chanels.main.trigger(App.config.chanels.main.searchFilterChanged, data);
+                            App.channels.main.trigger(App.config.eventName.main.searchFilterChanged, data);
                         });
 
                         deferred.resolve( searchView );

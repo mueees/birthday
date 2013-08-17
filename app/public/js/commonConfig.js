@@ -14,6 +14,7 @@ requirejs.config({
         datepicker: '../plugins/bootstrap-datepicker',
         datepickerTime: '../plugins/bootstrap-datetimepicker',
         timepicker: '../plugins/bootstrap-timepicker',
+        moment: '../plugins/moment',
 
         /*libs*/
         bootstrap: "bootstrap/bootstrap"
