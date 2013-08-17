@@ -65,7 +65,7 @@ _.extend(Event, BaseModel, {
             return false;
         }
 
-        db.collection('user').find({
+        db.collection('event').find({
             "_id": idObj
         }).toArray(function(err, result){
                 if( err ){
@@ -77,8 +77,8 @@ _.extend(Event, BaseModel, {
                             errors: "Can't find user with same id"
                         });
                     }else{
-                        var user = new User( result[0] );
-                        cb(null, user);
+                        var event = new Event( result[0] );
+                        cb(null, event);
                     }
 
 
@@ -182,8 +182,6 @@ _.extend(Event.prototype, {
     _save: function(db, cb){
 
         var _this = this;
-
-        debugger
 
         db.collection('event').insert(_this.data, function(err, result){
 

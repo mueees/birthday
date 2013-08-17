@@ -8,6 +8,10 @@ define([
     'timepicker'
 ], function(Marionette, template){
 
+    //todo: добавить валидацию, если выбран период повтора неделя, должны быть выбраны и дни
+    //todo: дата старта не может быть позже даты окончания
+
+
     return Marionette.ItemView.extend({
         template: _.template(template),
 
@@ -189,15 +193,26 @@ define([
         },
 
         getDateStart: function(){
-            var value = this.ui.date.val();
-            var match = value.match(/(\d\d)-(\d\d)-(\d\d\d\d) (\d\d):(\d\d)/);
+            var date = this.ui.date.val();
+            var start = this.ui.hourStart.val();
+            var end = this.ui.hourEnd.val();
+
+            var matchData = date.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
+            var matchStart = start.match(/(\d\d):(\d\d)/);
+            var matchEnd = end.match(/(\d\d):(\d\d)/);
+
             return{
-                fullValue: value,
-                year: match[3],
-                month: match[2],
-                day: match[1],
-                hour: match[4],
-                minute: match[5]
+                year: matchData[3],
+                month: matchData[2],
+                day: matchData[1],
+                start: {
+                    hour: matchStart[1],
+                    minute: matchStart[2]
+                },
+                end: {
+                    hour: matchEnd[1],
+                    minute: matchEnd[2]
+                }
             }
         },
 

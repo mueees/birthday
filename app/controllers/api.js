@@ -178,6 +178,24 @@ var controller = {
                 response.send(result[0]);
             }
 
+        },
+
+        get: function( request, response ){
+            var id = request.params.id;
+
+            EventModel.get( id, function(err, user){
+                controller.event._get( err, user, response )
+            });
+        },
+
+        _get: function(err, event, response){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(event.data);
+            }
         }
     }
 }

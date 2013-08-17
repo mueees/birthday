@@ -11,31 +11,26 @@ define([
     var API = {
 
         getEventById: function(id){
-            var deferred = $.Deferred();
-            this._getUserById(id, deferred);
-            return deferred.promise();
-        },
 
-        _getEventById: function(id, deferred){
-            var ajax = jQuery.ajax({
-                url: App.config.api.getOneUser,
-                type: 'GET',
-                data: {id: id},
-                success: function(data){
+            var deferred = $.Deferred();
+            var event = new EventModel();
+            event.set("_id", id);
+
+            event.fetch({
+                success: function(model, data){
                     deferred.resolve({
-                        data: data,
-                        ajax: ajax,
-                        model: new UserModel(data)
+                        model: model,
+                        data: data
                     })
                 },
-                error: function(data){
+                error: function(model, xhr){
                     deferred.reject({
-                        data: data,
-                        ajax: ajax
+
                     })
                 }
-            })
+            });
 
+            return deferred.promise();
         },
 
         saveNewEvent: function( data ){
@@ -82,6 +77,10 @@ define([
             })
         }
     }
+
+    /*var event = new EventModel();
+    event.set("_id", '520f2888f771fd7d63000002');
+    event.fetch();*/
 
     App.reqres.setHandler('event:getById', function(id){
         return API.getEventById( id );

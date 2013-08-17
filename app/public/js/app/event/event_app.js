@@ -5,7 +5,8 @@ define([
     'app/app',
 
     /*sub app*/
-    './addEvent/module'
+    './addEvent/module',
+    './showEvent/module'
 ], function(jQuery, Backbone, Marionette, App){
 
     App.module("Event", {
@@ -22,7 +23,8 @@ define([
                 },
 
                 appRoutes: {
-                    "event/add": "addEvent"
+                    "event/add": "addEvent",
+                    "events(/:tab)": "showEvents"
                 }
 
             })
@@ -30,15 +32,16 @@ define([
             var Controller = {
                 addEvent: function(){
                     Event.AddEvent.API.addEvent();
+                },
+                showEvents: function( tab ){
+                    Event.ShowEvent.API.showEvents( tab )
                 }
             }
 
             var API  = {
-                addEvent: Controller.addEvent
+                addEvent: Controller.addEvent,
+                showEvents: Controller.showEvents
             }
-
-
-
 
             App.addInitializer(function(){
                 new Router({

@@ -7,8 +7,6 @@ module.exports = function(app) {
     //Root Paths
     app.get('/', rootController.home);
 
-    //api
-
     //user
     app.post('/api/user', apiController.user.add);
     app.delete('/api/user/:id', apiController.user.deleteUser);
@@ -18,8 +16,7 @@ module.exports = function(app) {
 
     //event
     app.post("/api/event", apiController.event.add);
-
-
+    app.get("/api/event/:id", apiController.event.get);
 
     app.get('/api/user/get', apiController.user.get);
 

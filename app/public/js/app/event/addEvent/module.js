@@ -17,10 +17,14 @@ define([
                     var addEventView = this.getAddEventView();
 
                     var addNewEvent = _.bind(this.addEventOnServer, this);
-
                     addEventView.on('addNewEvent', addNewEvent);
-
                     App.main.show(addEventView);
+
+                    /*$.when( App.request('event:getById', '520f2888f771fd7d63000002')).fail( function(){console.log(1)} ).done(
+                        function(data){
+                            debugger
+                        }
+                    );*/
                 },
 
                 addEventOnServer: function(data){
@@ -31,7 +35,7 @@ define([
 
                 },
 
-                addEventOnServerSuccess: function(){
+                addEventOnServerSuccess: function(data){
                     var event = data.model;
                     Backbone.history.navigate("/#event/" + event.get('_id'));
                 },
