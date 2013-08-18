@@ -192,18 +192,17 @@ define([
         },
 
         getDateStart: function(){
-            var date = this.ui.date.val();
+            var date = this.ui.date.data('datepicker').getDate();
             var start = this.ui.hourStart.val();
             var end = this.ui.hourEnd.val();
 
-            var matchData = date.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
             var matchStart = start.match(/(\d\d):(\d\d)/);
             var matchEnd = end.match(/(\d\d):(\d\d)/);
 
             return {
-                year: matchData[3],
-                month: matchData[2],
-                day: matchData[1],
+                year: date.getFullYear(),
+                month: date.getMonth(),
+                day: date.getDate(),
                 start: {
                     hour: matchStart[1],
                     minute: matchStart[2]
@@ -212,19 +211,19 @@ define([
                     hour: matchEnd[1],
                     minute: matchEnd[2]
                 },
-                dateStartObj: new Date( matchData[3], matchData[2], matchData[1] )
+                dateStartObj: date
 
             }
         },
 
         getDateRepeatEnd: function(){
-            var value = this.ui.dateRepeatEnd.val();
-            var match = value.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
+            var date = this.ui.dateRepeatEnd.data('datepicker').getDate();
+
             return {
-                repeatEndsObj: new Date( match[3], match[2], match[1]),
-                year: match[3],
-                month: match[2],
-                day: match[1]
+                repeatEndsObj: date,
+                year: date.getFullYear(),
+                month: date.getMonth(),
+                day: date.getDate()
             }
         },
 

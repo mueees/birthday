@@ -16,7 +16,7 @@ define([], function(){
 
             /*event*/
             event: '/api/event',
-            getEventToShow: "/api/getEventToShow"
+            getEventToShow: "/api/event/getEventToShow"
 
         },
 

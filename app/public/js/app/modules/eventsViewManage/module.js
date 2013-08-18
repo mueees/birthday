@@ -23,7 +23,13 @@ define([
                     // создать view отображающую данный диапазон
                     // вставить view в DOM
 
-                    $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} ) );
+                    $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
+                        function(data){
+                            var collection = data.eventToShowCollection;
+                            console.log(collection.length)
+
+                        }
+                    );
 
                 },
 

@@ -29,7 +29,8 @@ define([
 
             repeat: {
                 repeatType: "",
-                repeatEnds: {
+                repeatEnds: "",
+                dateRepeatEnd: {
                     repeatEndsObj: "",
                     year: "",
                     month: "",

@@ -1,21 +1,22 @@
 var UserModel = require('../models/user/user'),
     EventModel = require('../models/event/event'),
     url = require('url'),
+    queryString = require( "querystring"),
     _ = require('underscore');
 
 var controller = {
-	user: {
-		add: function(req, response){
+    user: {
+        add: function(req, response){
 
-			var data = req.body;
+            var data = req.body;
             data['dateBirthdayObj'] = new Date( data.dateBirthday.year, data.dateBirthday.month, data.dateBirthday.day);
 
-			var user = new UserModel( data );
+            var user = new UserModel( data );
             user.save(function(err, result){
                 controller.user._add( err, result, response )
             });
 
-		},
+        },
 
         _add: function( err, result, response ){
 
@@ -153,24 +154,19 @@ var controller = {
                 response.send(status, user.data);
             }
         }
-	},
+    },
 
     event: {
 
         add: function(request, response){
-
             var data = request.body;
 
             if(data.dateStart.dateStartObj) data.dateStart.dateStartObj = new Date(data.dateStart.dateStartObj);
 
 
-            if( data.repeat.repeatType != 'no' ){
-                console.log(new Date(data.repeat.repeatEnds.repeatEndsObj));
-
-                data.repeat.repeatEnds.repeatEndsObj = new Date(data.repeat.repeatEnds.repeatEndsObj);
+            if( data.repeat.repeatEnds == 2 ){
+                data.repeat.dateRepeatEnd.repeatEndsObj = new Date(data.repeat.dateRepeatEnd.repeatEndsObj);
             }
-
-
 
             var event = new EventModel( data );
             event.save(function(err, result){
@@ -185,6 +181,34 @@ var controller = {
                 response.send(null);
             }else{
                 response.send(result[0]);
+            }
+
+        },
+
+        getEventsToShow: function(request, response ){
+            var data = request.body;
+
+            if( !data.dt_range ) {
+                response.statusCode = 400;
+                response.send("dt_range is necessary");
+                return false;
+            }
+
+            data.dt_range.start.startObj = new Date(data.dt_range.start.startObj);
+            data.dt_range.end.endObj = new Date(data.dt_range.end.endObj);
+
+            EventModel.getEventsToShow( data, function(err, events){
+                controller.event._getEventsToShow( err, events, response )
+            });
+        },
+
+        _getEventsToShow: function( err, events, response ){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(events);
             }
 
         },

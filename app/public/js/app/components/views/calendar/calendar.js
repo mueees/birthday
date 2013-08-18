@@ -46,6 +46,8 @@ define([
         dateChanged: function( data ){
             this.date  = data.date;
             this.dateToNotify  = this.getDateRange();
+            this.notifyChanged();
+
         },
 
         typeTabsChanged: function(data){
@@ -55,6 +57,10 @@ define([
             if( !this.date ) this.determineDate();
             this.dateToNotify  = this.getDateRange();
 
+            this.notifyChanged();
+        },
+
+        notifyChanged: function(){
             App.channels.main.trigger( App.config.eventName.main.calendarChanged, {
                 dt_range: this.dateToNotify,
                 type: this.type
@@ -63,6 +69,7 @@ define([
 
         determineDate: function(){
             this.date = this.ui.calendarUi.data('datepicker').getDate();
+
         },
 
         getDateRange: function(){
@@ -77,9 +84,22 @@ define([
             start = moment(this.date);
             end = start.clone();
             end.add('days', 30);
+
             return {
-                start: start.format('DD-MM-YYYY'),
-                end: end.format('DD-MM-YYYY')
+                start: {
+                    string: start.format('DD-MM-YYYY'),
+                    year: start.format('YYYY'),
+                    month: start.format('MM'),
+                    day: start.format('DD'),
+                    startObj: new Date(start.format('YYYY'), start.format('MM')-1, start.format('DD'))
+                },
+                end: {
+                    string: end.format('DD-MM-YYYY'),
+                    year: end.format('YYYY'),
+                    month: end.format('MM'),
+                    day: end.format('DD'),
+                    endObj: new Date(end.format('YYYY'), end.format('MM')-1, end.format('DD'))
+                }
             }
         }
     })

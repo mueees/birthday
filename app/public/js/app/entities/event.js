@@ -38,6 +38,7 @@ define([
         },
 
         saveNewEvent: function( data ){
+
             var event = new EventModel(data);
             var deferred = $.Deferred();
 
@@ -65,24 +66,24 @@ define([
         },
 
         _getEventsToShow: function(data, deferred){
+
             var eventToShowCollection = new EventToShowCollection();
+
             eventToShowCollection.fetch({
+                type: "POST",
                 data: data,
                 success: function(){
-                    debugger
-                    deferred.resolve({});
+                    deferred.resolve({
+                        eventToShowCollection: eventToShowCollection
+                    });
                 },
                 error: function(){
-                    debugger
                     deferred.resolve({});
                 }
             });
         }
     }
 
-    /*var event = new EventModel();
-    event.set("_id", '520f2888f771fd7d63000002');
-    event.fetch();*/
 
     App.reqres.setHandler('event:getById', function(id){
         return API.getEventById( id );

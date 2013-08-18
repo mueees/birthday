@@ -53,13 +53,8 @@ _.extend(Event, BaseModel, {
             })
     },
 
-    getEventsToShow: function( data, cb ){
+    getEventsToShow: function(data, cb){
         var _this = this;
-
-        if( !data.dt_range ) {
-            cb("dt_range is necessary");
-            return false;
-        }
 
         //получить все ивенты у которых dateStart > data.dt_range.start
         //возможно будут лишние, но выберем с запасом
@@ -75,23 +70,58 @@ _.extend(Event, BaseModel, {
 
     _getEventsToShow: function(data, db, cb){
 
-        var query = {
+        var dt_range = data.dt_range;
 
+        var query = {
+                $or:[
+                    {
+                        "dateStart.dateStartObj": {
+                            $lte: dt_range.end.endObj
+                        },
+                        "dateStart.dateStartObj": {
+                            $gte: dt_range.start.startObj
+                        },
+                        'repeat.repeatType' : "no"
+                    },
+                    {
+                        "dateStart.dateStartObj": {
+                            $lte: dt_range.end.endObj
+                        },
+                        'repeat.repeatType' : {
+                            $ne: "no"
+                        },
+                        'repeat.repeatEnds' : '1'
+                    },
+                    {
+                        "dateStart.dateStartObj": {
+                            $lte: dt_range.end.endObj
+                        },
+                        'repeat.repeatType' : {
+                            $ne: "no"
+                        },
+                        'repeat.repeatEnds' : '2',
+                       'repeat.dateRepeatEnd.repeatEndsObj': {
+                           $gte: dt_range.start.startObj
+                       }
+                    }
+                ]
             },
             _this = this;
 
-        db.collection('event').find(query).toArray( function(err, result){
+
+        db.collection('event').find(query).toArray( function(err, events){
             if( err ){
                 cb(err);
             }else{
-                _this._sortEventsToShow( data, cb );
+
+                _this._sortEventsToShow( events, cb );
             }
         })
 
     },
 
-    _sortEventsToShow: function( data, cb ){
-        console.log(data);
+    _sortEventsToShow: function( events, cb ){
+        cb( null, events );
     }
 
 });
