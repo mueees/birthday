@@ -14,7 +14,7 @@ define([
             description: "",
             _idRaw: "",
 
-            date:{
+            dateStart:{
                 year: "",
                 month: "",
                 day: "",

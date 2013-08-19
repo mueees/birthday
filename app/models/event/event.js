@@ -1,6 +1,7 @@
 var _ = require('underscore'),
     BaseModel = require('../_base/model'),
-    util = require('util');
+    util = require('util'),
+    moment = require('moment');
 
 function Event(data){
     this.data = data;
@@ -100,9 +101,9 @@ _.extend(Event, BaseModel, {
                             $ne: "no"
                         },
                         'repeat.repeatEnds' : '2',
-                       'repeat.dateRepeatEnd.repeatEndsObj': {
-                           $gte: dt_range.start.startObj
-                       }
+                        'repeat.dateRepeatEnd.repeatEndsObj': {
+                            $gte: dt_range.start.startObj
+                        }
                     }
                 ]
             },
@@ -114,14 +115,215 @@ _.extend(Event, BaseModel, {
                 cb(err);
             }else{
 
-                _this._sortEventsToShow( events, cb );
+                _this._sortEventsToShow( events, data, cb );
             }
         })
 
     },
 
-    _sortEventsToShow: function( events, cb ){
-        cb( null, events );
+    _sortEventsToShow: function( events, data, cb ){
+
+        var _this = this;
+        var dt_range = data.dt_range;
+        var eventToShow = [];
+
+        var repeatType, events;
+
+        _.each(events, function(event, i){
+
+            repeatType =  event.repeat.repeatType;
+            var event = event;
+
+            if( repeatType == 'no' ){
+                var events = _this.getEventTypeNo(event, dt_range);
+
+                eventToShow.push( events );
+            }else if( repeatType != 'no' ){
+
+                //every day
+                if( repeatType == "1" ){
+                    events = _this.getEventTypeEveryDay(event, dt_range);
+                    eventToShow = _.union(eventToShow, events);
+
+                    // every week
+                }else if( repeatType == "2" || repeatType == "3" || repeatType == "4" || repeatType == "5" ){
+                    events = _this.getEventTypeEveryWeek(event, dt_range);
+                    eventToShow = _.union(eventToShow, events);
+
+                }else if(repeatType == "6"){
+                    events = _this.getEventTypeEveryMonth(event, dt_range);
+                    eventToShow = _.union(eventToShow, events);
+
+                    //every year
+                }else if(repeatType == "7"){
+                    events = _this.getEventTypeEveryYear(event, dt_range);
+                    eventToShow = _.union(eventToShow, events);
+                }
+
+            }
+
+        })
+
+
+        cb( null, eventToShow );
+    },
+
+    getEventTypeEveryWeek: function(event, dt_range){
+
+        var _this = this;
+        var repeatEndsObj;
+        var result = [];
+        var currentDate;
+
+        //we have end of repeat
+        if( event.repeat.repeatEnds == '2' ){
+            repeatEndsObj = event.repeat.dateRepeatEnd.repeatEndsObj;
+        }
+
+        var start = ( event.dateStart.dateStartObj > dt_range.start.startObj ) ? event.dateStart.dateStartObj : dt_range.start.startObj;
+        var end = dt_range.end.endObj;
+        var d = new Date(start);
+
+        for( d; d <= end; d.setDate(d.getDate() + 1)  ){
+
+            currentDate = new Date(d);
+
+            if( repeatEndsObj && currentDate > repeatEndsObj ) break
+            if( _.lastIndexOf( event.repeat.repeatDays, currentDate.getDay() + "") == -1 ) continue;
+
+            var cloneEvent = _.clone(event);
+            delete cloneEvent.repeat;
+            cloneEvent._idRaw = event._id;
+            cloneEvent.dateStart = _this.getDateStart(currentDate);
+            cloneEvent.dateStart.start = event.dateStart.start;
+            cloneEvent.dateStart.end = event.dateStart.end;
+
+            result.push(cloneEvent);
+
+        }
+
+        return result;
+
+    },
+
+    getEventTypeEveryYear: function(event, dt_range){
+        var _this = this;
+        var repeatEndsObj;
+        var result = [];
+        var currentDate;
+
+        //we have end of repeat
+        if( event.repeat.repeatEnds == '2' ){
+            repeatEndsObj = event.repeat.dateRepeatEnd.repeatEndsObj;
+        }
+
+        var start = ( event.dateStart.dateStartObj > dt_range.start.startObj ) ? event.dateStart.dateStartObj : dt_range.start.startObj;
+        var end = dt_range.end.endObj;
+        var d = new Date(start);
+
+        for( d; d <= end; d.setDate(d.getDate() + 1)  ){
+
+            currentDate = new Date(d);
+
+            if( repeatEndsObj && currentDate > repeatEndsObj ) break
+            if(event.dateStart.day != currentDate.getDate() || event.dateStart.dateStartObj.getMonth() != currentDate.getMonth() ) continue;
+
+            var cloneEvent = _.clone(event);
+            delete cloneEvent.repeat;
+            cloneEvent._idRaw = event._id;
+            cloneEvent.dateStart = _this.getDateStart(currentDate);
+            cloneEvent.dateStart.start = event.dateStart.start;
+            cloneEvent.dateStart.end = event.dateStart.end;
+
+            result.push(cloneEvent);
+
+        }
+
+        return result;
+    },
+
+    getEventTypeEveryMonth: function(event, dt_range){
+        var _this = this;
+        var repeatEndsObj;
+        var result = [];
+        var currentDate;
+
+        //we have end of repeat
+        if( event.repeat.repeatEnds == '2' ){
+            repeatEndsObj = event.repeat.dateRepeatEnd.repeatEndsObj;
+        }
+
+        var start = ( event.dateStart.dateStartObj > dt_range.start.startObj ) ? event.dateStart.dateStartObj : dt_range.start.startObj;
+        var end = dt_range.end.endObj;
+        var d = new Date(start);
+
+        for( d; d <= end; d.setDate(d.getDate() + 1)  ){
+
+            currentDate = new Date(d);
+
+            if( repeatEndsObj && currentDate > repeatEndsObj ) break
+            if(event.dateStart.day != currentDate.getDate()) continue;
+
+            var cloneEvent = _.clone(event);
+            delete cloneEvent.repeat;
+            cloneEvent._idRaw = event._id;
+            cloneEvent.dateStart = _this.getDateStart(currentDate);
+            cloneEvent.dateStart.start = event.dateStart.start;
+            cloneEvent.dateStart.end = event.dateStart.end;
+
+            result.push(cloneEvent);
+
+        }
+
+        return result;
+    },
+
+    getEventTypeEveryDay: function( event, dt_range ){
+        var _this = this;
+        var repeatEndsObj;
+        var result = [];
+
+        //we have end of repeat
+        if( event.repeat.repeatEnds == '2' ){
+            repeatEndsObj = event.repeat.dateRepeatEnd.repeatEndsObj;
+        }
+
+
+        var start = ( event.dateStart.dateStartObj > dt_range.start.startObj ) ? event.dateStart.dateStartObj : dt_range.start.startObj;
+        var end = dt_range.end.endObj;
+        var d = new Date(start);
+
+        for( d; d <= end; d.setDate(d.getDate() + 1)  ){
+
+            var currentDate = new Date(d);
+
+            if( repeatEndsObj && currentDate > repeatEndsObj ) break;
+
+            var cloneEvent = _.clone(event);
+            delete cloneEvent.repeat;
+            cloneEvent._idRaw = event._id;
+            cloneEvent.dateStart = _this.getDateStart(currentDate);
+            cloneEvent.dateStart.start = event.dateStart.start;
+            cloneEvent.dateStart.end = event.dateStart.end;
+
+            result.push(cloneEvent);
+        }
+
+        return result;
+    },
+
+    getEventTypeNo: function( event, dt_range ){
+        delete event.repeat;
+        event._idRaw = event._id;
+        return event;
+    },
+
+    getDateStart: function( date ){
+        return {
+            year: date.getFullYear(),
+            month: date.getMonth(),
+            day: date.getDate()
+        }
     }
 
 });

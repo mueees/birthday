@@ -23,14 +23,29 @@ define([
                     // создать view отображающую данный диапазон
                     // вставить view в DOM
 
-                    $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
-                        function(data){
-                            var collection = data.eventToShowCollection;
-                            console.log(collection.length)
 
+                    if( data.type == 'agenda' ){
+                        var done = _.bind(this.renderAgenda, this)
+                        var error = _.bind(this.errorRequestEvent, this)
+                    }
+                    var _this = this;
+
+
+                    $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
+                        function(dataRequest){
+                            debugger
+                            _this.renderAgenda( data.dt_range, dataRequest.eventToShowCollection )
                         }
                     );
 
+                },
+
+                renderAgenda: function( dt_range, eventToShowCollection ){
+                    debugger
+                },
+
+                errorRequestEvent: function(){
+                    console.log('WTF!');
                 },
 
                 setRegion: function( region ){
