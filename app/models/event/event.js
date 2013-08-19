@@ -229,12 +229,14 @@ _.extend(Event, BaseModel, {
             if(event.dateStart.day != currentDate.getDate() || event.dateStart.dateStartObj.getMonth() != currentDate.getMonth() ) continue;
 
             var cloneEvent = _.clone(event);
-            delete cloneEvent.repeat;
             cloneEvent._idRaw = event._id;
             cloneEvent.dateStart = _this.getDateStart(currentDate);
             cloneEvent.dateStart.start = event.dateStart.start;
             cloneEvent.dateStart.end = event.dateStart.end;
 
+
+            delete cloneEvent.repeat;
+            delete cloneEvent._id;
             result.push(cloneEvent);
 
         }
@@ -265,12 +267,13 @@ _.extend(Event, BaseModel, {
             if(event.dateStart.day != currentDate.getDate()) continue;
 
             var cloneEvent = _.clone(event);
-            delete cloneEvent.repeat;
             cloneEvent._idRaw = event._id;
             cloneEvent.dateStart = _this.getDateStart(currentDate);
             cloneEvent.dateStart.start = event.dateStart.start;
             cloneEvent.dateStart.end = event.dateStart.end;
 
+            delete cloneEvent.repeat;
+            delete cloneEvent._id;
             result.push(cloneEvent);
 
         }
@@ -300,12 +303,13 @@ _.extend(Event, BaseModel, {
             if( repeatEndsObj && currentDate > repeatEndsObj ) break;
 
             var cloneEvent = _.clone(event);
-            delete cloneEvent.repeat;
             cloneEvent._idRaw = event._id;
             cloneEvent.dateStart = _this.getDateStart(currentDate);
             cloneEvent.dateStart.start = event.dateStart.start;
             cloneEvent.dateStart.end = event.dateStart.end;
 
+            delete cloneEvent.repeat;
+            delete cloneEvent._id;
             result.push(cloneEvent);
         }
 
@@ -313,8 +317,10 @@ _.extend(Event, BaseModel, {
     },
 
     getEventTypeNo: function( event, dt_range ){
-        delete event.repeat;
         event._idRaw = event._id;
+
+        delete event.repeat;
+        delete event._id;
         return event;
     },
 
@@ -322,7 +328,8 @@ _.extend(Event, BaseModel, {
         return {
             year: date.getFullYear(),
             month: date.getMonth(),
-            day: date.getDate()
+            day: date.getDate(),
+            dateStartObj: new Date( date.getFullYear(), date.getMonth(), date.getDate() )
         }
     }
 

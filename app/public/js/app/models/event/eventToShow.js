@@ -26,7 +26,9 @@ define([
                 end: {
                     hour: "",
                     minute: ""
-                }
+                },
+
+                dateStartObj: ""
             }
         },
         idAttribute: '_id',

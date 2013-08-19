@@ -1,7 +1,10 @@
 define([
     'app/app',
-    'marionette'
-], function(App, Marionette, TabView){
+    'marionette',
+
+    /*view*/
+    'app/views/modules/eventsViewManage/agenda'
+], function(App, Marionette, AgendaView){
 
 
     App.module("EventsViewManage", {
@@ -17,7 +20,7 @@ define([
                 calendarChanged: function(data){
                     // data.dt_range - диапазон необходимых дат
                     // data.type - определяет с помощью какой view надо выводить события
-                   if( !Controller.validate(data) || !currentRegion ) return false;
+                    if( !Controller.validate(data) || !currentRegion ) return false;
 
                     // запросить события с этого диапазона дат
                     // создать view отображающую данный диапазон
@@ -30,10 +33,8 @@ define([
                     }
                     var _this = this;
 
-
                     $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
                         function(dataRequest){
-                            debugger
                             _this.renderAgenda( data.dt_range, dataRequest.eventToShowCollection )
                         }
                     );
@@ -41,7 +42,33 @@ define([
                 },
 
                 renderAgenda: function( dt_range, eventToShowCollection ){
-                    debugger
+
+                    var dataTorender = this.prepareToRenderAgenda( dt_range, eventToShowCollection );
+                    var agendaView = new AgendaView( dataTorender );
+                },
+
+                prepareToRenderAgenda: function(dt_range, eventToShowCollection){
+
+                    var result = [];
+
+                    var start = new Date( dt_range.start.startObj );
+                    var end = new Date( dt_range.end.endObj );
+                    var currentDate;
+                    var d = new Date(start);
+
+                    for( d; d <= end; d.setDate( d.getDate() + 1 ) ){
+
+                        currentDate = new Date(d);
+
+                        result.push({
+                            date: currentDate,
+                            events: eventToShowCollection.getEventsByDate(currentDate)
+                        })
+
+                    }
+
+                    return result;
+
                 },
 
                 errorRequestEvent: function(){
