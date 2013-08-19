@@ -14,7 +14,7 @@ define([
             var result = [];
             this.each(function(event){
                 var data = event.toJSON();
-                if( date.valueOf() == data.dateStart.dateStartObj.valueOf() ) result.push(event);
+                if( date.valueOf() == data.dateStart.dateStartObj.valueOf() ) result.push(event.toJSON());
             })
             return result;
 

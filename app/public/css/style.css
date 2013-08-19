@@ -19,6 +19,15 @@
   font-size: 24px;
   line-height: 26px;
 }
+.agenda .date {
+  max-width: 200px;
+}
+.agenda .title {
+  min-width: 150px;
+}
+.agenda .description {
+  min-width: 150px;
+}
 .messageBlock {
   padding: 10px;
   border: 1px solid #c0c0c0;

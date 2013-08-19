@@ -83,7 +83,7 @@ define([
             var start, end;
             start = moment(this.date);
             end = start.clone();
-            end.add('days', 1);
+            end.add('days', 30);
 
             return {
                 start: {

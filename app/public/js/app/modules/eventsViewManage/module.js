@@ -44,7 +44,10 @@ define([
                 renderAgenda: function( dt_range, eventToShowCollection ){
 
                     var dataTorender = this.prepareToRenderAgenda( dt_range, eventToShowCollection );
-                    var agendaView = new AgendaView( dataTorender );
+                    var agendaView = new AgendaView({dataTorender: dataTorender});
+                    currentRegion.show( agendaView );
+
+
                 },
 
                 prepareToRenderAgenda: function(dt_range, eventToShowCollection){
@@ -57,6 +60,8 @@ define([
                     var d = new Date(start);
 
                     for( d; d <= end; d.setDate( d.getDate() + 1 ) ){
+
+
 
                         currentDate = new Date(d);
 

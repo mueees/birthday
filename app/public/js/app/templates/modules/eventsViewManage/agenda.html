@@ -1,0 +1,30 @@
+<div class="agenda">
+
+    <table class="table table-striped">
+        <tbody>
+
+        <% _.each(dataTorender, function(dateObj){ %>
+        
+
+        <% _.each(dateObj.events, function(event){ %>
+        <tr data-rowid="<%= event._idRaw %>"  >
+            <td  class="date">
+                <%= dateObj.date.getDate() %>-<%= dateObj.date.getMonth() %>-<%= dateObj.date.getFullYear() %>
+            </td>
+            <td class="title">
+                <%= event.title %>
+            </td>
+            <td class="description">
+                <%= event.description %>
+            </td>
+        </tr>
+        <% }) %>
+
+
+        <% }) %>
+
+        </tbody>
+    </table>
+
+</div>
+

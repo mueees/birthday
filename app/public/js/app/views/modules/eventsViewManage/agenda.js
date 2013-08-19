@@ -14,12 +14,21 @@ define([
 
         },
 
-        initialize: function(){
+        initialize: function(data){
+
+            this.dataTorender = data.dataTorender;
 
         },
 
         onRender: function(){
 
+        },
+
+        render: function(){
+            var view = this.template({
+                dataTorender: this.dataTorender
+            });
+            this.$el.html( view );
         }
     })
 
