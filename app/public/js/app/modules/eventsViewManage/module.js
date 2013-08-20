@@ -9,7 +9,7 @@ define([
 
     App.module("EventsViewManage", {
 
-        startWithParent: true,
+        startWithParent: false,
 
         define: function(EventsViewManage, App, Backbone, Marionette, $, _){
 

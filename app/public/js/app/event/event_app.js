@@ -14,8 +14,6 @@ define([
 
         define: function( Event, App, Backbone, Marionette, $, _ ){
 
-
-
             var Router = Marionette.AppRouter.extend({
 
                 before: function(){

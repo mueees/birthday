@@ -29,13 +29,14 @@ define([
 
             var TabEvents =  App.module('TabEvents');
             var EventsViewManage =  App.module('EventsViewManage');
+            var currentLayout = null;
 
 
             var Controller = {
                 showEvents: function( tab ){
 
                     //получить Layout
-                    var layout = new ShowLayout();
+                    currentLayout = new ShowLayout();
 
                     //получить TabEvents View
                     var tabsView = TabEvents.API.getTabView();
@@ -46,14 +47,25 @@ define([
                     //определить название tab для запроса
                     tab = Controller.determineTab(tab);
 
-                    layout.render();
-                    App.main.show( layout );
-                    EventsViewManage.API.setRegion( layout.content );
+                    currentLayout.render();
+                    App.main.show( currentLayout );
+                    EventsViewManage.API.setRegion( currentLayout.content );
 
-                    layout.sidebarLeft.show(calendar);
-                    layout.header.show(tabsView);
+                    App.channels.main.on(App.config.eventName.main.changeEvent, Controller.showEditView);
+
+                    currentLayout.sidebarLeft.show(calendar);
+                    currentLayout.header.show(tabsView);
 
                     tabsView.setTab( tab );
+
+                },
+
+                offAllListeners: function(){
+                    App.channels.main.off(App.config.eventName.main.changeEvent, Controller.showEditView);
+                    currentLayout = null;
+                },
+
+                showEditView: function( data ){
 
                 },
 
@@ -75,11 +87,23 @@ define([
                 }
             }
 
+
+            ShowEvent.on("stop", Controller.offAllListeners);
+
             var API = {
-                showEvents: Controller.showEvents
+
+                beforeStart: function(){
+                    ShowEvent.stop();
+                    ShowEvent.start();
+                },
+                showEvents: function(){
+                    API.beforeStart();
+                    Controller.showEvents()
+                }
             }
 
             ShowEvent.API = API;
+
 
         }
     })
