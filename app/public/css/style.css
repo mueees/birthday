@@ -19,6 +19,39 @@
   font-size: 24px;
   line-height: 26px;
 }
+.clear {
+  clear: both;
+}
+.agenda .events .wrapper {
+  padding: 10px;
+}
+.agenda .events .wrapper:nth-of-type(2n) {
+  background: #e7e7e7;
+}
+.agenda .events .wrapper.now {
+  background: #daffd8;
+}
+.agenda .events .date {
+  float: left;
+  min-width: 130px;
+  color: #15c;
+}
+.agenda .events .eventsList {
+  overflow: hidden;
+}
+.agenda .events .eventsList .time {
+  min-width: 85px;
+  font-size: 12px;
+}
+.agenda .events .eventsList .title {
+  color: #4db810;
+}
+.agenda .events .eventsList .item {
+  float: left;
+}
+.agenda .events .eventsList .change a {
+  padding: 0 10px;
+}
 .agenda .date {
   max-width: 200px;
 }

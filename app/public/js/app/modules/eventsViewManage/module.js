@@ -9,7 +9,7 @@ define([
 
     App.module("EventsViewManage", {
 
-        startWithParent: true,
+        startWithParent: false,
 
         define: function(EventsViewManage, App, Backbone, Marionette, $, _){
 
@@ -101,7 +101,6 @@ define([
             }
 
             EventsViewManage.API = API;
-
 
             /*Events*/
             App.channels.main.on( App.config.eventName.main.calendarChanged, API.calendarChanged);

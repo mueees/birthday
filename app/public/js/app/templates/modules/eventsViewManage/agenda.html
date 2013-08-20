@@ -1,30 +1,25 @@
 <div class="agenda">
 
-    <table class="table table-striped">
-        <tbody>
-
+    <ul class="unstyled events">
         <% _.each(dataTorender, function(dateObj){ %>
+        <li class="wrapper  <% if(dateObj.date.getMonth() == new Date().getMonth() && dateObj.date.getDate() == new Date().getDate() && dateObj.date.getFullYear() == new Date().getFullYear() ){%> now <%} %>" >
 
-
-        <% _.each(dateObj.events, function(event){ %>
-        <tr data-rowid="<%= event._idRaw %>"  >
-            <td  class="date">
-                <%= dateObj.date.getDate() %>-<%= dateObj.date.getMonth() %>-<%= dateObj.date.getFullYear() %>
-            </td>
-            <td class="title">
-                <%= event.title %>
-            </td>
-            <td class="description">
-                <%= event.description %>
-            </td>
-        </tr>
+            <div class="date"><%= dateObj.date.getDate() %>-<%= dateObj.date.getMonth()+1 %>-<%= dateObj.date.getFullYear() %></div>
+            <div class="eventsList">
+                <ul class="unstyled ">
+                    <% _.each(dateObj.events, function(event){ %>
+                    <li data-rowid="<%= event._idRaw %>">
+                        <div class="item change"><a href="#"><i class="icon-edit"></i></a></div>
+                        <div class="time item"><%= event.dateStart.start.hour %>:<%= event.dateStart.start.minute %> - <%= event.dateStart.end.hour %>:<%= event.dateStart.end.minute %></div>
+                        <div class="title item"><%= event.title %></div>
+                        <div class="clear"></div>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </li>
         <% }) %>
-
-
-        <% }) %>
-
-        </tbody>
-    </table>
-
+    </ul>
 </div>
 

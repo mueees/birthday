@@ -24,7 +24,8 @@ define([], function(){
             main: {
                 searchFilterChanged: "searchFilterChanged",
                 tabEventChanged: "tabEventChanged",
-                calendarChanged: "calendarChanged"
+                calendarChanged: "calendarChanged",
+                changeEvent: "changeEvent"
             }
         }
 

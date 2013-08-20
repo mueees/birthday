@@ -11,6 +11,7 @@ define([
         regions: {
             'header': '.header',
             'content': '.content',
+            'edit': '.edit',
             'sidebarLeft': '.sidebarLeft',
             'sidebarRight': '.sidebarRight'
         }

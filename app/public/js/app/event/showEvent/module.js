@@ -10,7 +10,8 @@ define([
 
     /*modules*/
     'app/modules/tab_event_range/module',
-    'app/modules/eventsViewManage/module'
+    'app/modules/eventsViewManage/module',
+    'app/event/changeEvent/module'
 
 ], function(App, Marionette, ShowLayout, CalendarView){
 
@@ -29,13 +30,14 @@ define([
 
             var TabEvents =  App.module('TabEvents');
             var EventsViewManage =  App.module('EventsViewManage');
+            var currentLayout = null;
 
 
             var Controller = {
                 showEvents: function( tab ){
 
                     //получить Layout
-                    var layout = new ShowLayout();
+                    currentLayout = new ShowLayout();
 
                     //получить TabEvents View
                     var tabsView = TabEvents.API.getTabView();
@@ -46,15 +48,38 @@ define([
                     //определить название tab для запроса
                     tab = Controller.determineTab(tab);
 
-                    layout.render();
-                    App.main.show( layout );
-                    EventsViewManage.API.setRegion( layout.content );
+                    currentLayout.render();
+                    App.main.show( currentLayout );
+                    EventsViewManage.API.setRegion( currentLayout.content );
 
-                    layout.sidebarLeft.show(calendar);
-                    layout.header.show(tabsView);
+                    App.channels.main.on(App.config.eventName.main.changeEvent, Controller.showEditView, this);
+
+                    currentLayout.sidebarLeft.show(calendar);
+                    currentLayout.header.show(tabsView);
 
                     tabsView.setTab( tab );
 
+                },
+
+                offAllListeners: function(){
+                    App.channels.main.off(App.config.eventName.main.changeEvent, Controller.showEditView);
+                    currentLayout = null;
+                },
+
+                showEditView: function( data ){
+
+                    var done = _.bind(this._showChangeUserView, this);
+                    var error = _.bind(this._errorShowChangeView, this);
+
+                    $.when(App.Event.ChangeEvent.API.getChangeEvent( data )).done( done ).fail( error );
+                },
+
+                _showChangeUserView: function( changeView ){
+                    currentLayout.edit.show( changeView );
+                },
+
+                _errorShowChangeView: function(){
+                    console.log('WTF!');
                 },
 
                 determineTab: function(tab){
@@ -75,11 +100,23 @@ define([
                 }
             }
 
+
+            ShowEvent.on("stop", Controller.offAllListeners);
+
             var API = {
-                showEvents: Controller.showEvents
+
+                beforeStart: function(){
+                    ShowEvent.stop();
+                    ShowEvent.start();
+                },
+                showEvents: function(){
+                    API.beforeStart();
+                    Controller.showEvents()
+                }
             }
 
             ShowEvent.API = API;
+
 
         }
     })
