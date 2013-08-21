@@ -36,7 +36,7 @@ define([
             "endsInput": ".repeatEnds"
         },
 
-        initialize: function(){
+        initialize: function(options){
 
         },
 
@@ -83,6 +83,10 @@ define([
 
         btnDelete: function(e){
             if(e) e.preventDefault();
+            this.trigger("removeEvent", {
+                model: this.model
+            });
+            return false;
         },
 
         btnCancel: function(e){
@@ -235,7 +239,6 @@ define([
                     minute: matchEnd[2]
                 },
                 dateStartObj: date
-
             }
         },
 

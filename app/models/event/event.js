@@ -333,6 +333,39 @@ _.extend(Event, BaseModel, {
             day: date.getDate(),
             dateStartObj: new Date( date.getFullYear(), date.getMonth(), date.getDate() )
         }
+    },
+
+    deleteEvent: function(id, cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._deleteEvent(id, db, cb);
+            }
+        })
+    },
+
+    _deleteEvent: function(id, db, cb){
+        try{
+            var idObj = new this.ObjectID(id);
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+        db.collection('event').remove({
+            "_id": idObj
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
     }
 
 });

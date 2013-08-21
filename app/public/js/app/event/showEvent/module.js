@@ -67,6 +67,7 @@ define([
                 offAllListeners: function(){
                     App.channels.main.off(App.config.eventName.main.changeEvent, Controller.showEditView);
                     App.Event.ChangeEvent.off("eventUpdated", Controller.eventUpdated);
+                    App.Event.ChangeEvent.off("eventRemove", Controller.eventRemove);
                     currentLayout = null;
                 },
 
@@ -80,6 +81,7 @@ define([
 
                 _showChangeUserView: function( changeView ){
                     App.Event.ChangeEvent.on("eventUpdated", Controller.eventUpdated);
+                    App.Event.ChangeEvent.on("eventRemove", Controller.eventRemove);
                     currentLayout.edit.show( changeView );
                 },
 
@@ -89,7 +91,12 @@ define([
 
                 eventUpdated: function(){
                     currentLayout.edit.close();
-                    Controller.updateEventsViewTab()
+                    Controller.updateEventsViewTab();
+                },
+
+                eventRemove: function(){
+                    currentLayout.edit.close();
+                    Controller.updateEventsViewTab();
                 },
 
                 determineTab: function(tab){

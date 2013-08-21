@@ -23,7 +23,6 @@ define([
             },
 
             initialize: function(){
-
             },
 
             onRender: function(){

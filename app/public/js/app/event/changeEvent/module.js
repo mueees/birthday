@@ -23,14 +23,14 @@ define([
 
                 renderChangeView: function(data, deferred){
 
-
                     var model = data.model;
 
                     var view = new ChangeEventView({
                         model: model
                     });
 
-                    ChangeEvent.listenTo(view, "changeEvent", Controller.changeEvent)
+                    ChangeEvent.listenTo(view, "changeEvent", Controller.changeEvent);
+                    ChangeEvent.listenTo(view, "removeEvent", Controller.removeEvent);
 
                     deferred.resolve(view);
                 },
@@ -57,7 +57,6 @@ define([
                     var model = data.model;
                     model.set( data.data );
 
-
                     model.save({}, {
                         success: Controller.changeEventSuccess,
                         error: Controller.changeEventError
@@ -70,6 +69,30 @@ define([
 
                 changeEventError: function(model, response, options){
                     debugger
+                },
+
+                removeEvent: function( data ){
+                    var model = data.model;
+
+                    model.on("destroy", function(){debugger});
+
+                    model.destroy({
+                        success: function(){
+                            Controller.removeEventSuccess();
+                        },
+                        error:function(){
+                            Controller.removeEventError();
+                        }
+                    })
+
+                },
+
+                removeEventSuccess: function(){
+                    ChangeEvent.trigger("eventRemove");
+                },
+
+                removeEventError: function(){
+                    console.log("WTF!")
                 }
             }
 

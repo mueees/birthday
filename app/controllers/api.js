@@ -261,6 +261,28 @@ var controller = {
             }else{
                 response.send(event.data);
             }
+        },
+
+        deleteEvent: function(request, response){
+            var id = request.params.id;
+
+            EventModel.deleteEvent( id, function(err, result){
+                controller.event._deleteEvent( err, result, response )
+            });
+        },
+
+        _deleteEvent: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
         }
     }
 }

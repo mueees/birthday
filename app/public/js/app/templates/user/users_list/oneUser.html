@@ -10,6 +10,10 @@
     <span class="month"><%= dateBirthday.month%></span>
     <span class="year"><%= dateBirthday.year%></span>
 </div>
+<div class="age">
+    <span class="title">Age User:</span>
+    <span class="value"><%= (new Date().getFullYear()*1 -  dateBirthday.year*1) %> </span>
+</div>
 <div class="buttons">
     <a class="btn btn-small" href="/#user/change/<%=_id%>">edit</a>
     <a class="btn btn-small btn-danger delete" href="#">delete</a>
