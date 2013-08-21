@@ -244,7 +244,7 @@ define([
 
             if( this.valid() ){
                 var data = this.getData();
-                console.log(data);
+
                 this.trigger("changeEvent", {
                     data: data,
                     model: this.model

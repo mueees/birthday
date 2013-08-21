@@ -40,9 +40,6 @@ define([
                 },
 
                 getChangeEvent: function( deferred, data ){
-
-
-
                     if( !data.idEvent ){
                         deferred.reject({});
                         return false;
@@ -60,14 +57,19 @@ define([
                     var model = data.model;
                     model.set( data.data );
 
+
                     model.save({}, {
-                        success: function( model, response, options ){
-                            debugger
-                        },
-                        error: function(model, response, options){
-                            debugger
-                        }
+                        success: Controller.changeEventSuccess,
+                        error: Controller.changeEventError
                     });
+                },
+
+                changeEventSuccess:function(model, data, options){
+                    ChangeEvent.trigger("eventUpdated");
+                },
+
+                changeEventError: function(model, response, options){
+                    debugger
                 }
             }
 

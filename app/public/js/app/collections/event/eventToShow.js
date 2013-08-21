@@ -12,8 +12,11 @@ define([
 
         getEventsByDate: function(date){
             var result = [];
+
             this.each(function(event){
+
                 var data = event.toJSON();
+
                 if( date.valueOf() == data.dateStart.dateStartObj.valueOf() ) result.push(event.toJSON());
             })
             return result;
@@ -21,10 +24,15 @@ define([
         },
 
         parse: function(response){
-            _.map(response, function(event) {
+            for( var i = 0; i < response.length; i++ ){
+                var event = response[i];
+                event.unique = i;
+
                 event.dateStart.dateStartObj = new Date(event.dateStart.dateStartObj);
-            });
-            return response;
+                this.push(event);
+            }
+
+            return this.models;
         }
     })
 

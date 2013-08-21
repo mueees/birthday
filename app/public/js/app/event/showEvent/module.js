@@ -32,7 +32,6 @@ define([
             var EventsViewManage =  App.module('EventsViewManage');
             var currentLayout = null;
 
-
             var Controller = {
                 showEvents: function( tab ){
 
@@ -61,8 +60,13 @@ define([
 
                 },
 
+                updateEventsViewTab: function(){
+                    EventsViewManage.API.updateCurrentTab();
+                },
+
                 offAllListeners: function(){
                     App.channels.main.off(App.config.eventName.main.changeEvent, Controller.showEditView);
+                    App.Event.ChangeEvent.off("eventUpdated", Controller.eventUpdated);
                     currentLayout = null;
                 },
 
@@ -75,11 +79,17 @@ define([
                 },
 
                 _showChangeUserView: function( changeView ){
+                    App.Event.ChangeEvent.on("eventUpdated", Controller.eventUpdated);
                     currentLayout.edit.show( changeView );
                 },
 
                 _errorShowChangeView: function(){
                     console.log('WTF!');
+                },
+
+                eventUpdated: function(){
+                    currentLayout.edit.close();
+                    Controller.updateEventsViewTab()
                 },
 
                 determineTab: function(tab){

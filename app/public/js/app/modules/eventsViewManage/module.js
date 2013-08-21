@@ -14,6 +14,7 @@ define([
         define: function(EventsViewManage, App, Backbone, Marionette, $, _){
 
             var currentRegion = null;
+            var currentData = null;
 
             var Controller = {
 
@@ -26,7 +27,7 @@ define([
                     // создать view отображающую данный диапазон
                     // вставить view в DOM
 
-
+                    currentData = data;
                     if( data.type == 'agenda' ){
                         var done = _.bind(this.renderAgenda, this)
                         var error = _.bind(this.errorRequestEvent, this)
@@ -35,7 +36,7 @@ define([
 
                     $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
                         function(dataRequest){
-                            _this.renderAgenda( data.dt_range, dataRequest.eventToShowCollection )
+                            done( data.dt_range, dataRequest.eventToShowCollection )
                         }
                     );
 
@@ -60,16 +61,11 @@ define([
                     var d = new Date(start);
 
                     for( d; d <= end; d.setDate( d.getDate() + 1 ) ){
-
-
-
                         currentDate = new Date(d);
-
                         result.push({
                             date: currentDate,
                             events: eventToShowCollection.getEventsByDate(currentDate)
                         })
-
                     }
 
                     return result;
@@ -86,6 +82,21 @@ define([
 
                 validate: function(data){
                     return ( !data || !data.type || !data.dt_range ) ? false : true;
+                },
+
+                updateCurrentTab: function(options){
+
+                    if( currentData.type == 'agenda' ){
+                        var done = _.bind(this.renderAgenda, this)
+                        var error = _.bind(this.errorRequestEvent, this)
+                    }
+
+                    $.when( App.request('event:getEventsToShow', {dt_range: currentData.dt_range} )).done(
+                        function(dataRequest){
+                            done( currentData.dt_range, dataRequest.eventToShowCollection )
+                        }
+                    );
+
                 }
 
             }
@@ -93,6 +104,10 @@ define([
             var API = {
                 calendarChanged: function(data){
                     return Controller.calendarChanged(data);
+                },
+
+                updateCurrentTab: function(options){
+                    Controller.updateCurrentTab(options);
                 },
 
                 setRegion: function( region ){

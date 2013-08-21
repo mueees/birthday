@@ -192,11 +192,13 @@ _.extend(Event, BaseModel, {
             if( _.lastIndexOf( event.repeat.repeatDays, currentDate.getDay() + "") == -1 ) continue;
 
             var cloneEvent = _.clone(event);
-            delete cloneEvent.repeat;
             cloneEvent._idRaw = event._id;
             cloneEvent.dateStart = _this.getDateStart(currentDate);
             cloneEvent.dateStart.start = event.dateStart.start;
             cloneEvent.dateStart.end = event.dateStart.end;
+
+            delete cloneEvent.repeat;
+            delete cloneEvent._id;
 
             result.push(cloneEvent);
 
