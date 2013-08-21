@@ -158,6 +158,38 @@ var controller = {
 
     event: {
 
+        changeEvent: function(request, response){
+            var data = request.body;
+
+            if(data.dateStart.dateStartObj) data.dateStart.dateStartObj = new Date(data.dateStart.dateStartObj);
+
+
+            if( data.repeat.repeatEnds == 2 ){
+                data.repeat.dateRepeatEnd.repeatEndsObj = new Date(data.repeat.dateRepeatEnd.repeatEndsObj);
+            }
+
+            var event = new EventModel( data );
+            event.update(function(err, result){
+                controller.event._changeEvent( err, result, response, event )
+            });
+        },
+
+        _changeEvent: function(err, result, response, event){
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, event.data);
+            }
+        },
+
         add: function(request, response){
             var data = request.body;
 

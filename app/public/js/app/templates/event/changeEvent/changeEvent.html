@@ -13,7 +13,7 @@
 
         <div class="row">
             <div class="span12">
-                <form class="form-horizontal standart addEventForm">
+                <form class="form-horizontal standart changeEventForm">
 
                     <legend>Title</legend>
 
@@ -63,23 +63,27 @@
                         <label class="control-label" for="repeatType">Type</label>
                         <div class="controls">
                             <select name="repeatType" id="repeatType" class="selectpicker">
-                                <option value="no">No Repeat</option>
-                                <option value="1">Every day</option>
-                                <option value="2">Every week</option>
-                                <option value="3">Every weekday (Monday to Friday)</option>
-                                <option value="4">Every Monday, Wednesday, Friday</option>
-                                <option value="5">Every Tuesday, Thursday</option>
-                                <option value="6">Every month</option>
-                                <option value="7">Every year</option>
+                                <option <% if(repeat.repeatType == 'no'){%>selected<%}%>  value="no">No Repeat</option>
+                                <option <% if(repeat.repeatType == 1){%>selected<%}%> value="1">Every day</option>
+                                <option <% if(repeat.repeatType == 2){%>selected<%}%> value="2">Every week</option>
+                                <option <% if(repeat.repeatType == 3){%>selected<%}%> value="3">Every weekday (Monday to Friday)</option>
+                                <option <% if(repeat.repeatType == 4){%>selected<%}%> value="4">Every Monday, Wednesday, Friday</option>
+                                <option <% if(repeat.repeatType == 5){%>selected<%}%> value="5">Every Tuesday, Thursday</option>
+                                <option <% if(repeat.repeatType == 6){%>selected<%}%> value="6">Every month</option>
+                                <option <% if(repeat.repeatType == 7){%>selected<%}%> value="7">Every year</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="control-group days">
+
+
+                    <!--<% if(repeat.repeatType == 2){%> display: block <%}%>-->
+                    <div style="<% if(repeat.repeatType == 2){%> display: block <%}%> <%=repeat.type%>" class="control-group days">
                         <label class="control-label" >Repeat on:</label>
                         <div class="controls">
+
                             <label class="checkbox">
-                                <input class="weekDays" type="checkbox" name="weekDays[]" value="0">
+                                <input  class="weekDays" type="checkbox" name="weekDays[]" value="0">
                                 Sunday
                             </label>
                             <label class="checkbox">
@@ -106,22 +110,25 @@
                                 <input class="weekDays" type="checkbox" name="weekDays[]" value="6">
                                 Saturday
                             </label>
+
                         </div>
                     </div>
 
-                    <div class="control-group ends">
+
+                    <!--<%if( repeat.repeatEnds == 2 ){%> style="disaplay:block" <%}%>-->
+                    <div <%if( repeat.repeatType != 'no' ){%> style="display:block" <%}%> class="control-group ends">
                         <label class="control-label">Ends</label>
                         <div class="controls">
                             <label class="radio">
-                                <input type="radio" class="repeatEnds never" name="repeatEnds" value="1" checked>
+                                <input  type="radio" class="repeatEnds never" name="repeatEnds" value="1" checked>
                                 Never
                             </label>
                             <label class="radio">
-                                <input type="radio" class="repeatEnds on"  name="repeatEnds" value="2">
+                                <input <%if( repeat.repeatEnds == 2 ){%> checked <%}%> type="radio" class="repeatEnds on"  name="repeatEnds" value="2">
                                 On
                             </label>
 
-                            <input class="datepicker" data-date-format="dd-mm-yyyy" name="dateRepeatEnd" type="text" id="dateRepeatEnd" placeholder="Date Repeat End" >
+                            <input  <%if( repeat.repeatEnds == 2 ){%> value="<%=repeat.dateRepeatEnd.day%>-<%=repeat.dateRepeatEnd.month%>-<%=repeat.dateRepeatEnd.year%>" style="display:block" <%}%> class="datepicker" data-date-format="dd-mm-yyyy" name="dateRepeatEnd" type="text" id="dateRepeatEnd" placeholder="Date Repeat End" >
                         </div>
                     </div>
 

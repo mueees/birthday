@@ -19,8 +19,6 @@ define([
                     var error = _.bind(this.errorRequestEvent, this)
 
                     $.when( App.request('event:getById', id)).fail( error ).done( done );
-
-                    //var changeEventView = new ChangeEventView();
                 },
 
                 renderChangeView: function(data, deferred){
@@ -30,7 +28,9 @@ define([
 
                     var view = new ChangeEventView({
                         model: model
-                    })
+                    });
+
+                    ChangeEvent.listenTo(view, "changeEvent", Controller.changeEvent)
 
                     deferred.resolve(view);
                 },
@@ -53,6 +53,20 @@ define([
 
                     $.when( App.request( 'event:getById', data.idEvent )).fail( error ).done(function(data){
                         done( data, deferred )
+                    });
+                },
+
+                changeEvent: function(data){
+                    var model = data.model;
+                    model.set( data.data );
+
+                    model.save({}, {
+                        success: function( model, response, options ){
+                            debugger
+                        },
+                        error: function(model, response, options){
+                            debugger
+                        }
                     });
                 }
             }

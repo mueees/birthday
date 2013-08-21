@@ -368,6 +368,50 @@ _.extend(Event.prototype, {
                 cb(null, result);
             }
         })
+    },
+
+    update: function(cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._update( db,cb );
+            }
+        })
+    },
+
+    _update: function( db,cb ){
+
+        var _this = this;
+
+        try{
+            var idObj = new this.ObjectID( _this.data._id );
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+
+        var dataToSave = _this.data;
+        delete dataToSave._id;
+
+
+
+        db.collection('event').update({
+            '_id': idObj
+        }, {
+            $set: dataToSave
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
     }
 
 })

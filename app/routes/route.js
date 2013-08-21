@@ -16,6 +16,7 @@ module.exports = function(app) {
 
     //event
     app.post("/api/event", apiController.event.add);
+    app.put('/api/event/:id', apiController.event.changeEvent);
     app.post("/api/event/getEventToShow", apiController.event.getEventsToShow);
 
 
