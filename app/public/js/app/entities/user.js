@@ -67,18 +67,19 @@ define([
         },
 
         _getUsers: function(data, deferred){
-            var ajax = jQuery.ajax({
+
+            var userCollection = new UserCollection();
+
+            userCollection.fetch({
                 type: "GET",
-                url: App.config.api.getUsers,
                 data: data,
-                success: function(data){
-                    deferred.resolve(new UserCollection(data))
-                },
-                error: function(data){
-                    deferred.reject({
-                        data: data,
-                        ajax: ajax
+                success: function(){
+                    deferred.resolve({
+                        userCollection: userCollection
                     })
+                },
+                error: function(){
+                    deferred.reject({});
                 }
             })
         }

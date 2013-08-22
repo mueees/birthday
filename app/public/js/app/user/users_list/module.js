@@ -29,20 +29,24 @@ define([
                     var success = _.bind(this._renderView, this);
                     var error = _.bind(this._getUserError, this);
 
-                    $.when( App.request('user:getUsers') ).fail(error).done(function( collection ){success(collection, deferred)});
+                    $.when( App.request('user:getUsers') ).fail(error).done(function( data ){success(data, deferred)});
 
                 },
 
-        		_renderView: function( collection, deferred ){
+        		_renderView: function( data, deferred ){
                     var oneUserView;
                     var layout = new Layout();
                     layout.render();
+
+
+                    var collection = data.userCollection;
 
                     collection.each(function(model, index) {
                         oneUserView = new OneUserView({model: model});
                         oneUserView.render();
                         layout.$el.find('.userItems').append( oneUserView.$el );
                     });
+
 
                     deferred.resolve( layout );
 

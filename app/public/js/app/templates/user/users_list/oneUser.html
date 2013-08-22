@@ -7,12 +7,12 @@
 </h4>
 <div class="birthday">
     <span class="day"><%= dateBirthday.day%></span>
-    <span class="month"><%= dateBirthday.month%></span>
+    <span class="month"><%= dateBirthday.month+1%></span>
     <span class="year"><%= dateBirthday.year%></span>
 </div>
 <div class="age">
     <span class="title">Age User:</span>
-    <span class="value"><%= (new Date().getFullYear()*1 -  dateBirthday.year*1) %> </span>
+    <span class="value"><%= age%> </span>
 </div>
 <div class="buttons">
     <a class="btn btn-small" href="/#user/change/<%=_id%>">edit</a>
