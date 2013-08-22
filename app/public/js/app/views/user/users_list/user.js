@@ -20,6 +20,7 @@ define([
         },
 
         searchFilter: function(data){
+
             if( this.isConcurrence(data) ){
                 this.$el.show();
             }else{
@@ -31,7 +32,8 @@ define([
 
             var fioConcurrence = true,
                 monthConcurrence = true,
-                yearConcurrence = true;
+                yearConcurrence = true,
+                ageConcurrence = true;
 
             if( data.fio ){
                 fioConcurrence = this.isFioConcurrence(data.fio)
@@ -42,14 +44,29 @@ define([
             if( data.year ){
                 yearConcurrence = this.isYearConcurrence(data.year)
             }
+            if( data.age ){
+                ageConcurrence = this.isAgeConcurrence(data.year)
+            }
 
-            if( fioConcurrence && monthConcurrence && yearConcurrence ){
+            if( fioConcurrence && monthConcurrence && yearConcurrence && ageConcurrence ){
                 return true;
             }else{
                 return false;
             }
 
 
+        },
+
+        isAgeConcurrence: function(value){
+            var age = this.model.get('age');
+
+            debugger
+
+            if( age == value ){
+                return true;
+            }else{
+                return false;
+            }
         },
 
         isFioConcurrence: function( value ){

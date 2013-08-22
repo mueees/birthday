@@ -38,6 +38,8 @@ define([
                     var layout = new Layout();
                     layout.render();
 
+                    debugger
+
                     collection.each(function(model, index) {
                         oneUserView = new OneUserView({model: model});
                         oneUserView.render();

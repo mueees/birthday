@@ -11,6 +11,7 @@ define([
 
             events: {
                 "keyup #fio" : "notify",
+                "keyup #age" : "notify",
                 "change #month": "notify",
                 "change #year": "notify",
                 'click .clearSearch': "clearSearch"
@@ -19,7 +20,8 @@ define([
             ui: {
                 "fio" : '#fio',
                 "year": "#year",
-                "month": "#month"
+                "month": "#month",
+                "age": "#age"
             },
 
             initialize: function(){
@@ -63,7 +65,8 @@ define([
                 var data = {
                     fio: $.trim(this.ui.fio.val()),
                     year: $.trim(this.ui.year.val()),
-                    month: $.trim(this.ui.month.val())
+                    month: $.trim(this.ui.month.val()),
+                    age: $.trim(this.ui.age.val())
                 }
 
                 return data;
@@ -80,6 +83,7 @@ define([
                 this.ui.fio.val("");
                 this.ui.year.val("");
                 this.ui.month.val("");
+                this.ui.age.val("");
 
                 this.notify();
 
