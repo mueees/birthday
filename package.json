@@ -8,6 +8,8 @@
         "underscore": "1",
         "moment": "2",
         "handlebars": "1",
-        "node-inspector": "0" 
+        "node-inspector": "0",
+        "cron": "",
+        "nodemailer": ""
     }
 }

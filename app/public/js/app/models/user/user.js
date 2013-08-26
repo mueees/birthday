@@ -20,7 +20,9 @@ define([
             skypes: [],
             phones: [],
             realAddresses: [],
-            emails: []
+            emails: [],
+
+            age: 0
         },
         idAttribute: '_id',
         urlRoot: App.config.api.user
