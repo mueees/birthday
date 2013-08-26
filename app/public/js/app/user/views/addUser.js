@@ -137,12 +137,11 @@ define([
         },
 
         getBirthday: function(){
-            var value = this.ui.birthdayInput.val();
-            value = value.match(/(\d\d)-(\d\d)-(\d\d\d\d)/);
+            var value = this.ui.birthdayInput.data('datepicker').getDate();
             return{
-                year: value[3],
-                month: value[2],
-                day: value[1]
+                year: value.getFullYear(),
+                month: value.getMonth(),
+                day: value.getDate()
             }
 
         },

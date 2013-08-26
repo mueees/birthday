@@ -45,7 +45,7 @@ define([
                 yearConcurrence = this.isYearConcurrence(data.year)
             }
             if( data.age ){
-                ageConcurrence = this.isAgeConcurrence(data.year)
+                ageConcurrence = this.isAgeConcurrence(data.age)
             }
 
             if( fioConcurrence && monthConcurrence && yearConcurrence && ageConcurrence ){
@@ -59,8 +59,6 @@ define([
 
         isAgeConcurrence: function(value){
             var age = this.model.get('age');
-
-            debugger
 
             if( age == value ){
                 return true;
