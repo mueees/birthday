@@ -95,7 +95,7 @@ define([
         isMonthConcurrence: function(month){
             var dateBirthday = this.model.get('dateBirthday');
 
-            if( dateBirthday.month == month ){
+            if( dateBirthday.month + 1 == month ){
                 return true;
             }else{
                 return false;
