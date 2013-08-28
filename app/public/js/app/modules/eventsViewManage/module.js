@@ -48,7 +48,6 @@ define([
                     var agendaView = new AgendaView({dataTorender: dataTorender});
                     currentRegion.show( agendaView );
 
-
                 },
 
                 prepareToRenderAgenda: function(dt_range, eventToShowCollection){
