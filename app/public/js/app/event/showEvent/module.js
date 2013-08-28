@@ -11,7 +11,8 @@ define([
     /*modules*/
     'app/modules/tab_event_range/module',
     'app/modules/eventsViewManage/module',
-    'app/event/changeEvent/module'
+    'app/event/changeEvent/module',
+    'app/task/task_app'
 
 ], function(App, Marionette, ShowLayout, CalendarView){
 
@@ -30,6 +31,7 @@ define([
 
             var TabEvents =  App.module('TabEvents');
             var EventsViewManage =  App.module('EventsViewManage');
+            var Task =  App.module('Task');
             var currentLayout = null;
 
             var Controller = {
@@ -56,6 +58,7 @@ define([
                     currentLayout.sidebarLeft.show(calendar);
                     currentLayout.header.show(tabsView);
 
+                    Task.API.showTaskManager( currentLayout.sidebarRight );
                     tabsView.setTab( tab );
 
                 },
@@ -113,7 +116,6 @@ define([
                     }else{
                         return defaults.defaultTab;
                     }
-
                 }
             }
 
