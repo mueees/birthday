@@ -1,7 +1,10 @@
 define([
     'app/app',
-    'marionette'
-], function(App, Marionette){
+    'marionette',
+
+    /*views*/
+    'app/views/task/Menu/menu'
+], function(App, Marionette, MenuView){
 
 
     App.module("Task.Menu", {
@@ -10,12 +13,12 @@ define([
 
         define: function(Menu, App, Backbone, Marionette, $, _){
 
-
             var Task = App.module('Task');
 
             var Controller = {
                 showMenu: function( options ){
-
+                    var menu = new MenuView();
+                    options.region.show(menu)
                 }
             }
 
