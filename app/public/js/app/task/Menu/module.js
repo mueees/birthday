@@ -17,13 +17,29 @@ define([
 
             var Controller = {
                 showMenu: function( options ){
-                    var menu = new MenuView();
-                    options.region.show(menu)
+
+                    var done = _.bind(this.getListsSuccess, this);
+                    var error = _.bind(this.getListsError, this);
+
+                    $.when( App.request('task:getLists')).fail( error ).done(function(data){
+                        done( data, options );
+                    });
+
+                },
+
+                getListsSuccess: function( data, options ){
+
+                    var menu = new MenuView( data );
+                    options.region.show(menu);
+                },
+
+                getListsError: function(){
+                    console.log("WTF!");
                 }
             }
 
             var API = {
-                showMenu: Controller.showMenu
+                showMenu: function(options){Controller.showMenu(options)}
             }
 
             Menu.API = API;
