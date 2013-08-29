@@ -128,7 +128,7 @@
                                 On
                             </label>
 
-                            <input  <%if( repeat.repeatEnds == 2 ){%> value="<%=repeat.dateRepeatEnd.day%>-<%=repeat.dateRepeatEnd.month%>-<%=repeat.dateRepeatEnd.year%>" style="display:block" <%}%> class="datepicker" data-date-format="dd-mm-yyyy" name="dateRepeatEnd" type="text" id="dateRepeatEnd" placeholder="Date Repeat End" >
+                            <input  <%if( repeat.repeatEnds == 2 ){%> value="<%=repeat.dateRepeatEnd.day%>-<%=repeat.dateRepeatEnd.month+1%>-<%=repeat.dateRepeatEnd.year%>" style="display:block" <%}%> class="datepicker" data-date-format="dd-mm-yyyy" name="dateRepeatEnd" type="text" id="dateRepeatEnd" placeholder="Date Repeat End" >
                         </div>
                     </div>
 
