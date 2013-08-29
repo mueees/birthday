@@ -3,7 +3,6 @@ define([], function(){
     return {
 
         api:{
-
             user: '/api/user',
             getUsers: '/api/users',
             getCountUsers: '/api/users/count',
@@ -16,8 +15,16 @@ define([], function(){
 
             /*event*/
             event: '/api/event',
-            getEventToShow: "/api/event/getEventToShow"
+            getEventToShow: "/api/event/getEventToShow",
 
+            /*task*/
+            taskList: "/api/taskList",
+            getUsersTaskList: "api/taskLists"
+
+        },
+
+        opts:{
+            timeout: 1500
         },
 
         eventName: {

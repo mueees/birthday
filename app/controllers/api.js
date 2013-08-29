@@ -1,5 +1,6 @@
 var UserModel = require('../models/user/user'),
     EventModel = require('../models/event/event'),
+    TaskListModel = require('../models/task/taskList'),
     url = require('url'),
     queryString = require( "querystring"),
     _ = require('underscore');
@@ -282,6 +283,23 @@ var controller = {
                     response.statusCode = 400;
                 }
                 response.send({});
+            }
+        }
+    },
+
+    task: {
+        getTaskLists: function(request, response){
+            TaskListModel.getTaskLists( function(err, lists){
+                controller.task._getTaskLists( err, lists, response )
+            });
+        },
+
+        _getTaskLists: function(err, lists, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(lists);
             }
         }
     }

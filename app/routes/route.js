@@ -22,8 +22,10 @@ module.exports = function(app) {
 
 
     app.get("/api/event/:id", apiController.event.get);
-
     app.get('/api/user/get', apiController.user.get);
+
+    //task
+    app.post("/api/taskLists", apiController.task.getTaskLists)
 
 
 };

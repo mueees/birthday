@@ -25,7 +25,6 @@ define([
             var ListOfTasks = App.module('Task.ListOfTasks');
             var Menu = App.module('Task.Menu');
 
-
             var tasksLayout;
 
             var Controller = {
