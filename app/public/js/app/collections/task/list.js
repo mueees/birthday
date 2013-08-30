@@ -8,7 +8,7 @@ define([
 
     return BaseColletion.extend({
         model: ListModel,
-        url: App.config.api.getUsersTaskList
+        url: App.config.api.getTaskList
     })
 
 })

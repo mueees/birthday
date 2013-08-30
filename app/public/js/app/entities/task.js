@@ -6,11 +6,13 @@ define([
 
     /*collections*/
     'app/collections/task/list',
+    'app/collections/task/task',
 
     /*models*/
-    'app/models/task/list'
+    'app/models/task/list',
+    'app/models/task/task'
 
-], function(jQuery, Backbone, Marionette, App, ListCollection, ListModel){
+], function(jQuery, Backbone, Marionette, App, ListCollection, TaskCollection, ListModel, TaskModel){
 
     var API = {
 
@@ -22,7 +24,7 @@ define([
         _getLists: function(deferred){
             var listCollection = new ListCollection();
             listCollection.fetch({
-                type: "POST",
+                type: "GET",
                 success: function(){
                     deferred.resolve({
                         listCollection: listCollection
@@ -33,6 +35,29 @@ define([
                 },
                 timeout: App.config.opts.timeout
             })
+        },
+
+        getTasks: function(data){
+            var deferred = $.Deferred();
+            this._getTasks(data, deferred);
+            return deferred.promise();
+        },
+
+        _getTasks: function(data, deferred){
+            var taskCollection = new TaskCollection();
+
+            taskCollection.fetch({
+                type: "GET",
+                data: data,
+                success: function(){
+                    deferred.resolve({
+                        taskCollection: taskCollection
+                    });
+                },
+                error: function(){
+                    deferred.reject({});
+                }
+            });
         },
 
         //------------------------------------------------------
@@ -109,11 +134,11 @@ define([
         return API.getLists();
     })
 
-    /*App.reqres.setHandler('event:saveNewEvent', function( data ){
-        return API.saveNewEvent( data );
+    App.reqres.setHandler('task:getTasks', function( data ){
+        return API.getTasks( data );
     })
 
-    App.reqres.setHandler('event:getEventsToShow', function( data ){
+    /*App.reqres.setHandler('event:getEventsToShow', function( data ){
         return API.getEventsToShow( data );
     })*/
 

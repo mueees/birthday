@@ -25,7 +25,9 @@ module.exports = function(app) {
     app.get('/api/user/get', apiController.user.get);
 
     //task
-    app.post("/api/taskLists", apiController.task.getTaskLists)
+    app.get("/api/taskLists", apiController.task.getTaskLists);
+    app.post("/api/taskList", apiController.task.addTaskList)
+    app.get("/api/getTasks", apiController.task.getTasks);
 
 
 };

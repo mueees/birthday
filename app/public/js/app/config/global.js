@@ -18,8 +18,9 @@ define([], function(){
             getEventToShow: "/api/event/getEventToShow",
 
             /*task*/
-            taskList: "/api/taskList",
-            getUsersTaskList: "api/taskLists"
+            taskList: "/api/taskList", // CRUD одного листа
+            getTaskList: "api/taskLists", //получить все листы с тасками
+            getTasks: "api/getTasks" // получить все таски
 
         },
 

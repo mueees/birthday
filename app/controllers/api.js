@@ -1,6 +1,7 @@
 var UserModel = require('../models/user/user'),
     EventModel = require('../models/event/event'),
     TaskListModel = require('../models/task/taskList'),
+    TaskModel = require('../models/task/task'),
     url = require('url'),
     queryString = require( "querystring"),
     _ = require('underscore');
@@ -293,13 +294,50 @@ var controller = {
                 controller.task._getTaskLists( err, lists, response )
             });
         },
-
         _getTaskLists: function(err, lists, response){
             if( err ){
                 response.statusCode = 400;
                 response.send(err);
             }else{
                 response.send(lists);
+            }
+        },
+
+        addTaskList: function(request, response){
+            var data = request.body;
+
+            var taskList = new TaskListModel( data );
+            taskList.save(function(err, result){
+                controller.task._addTaskList( err, result, response )
+            });
+        },
+        _addTaskList: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+        },
+
+        getTasks: function(request, response){
+            var parts = url.parse( request.url, true );
+
+            if( !parts.query._id ){
+                response.send(null);
+            }
+
+            TaskModel.getTasks( parts.query._id, function(err, events){
+                controller.task._getTasks( err, events, response )
+            });
+        },
+
+        _getTasks: function( err, tasks, response ){
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(tasks);
             }
         }
     }
