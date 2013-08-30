@@ -89,3 +89,12 @@
 .addEvent #dateRepeatEnd {
   display: none;
 }
+.tasks .list-container .list {
+  padding: 0 0 150px;
+}
+.tasks .menu-container .listNames .list-wrapper .icon-check {
+  display: none;
+}
+.tasks .menu-container .listNames .list-wrapper.active .icon-check {
+  display: inline-block;
+}

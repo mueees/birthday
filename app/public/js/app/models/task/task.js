@@ -7,7 +7,11 @@ define([
 
     return BaseModel.extend({
         defaults: {
-            name: ""
+            title: "",
+            description: "",
+            isDone: false,
+            date: "",
+            listId: ""
         },
         idAttribute: '_id',
         urlRoot: App.config.api.taskList

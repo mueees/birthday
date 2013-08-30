@@ -14,7 +14,7 @@ define([
         },
 
         ui: {
-            "value": ".value"
+            "value": ".accept"
         },
 
         initialize: function(){
@@ -44,7 +44,7 @@ define([
 
         acceptBtn: function(e){
             e.preventDefault();
-            this.trigger("accept", this.getData);
+            this.trigger("accept", this.getData());
             this.$el.modal('hide');
             return false;
         },

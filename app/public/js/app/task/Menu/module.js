@@ -15,6 +15,8 @@ define([
 
             var Task = App.module('Task');
 
+            var listCollection;
+
             var Controller = {
                 showMenu: function( options ){
 
@@ -28,9 +30,15 @@ define([
                 },
 
                 getListsSuccess: function( data, options ){
+                    listCollection = data.listCollection;
 
-                    var menu = new MenuView( data );
+                    var menu = new MenuView({
+                        listCollection: listCollection
+                    });
+                    menu.on("listSelected", function(data){ Task.Channel.trigger("listSelected", data) });
+
                     options.region.show(menu);
+
                 },
 
                 getListsError: function(){
