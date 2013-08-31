@@ -29,7 +29,8 @@ module.exports = function(app) {
     app.put("/api/task/:id", apiController.task.changeTask);
     app.delete('/api/task/:id', apiController.task.deleteTask);
     app.get("/api/taskLists", apiController.task.getTaskLists);
-    app.post("/api/taskList", apiController.task.addTaskList)
+    app.post("/api/taskList", apiController.task.addTaskList);
+    app.delete('/api/taskList/:id', apiController.task.deleteTaskList);
     app.get("/api/getTasks", apiController.task.getTasks);
 
 

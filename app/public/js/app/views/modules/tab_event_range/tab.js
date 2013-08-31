@@ -45,6 +45,7 @@ define([
         },
 
         setTab: function( type ){
+
             type = this.filter(type);
             var btn = this.$el.find(".btn[data-type='"+type+"']");
 

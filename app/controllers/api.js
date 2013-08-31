@@ -343,8 +343,30 @@ var controller = {
                 controller.task._deleteTask( err, result, response )
             });
         },
-
         _deleteTask: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
+        },
+
+        deleteTaskList:function(request, response){
+            var id = request.params.id;
+
+            TaskListModel.deleteTaskList( id, function(err, result){
+                controller.task._deleteTaskList( err, result, response )
+            });
+
+            TaskModel.deleteTaskFromList(id);
+        },
+        _deleteTaskList: function(err, result, response){
             if( err ){
                 response.statusCode = 400;
                 response.send();

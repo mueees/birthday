@@ -36,7 +36,8 @@ define([
             this.listenTo(this.listCollection, "add", this.addListToDom);
             this.listenTo(this.listCollection, "remove", this._deleteListSuccess);
 
-            _.bind(this.createNewList, this);
+            _.bind(this._deleteListFromDom, this);
+            _.bind(this.addListToDom, this);
             _.bind(this.addListToDom, this);
         },
 
@@ -104,6 +105,7 @@ define([
 
         deleteList: function(e){
             e.preventDefault();
+            var _this = this;
 
             var confirm = Dialog.API.factory({
                 type: 'confirm',
@@ -111,17 +113,23 @@ define([
                 title: "Attention",
                 text: "Delete current list?"
             });
-            this.listenTo(confirm, "accept", this._deleteList);
+            this.listenTo(confirm, "accept", _this._deleteList);
 
             confirm.show();
             return false;
         },
 
         _deleteList: function(){
-            
+            var _this = this;
+            this.currentListModel.destroy({
+                success: function(model){
+                    _this._deleteListFromDom(model);
+                }
+            });
         },
-        _deleteListSuccess: function(){
-
+        _deleteListFromDom: function( model ){
+            this.$el.find('a[data-id="'+model.get('_id')+'"]').closest('li').remove();
+            this.chooseFirstList();
         },
 
         renameList: function(e){
