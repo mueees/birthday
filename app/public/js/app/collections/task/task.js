@@ -17,7 +17,7 @@ define([
             })*/
 
             var newTask = this.filter(function(model){
-                return !model.get('_id')
+                return !model.get('isSaved')
             });
 
             return (newTask.length) ? newTask[0] : false;

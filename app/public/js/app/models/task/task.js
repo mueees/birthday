@@ -11,10 +11,11 @@ define([
             description: "",
             isDone: false,
             date: "",
-            listId: ""
+            listId: "",
+            isSaved: false
         },
         idAttribute: '_id',
-        urlRoot: App.config.api.taskList
+        urlRoot: App.config.api.task
     })
 
 })

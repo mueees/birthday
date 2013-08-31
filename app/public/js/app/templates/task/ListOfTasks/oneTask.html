@@ -1,4 +1,4 @@
-<li>
-    <input type="checkbox" name="done" value="done"/>
-    <div class="title" contenteditable ></div>
+<li class="item-task">
+    <input type="checkbox"  <%= isDone ? 'checked' : '' %> class="isDone"  name="isDone"  />
+    <input type="text" class="title" value="<%=title%>" placeholder="new task"/>
 </li>

@@ -36,6 +36,7 @@ define([
                     var taskCollection = data.taskCollection;
                     var listOfTasksView = new ListOfTasksView({
                         listName: options.name,
+                        listId: options._id,
                         taskCollection: taskCollection
                     });
                     options.region.show(listOfTasksView);
