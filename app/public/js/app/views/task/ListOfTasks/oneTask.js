@@ -16,11 +16,13 @@ define([
 
         initialize: function(){
             this.render();
-            this.focusToTitle()
+            this.focus();
+
+
+            this.listenTo(this.model, "focusMe", this.focus);
         },
 
-        focusToTitle: function(){
-            debugger
+        focus: function(){
             this.ui.title.focus();
         }
     })

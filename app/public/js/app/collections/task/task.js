@@ -12,9 +12,15 @@ define([
 
         isHaveNewTask: function(){
 
-            this.each(function(model){
+            /*this.each(function(model){
                 debugger
-            })
+            })*/
+
+            var newTask = this.filter(function(model){
+                return !model.get('_id')
+            });
+
+            return (newTask.length) ? newTask[0] : false;
 
         }
     })
