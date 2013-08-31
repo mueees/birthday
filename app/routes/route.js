@@ -22,8 +22,16 @@ module.exports = function(app) {
 
 
     app.get("/api/event/:id", apiController.event.get);
-
     app.get('/api/user/get', apiController.user.get);
+
+    //task
+    app.post("/api/task", apiController.task.add);
+    app.put("/api/task/:id", apiController.task.changeTask);
+    app.delete('/api/task/:id', apiController.task.deleteTask);
+    app.get("/api/taskLists", apiController.task.getTaskLists);
+    app.post("/api/taskList", apiController.task.addTaskList);
+    app.delete('/api/taskList/:id', apiController.task.deleteTaskList);
+    app.get("/api/getTasks", apiController.task.getTasks);
 
 
 };

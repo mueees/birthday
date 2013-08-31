@@ -29,7 +29,7 @@ define([
 
         initialize: function(){
             _.bind(this.typeTabsChanged, this);
-            App.channels.main.on( App.config.eventName.main.tabEventChanged, this.typeTabsChanged, this);
+            this.listenTo(App.channels.main, App.config.eventName.main.tabEventChanged, this.typeTabsChanged);
         },
 
         onRender: function(){

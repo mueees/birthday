@@ -12,6 +12,7 @@ require([
     /*entities*/
 	'app/entities/user',
 	'app/entities/event',
+	'app/entities/task'
 
 	], function(App){
     App.start();
