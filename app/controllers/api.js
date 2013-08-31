@@ -1,5 +1,7 @@
 var UserModel = require('../models/user/user'),
     EventModel = require('../models/event/event'),
+    TaskListModel = require('../models/task/taskList'),
+    TaskModel = require('../models/task/task'),
     url = require('url'),
     queryString = require( "querystring"),
     _ = require('underscore');
@@ -282,6 +284,150 @@ var controller = {
                     response.statusCode = 400;
                 }
                 response.send({});
+            }
+        }
+    },
+
+    task: {
+
+        add: function(request, response){
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+
+            var task = new TaskModel( data );
+            task.save(function(err, result){
+                controller.task._add( err, result, response )
+            });
+        },
+        _add: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+        },
+
+        changeTask: function(request, response){
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+            var task = new TaskModel( data );
+            task.update(function(err, result){
+                controller.task._changeTask( err, result, response, task )
+            });
+        },
+        _changeTask: function(err, result, response, task){
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, task.data);
+            }
+        },
+
+        deleteTask: function(request, response){
+            var id = request.params.id;
+
+            TaskModel.deleteTask( id, function(err, result){
+                controller.task._deleteTask( err, result, response )
+            });
+        },
+        _deleteTask: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
+        },
+
+        deleteTaskList:function(request, response){
+            var id = request.params.id;
+
+            TaskListModel.deleteTaskList( id, function(err, result){
+                controller.task._deleteTaskList( err, result, response )
+            });
+
+            TaskModel.deleteTaskFromList(id);
+        },
+        _deleteTaskList: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
+        },
+
+        getTaskLists: function(request, response){
+            TaskListModel.getTaskLists( function(err, lists){
+                controller.task._getTaskLists( err, lists, response )
+            });
+        },
+        _getTaskLists: function(err, lists, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(lists);
+            }
+        },
+
+        addTaskList: function(request, response){
+            var data = request.body;
+
+            var taskList = new TaskListModel( data );
+            taskList.save(function(err, result){
+                controller.task._addTaskList( err, result, response )
+            });
+        },
+        _addTaskList: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+        },
+
+        getTasks: function(request, response){
+            var parts = url.parse( request.url, true );
+
+            if( !parts.query._id ){
+                response.send(null);
+            }
+
+            TaskModel.getTasks( parts.query._id, function(err, events){
+                controller.task._getTasks( err, events, response )
+            });
+        },
+        _getTasks: function( err, tasks, response ){
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(tasks);
             }
         }
     }

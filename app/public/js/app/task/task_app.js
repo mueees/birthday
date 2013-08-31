@@ -25,7 +25,6 @@ define([
             var ListOfTasks = App.module('Task.ListOfTasks');
             var Menu = App.module('Task.Menu');
 
-
             var tasksLayout;
 
             var Controller = {
@@ -38,17 +37,19 @@ define([
                         region: tasksLayout.menuContainer
                     });
 
-                    Task.Channel.on("listChanged", Controller.showListOfTasks);
+                    Task.Channel.on("listSelected", Controller.showListOfTasks);
 
                 },
 
                 showListOfTasks: function( data ){
 
+                    var listModel = data.listModel.toJSON();
+
                     //show list of tasks
                     ListOfTasks.API.showListOfTasks({
                         region: tasksLayout.listContainer,
-                        nameList: data.nameList,
-                        idList: data.nameList
+                        name: listModel.name,
+                        _id: listModel._id
                     });
 
                 }

@@ -3,7 +3,6 @@ define([], function(){
     return {
 
         api:{
-
             user: '/api/user',
             getUsers: '/api/users',
             getCountUsers: '/api/users/count',
@@ -16,8 +15,19 @@ define([], function(){
 
             /*event*/
             event: '/api/event',
-            getEventToShow: "/api/event/getEventToShow"
+            getEventToShow: "/api/event/getEventToShow",
 
+            /*task*/
+            task: '/api/task',
+            getTasks: "api/getTasks", // получить все таски
+            taskList: "/api/taskList", // CRUD одного листа
+            getTaskList: "api/taskLists" //получить все листы с тасками
+
+
+        },
+
+        opts:{
+            timeout: 1500
         },
 
         eventName: {

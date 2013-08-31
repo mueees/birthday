@@ -1,7 +1,12 @@
 define([
     'app/app',
-    'marionette'
-], function(App, Marionette){
+    'marionette',
+
+    /*views*/
+    'app/views/task/ListOfTasks/listOfTasks'
+
+
+], function(App, Marionette, ListOfTasksView){
 
 
     App.module("Task.ListOfTasks", {
@@ -14,7 +19,31 @@ define([
 
             var Controller = {
                 showListOfTasks: function( options ){
+                    var done = _.bind(Controller.getTasksSuccess, this);
+                    var error = _.bind(Controller.getTasksError, this);
 
+                    //запросить все таски с этого листа
+                    $.when( App.request('task:getTasks', {_id: options._id})).fail( error ).done(function(data){
+                        done( data, options );
+                    });
+
+                    //отрендерить их
+                    //вставить в регион
+
+                },
+
+                getTasksSuccess: function( data, options ){
+                    var taskCollection = data.taskCollection;
+                    var listOfTasksView = new ListOfTasksView({
+                        listName: options.name,
+                        listId: options._id,
+                        taskCollection: taskCollection
+                    });
+                    options.region.show(listOfTasksView);
+                },
+
+                getTasksError: function(){
+                    console.log("WTF!");
                 }
             }
 
