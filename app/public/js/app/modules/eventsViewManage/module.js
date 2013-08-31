@@ -33,7 +33,6 @@ define([
                         var error = _.bind(this.errorRequestEvent, this)
                     }
                     var _this = this;
-
                     $.when( App.request('event:getEventsToShow', {dt_range: data.dt_range} )).done(
                         function(dataRequest){
                             done( data.dt_range, dataRequest.eventToShowCollection )

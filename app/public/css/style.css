@@ -97,13 +97,19 @@
   background: #f0f0f0;
   margin: 0 0 5px;
 }
-.tasks .list-container .item-task .done {
+.tasks .list-container .item-task .data {
+  overflow: hidden;
+}
+.tasks .list-container .item-task .isDone {
   float: left;
   margin: 10px 10px 0 0;
 }
 .tasks .list-container .item-task .title {
-  overflow: hidden;
   margin: 0;
+  width: 80%;
+}
+.tasks .list-container .item-task .more {
+  margin: 15px 0 0;
 }
 .tasks .menu-container .listNames .list-wrapper .icon-check {
   display: none;

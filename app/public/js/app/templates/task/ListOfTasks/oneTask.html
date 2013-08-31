@@ -1,4 +1,12 @@
 <li class="item-task">
     <input type="checkbox"  <%= isDone ? 'checked' : '' %> class="isDone"  name="isDone"  />
-    <input type="text" class="title" value="<%=title%>" placeholder="new task"/>
+    <div class="data">
+        <input type="text" class="title" value="<%=title%>" placeholder="new task"/>
+        <!--<a href="#" class="showMore"><i class="icon-pencil"></i></a>
+        <div class="more">
+            <input type="text" class="date" placeholder="date"/>
+            <textarea class="description" name="description" cols="30" rows="10" placeholder="description"></textarea>
+        </div>-->
+    </div>
+
 </li>

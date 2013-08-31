@@ -65,6 +65,24 @@ _.extend(Task, BaseModel, {
                 cb(null, result);
             }
         })
+    },
+
+    deleteTaskFromList: function(id){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._deleteTaskFromList(id, db);
+            }
+        })
+    },
+    _deleteTaskFromList: function(id, db){
+        db.collection('tasks').remove({
+            "listId": id
+        }, function(err, result){
+            console.log("WTF!");
+        })
     }
 });
 

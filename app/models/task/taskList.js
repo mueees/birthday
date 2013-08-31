@@ -29,6 +29,38 @@ _.extend(TaskList, BaseModel, {
                 cb(null, lists);
             }
         })
+    },
+
+    deleteTaskList: function(id, cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._deleteTaskList(id, db, cb);
+            }
+        })
+    },
+    _deleteTaskList: function(id, db, cb){
+        try{
+            var idObj = new this.ObjectID(id);
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+        db.collection('taskList').remove({
+            "_id": idObj
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
     }
 });
 
