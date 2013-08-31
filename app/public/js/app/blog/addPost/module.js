@@ -1,7 +1,9 @@
 define([
     'app/app',
-    'marionette'
-], function(App, Marionette, AddEventView){
+    'marionette',
+
+    'app/views/blog/addPost/addPostView'
+], function(App, Marionette, AddPostView){
 
 
     App.module("Blog.AddPost", {
@@ -11,7 +13,21 @@ define([
         define: function(AddPost, App, Backbone, Marionette, $, _){
 
             var Controller = {
-                addPost: function(){}
+                addPost: function(){
+                    var addPostView = this.getAddPostView();
+
+                    var addPostOnServer = _.bind(this.addPostOnServer, this);
+                    addPostView.on('addPostOnServer', addPostOnServer);
+                    App.main.show(addPostView);
+                },
+
+                addPostOnServer: function(){
+
+                },
+
+                getAddPostView: function(){
+                    return new AddPostView();
+                }
             }
 
             var API = {
