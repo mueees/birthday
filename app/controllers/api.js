@@ -289,6 +289,75 @@ var controller = {
     },
 
     task: {
+
+        add: function(request, response){
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+
+            var task = new TaskModel( data );
+            task.save(function(err, result){
+                controller.task._add( err, result, response )
+            });
+        },
+        _add: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+        },
+
+        changeTask: function(request, response){
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+            var task = new TaskModel( data );
+            task.update(function(err, result){
+                controller.task._changeTask( err, result, response, task )
+            });
+        },
+        _changeTask: function(err, result, response, task){
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, task.data);
+            }
+        },
+
+        deleteTask: function(request, response){
+            var id = request.params.id;
+
+            TaskModel.deleteTask( id, function(err, result){
+                controller.task._deleteTask( err, result, response )
+            });
+        },
+
+        _deleteTask: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
+        },
+
         getTaskLists: function(request, response){
             TaskListModel.getTaskLists( function(err, lists){
                 controller.task._getTaskLists( err, lists, response )
@@ -331,7 +400,6 @@ var controller = {
                 controller.task._getTasks( err, events, response )
             });
         },
-
         _getTasks: function( err, tasks, response ){
             if( err ){
                 response.statusCode = 400;

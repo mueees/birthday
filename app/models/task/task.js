@@ -21,7 +21,6 @@ _.extend(Task, BaseModel, {
             }
         })
     },
-
     _getTasks: function(id, db, cb){
         var query = {
             listId: id
@@ -34,12 +33,112 @@ _.extend(Task, BaseModel, {
                 cb(null, result)
             }
         })
+    },
+
+    deleteTask: function(id, cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._deleteTask(id, db, cb);
+            }
+        })
+    },
+    _deleteTask: function(id, db, cb){
+        try{
+            var idObj = new this.ObjectID(id);
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+        db.collection('tasks').remove({
+            "_id": idObj
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
     }
 });
 
 
 _.extend(Task.prototype, {
+    save: function( cb ){
 
+        var _this = this;
+
+        this.connection(function(err, db){
+
+            if( err ){
+                cb(err);
+            }else{
+                _this._save(db,cb);
+            }
+        })
+
+    },
+    _save: function(db, cb){
+
+        var _this = this;
+
+        db.collection('tasks').insert(_this.data, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
+    },
+
+    update: function(cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._update( db,cb );
+            }
+        })
+    },
+
+    _update: function( db,cb ){
+
+        var _this = this;
+
+        try{
+            var idObj = new this.ObjectID( _this.data._id );
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+
+        var dataToSave = _this.data;
+        delete dataToSave._id;
+
+        db.collection('tasks').update({
+            '_id': idObj
+        }, {
+            $set: dataToSave
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
+    }
 })
 
 module.exports = Task;

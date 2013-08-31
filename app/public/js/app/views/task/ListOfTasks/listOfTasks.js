@@ -16,7 +16,7 @@ define([
         oneTaskTemp: _.template(oneTaskTemp),
 
         events: {
-            "click .list": "tryAddNewTask"
+            "click .addNewTask": "tryAddNewTask"
         },
 
         ui: {
@@ -25,6 +25,7 @@ define([
 
         initialize: function( options ){
             this.listName = options.listName;
+            this.listId = options.listId;
             this.taskCollection = options.taskCollection;
 
             this.listenTo(this.taskCollection, "add", this.addNewTask)
@@ -32,21 +33,19 @@ define([
         },
 
         render: function(){
+            var _this = this;
             var container = this.containerTemp({listName: this.listName});
-            container = $(container);
+            this.$el.html(container);
 
             this.taskCollection.each(function(model){
-                var oneTask = new OneTaskView(model);
-                container.find(".list").append( oneTask.$el );
+                var oneTask = new OneTaskView({model:model});
+                _this.$el.find(".list").append( oneTask.$el );
             })
-
-            this.$el.html(container);
         },
 
         tryAddNewTask: function(e){
+            e.preventDefault();
             var el = $(e.target);
-
-            if( !el.hasClass("list") ) return false;
 
             //если уже существует
             var newTask = this.taskCollection.isHaveNewTask();
@@ -54,18 +53,17 @@ define([
                 newTask.trigger("focusMe");
             }else{
                 this.taskCollection.push({
-                    listId: this.listName
+                    listId: this.listId
                 });
             }
 
-
-
+            return false;
         },
 
         addNewTask: function( model ){
             var oneTask = new OneTaskView({model:model});
             this.$el.find('.list').append( oneTask.$el );
-            oneTask.focus();
+            oneTask.focusToTitle();
         }
     })
 

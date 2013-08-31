@@ -25,6 +25,8 @@ define([
             "click .listBtn": "listBtn"
         },
 
+        currentListModel: null,
+
         ui: {
             "listNames": ".listNames ul"
         },
@@ -32,6 +34,8 @@ define([
         initialize: function( options ){
             this.listCollection = options.listCollection;
             this.listenTo(this.listCollection, "add", this.addListToDom);
+            this.listenTo(this.listCollection, "remove", this._deleteListSuccess);
+
             _.bind(this.createNewList, this);
             _.bind(this.addListToDom, this);
         },
@@ -50,7 +54,6 @@ define([
         },
 
         chooseFirstList: function(){
-
             this.$el.find('.listNames li a').first().trigger("click");
         },
 
@@ -67,6 +70,7 @@ define([
 
             var id = element.attr('data-id');
             var listModel = this.listCollection.get(id);
+            this.currentListModel = listModel;
             this.trigger("listSelected", {listModel:listModel});
         },
 
@@ -107,9 +111,17 @@ define([
                 title: "Attention",
                 text: "Delete current list?"
             });
+            this.listenTo(confirm, "accept", this._deleteList);
 
             confirm.show();
             return false;
+        },
+
+        _deleteList: function(){
+            
+        },
+        _deleteListSuccess: function(){
+
         },
 
         renameList: function(e){
