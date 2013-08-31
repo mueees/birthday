@@ -50,16 +50,22 @@ define([
 
             //если уже существует
             var newTask = this.taskCollection.isHaveNewTask();
+            if( newTask ){
+                newTask.trigger("focusMe");
+            }else{
+                this.taskCollection.push({
+                    listId: this.listName
+                });
+            }
 
-            this.taskCollection.push({
-                listId: this.listName
-            });
+
+
         },
 
         addNewTask: function( model ){
-            var oneTask = new OneTaskView(model);
+            var oneTask = new OneTaskView({model:model});
             this.$el.find('.list').append( oneTask.$el );
-            oneTask.focusToTitle();
+            oneTask.focus();
         }
     })
 
