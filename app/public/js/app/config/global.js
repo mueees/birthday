@@ -21,7 +21,10 @@ define([], function(){
             task: '/api/task',
             getTasks: "api/getTasks", // получить все таски
             taskList: "/api/taskList", // CRUD одного листа
-            getTaskList: "api/taskLists" //получить все листы с тасками
+            getTaskList: "api/taskLists", //получить все листы с тасками,
+
+            /*post*/
+            post: "/api/post"
 
 
         },

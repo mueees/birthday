@@ -33,5 +33,7 @@ module.exports = function(app) {
     app.delete('/api/taskList/:id', apiController.task.deleteTaskList);
     app.get("/api/getTasks", apiController.task.getTasks);
 
+    //blog
+    app.post("/api/post", apiController.blog.addPost);
 
 };

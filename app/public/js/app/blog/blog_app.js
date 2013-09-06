@@ -4,9 +4,13 @@ define([
     'marionette',
     'app/app',
 
+    /*layout*/
+    'app/layouts/blog/layout',
+
     /*modules*/
+    'app/blog/menu/module',
     'app/blog/addPost/module'
-], function(jQuery, Backbone, Marionette, App){
+], function(jQuery, Backbone, Marionette, App, LayoutBlogAdminPanel){
 
     App.module("Blog", {
         startWithParent: false,
@@ -20,6 +24,7 @@ define([
                 },
 
                 appRoutes: {
+                    'blog': "blog",
                     "blog/add" : "addPost",
                     "blog/change/:id" : "changePost",
                     "blog/post/:id" : "showPost",
@@ -30,10 +35,23 @@ define([
             })
 
             var Controller = {
+                showBlog: function(){
 
+                    var layoutBlogAdminPanel = new LayoutBlogAdminPanel();
+                    layoutBlogAdminPanel.render();
+                    App.main.show( layoutBlogAdminPanel );
+
+                    Blog.Menu.API.showMenu( layoutBlogAdminPanel.menuContainer );
+                    Blog.AddPost.API.setRegion(layoutBlogAdminPanel.contentContainer);
+
+                }
             }
 
             var API = {
+                blog: function(){
+                    Controller.showBlog();
+                },
+
                 addPost: function(){
                     Blog.AddPost.API.addPost();
                 },
@@ -63,6 +81,8 @@ define([
                     controller: API
                 })
             })
+
+            Blog.Channel = _.extend({}, Backbone.Events);
 
 
         }
