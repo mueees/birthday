@@ -117,3 +117,6 @@
 .tasks .menu-container .listNames .list-wrapper.active .icon-check {
   display: inline-block;
 }
+.blogAdminPanel .presetInfo {
+  display: none;
+}

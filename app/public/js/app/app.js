@@ -13,6 +13,7 @@ define([
     //add Chanels
     App.channels = {}
     App.channels.main = _.extend({}, Backbone.Events);
+    App.channels.blog = _.extend({}, Backbone.Events);
 
     App.addRegions({
         body: 'body',

@@ -13,7 +13,8 @@ require([
     /*entities*/
 	'app/entities/user',
 	'app/entities/event',
-	'app/entities/task'
+	'app/entities/task',
+	'app/entities/blog'
 
 	], function(App){
     App.start();

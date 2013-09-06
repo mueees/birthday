@@ -2,6 +2,7 @@ var UserModel = require('../models/user/user'),
     EventModel = require('../models/event/event'),
     TaskListModel = require('../models/task/taskList'),
     TaskModel = require('../models/task/task'),
+    PostModel = require('../models/blog/post'),
     url = require('url'),
     queryString = require( "querystring"),
     _ = require('underscore');
@@ -429,6 +430,32 @@ var controller = {
             }else{
                 response.send(tasks);
             }
+        }
+    },
+
+    blog: {
+        addPost: function(request, response){
+
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+            var post = new PostModel( data );
+
+            post.save(function(err, result){
+                controller.blog._addPost( err, result, response )
+            });
+        },
+
+        _addPost: function( err, result, response ){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+
         }
     }
 }
