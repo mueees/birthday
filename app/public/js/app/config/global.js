@@ -24,8 +24,11 @@ define([], function(){
             getTaskList: "api/taskLists", //получить все листы с тасками,
 
             /*post*/
-            post: "/api/post"
+            post: "/api/post",
 
+            /*preset*/
+            preset: "/api/preset",
+            getPresets:"/api/getPresets"
 
         },
 

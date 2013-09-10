@@ -1,7 +1,8 @@
 define([
     'marionette',
     'text!app/templates/blog/addPost/addPost.html',
-    'datepicker'
+    'datepicker',
+    'validate'
 ], function(Marionette, template){
 
     return Marionette.ItemView.extend({
@@ -10,7 +11,8 @@ define([
         events: {
             "click .btnAddPost": "addPost",
             "focus .tags:last": "lastTagFocus",
-            "blur .tags": "tagBlur"
+            "blur .tags": "tagBlur",
+            "change #preset": "presetChange"
         },
 
         tagTemplate: _.template('<input class="tags" type="text" name="tags[]" placeholder="tag" />'),
@@ -26,8 +28,10 @@ define([
             "tags": "input[name='tags[]']"
         },
 
-        initialize: function(){
-
+        initialize: function( options ){
+            this.parent = options.parent;
+            this.listenTo(this.parent, "addNewPreset:internal", this.addNewPresetToCollection);
+            this.listenTo(this.parent, "getPresetsCollection:internal", this.setPresetColection);
         },
 
         onRender: function(){
@@ -41,7 +45,8 @@ define([
                 rules: {
                     title: {
                         minlength: 3
-                    }
+                    },
+                    preset: "required"
                 }
             });
         },
@@ -58,6 +63,34 @@ define([
         tagBlur: function(e){
             var tag = $(e.target);
             if($.trim(tag.val()) == "" ) tag.remove();
+        },
+
+        presetChange: function(e){
+
+        },
+
+        addNewPresetToCollection: function(data){
+            this.presetCollection.add(data.model);
+        },
+
+        setPresetColection: function( presetCollection ){
+            this.presetCollection = presetCollection;
+            this.renderPresetCollection();
+            this.listenTo(presetCollection, "add", this.renderNewPreset);
+        },
+
+        renderPresetCollection: function(){
+            var _this = this;
+            this.ui.preset.html("");
+            this.presetCollection.each(function(preset, i){
+                var data = preset.toJSON();
+                _this.ui.preset.append('<option value="'+data['id']+'">'+data['name']+'</option>');
+            })
+        },
+
+        renderNewPreset: function(preset){
+            var data = preset.toJSON();
+            this.ui.preset.append('<option value="'+data['id']+'">'+data['name']+'</option>');
         },
 
         getData: function( defPost ){

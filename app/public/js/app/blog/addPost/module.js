@@ -2,7 +2,11 @@ define([
     'app/app',
     'marionette',
 
-    'app/views/blog/addPost/addPostView'
+    /*views*/
+    'app/views/blog/addPost/addPostView',
+
+    /*modules*/
+    'app/blog/preset/preset_app'
 ], function(App, Marionette, AddPostView){
 
 
@@ -14,19 +18,30 @@ define([
 
             var currentRegion;
 
+            /*modules*/
+            var Preset = App.module('Blog.Preset');
+
             var Controller = {
                 addPost: function( data ){
 
-                    var _this = this;
                     var addPostView = this.getAddPostView();
+                    var addPresetView = this.getAddPresetView();
+
                     if( data.region ){
                         data.region.show(addPostView);
                     }else{
                         currentRegion.show(addPostView);
                     }
+                    addPostView.$el.find('.extra-area').append(addPresetView.$el);
 
                     var addPostOnServer = _.bind(this.addPostOnServer, this);
                     addPostView.on('addNewPost', addPostOnServer);
+
+                    //add presetCollection
+
+                    $.when( App.request('preset:getPresets', data)).fail().done(function(data){
+                        AddPost.trigger('getPresetsCollection:internal', data.presetCollection);
+                    });
 
                 },
 
@@ -46,7 +61,16 @@ define([
                 },
 
                 getAddPostView: function(){
-                    return new AddPostView();
+                    var addPostView = new AddPostView({
+                        parent: AddPost
+                    });
+                    return addPostView;
+                },
+
+                getAddPresetView: function(){
+                    var addPresetView = Preset.API.getAddPresetView();
+                    addPresetView.render();
+                    return addPresetView;
                 }
             }
 
@@ -61,6 +85,7 @@ define([
 
             AddPost.API = API;
             AddPost.listenTo( App.channels.blog, "changeMenu:addPost", function(data){Controller.addPost(data)} );
+            AddPost.listenTo( App.channels.blog, "addNewPreset", function(data){ AddPost.trigger('addNewPreset:internal', data) } );
 
         }
     })
