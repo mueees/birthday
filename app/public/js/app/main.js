@@ -14,6 +14,7 @@ require([
 	'app/entities/user',
 	'app/entities/event',
 	'app/entities/task',
+	'app/entities/preset',
 	'app/entities/blog'
 
 	], function(App){

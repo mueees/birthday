@@ -3,6 +3,7 @@ var UserModel = require('../models/user/user'),
     TaskListModel = require('../models/task/taskList'),
     TaskModel = require('../models/task/task'),
     PostModel = require('../models/blog/post'),
+    PresetModel = require('../models/preset/preset'),
     url = require('url'),
     queryString = require( "querystring"),
     _ = require('underscore');
@@ -456,6 +457,47 @@ var controller = {
                 response.send(result[0]);
             }
 
+        }
+    },
+
+    preset: {
+        addPreset: function(request, response){
+
+            var data = request.body;
+
+            var preset = new PresetModel( data );
+
+            preset.save(function(err, result){
+                controller.preset._addPreset( err, result, response )
+            });
+        },
+
+        _addPreset: function( err, result, response ){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                response.send(result[0]);
+            }
+
+        },
+
+        getPresets: function(request, response ){
+            var data = request.body;
+
+            PresetModel.getPresets( function(err, presets){
+                controller.preset._getPresets( err, presets, response )
+            });
+        },
+
+        _getPresets: function(err, presets, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+            }else{
+                response.send(presets);
+            }
         }
     }
 }

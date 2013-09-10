@@ -36,4 +36,7 @@ module.exports = function(app) {
     //blog
     app.post("/api/post", apiController.blog.addPost);
 
+    //preset
+    app.post("/api/preset", apiController.preset.addPreset);
+    app.post("/api/getPresets", apiController.preset.getPresets);
 };
