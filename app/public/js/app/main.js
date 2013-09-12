@@ -6,6 +6,7 @@ require([
 	'app/event/event_app',
 	'app/task/task_app',
 	'app/blog/blog_app',
+	'app/timeline/timeline_app',
 
 	/*modules*/
 	'app/modules/cache/cache_app',
