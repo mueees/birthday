@@ -6,11 +6,12 @@ define([
 
     /*views*/
     'app/views/blog/preset/addPresetView',
+    'app/views/blog/preset/changePresetView',
 
     /*modules*/
     'app/modules/notify/module'
 
-], function(jQuery, Backbone, Marionette, App, AddPresetView){
+], function(jQuery, Backbone, Marionette, App, AddPresetView, ChangePresetView){
 
     App.module("Blog.Preset", {
         startWithParent: false,
@@ -43,12 +44,20 @@ define([
                 },
                 addNewPresetError: function(){
                     console.log("WTF!");
+                },
+
+                getChangePresetView: function(){
+                    return ChangePresetView;
                 }
             }
 
             var API  = {
                 getAddPresetView: function(){
                     return Controller.getAddPresetView();
+                },
+
+                getChangePresetView: function(){
+                    return Controller.getChangePresetView();
                 }
             }
 

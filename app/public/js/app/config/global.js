@@ -25,6 +25,7 @@ define([], function(){
 
             /*post*/
             post: "/api/post",
+            getPosts:"/api/getPosts",
 
             /*preset*/
             preset: "/api/preset",

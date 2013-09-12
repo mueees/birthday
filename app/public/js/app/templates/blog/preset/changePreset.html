@@ -1,0 +1,22 @@
+<div class="changePresetArea inputMargin">
+    <form class="form-horizontal standart changePresetForm">
+        <legend>Change preset</legend>
+
+        <div class="changePreset-container inputMargin ">
+            <div>
+                <div class="title">Name</div>
+                <input name="name" class="name" type="text" placeholder="Name preset" value="<%= name%>" required/>
+            </div>
+            <div>
+                <div class="title">Custom classes</div>
+                <input name="classes" class="classes" type="text" placeholder="Custom classes for preset" value="<%= classes%>" required/>
+            </div>
+            <div>
+                <div class="title">Width Preview</div>
+                <input  name="width" class="width" type="text" placeholder="Width preview" value="<%= width%>" required/>
+            </div>
+            <a href="#" class="btn btn-small btn-success changePreset">Change</a>
+            <a href="#" class="btn btn-small cancel">Cancel</a>
+        </div>
+    </form>
+</div>

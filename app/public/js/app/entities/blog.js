@@ -31,10 +31,37 @@ define([
             });
 
             return deferred.promise();
+        },
+
+        getPosts: function(data){
+            var deferred = $.Deferred();
+            this._getPosts(data, deferred);
+            return deferred.promise();
+        },
+
+        _getPosts: function(data, deferred){
+            var postCollection = new PostCollection();
+
+            postCollection.fetch({
+                type: "GET",
+                data: data,
+                success: function(){
+                    deferred.resolve({
+                        postCollection: postCollection
+                    });
+                },
+                error: function(){
+                    deferred.reject({});
+                }
+            });
         }
     }
 
     App.reqres.setHandler('blog:saveNewPost', function( data ){
         return API.saveNewPost( data );
+    })
+
+    App.reqres.setHandler('blog:getPosts', function( data ){
+        return API.getPosts( data );
     })
 })

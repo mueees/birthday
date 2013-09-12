@@ -15,6 +15,7 @@ requirejs.config({
         datepickerTime: '../plugins/bootstrap-datetimepicker',
         timepicker: '../plugins/bootstrap-timepicker',
         moment: '../plugins/moment',
+        ckeditor: 'ckeditor/ckeditor',
 
         /*libs*/
         bootstrap: "bootstrap/bootstrap"
@@ -43,6 +44,9 @@ requirejs.config({
         /*libs*/
         bootstrap: {
             deps: ['jquery']
+        },
+        ckeditor: {
+            exports: 'CKEDITOR'
         },
 
         /*plugins*/

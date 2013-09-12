@@ -2,7 +2,8 @@ define([
     'marionette',
     'text!app/templates/blog/addPost/addPost.html',
     'datepicker',
-    'validate'
+    'validate',
+    'ckeditor'
 ], function(Marionette, template){
 
     return Marionette.ItemView.extend({
@@ -37,6 +38,7 @@ define([
         onRender: function(){
             this.addValidate();
             this.addDatePickerDate();
+            this.addCkeEditor()
         },
 
         addValidate: function(){
@@ -55,6 +57,13 @@ define([
             this.ui.date.datepicker().datepicker("setValue", new Date());
         },
 
+        addCkeEditor: function(){
+            var _this = this;
+            setTimeout(function(){
+                _this.body = CKEDITOR.replace('body');
+            }, 0)
+        },
+
         lastTagFocus: function(e){
             var newTagView = this.tagTemplate();
             this.$el.find(".tags-container .controls").append( newTagView );
@@ -66,7 +75,9 @@ define([
         },
 
         presetChange: function(e){
-
+            var _id = this.ui.preset.val();
+            var model = this.presetCollection.get(_id);
+            this.trigger("changePreset", {model: model});
         },
 
         addNewPresetToCollection: function(data){
@@ -84,36 +95,30 @@ define([
             this.ui.preset.html("");
             this.presetCollection.each(function(preset, i){
                 var data = preset.toJSON();
-                _this.ui.preset.append('<option value="'+data['id']+'">'+data['name']+'</option>');
+                _this.ui.preset.append('<option value="'+data['_id']+'">'+data['name']+'</option>');
             })
         },
 
         renderNewPreset: function(preset){
             var data = preset.toJSON();
-            this.ui.preset.append('<option value="'+data['id']+'">'+data['name']+'</option>');
+
+            this.ui.preset.append('<option value="'+data['_id']+'">'+data['name']+'</option>');
         },
 
-        getData: function( defPost ){
+        getData: function(){
 
-            var defImg = $.Deferred();
-            var _this = this;
+            var data = {
+                title: this.ui.title.val(),
+                date: this.ui.date.val(),
+                body: this.body.getData(),
+                previewTitle: this.ui.previewTitle.val(),
+                previewImg: this.ui.previewImg.val(),
+                preset: this.ui.preset.val(),
+                tags: this.getTags()
+            };
 
-            defImg.done(function( imgDate ){
+            return data;
 
-                var data = {
-                    title: _this.ui.title.val(),
-                    date: _this.ui.date.val(),
-                    body: _this.ui.body.val(),
-                    previewTitle: _this.ui.previewTitle.val(),
-                    previewImg: imgDate,
-                    preset: _this.ui.preset.val(),
-                    tags: _this.getTags()
-                };
-
-                defPost.resolve(data);
-            })
-
-            this.getPreviewImgInfo( defImg );
         },
 
         getTags: function(){
@@ -131,22 +136,6 @@ define([
             return result;
         },
 
-        getPreviewImgInfo: function( defImg ){
-            var img = this.ui.previewImg[0].files[0];
-
-            if( !img ) {
-                defImg.resolve("");
-                return false;
-            }
-
-            var fr = new FileReader();
-            fr.onload = function(){
-                defImg.resolve(fr.result);
-            };
-            fr.readAsDataURL( img );
-            return false;
-        },
-
         valid: function(){
             var form = this.ui.form;
             return form.valid();
@@ -154,15 +143,10 @@ define([
 
         addPost: function(e){
             if(e) e.preventDefault();
-            var _this = this;
 
             if( this.valid() ){
-                var defPost = $.Deferred();
-                this.getData(defPost);
+                this.trigger("addNewPost", this.getData());
 
-                defPost.done(function(data){
-                    _this.trigger("addNewPost", data);
-                });
             }else{
                 console.log('WTF!');
             }

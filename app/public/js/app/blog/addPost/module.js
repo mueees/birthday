@@ -6,7 +6,9 @@ define([
     'app/views/blog/addPost/addPostView',
 
     /*modules*/
-    'app/blog/preset/preset_app'
+    'app/blog/preset/preset_app',
+    'app/modules/notify/module'
+
 ], function(App, Marionette, AddPostView){
 
 
@@ -20,6 +22,7 @@ define([
 
             /*modules*/
             var Preset = App.module('Blog.Preset');
+            var Notify = App.module("Notify");
 
             var Controller = {
                 addPost: function( data ){
@@ -35,7 +38,11 @@ define([
                     addPostView.$el.find('.extra-area').append(addPresetView.$el);
 
                     var addPostOnServer = _.bind(this.addPostOnServer, this);
+                    var changePreset = _.bind(this.changePreset, this);
                     addPostView.on('addNewPost', addPostOnServer);
+                    addPostView.on("changePreset", function(data){
+                        changePreset(data, addPostView);
+                    });
 
                     //add presetCollection
 
@@ -43,6 +50,26 @@ define([
                         AddPost.trigger('getPresetsCollection:internal', data.presetCollection);
                     });
 
+                },
+
+                changePreset: function(data, addPostView){
+                    var ChangeView = Preset.API.getChangePresetView();
+                    var changeView = new ChangeView(data);
+                    changeView.render();
+
+                    changeView.on("successChange", function(){
+                        Notify.API.showNotify({text: "Preset changed"});
+                    });
+
+
+                    this.clearAllChangeView(addPostView);
+                    addPostView.$el.find('.extra-area').append(changeView.$el);
+
+                    return false;
+                },
+
+                clearAllChangeView: function(addPostView){
+                    addPostView.$el.find('.extra-area .changePresetArea').remove();
                 },
 
                 addPostOnServer: function(data){

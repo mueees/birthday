@@ -6,6 +6,7 @@ var UserModel = require('../models/user/user'),
     PresetModel = require('../models/preset/preset'),
     url = require('url'),
     queryString = require( "querystring"),
+    jQuery = require( "jquery"),
     _ = require('underscore');
 
 var controller = {
@@ -457,7 +458,59 @@ var controller = {
                 response.send(result[0]);
             }
 
+        },
+
+        getPosts: function(request, response){
+
+            PostModel.getPosts( function(err, posts){
+                controller.blog._getPosts( err, posts, response );
+            });
+        },
+
+        _getPosts: function( err, posts, response ){
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(err);
+                return false;
+            }
+
+
+
+            var deffered = jQuery.Deferred();
+            PresetModel.getPresets( function(err, presets){
+                controller.blog._getPresets( err, presets, deffered );
+            });
+
+            deffered.done(function(data){
+
+                var posts = controller.blog.mergePostPreset(posts, data.presets);
+
+            });
+        },
+
+        mergePostPreset: function(posts, presets){
+            var result = [],
+                i,
+                max = posts.length,
+                curPost,
+                idPreset;
+
+            for( i = 0; i < max; i++ ){
+                curPost = posts[i];
+                idPreset = curPost['preset'];
+
+
+            }
+        },
+
+        _getPresets: function(err, presets, deffered){
+            deffered.resolve({
+                presets: presets
+            })
         }
+
+
     },
 
     preset: {
@@ -484,7 +537,6 @@ var controller = {
         },
 
         getPresets: function(request, response ){
-            var data = request.body;
 
             PresetModel.getPresets( function(err, presets){
                 controller.preset._getPresets( err, presets, response )
@@ -497,6 +549,30 @@ var controller = {
                 response.send(err);
             }else{
                 response.send(presets);
+            }
+        },
+
+        changePreset: function(request, response){
+            var data = request.body;
+
+            var preset = new PresetModel( data );
+            preset.update(function(err, result){
+                controller.preset._changePreset( err, result, response, preset )
+            });
+        },
+        _changePreset: function(err, result, response, preset){
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, preset.data);
             }
         }
     }

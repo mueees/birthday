@@ -9,6 +9,33 @@ function Post(data){
 
 util.inherits(Post, BaseModel);
 
+
+_.extend(Post, BaseModel, {
+    getPosts: function( cb ){
+
+        var _this = this;
+
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._getPosts(db, cb);
+            }
+        })
+    },
+    _getPosts: function(db, cb){
+        var query = {};
+
+        db.collection('posts').find(query).toArray( function(err, result){
+            if(err){
+                cb(err)
+            }else{
+                cb(null, result)
+            }
+        })
+    }
+});
+
 _.extend(Post.prototype, {
 
     validate: function( data ){
