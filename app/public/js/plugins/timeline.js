@@ -170,6 +170,8 @@
                 buffer.append(monthLine[i].html);
             }
 
+
+
             return html;
         }
         function bind(){
@@ -498,8 +500,6 @@
                 }
                 return posts;
             }
-
-            console.log(idsPost);
 
             /*назначаем месяцам позицию left*/
             var i,
