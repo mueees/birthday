@@ -54,6 +54,30 @@ define([
                     deferred.reject({});
                 }
             });
+        },
+
+        getPostsbyId: function(data){
+            var deferred = $.Deferred();
+            this._getPostsById(data, deferred);
+            return deferred.promise();
+        },
+
+        _getPostsById: function(data, deferred){
+
+            var postCollection = new PostCollection();
+
+            postCollection.fetch({
+                type: "GET",
+                data: data,
+                success: function(){
+                    deferred.resolve({
+                        postCollection: postCollection
+                    });
+                },
+                error: function(){
+                    deferred.reject({});
+                }
+            });
         }
     }
 
@@ -63,5 +87,9 @@ define([
 
     App.reqres.setHandler('blog:getPosts', function( data ){
         return API.getPosts( data );
+    })
+
+    App.reqres.setHandler('blog:getPostsById', function( data ){
+        return API.getPostsbyId( data );
     })
 })

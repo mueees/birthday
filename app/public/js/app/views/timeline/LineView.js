@@ -5,6 +5,7 @@ define([
     /*views*/
     'app/views/timeline/MonthView',
     'app/views/timeline/PostPreviewView',
+    'app/views/timeline/PostFullView',
 
     /*models*/
     'app/models/timeline/post',
@@ -12,7 +13,7 @@ define([
     /*collections*/
     'app/collections/timeline/posts'
 
-], function(Marionette, templateLine, MonthView, PostPreviewView, PostModel, PostCollection){
+], function(Marionette, templateLine, MonthView, PostPreviewView, PostFullView, PostModel, PostCollection){
 
     return Marionette.ItemView.extend({
         templateLine: _.template(templateLine),
@@ -29,8 +30,6 @@ define([
 
         initialize: function(data){
 
-
-
             this.rowPostData = data.rowPostData;
             this.channel = data.channel;
 
@@ -42,10 +41,49 @@ define([
             this.w = jQuery(window);
             this.windowWidth = this.w.width();
 
+            this.listenTo(this.channel, "showPost", this.showPost);
+
             this.createMonthView();
             this.calculateMonth();
             this.setLeftPosMonth();
             this.render();
+
+        },
+
+        showPost: function(data){
+
+            var postModel = data.postModel.toJSON();
+
+            var newLeftPos = (-data.monthLeft - postModel.left) + this.windowWidth/2 - postModel.preset.width/2;
+
+            if( newLeftPos > 0 ){
+                newLeftPos = 0;
+
+                /*если импульс дошел до правого конца, то импульс должен прекратиться*/
+            }else if( Math.abs( newLeftPos - this.windowWidth ) > this.width ){
+                newLeftPos = -(this.width - this.windowWidth);
+            }
+
+            this.channel.trigger('timeline_left:change', {
+                left: newLeftPos,
+                type: "animate"
+            });
+
+            this.showFullPost({model: data.postModel});
+
+        },
+
+        showFullPost: function(data){
+            var fullPost = new PostFullView(data);
+            fullPost.$el.modal();
+
+            /*this.listenTo(fullPost, "nextPost", function(data){
+                this.channel("showNextPost", data);
+            });*/
+
+        },
+
+        showNextPost: function(){
 
         },
 
@@ -94,8 +132,9 @@ define([
                     currentMonth = currentYear["month"][month];
                     monthView =  new MonthView({
                         year: year,
-                        month: month
-                    });
+                        month: month,
+                        channel: this.channel
+                    })
 
                     this.createPosts(monthView,currentMonth['postData']);
 
@@ -163,11 +202,18 @@ define([
 
         changeLeftPosition: function(data){
             var left = data.left,
-                type = null;
+                type = data.type;
 
-            this.$clip.css({
-                left: left
-            });
+
+            if( type === 'animate' ){
+                this.$clip.animate({
+                    left: left
+                }, 500);
+            }else{
+                this.$clip.css({
+                    left: left
+                });
+            }
 
             this.left = left;
             this.updateMonth();
@@ -176,10 +222,21 @@ define([
         bindMouse: function(){
             var _this = this;
             this.dragObj = null;
+
+            this.impulsOption = {
+                timeInter: 20, //кол-во последних миллисекунд которые берутся в расчет для расчета инерции
+                mass: 5, // коэффициент служит для расчета инерции,
+                fading: 1.05, //// коэффициент затухания инерции
+                minImpuls: 0.1 // коэффициент при котором импульс прекращает действовать
+            }
+
+            this.impuls = null;
+
             this.intervalImpuls = null;
 
             this.$el.on("mousedown", function(e){
-                _this.mousedown(e, _this)
+                e.preventDefault();
+                _this.mousedown(e, _this);
             });
             this.$el.on("mousemove", function(e){
                 _this.mousemove(e, _this)
@@ -221,6 +278,14 @@ define([
             }
             _this.dragObj.moveX = moveX;
 
+            /*расчет для инерции*/
+            _this.dragObj.startMoveTime = new Date();
+            _this.dragObj.lastMoveX = e.pageX;
+            _this.dragObj.inert.push({
+                time: new Date(),
+                position: Math.abs(moveX)
+            })
+
             _this.channel.trigger("timeline_left:change", {left: _this.dragObj.moveX});
 
             return false;
@@ -228,7 +293,81 @@ define([
         },
 
         mouseUp: function(e, _this){
+
+            var curerntTime,
+                lastPoint,
+                startPoint;
+
+
+
+            /*подсчитываем инерцию*/
+            if( _this.dragObj != null && _this.dragObj.inert.length > 0 ){
+                curerntTime = new Date();
+                lastPoint = _this.dragObj.inert[ _this.dragObj.inert.length - 1];
+
+                /*если мышка простояла более чем timeInter никуда не двигаюся то инерции не будет*/
+                if( curerntTime - lastPoint.time  < _this.impulsOption.timeInter ){
+                    startPoint = (function(){
+
+                        var time = 0,
+                            i = _this.dragObj.inert.length - 1;
+
+                        while( time < _this.impulsOption.timeInter && i > 0 ){
+                            time = lastPoint.time - _this.dragObj.inert[i].time;
+                            i--;
+                        }
+
+                        if( time >= _this.impulsOption.timeInter ){
+                            return _this.dragObj.inert[i]
+                        }
+
+                        return false;
+
+                    })();
+
+                    if( startPoint ){
+                        var startPosition = startPoint.position;
+                        var endPosition = lastPoint.position;
+                        var startTime = startPoint.time;
+                        var endTime = lastPoint.time;
+
+                        var distance = endPosition - startPosition;
+                        var time = endTime - startTime;
+                        var speed = distance/time;
+                        _this.impuls = speed * _this.impulsOption.mass;
+
+                        _this.intervalImpuls = setInterval(function(){_this.impulsStart()}, 16);
+
+                    }
+                }
+            }
+
+
             _this.dragObj = null;
+            return false;
+        },
+
+        impulsStart: function(){
+            var left = this.left - this.impuls;
+
+            /*если импульс дошел до левого конца, то импульс должен прекратиться*/
+            if( left > 0 ){
+                this.channel.trigger("timeline_left:change", {left: 0} );
+                clearInterval(this.intervalImpuls);
+                return false;
+            }
+
+            /*если импульс дошел до правого конца, то импульс должен прекратиться*/
+            if( Math.abs( left - this.windowWidth ) > this.width ){
+                this.channel.trigger("timeline_left:change", {left: left} );
+                clearInterval(this.intervalImpuls);
+                return false;
+            }
+
+            /*если все нормально вещаем новую позицию left и уменьшаем импульс*/
+            this.channel.trigger("timeline_left:change", {left: this.left - this.impuls} );
+            this.impuls = this.impuls / this.impulsOption.fading;
+            if( Math.abs(this.impuls) < this.impulsOption.minImpuls ) clearInterval(this.intervalImpuls);
         },
 
         updateMonth: function(){

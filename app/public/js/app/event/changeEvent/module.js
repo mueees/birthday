@@ -45,8 +45,8 @@ define([
                         return false;
                     }
 
-                    var done = _.bind(this.renderChangeView, this)
-                    var error = _.bind(this.errorRequestEvent, this)
+                    var done = _.bind(this.renderChangeView, this);
+                    var error = _.bind(this.errorRequestEvent, this);
 
                     $.when( App.request( 'event:getById', data.idEvent )).fail( error ).done(function(data){
                         done( data, deferred )

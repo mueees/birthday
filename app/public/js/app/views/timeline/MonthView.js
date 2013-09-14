@@ -19,6 +19,7 @@ define([
         initialize: function(data){
             this.month = data.month;
             this.year = data.year;
+            this.channel = data.channel;
             this.postPreviewView = [];
             this.width = null;
             this.left = null;
@@ -49,6 +50,13 @@ define([
         },
 
         addPostView: function(postView){
+            var _this = this;
+
+            this.listenTo(postView, "showPost", function(data){
+                data.monthLeft = _this.left;
+                _this.channel.trigger("showPost", data)
+            })
+
             this.postPreviewView.push(postView);
         },
 

@@ -1,6 +1,11 @@
 define([
     'app/app',
-    'marionette'
+    'marionette',
+
+    /*modules*/
+    'app/modules/notify/module'
+
+
 ], function(App, Marionette){
 
 
@@ -9,6 +14,10 @@ define([
         startWithParent: true,
 
         define: function(AddEvent, App, Backbone, Marionette, $, _){
+
+            /*modules*/
+            var Notify = App.module("Notify");
+            /*Notify.API.showNotify({text: "Preset changed"});*/
 
             var Controller = {
                 addEvent: function(){

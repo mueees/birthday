@@ -1,5 +1,5 @@
 .tl
-	background #dadada
+	background url('/img/blog/background/background.jpg') no-repeat 0 0
 	color black
 	font-family arial,tahoma,sans-serif
 	font-size 12px
@@ -16,9 +16,12 @@
 		position absolute 
 
 	.line
-		background none repeat scroll 0 0 rgba(241, 241, 241, 1)
+		background rgba(68, 73, 56, 0.7)
 		height 370px
 		padding 28px 0
+
+		&:hover
+			cursor pointer
 
 		.timeline-buffer
 			display none
@@ -33,5 +36,76 @@
 		padding 3px
 		border-bottom 1px solid #d1cbd1
 		color white
-		
+		list-style none
 
+		&:hover
+			transition all 200ms linear
+			background rgba(255, 255, 255, 0.92)
+			color #000000
+		
+		&.white
+			background rgb(255, 255, 255)
+			color #000000
+
+			&:hover
+				transition all 200ms linear
+				background rgba(177, 177, 177, 0.37)
+				color white
+
+		img
+			margin 0 0 10px 0
+			display block
+
+		&.quote
+			font-size 14px
+			line-height 20px
+
+.postModal
+	width 80%
+	position absolute
+	margin-left -350px
+	width 700px
+
+
+.postMain
+	padding 36px 20px 20px
+
+	h2
+		clear: both;
+		font-family: HelveticaCustom,arial,sans-serif;
+		margin: 20px 130px 20px -20px;
+		padding: 15px 20px;
+		background: #99cccc;
+		font-style: normal;
+		font-weight: normal;
+		color: white;
+		width: 60%;
+		font-size: 30px;
+		line-height: 28px;
+
+	.tags
+		li
+			list-style none
+
+	.nav
+		li
+			list-style none
+
+		.navBtn
+			display: block;
+			position: absolute;
+			width: 27px;
+			top: 0%;
+			padding: 10px;
+			cursor: pointer;
+			background #99cccc
+			color white
+
+			&:hover
+				background: white;
+				color: #99cccc;
+
+			&.prev
+				left -50px
+			&.next
+				right -50px

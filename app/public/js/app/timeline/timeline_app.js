@@ -19,6 +19,7 @@ define([
 
                 before: function(){
                     App.startSubApp( "Timeline", {} );
+
                 },
 
                 appRoutes: {
@@ -34,188 +35,6 @@ define([
                     var error = _.bind(Controller.getPostsError, this);
 
                     $.when(  App.request('blog:getPosts')).fail( error ).done(done);
-
-                    /*this.getPostsSuccess([{
-                        _id: "2342340t65g",
-                        title: "Some title",
-                        preset: {
-                            classes: "bla test",
-                            width: 130,
-                            name: "test"
-                        },
-                        previewTitle: "This is preview title1",
-                        previewImg: "/img/pla.jpg",
-                        date: new Date(2015, 06, 13)
-                    },
-                        {
-                            _id: "2342394t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2342834t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2342374t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2342346t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2345234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2342434t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "2342334t654g",
-                            title: "Some title1",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title2",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date(2014, 08, 13)
-                        },
-                        {
-                            _id: "234234t65g4",
-                            title: "Some title2",
-                            preset: {
-                                classes: "bla test",
-                                width: 230,
-                                name: "test"
-                            },
-                            previewTitle: "This is preview title3",
-                            previewImg: "/img/pla.jpg",
-                            date: new Date()
-                        }
-                    ]);*/
 
                 },
 
@@ -280,6 +99,7 @@ define([
 
             var API  = {
                 timelineShow: function(){
+                    Timeline.Channel.off();
                     Controller.timelineShow();
                 }
             }
