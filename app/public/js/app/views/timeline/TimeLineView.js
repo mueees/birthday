@@ -18,7 +18,6 @@ define([
         },
 
         initialize: function(data){
-
             this.line = new LineView(data);
         },
 

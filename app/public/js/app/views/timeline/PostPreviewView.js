@@ -11,7 +11,7 @@ define([
         className: "post",
 
         events: {
-
+            "click": "previewClick"
         },
 
         ui: {
@@ -39,6 +39,7 @@ define([
 
         getTitlePhoto: function(){
             console.log('getTitlePhoto')
+            this.$el.find('img').attr('src', this.model.get('previewImg') );
         },
 
         setLeft: function( left ){
@@ -49,6 +50,13 @@ define([
         getWidth: function(){
             var preset = this.model.get("preset");
             return preset.width;
+        },
+
+        previewClick: function(){
+            this.trigger("showPost", {
+                postModel: this.model
+            });
+            return false;
         }
     })
 

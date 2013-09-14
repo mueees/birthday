@@ -134,7 +134,7 @@
   font-size: 12px;
 }
 .tl {
-  background: #dadada;
+  background: url("/img/blog/background/background.jpg") no-repeat 0 0;
   color: #000;
   font-family: arial, tahoma, sans-serif;
   font-size: 12px;
@@ -152,9 +152,12 @@
   position: absolute;
 }
 .tl .line {
-  background: none repeat scroll 0 0 #f1f1f1;
+  background: rgba(68,73,56,0.7);
   height: 370px;
   padding: 28px 0;
+}
+.tl .line:hover {
+  cursor: pointer;
 }
 .tl .line .timeline-buffer {
   display: none;
@@ -169,4 +172,75 @@
   padding: 3px;
   border-bottom: 1px solid #d1cbd1;
   color: #fff;
+  list-style: none;
+}
+.tl .post:hover {
+  transition: all 200ms linear;
+  background: rgba(255,255,255,0.92);
+  color: #000;
+}
+.tl .post.white {
+  background: #fff;
+  color: #000;
+}
+.tl .post.white:hover {
+  transition: all 200ms linear;
+  background: rgba(177,177,177,0.37);
+  color: #fff;
+}
+.tl .post img {
+  margin: 0 0 10px 0;
+  display: block;
+}
+.tl .post.quote {
+  font-size: 14px;
+  line-height: 20px;
+}
+.postModal {
+  width: 80%;
+  position: absolute;
+  margin-left: -350px;
+  width: 700px;
+}
+.postMain {
+  padding: 36px 20px 20px;
+}
+.postMain h2 {
+  clear: both;
+  font-family: HelveticaCustom, arial, sans-serif;
+  margin: 20px 130px 20px -20px;
+  padding: 15px 20px;
+  background: #9cc;
+  font-style: normal;
+  font-weight: normal;
+  color: #fff;
+  width: 60%;
+  font-size: 30px;
+  line-height: 28px;
+}
+.postMain .tags li {
+  list-style: none;
+}
+.postMain .nav li {
+  list-style: none;
+}
+.postMain .nav .navBtn {
+  display: block;
+  position: absolute;
+  width: 27px;
+  top: 0%;
+  padding: 10px;
+  cursor: pointer;
+  background: #9cc;
+  color: #fff;
+}
+.postMain .nav .navBtn:hover {
+  background: #fff;
+  color: #9cc;
+}
+.postMain .nav .navBtn.prev {
+  left: -50px;
+}
+.postMain .nav .navBtn.next {
+  right: -50px;
 }

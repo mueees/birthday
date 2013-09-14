@@ -9,7 +9,9 @@ define([
 
     /*modules*/
     'app/blog/menu/module',
-    'app/blog/addPost/module'
+    'app/blog/addPost/module',
+    'app/blog/listPost/module',
+    'app/blog/changePost/module'
 ], function(jQuery, Backbone, Marionette, App, LayoutBlogAdminPanel){
 
     App.module("Blog", {
@@ -43,6 +45,7 @@ define([
 
                     Blog.Menu.API.showMenu( layoutBlogAdminPanel.menuContainer );
                     Blog.AddPost.API.setRegion(layoutBlogAdminPanel.contentContainer);
+                    Blog.ListPost.API.setRegion(layoutBlogAdminPanel.contentContainer);
 
                 }
             }

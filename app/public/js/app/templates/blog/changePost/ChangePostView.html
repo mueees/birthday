@@ -1,0 +1,85 @@
+<div class="addPost">
+    <div class="page-header">
+        <h3>Add Post</h3>
+    </div>
+    <div class="row">
+        <div class="span7">
+            <form class="form-horizontal standart addPostForm">
+
+                <legend>Main</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="title">Title</label>
+                    <div class="controls">
+                        <textarea name="title" id="title" ></textarea>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="date">Date post or event</label>
+                    <div class="controls">
+                        <input class=""  id="date" type="text" name="date" placeholder="Date post or event" >
+                    </div>
+                </div>
+
+                <div class="control-group tags-container">
+                    <label class="control-label" >Tags</label>
+                    <div class="controls">
+                        <input class="tags" type="text" name="tags[]" placeholder="tag" />
+                    </div>
+                </div>
+
+                <legend>Body</legend>
+
+                <textarea name="body" id="body"></textarea>
+
+                <legend>Preview</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="previewImg">Preview Image</label>
+                    <div class="controls">
+                        <!--<input type="file" name="previewImg" id="previewImg"/>-->
+                        <input type="text" name="previewImg" id="previewImg"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="previewTitle">Preview Title</label>
+                    <div class="controls">
+                        <textarea class="" name="previewTitle" id="previewTitle" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="control-group preset-container">
+                    <label class="control-label" >Presets for timetable preview</label>
+                    <div class="controls">
+                        <select name="preset" id="preset">
+                        </select>
+
+                        <div class="presetInfo">
+                            <div>
+                                <div class="title">Name</div>
+                                <input type="text" placeholder="Name preset"/>
+                            </div>
+                            <div>
+                                <div class="title">Custom classes</div>
+                                <input type="text" placeholder="Custom classes for preset"/>
+                            </div>
+                            <div>
+                                <div class="title">Width Preview</div>
+                                <input type="text" placeholder="Width preview" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit">
+                    <a class="btn btn-success btnAddPost" href="#">Add Post</a>
+                </div>
+
+            </form>
+        </div>
+        <div class="span2 extra-area">
+        </div>
+    </div>
+</div>

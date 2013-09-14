@@ -1,12 +1,17 @@
 define([
     'marionette',
-    'text!app/templates/user/users_list/layout.html'
+    'text!app/templates/...'
 
 ], function(Marionette, LayoutTemp){
 
 
     var Layout = Marionette.Layout.extend({
-        template: _.template(LayoutTemp)
+        template: _.template(LayoutTemp),
+
+        regions: {
+            'contentContainer': '.content-container',
+            'menuContainer': '.menu-container'
+        }
     })
 
     return Layout;

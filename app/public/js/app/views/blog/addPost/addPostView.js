@@ -61,6 +61,8 @@ define([
             var _this = this;
             setTimeout(function(){
                 _this.body = CKEDITOR.replace('body');
+                _this.title = CKEDITOR.replace('title');
+                _this.previewTitle = CKEDITOR.replace('previewTitle');
             }, 0)
         },
 
@@ -108,14 +110,15 @@ define([
         getData: function(){
 
             var data = {
-                title: this.ui.title.val(),
+                title: this.title.getData(),
                 date: this.ui.date.val(),
                 body: this.body.getData(),
-                previewTitle: this.ui.previewTitle.val(),
+                previewTitle: this.previewTitle.getData(),
                 previewImg: this.ui.previewImg.val(),
                 preset: this.ui.preset.val(),
                 tags: this.getTags()
             };
+
 
             return data;
 
