@@ -18,7 +18,15 @@ define([
         },
 
         initialize: function(data){
+
             this.line = new LineView(data);
+        },
+
+        render: function(){
+            var view = this.template();
+            this.$el.html(view);
+            this.$el.find('.tl').append( this.line.$el );
+            this.line.bindEvent();
         },
 
         onRender: function(){

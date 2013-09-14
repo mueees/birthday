@@ -469,23 +469,25 @@ var controller = {
 
         _getPosts: function( err, posts, response ){
 
+
+
             if( err ){
                 response.statusCode = 400;
                 response.send(err);
                 return false;
             }
 
-
-
             var deffered = jQuery.Deferred();
-            PresetModel.getPresets( function(err, presets){
-                controller.blog._getPresets( err, presets, deffered );
+            var defferedPromise = deffered.promise();
+            defferedPromise.done(function(data){
+
+                var postsToSend = controller.blog.mergePostPreset(posts, data.presets);
+                response.send(postsToSend);
             });
 
-            deffered.done(function(data){
 
-                var posts = controller.blog.mergePostPreset(posts, data.presets);
-
+            PresetModel.getPresets( function(err, presets){
+                controller.blog._getPresets( err, presets, deffered );
             });
         },
 
@@ -500,11 +502,27 @@ var controller = {
                 curPost = posts[i];
                 idPreset = curPost['preset'];
 
+                curPost.preset = controller.blog.getPresetById(presets, idPreset);
+                result.push(curPost);
+            }
+            return result;
 
+        },
+
+        getPresetById: function(presets, idPreset){
+            var i,
+                max = presets.length;
+
+            for( i = 0; i < max; i++ ){
+                if( presets[i]['_id'] ==  idPreset){
+                    return presets[i];
+                    break;
+                }
             }
         },
 
         _getPresets: function(err, presets, deffered){
+
             deffered.resolve({
                 presets: presets
             })

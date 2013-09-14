@@ -133,3 +133,40 @@
   background: #c97a25;
   font-size: 12px;
 }
+.tl {
+  background: #dadada;
+  color: #000;
+  font-family: arial, tahoma, sans-serif;
+  font-size: 12px;
+  height: 555px;
+  line-height: 1.3;
+  margin: 0;
+  min-width: 960px;
+  overflow: hidden;
+  padding: 20px 0 0 0;
+  position: relative;
+  width: 100%;
+}
+.tl .month,
+.tl .post {
+  position: absolute;
+}
+.tl .line {
+  background: none repeat scroll 0 0 #f1f1f1;
+  height: 370px;
+  padding: 28px 0;
+}
+.tl .line .timeline-buffer {
+  display: none;
+}
+.tl .line .timeline-clip {
+  height: 370px;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+.tl .post {
+  padding: 3px;
+  border-bottom: 1px solid #d1cbd1;
+  color: #fff;
+}
