@@ -16,7 +16,12 @@ define([
             tags: []
         },
         idAttribute: '_id',
-        urlRoot: App.config.api.post
+        urlRoot: App.config.api.post,
+
+        parse: function (response) {
+            response.date = new Date(response.date);
+            return response;
+        }
     })
 
 })

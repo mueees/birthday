@@ -37,7 +37,7 @@ define([
         },
 
         initialize: function(options){
-
+            debugger
         },
 
         onRender: function(){

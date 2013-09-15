@@ -80,7 +80,7 @@ define([
                 },
 
                 addPostSuccess: function(){
-
+                    Notify.API.showNotify({text: "Post saved"});
                 },
 
                 addPostError: function(){

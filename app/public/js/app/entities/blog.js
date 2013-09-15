@@ -24,7 +24,7 @@ define([
                 },
                 error: function(model, xhr){
                     deferred.reject({
-                        model: event,
+                        model: post,
                         xhr: xhr
                     })
                 }

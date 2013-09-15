@@ -1,52 +1,60 @@
-<div class="addPost">
+<div class="changePost">
     <div class="page-header">
-        <h3>Add Post</h3>
+        <h3>Change Post</h3>
     </div>
+    <div>
+        <a class="btn btn-success btnChangePost" href="#">Change Post</a>
+        <!--<a href="#" class="btn btn-danger btnDelete">Delete</a>-->
+        <a class="btn btnCancel" href="#">Cancel</a>
+    </div>
+
     <div class="row">
-        <div class="span7">
-            <form class="form-horizontal standart addPostForm">
+        <div class="span9">
+            <form class="form-horizontal standart changePostForm">
 
                 <legend>Main</legend>
 
                 <div class="control-group">
                     <label class="control-label" for="title">Title</label>
                     <div class="controls">
-                        <textarea name="title" id="title" ></textarea>
+                        <textarea name="title" id="title"> <%= title%> </textarea>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="date">Date post or event</label>
                     <div class="controls">
-                        <input class=""  id="date" type="text" name="date" placeholder="Date post or event" >
+                        <input value="<%= date.getDate() %>/<%= date.getMonth() + 1 %>/<%= date.getFullYear() %>" data-date-format="dd/mm/yyyy" class=""  id="date" type="text" name="date" placeholder="Date post or event" >
                     </div>
                 </div>
 
                 <div class="control-group tags-container">
-                    <label class="control-label" >Tags</label>
+                    <label class="control-label">Tags</label>
                     <div class="controls">
+                        <% for( var i = 0; i < tags.length; i++ ) {%>
+                        <input class="tags" type="text" name="tags[]" value="<%= tags[i]%>" placeholder="tag" />
+                        <% }%>
                         <input class="tags" type="text" name="tags[]" placeholder="tag" />
                     </div>
                 </div>
 
                 <legend>Body</legend>
 
-                <textarea name="body" id="body"></textarea>
+                <textarea name="body" id="body"> <%= body%> </textarea>
 
                 <legend>Preview</legend>
 
                 <div class="control-group">
                     <label class="control-label" for="previewImg">Preview Image</label>
                     <div class="controls">
-                        <!--<input type="file" name="previewImg" id="previewImg"/>-->
-                        <input type="text" name="previewImg" id="previewImg"/>
+                        <input type="text" name="previewImg" id="previewImg" value="<%= previewImg%>"/>
                     </div>
                 </div>
 
                 <div class="control-group">
                     <label class="control-label" for="previewTitle">Preview Title</label>
                     <div class="controls">
-                        <textarea class="" name="previewTitle" id="previewTitle" cols="30" rows="10"></textarea>
+                        <textarea class="" name="previewTitle" id="previewTitle" cols="30" rows="10"><%= previewTitle%></textarea>
                     </div>
                 </div>
 
@@ -54,32 +62,26 @@
                     <label class="control-label" >Presets for timetable preview</label>
                     <div class="controls">
                         <select name="preset" id="preset">
-                        </select>
 
-                        <div class="presetInfo">
-                            <div>
-                                <div class="title">Name</div>
-                                <input type="text" placeholder="Name preset"/>
-                            </div>
-                            <div>
-                                <div class="title">Custom classes</div>
-                                <input type="text" placeholder="Custom classes for preset"/>
-                            </div>
-                            <div>
-                                <div class="title">Width Preview</div>
-                                <input type="text" placeholder="Width preview" />
-                            </div>
-                        </div>
+                            <% for( var i = 0; i < presets.length; i++ ) {%>
+                            <% if(preset._id == presets[i]['_id']) { %>
+                            <option selected="selected" value="<%= presets[i]['_id'] %>"><%= presets[i]['name'] %></option>
+                            <% }else{ %>
+                            <option value="<%= presets[i]['_id'] %>"><%= presets[i]['name'] %></option>
+                            <% }%>
+                            <% }%>
+                            
+                        </select>
                     </div>
                 </div>
 
                 <div class="submit">
-                    <a class="btn btn-success btnAddPost" href="#">Add Post</a>
+                        <a class="btn btn-success btnChangePost" href="#">Change Post</a>
+                        <!--<a href="#" class="btn btn-danger btnDelete">Delete</a>-->
+                        <a class="btn btnCancel" href="#">Cancel</a>
                 </div>
 
             </form>
-        </div>
-        <div class="span2 extra-area">
         </div>
     </div>
 </div>
