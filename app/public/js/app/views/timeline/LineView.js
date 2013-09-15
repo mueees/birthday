@@ -11,7 +11,9 @@ define([
     'app/models/timeline/post',
 
     /*collections*/
-    'app/collections/timeline/posts'
+    'app/collections/timeline/posts',
+
+    'bootstrap'
 
 ], function(Marionette, templateLine, MonthView, PostPreviewView, PostFullView, PostModel, PostCollection){
 

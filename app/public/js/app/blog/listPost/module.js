@@ -8,7 +8,9 @@ define([
     'app/views/blog/listPost/ListPostsView',
 
     /*modules*/
-    'app/modules/notify/module'
+    'app/modules/notify/module',
+    'app/modules/dialog/module'
+
 
 ], function(App, Marionette, FilterView, ListPostLayout, ListPostsView){
 
@@ -23,6 +25,7 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
+            var Dialog = App.module('Dialog');
 
             var Controller = {
                 showListPost: function(data){
@@ -48,6 +51,7 @@ define([
                 },
 
                 getPostsSuccess: function( data, layout ){
+
                     var postCollection = data.postCollection;
 
                     if( postCollection.length == 0 ){
@@ -58,6 +62,31 @@ define([
                     var listPostsView = new ListPostsView({
                         postCollection: data.postCollection
                     });
+
+                    listPostsView.on("edit", function(data){
+                        App.channels.blog.trigger("edit", data);
+                    })
+                    listPostsView.on("delete", function(data){
+                        var confirm = Dialog.API.factory({
+                            type: 'confirm',
+
+                            title: "Attention",
+                            text: "Delete post?"
+                        });
+                        this.listenTo(confirm, "accept", function(){
+                            data.model.destroy({
+                                success: function(){
+                                    Notify.API.showNotify({text: "Post deleted"});
+                                },
+                                error: function(){
+                                    Notify.API.showNotify({text: "Cannot delete post from server"});
+                                }
+                            });
+                        });
+
+                        confirm.show();
+                        return false;
+                    })
 
                     layout.postsContainer.show(listPostsView);
                 },

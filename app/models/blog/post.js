@@ -33,7 +33,39 @@ _.extend(Post, BaseModel, {
                 cb(null, result)
             }
         })
-    }
+    },
+
+    deletePost: function(id, cb){
+        var _this = this;
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._deletePost(id, db, cb);
+            }
+        })
+    },
+    _deletePost: function(id, db, cb){
+        try{
+            var idObj = new this.ObjectID(id);
+        }catch(e){
+            cb({
+                errors: "Wrong event id"
+            })
+            return false;
+        }
+
+        db.collection('posts').remove({
+            "_id": idObj
+        }, function(err, result){
+
+            if( err ){
+                cb(err);
+            }else{
+                cb(null, result);
+            }
+        })
+    },
 });
 
 _.extend(Post.prototype, {

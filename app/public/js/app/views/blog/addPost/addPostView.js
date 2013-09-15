@@ -38,7 +38,7 @@ define([
         onRender: function(){
             this.addValidate();
             this.addDatePickerDate();
-            this.addCkeEditor()
+            this.addCkeEditor();
         },
 
         addValidate: function(){
@@ -61,8 +61,24 @@ define([
             var _this = this;
             setTimeout(function(){
                 _this.body = CKEDITOR.replace('body');
-                _this.title = CKEDITOR.replace('title');
-                _this.previewTitle = CKEDITOR.replace('previewTitle');
+                _this.title = CKEDITOR.replace('title', {toolbar :
+                    [
+                        { name: 'document', items : [ 'Source' ] },
+                        { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                        { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+                        { name: 'colors', items : [ 'TextColor','BGColor' ] },
+                        { name: 'basicstyles', items : [ 'Bold','Italic' ] }
+                    ]
+                });
+                _this.previewTitle = CKEDITOR.replace('previewTitle', {toolbar :
+                    [
+                        { name: 'document', items : [ 'Source' ] },
+                        { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+                        { name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+                        { name: 'colors', items : [ 'TextColor','BGColor' ] },
+                        { name: 'basicstyles', items : [ 'Bold','Italic' ] }
+                    ]
+                });
             }, 0)
         },
 

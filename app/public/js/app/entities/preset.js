@@ -61,7 +61,7 @@ define([
         return API.saveNewPreset( data );
     })
 
-    App.reqres.setHandler('preset:getPresets', function( data ){
+    App.reqres.setHandler('preset:getPresets', function(){
         return API.getPresets();
     })
 })

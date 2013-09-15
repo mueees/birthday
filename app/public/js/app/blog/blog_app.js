@@ -39,6 +39,8 @@ define([
             var Controller = {
                 showBlog: function(){
 
+                    var _this = this;
+
                     var layoutBlogAdminPanel = new LayoutBlogAdminPanel();
                     layoutBlogAdminPanel.render();
                     App.main.show( layoutBlogAdminPanel );
@@ -46,6 +48,19 @@ define([
                     Blog.Menu.API.showMenu( layoutBlogAdminPanel.menuContainer );
                     Blog.AddPost.API.setRegion(layoutBlogAdminPanel.contentContainer);
                     Blog.ListPost.API.setRegion(layoutBlogAdminPanel.contentContainer);
+
+                    /*events*/
+                    App.channels.blog.on("edit", function(data){
+                        _this.showChangeView(data, layoutBlogAdminPanel)
+                    });
+
+                },
+
+                showChangeView: function(data, layoutBlogAdminPanel){
+
+                    $.when(Blog.ChangePost.API.getChangePostViewByModel({model: data})).done(function(changeView){
+                        layoutBlogAdminPanel.extendContainer.show(changeView);
+                    }).fail(function(){console.log("WTF!")});
 
                 }
             }
@@ -85,7 +100,7 @@ define([
                 })
             })
 
-            Blog.Channel = _.extend({}, Backbone.Events);
+            //Blog.Channel = _.extend({}, Backbone.Events);
 
 
         }

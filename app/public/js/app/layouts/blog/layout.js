@@ -8,7 +8,8 @@ define([
 
         regions: {
             'contentContainer': '.content-container',
-            'menuContainer': '.menu-container'
+            'menuContainer': '.menu-container',
+            'extendContainer': ".extend-container"
         }
     })
 

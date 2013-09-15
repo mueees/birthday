@@ -21,5 +21,6 @@ require([
 
 
 	], function(App){
+
     App.start();
 })

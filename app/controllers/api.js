@@ -526,9 +526,55 @@ var controller = {
             deffered.resolve({
                 presets: presets
             })
+        },
+
+        changePost: function(request, response){
+            var data = request.body;
+
+            if(data.date) data.date = new Date(data.date);
+
+
+            var post = new PostModel( data );
+            post.update(function(err, result){
+                controller.blog._changePost( err, result, response, post )
+            });
+        },
+        _changePost: function(err, result, response, post){
+            var status;
+
+            if( err ){
+                response.statusCode = 400;
+                response.send(null);
+            }else{
+                if( result == 1){
+                    status = 200;
+                }else{
+                    status = 400;
+                }
+                response.send(status, post.data);
+            }
+        },
+
+        deletePost: function(request, response){
+            var id = request.params.id;
+
+            PostModel.deletePost( id, function(err, result){
+                controller.blog._deletePost( err, result, response )
+            });
+        },
+        _deletePost: function(err, result, response){
+            if( err ){
+                response.statusCode = 400;
+                response.send();
+            }else{
+                if( result == 1){
+                    response.statusCode = 200;
+                }else{
+                    response.statusCode = 400;
+                }
+                response.send({});
+            }
         }
-
-
     },
 
     preset: {

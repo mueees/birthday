@@ -37,9 +37,19 @@ define([
             this.postCollection.each(function(post, i){
 
                 var postView = new OnePostView({model:post});
+                _this.listenTo(postView, "edit", _this.editOnePost);
+                _this.listenTo(postView, "delete", function(data){
+                    _this.trigger("delete", data)
+                });
+
                 _this.$el.find("tbody").append( postView.$el );
 
             })
+        },
+
+        editOnePost: function(data){
+            this.trigger("edit", data);
+            return false;
         }
     })
 

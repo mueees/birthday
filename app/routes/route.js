@@ -35,6 +35,8 @@ module.exports = function(app) {
 
     //blog
     app.post("/api/post", apiController.blog.addPost);
+    app.put("/api/post/:id", apiController.blog.changePost);
+    app.delete("/api/post/:id", apiController.blog.deletePost);
     app.get("/api/getPosts", apiController.blog.getPosts);
 
     //preset

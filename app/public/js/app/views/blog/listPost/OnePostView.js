@@ -9,7 +9,8 @@ define([
         tagName: "TR",
 
         events: {
-
+            "click .editBtn": "editBtn",
+            "click .deleteBtn": "deleteBtn"
         },
 
         ui: {
@@ -17,11 +18,28 @@ define([
         },
 
         initialize: function(){
+            this.listenTo(this.model, "change:title", this.changeTitle);
+            this.listenTo(this.model, "change:savePost", this.render);
+            this.listenTo(this.model, "destroy", this.close);
             this.render();
         },
 
-        onRender: function(){
+        changeTitle: function(model){
+            debugger
+        },
 
+        editBtn: function(){
+            this.trigger("edit", this.model);
+            return false;
+        },
+
+        deleteBtn: function(e){
+            if(e) e. preventDefault();
+
+            this.trigger("delete", {
+                model: this.model
+            });
+            //this.model.destroy();
         }
     })
 

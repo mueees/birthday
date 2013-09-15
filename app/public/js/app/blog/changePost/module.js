@@ -22,7 +22,7 @@ define([
             var Notify = App.module("Notify");
 
             var Controller = {
-                getChangePost: function(deferred, data){
+                getChangePostView: function(deferred, data){
                     if( !data || _.isArray(data) ){
                         deferred.reject({});
                         return false;
@@ -30,10 +30,6 @@ define([
 
                     var done = _.bind(this.renderChangeView, this);
                     var error = _.bind(this.errorRequestPost, this);
-
-                    $.when( App.request( 'post:getById', data.idEvent )).fail( error ).done(function(data){
-                        done( data, deferred )
-                    });
 
                 },
 
@@ -45,22 +41,64 @@ define([
                     });
 
                     /*ChangeEvent.listenTo(view, "changeEvent", Controller.changeEvent);
-                    ChangeEvent.listenTo(view, "removeEvent", Controller.removeEvent);*/
+                     ChangeEvent.listenTo(view, "removeEvent", Controller.removeEvent);*/
 
                     deferred.resolve(view);
                 },
 
                 errorRequestPost: function(){
                     Notify.API.showNotify({text: "Cannot download post"});
+                },
+
+                getChangePostViewByModel: function( deferred, data ){
+
+                    var _changePostByModel = _.bind(this._changePostByModel, this);
+
+                    $.when( App.request('preset:getPresets')).fail(function(){
+                        Notify.API.showNotify({text: "Cannot download presets"});
+                        deferred.reject({});
+                    }).done(function(presetData){
+                            var presetCollection = presetData.presetCollection;
+                            var view = new ChangePostView({
+                                model: data.model,
+                                presets: presetCollection
+                            });
+                            view.on('changePost', _changePostByModel);
+                            deferred.resolve(view);
+                        });
+                },
+
+                _changePostByModel: function(data){
+                    var newData = data.newData;
+                    delete newData['presets'];
+                    data.model.set(newData, {silent: true});
+
+                    data.model.save(null, {
+                        success: function(){
+                            Notify.API.showNotify({text: "Post changed"});
+                            data.model.trigger("change:savePost");
+                        },
+                        error: function(){
+                            Notify.API.showNotify({text: "Cannot change post"});
+                        }
+                    });
                 }
             }
 
             var API = {
-                getChangeEvent: function( data ){
+                getChangePostView: function( data ){
                     var deferred = new $.Deferred();
-                    Controller.getChangePost( deferred, data );
+                    Controller.getChangePostView( deferred, data );
+                    return deferred.promise();
+                },
+
+                getChangePostViewByModel: function( data ){
+                    var deferred = new $.Deferred();
+                    Controller.getChangePostViewByModel( deferred, data );
                     return deferred.promise();
                 }
+
+
             }
 
 
