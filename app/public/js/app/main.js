@@ -17,9 +17,6 @@ require([
 
 	/*modules*/
 	'app/modules/cache/cache_app'
-
-
-
 	], function(App){
 
     App.start();
