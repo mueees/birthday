@@ -60,7 +60,10 @@ define([
         addCkeEditor: function(){
             var _this = this;
             setTimeout(function(){
-                _this.body = CKEDITOR.replace('body');
+                _this.body = CKEDITOR.replace('body', {
+                    filebrowserBrowseUrl : '/',
+                    filebrowserUploadUrl : '/'
+                });
                 _this.title = CKEDITOR.replace('title', {toolbar :
                     [
                         { name: 'document', items : [ 'Source' ] },
