@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
     db = require("./db"),
+    fsWorker = require("fsWorker"),
     route = require('./routes/route');
 
 app.configure(function(){

@@ -49,8 +49,6 @@ define([
                 showFileBrowser: function(){
                     var layout = new FileBrowserLayout();
 
-
-
                     var pathView = new PathView({
                         channel: App.channels.fileBrowser
                     });

@@ -1,5 +1,6 @@
 var rootController = require('../controllers/rootcontroller');
 var apiController = require('../controllers/api');
+var fileBrowserController = require('../controllers/fileBrowser');
 
 
 module.exports = function(app) {
@@ -43,4 +44,7 @@ module.exports = function(app) {
     app.post("/api/preset", apiController.preset.addPreset);
     app.post("/api/getPresets", apiController.preset.getPresets);
     app.put("/api/preset/:id", apiController.preset.changePreset);
+
+    //fileBrowser
+    app.get("/api/fileBrowser", fileBrowserController.getData);
 };
