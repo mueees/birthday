@@ -1,8 +1,8 @@
 .idea
-node_modules
-public/node_modules
-public/.idea
-app/public/img/blog
 markup sveta
 psd
-dump
+/node_modules
+/app/public/node_modules
+
+#ext
+*.psd
