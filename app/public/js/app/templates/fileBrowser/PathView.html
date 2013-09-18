@@ -1,5 +1,30 @@
 <div class="pathContainer">
-    <a class="home" href="#">
-        Home
-    </a>
+    <ul>
+    <li>
+        <a class="home" href="#">
+            Home
+        </a>
+        <% if( parts.length ) {%>
+        <span class="arrow">></span>
+        <%}%>
+        <% if( parts.length ) {%>
+    </li>
+
+
+    <% for(var i = 0; i < parts.length; i++) {%>
+    <% if( i == parts.length-1 ) {%>
+    <li>
+        <a href="#"><%= parts[i]%></a>
+    </li>
+    <%}else{%>
+    <li>
+        <a href="#"><%= parts[i]%></a>
+        <span class="arrow">></span>
+    </li>
+    <%}%>
+    <% }%>
+
+    <%}%>
+    </ul>
+
 </div>

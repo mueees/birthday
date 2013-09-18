@@ -1,9 +1,9 @@
 var fs = require('fs'),
     url = require('url'),
-    queryString = require( "querystring"),
     jQuery = require( "jquery"),
-    fs = require('fs');
-    _ = require('underscore');
+    fs = require('fs'),
+    _ = require('underscore'),
+    FsWorker = require("fsWorker");
 
 var controller = {
     getData: function(request, response){
@@ -15,21 +15,63 @@ var controller = {
             return false;
         }
 
-        controller.scanPath(parts.query.path, response);
+        var fsWorker = new FsWorker();
+        fsWorker.listDirWithInfo(parts.query.path, function(err, list){
+
+            if(err){
+                response.status = 400;
+                response.send(err);
+                return false;
+            }
+
+            response.send(list);
+        });
+
     },
 
-    scanPath: function(path, response){
+    newFolder: function(request, response){
+        var parts = url.parse( request.url, true );
 
-        fs.readdir("./public" + path, function(err, files){
-            for(var i = 0; i < files.length; i++){
-                var file = "./public" + path + '/' + files[i];
+        if( !parts.query.dirPath ){
+            response.statusCode = 400;
+            response.send("dirPath is required");
+            return false;
+        }
 
-                fs.stat(file, function(err, stat) {
-                    console.log(stat);
-                    console.log(stat.isDirectory());
-                });
+        var fsWorker = new FsWorker();
+        fsWorker.makeDir(parts.query.dirPath, null, function(err){
+
+            if(err){
+                response.status = 400;
+                response.send(err);
+                return false;
             }
+
+            response.end();
         });
+    },
+
+    upload: function(request, response){
+
+        var folder = "./public/";
+        request.files.uploadFile[0].forEach(function(file){
+
+            fs.readFile(file.path, function (err, data) {
+                if(err) {
+                    console.log(err);
+                    return false;
+                }
+
+                var newPath = folder + file.name;
+                fs.writeFile(newPath, data, function (err) {
+                    console.log(err);
+                });
+            });
+
+        })
+
+        response.end();
+
     }
 }
 

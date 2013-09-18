@@ -11,6 +11,7 @@ define([
     'app/views/fileBrowser/PathView',
     'app/views/fileBrowser/ExplorerView',
     'app/views/fileBrowser/ManageBtnView',
+    'app/views/fileBrowser/UploadView',
 
     /*collections*/
     'app/collections/fileBrowser/ItemsCollect',
@@ -18,7 +19,7 @@ define([
     /*modules*/
     'app/modules/notify/module'
 
-], function(jQuery, Backbone, Marionette, App, FileBrowserLayout, PathView, ExplorerView, ManageBtnView, ItemsCollect){
+], function(jQuery, Backbone, Marionette, App, FileBrowserLayout, PathView, ExplorerView, ManageBtnView, UploadView, ItemsCollect){
 
     App.module("FileBrowser", {
         startWithParent: false,
@@ -29,8 +30,10 @@ define([
             var Notify = App.module("Notify");
 
             var opts = {
-                defaultPath: "/",
-                url: "api/fileBrowser"
+                defaultPath: "/img/",
+                url: "api/fileBrowser",
+                newFolder: "api/fileBrowser/newFolder",
+                currentPath: "/img/"
             }
 
             var Router = Marionette.AppRouter.extend({
@@ -50,7 +53,8 @@ define([
                     var layout = new FileBrowserLayout();
 
                     var pathView = new PathView({
-                        channel: App.channels.fileBrowser
+                        channel: App.channels.fileBrowser,
+                        path: opts.defaultPath
                     });
                     var explorerView = new ExplorerView({
                         collection: new ItemsCollect(),
@@ -59,28 +63,32 @@ define([
                     var manageBtnView = new ManageBtnView({
                         channel: App.channels.fileBrowser
                     });
+                    var uploadView = new UploadView({
+                        channel: App.channels.fileBrowser
+                    });
 
                     layout.render();
 
                     App.main.show(layout);
                     layout.explore.show(explorerView);
                     layout.path.show(pathView);
+                    layout.upload.show(uploadView);
                     layout.manageBtn.show(manageBtnView);
 
                     this.getContent({path: opts.defaultPath});
 
                 },
 
-                getContent: function(path){
+                getContent: function(data){
 
                     $.ajax({
                         type: "GET",
-                        data: path,
+                        data: data,
                         url: opts.url,
-                        success: function(data){
-                            App.channel.fileBrowser.trigger("setNewPath", {
-                                data: data,
-                                path: path
+                        success: function(dataRequest){
+                            App.channels.fileBrowser.trigger("setNewPath", {
+                                data: dataRequest,
+                                path: data.path
                             });
                         },
                         error: function(){
@@ -90,7 +98,46 @@ define([
 
                 },
 
-                createFolder: function(){
+                up: function(){
+                    var upPath = this.getUpPath(opts.currentPath);
+                    opts.currentPath = upPath;
+                    this.getContent({path: opts.currentPath});
+                },
+
+                goToPath: function(data){
+
+                    opts.currentPath = data.path;
+                    this.getContent({path: opts.currentPath});
+                },
+
+                createNewFolder: function(data){
+                    $.ajax({
+                        type: "GET",
+                        data: {dirPath: data.dirPath},
+                        url: opts.newFolder,
+                        success: function(dataRequest){
+                            data.model.trigger("newFolderCreated");
+                        },
+                        error: function(){
+                            data.model.trigger("newFolderDONTCreated");
+                            Notify.API.showNotify({text: "Cannot create folder. Try again."});
+                        }
+                    })
+                },
+
+                getUpPath: function(path){
+                    var parts = path.split('/');
+                    parts = parts.filter(function(val) {
+                        if( val ) return val;
+                    });
+
+                    parts.pop();
+
+                    if( !parts.length ){
+                        return "/";
+                    }else{
+                        return "/" + parts.join("/") + "/"
+                    }
 
                 }
             }
@@ -98,6 +145,11 @@ define([
             var API  = {
                 showFileBrowser: function(){Controller.showFileBrowser()}
             }
+
+            /*events*/
+            App.channels.fileBrowser.on("up", function(){Controller.up()});
+            App.channels.fileBrowser.on("goToPath", function(data){Controller.goToPath(data)});
+            App.channels.fileBrowser.on("createNewFolder", function(data){Controller.createNewFolder(data)});
 
 
             App.addInitializer(function(){
