@@ -11,7 +11,9 @@ define([
             type: "",
             path: "",
             size: "",
-            description: ""
+            description: "",
+            isActive: false,
+            isSavedOnServer: true
         }/*
 
         parse: function (response) {

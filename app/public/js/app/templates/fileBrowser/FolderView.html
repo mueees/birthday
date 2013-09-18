@@ -1,12 +1,13 @@
 <td class="name">
-    <%=name%>
+    <a class="inFolder  <%= isSavedOnServer ? 'on' : 'off' %>"><%=name%></a>
+    <input type="text" class="newName <%= isSavedOnServer ? 'off' : 'on' %>" placeholder="<%=name%>">
 </td>
 <td class="type">
     <%=type%>
     <%=description%>
 </td>
 <td class="path">
-    <%=type%>
+    <%=path%>
 </td>
 <td class="size">
     <%=size%>

@@ -123,6 +123,59 @@
 .blogAdminPanel .preset-container .span3 {
   margin-left: 0;
 }
+.exploreView th,
+.exploreView td {
+  text-align: left;
+  padding: 10px 15px;
+}
+.exploreView tr {
+  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+}
+.exploreView tr:hover {
+  background: #e7f6ff;
+  border-bottom: 1px solid #b2dffc;
+  border-top: 1px solid #b2dffc;
+}
+.exploreView tr.active {
+  background: #388ec8;
+  color: #fff;
+}
+.exploreView tr.active .inFolder {
+  color: #fff;
+}
+.exploreView tr .inFolder {
+  cursor: pointer;
+}
+.exploreView tr .inFolder.off {
+  display: none;
+}
+.exploreView tr .inFolder.on {
+  display: inline-block;
+}
+.exploreView tr .newName.off {
+  display: none;
+}
+.exploreView tr .newName.on {
+  display: inline-block;
+}
+.manageBtn .deleteBtn {
+  display: none;
+}
+.pathContainer ul {
+  padding: 0;
+  overflow: hidden;
+  margin-left: 0;
+}
+.pathContainer li {
+  float: left;
+  margin: 0 7px 0 0;
+  list-style: none;
+}
+.pathContainer .arrow {
+  display: inline-block;
+  margin-left: 5px;
+}
 .notify {
   position: fixed;
   top: 0;

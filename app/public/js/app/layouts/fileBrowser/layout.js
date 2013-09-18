@@ -12,7 +12,8 @@ define([
             'menu': '.menu',
             'path': '.path',
             'manageBtn': '.manageBtn',
-            'explore': '.explore'
+            'explore': '.explore',
+            'upload': '.upload'
         }
     })
 

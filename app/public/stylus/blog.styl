@@ -5,3 +5,57 @@
         .span3
             margin-left 0
 
+.exploreView
+    th, td
+        text-align left
+        padding 10px 15px
+
+    tr
+        border-top 1px solid #e9e9e9
+        border-bottom 1px solid #e9e9e9
+
+        &:hover
+            background #e7f6ff
+            border-bottom 1px solid #b2dffc
+            border-top 1px solid #b2dffc
+
+        &.active
+            background #388ec8
+            color white
+
+            .inFolder
+                color white
+
+        .inFolder
+            cursor pointer
+            &.off
+                display none
+            &.on
+                display inline-block
+
+
+
+        .newName
+            &.off
+                display none
+            &.on
+                display inline-block
+
+.manageBtn
+    .deleteBtn
+        display none
+
+.pathContainer
+
+    ul
+        padding 0
+        overflow hidden
+        margin-left 0
+
+    li
+        float left
+        margin 0 7px 0 0
+        list-style none
+    .arrow
+        display inline-block
+        margin-left 5px
