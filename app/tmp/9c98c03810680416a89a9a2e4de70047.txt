@@ -1,0 +1,25 @@
+source env/bin/activate
+cd zeoanalytics/
+pserve src/zeobit/analytics/web/config/development.ini --reload
+
+10.55.1.2
+
+cd zeoanalytics/src/zeobit/analytics/web/static
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography
+
+C:\Program Files (x86)\Google\Chrome\Application>chrome.exe --args --allow-file-
+access-from-files --disable-web-security --unlimited-quota-for-files
+
+mongodb.url = mongodb://zba2
+mongodb.db_name = zbanaldb
+
+test@kologlobal.com
+forge:6545
+
+
+379 0.5 часа
+378 2
+
+git branch -avv
+git checkout -b raw_unique --track origin/raw_unique

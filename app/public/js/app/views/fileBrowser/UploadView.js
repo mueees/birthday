@@ -14,33 +14,49 @@ define([
             "uploadFile": ".uploadFile"
         },
 
-        initialize: function(){
+        initialize: function(data){
+            this.path = data.path;
+            this.channel = data.channel;
 
+            this.listenTo(this.channel, "setNewPath", this.setNewPath);
+        },
+
+        setNewPath: function(data){
+            this.path = data.path;
         },
 
         submit: function(e){
             e.preventDefault();
 
             var form = new FormData(),
-            files = this.ui.uploadFile[0].files;
+            files = this.ui.uploadFile[0].files,
+                _this = this;
+
+            if(!files.length) return false;
 
             _.each(files, function(file){
                 form.append("uploadFile[]", file);
             })
 
-
-            /*var oReq = new XMLHttpRequest();
-            oReq.open("POST", "/upload");
-            oReq.send(form);*/
+            form.append("path", this.path);
 
             $.ajax({
                 url: "/upload",
                 type: "POST",
                 data: form,
                 processData: false,  // tell jQuery not to process the data
-                contentType: false   // tell jQuery not to set contentType
+                contentType: false,   // tell jQuery not to set contentType,
+                success: function(){
+                    _this.channel.trigger('goToPath', {path: _this.path});
+                    _this.channel.trigger('showMessage', {text: "File uploaded."});
+                },
+                error: function(){
+                    _this.channel.trigger('showMessage', {text: "Cannot upload files."});
+                }
             });
+
+
         }
     })
 
-})
+});

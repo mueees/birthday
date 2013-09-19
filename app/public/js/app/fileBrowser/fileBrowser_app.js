@@ -30,10 +30,7 @@ define([
             var Notify = App.module("Notify");
 
             var opts = {
-                defaultPath: "/img/",
-                url: "api/fileBrowser",
-                newFolder: "api/fileBrowser/newFolder",
-                currentPath: "/img/"
+                currentPath: null
             }
 
             var Router = Marionette.AppRouter.extend({
@@ -54,7 +51,7 @@ define([
 
                     var pathView = new PathView({
                         channel: App.channels.fileBrowser,
-                        path: opts.defaultPath
+                        path: App.config.api.defaultPath
                     });
                     var explorerView = new ExplorerView({
                         collection: new ItemsCollect(),
@@ -64,7 +61,8 @@ define([
                         channel: App.channels.fileBrowser
                     });
                     var uploadView = new UploadView({
-                        channel: App.channels.fileBrowser
+                        channel: App.channels.fileBrowser,
+                        path: App.config.api.defaultPath
                     });
 
                     layout.render();
@@ -75,7 +73,8 @@ define([
                     layout.upload.show(uploadView);
                     layout.manageBtn.show(manageBtnView);
 
-                    this.getContent({path: opts.defaultPath});
+                    opts.currentPath = App.config.api.defaultPath;
+                    this.getContent({path: App.config.api.defaultPath});
 
                 },
 
@@ -84,7 +83,7 @@ define([
                     $.ajax({
                         type: "GET",
                         data: data,
-                        url: opts.url,
+                        url: App.config.api.fileBrowser,
                         success: function(dataRequest){
                             App.channels.fileBrowser.trigger("setNewPath", {
                                 data: dataRequest,
@@ -105,16 +104,16 @@ define([
                 },
 
                 goToPath: function(data){
-
                     opts.currentPath = data.path;
                     this.getContent({path: opts.currentPath});
                 },
 
                 createNewFolder: function(data){
+
                     $.ajax({
                         type: "GET",
                         data: {dirPath: data.dirPath},
-                        url: opts.newFolder,
+                        url: App.config.api.newFolder,
                         success: function(dataRequest){
                             data.model.trigger("newFolderCreated");
                         },
@@ -123,6 +122,27 @@ define([
                             Notify.API.showNotify({text: "Cannot create folder. Try again."});
                         }
                     })
+                },
+
+                deleteItem: function(data){
+                    var _this = this;
+
+                    $.ajax({
+                        type: "DELETE",
+                        data: data,
+                        url: App.config.api.deleteItems,
+                        success: function(dataRequest){
+                            _this.getContent({path: opts.currentPath});
+                        },
+                        error: function(){
+                            Notify.API.showNotify({text: "Cannot delete items. Try again."});
+                            _this.getContent({path: opts.currentPath});
+                        }
+                    })
+                },
+
+                showMessage: function(data){
+                    Notify.API.showNotify(data);
                 },
 
                 getUpPath: function(path){
@@ -148,6 +168,8 @@ define([
 
             /*events*/
             App.channels.fileBrowser.on("up", function(){Controller.up()});
+            App.channels.fileBrowser.on("deleteItem", function(data){Controller.deleteItem(data)});
+            App.channels.fileBrowser.on("showMessage", function(data){Controller.showMessage(data)});
             App.channels.fileBrowser.on("goToPath", function(data){Controller.goToPath(data)});
             App.channels.fileBrowser.on("createNewFolder", function(data){Controller.createNewFolder(data)});
 

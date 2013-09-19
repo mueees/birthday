@@ -48,5 +48,6 @@ module.exports = function(app) {
     //fileBrowser
     app.get("/api/fileBrowser", fileBrowserController.getData);
     app.get("/api/fileBrowser/newFolder", fileBrowserController.newFolder);
+    app.delete("/api/fileBrowser/deleteItems", fileBrowserController.deleteItems);
     app.post("/upload", fileBrowserController.upload);
 };

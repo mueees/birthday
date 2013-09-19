@@ -1,0 +1,12 @@
+[class^="i_"] {
+    background: url("../img/sprite.png") no-repeat 0 0;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+    margin: 0
+}
+
+.i_file{ background-position: 0 0; width: 24px; height: 30px; }
+.i_folder{ background-position: 0 -80px; width: 28px; height: 25px; }
+
