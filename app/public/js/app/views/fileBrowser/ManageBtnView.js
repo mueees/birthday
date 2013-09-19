@@ -8,7 +8,8 @@ define([
 
         events: {
             "click .upBtn": "upBtn",
-            "click .newFolderBtn": "newFolderBtn"
+            "click .newFolderBtn": "newFolderBtn",
+            "click .deleteBtn": "deleteBtn"
         },
 
         ui: {
@@ -36,6 +37,11 @@ define([
             }else{
                 this.ui.deleteBtn.hide();
             }
+        },
+
+        deleteBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("deleteBtn");
         }
     })
 

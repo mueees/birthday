@@ -32,6 +32,7 @@ define([
 
             this.listenTo(this.channel, "setNewPath", this.setNewPath);
             this.listenTo(this.channel, "newFolderBtn", this.newFolderBtn);
+            this.listenTo(this.channel, "deleteBtn", this.deleteBtn);
             this.listenTo(this.collection, "reset", this.renderTable);
             this.listenTo(this.collection, "add", this.addNewItem);
 
@@ -106,11 +107,24 @@ define([
             this.collection.push({})
         },
 
+        deleteBtn: function(){
+            var activeItem =  this.collection.getActiveItem();
+            var paths = [];
+            _.each(activeItem, function(item){
+                paths.push(item.get('path'));
+            });
+
+            this.channel.trigger("deleteItem", {
+                paths: paths
+            });
+        },
+
         addNewItem: function(model){
             model.set("isSavedOnServer", false);
             var folder = new FolderView({model:model});
-            this.$el.find('table tbody').append(folder.$el);
+            this.$el.find('table tbody').prepend(folder.$el);
             folder.setNewName();
+
             this.listenTo(folder, "createNewFolder", this.createNewFolder);
             this.listenTo(folder, "inFolderBtn", this.goToPath);
             this.listenTo(folder, "isActiveChange", this.isActiveChange);

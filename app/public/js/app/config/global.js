@@ -29,7 +29,14 @@ define([], function(){
 
             /*preset*/
             preset: "/api/preset",
-            getPresets:"/api/getPresets"
+            getPresets:"/api/getPresets",
+
+            /*fileBrowser*/
+            defaultPath: "/img/blog/",
+            fileBrowser: "/api/fileBrowser",
+            newFolder: "/api/fileBrowser/newFolder",
+            deleteItems: "/api/fileBrowser/deleteItems"
+
 
         },
 

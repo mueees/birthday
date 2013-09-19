@@ -29,6 +29,27 @@ var controller = {
 
     },
 
+    deleteItems: function(request, response){
+        var body = request.body;
+        if(!body.paths){
+            response.status = 400;
+            response.send("paths is required");
+            return false;
+        }
+
+        var fsWorker = new FsWorker();
+        try{
+            fsWorker.removeDirs(body.paths);
+            response.send();
+        }catch(e){
+            response.status = 400;
+            response.send("Server problem.");
+            return false;
+        }
+
+
+    },
+
     newFolder: function(request, response){
         var parts = url.parse( request.url, true );
 
@@ -52,9 +73,22 @@ var controller = {
     },
 
     upload: function(request, response){
+        var pathToSave, files;
 
-        var folder = "./public/";
-        request.files.uploadFile[0].forEach(function(file){
+        if( request.body.path ){
+            pathToSave = "./public" + request.body.path;
+        }else{
+            pathToSave = "./public/tmp/";
+        }
+
+        files = request.files.uploadFile;
+
+        while(files[0].name === undefined){
+            files = files[0];
+        }
+
+
+        files.forEach(function(file){
 
             fs.readFile(file.path, function (err, data) {
                 if(err) {
@@ -62,7 +96,7 @@ var controller = {
                     return false;
                 }
 
-                var newPath = folder + file.name;
+                var newPath = pathToSave + file.name;
                 fs.writeFile(newPath, data, function (err) {
                     console.log(err);
                 });
