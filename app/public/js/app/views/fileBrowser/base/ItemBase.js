@@ -26,6 +26,16 @@ define([
                 this.$el.removeClass("active");
             }
             this.trigger("isActiveChange");
+        },
+
+        renameBtn: function(e){
+            e.preventDefault();
+            this.setRenameState();
+        },
+
+        setRenameState: function(){
+            this.ui.inFolder.addClass("off");
+            this.ui.newName.removeClass("off");
         }
 
     })

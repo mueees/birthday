@@ -21,6 +21,7 @@ define([
 
         ui: {
             "newName" : ".newName",
+            "name" : ".name",
             "inFolder" : ".inFolder"
         },
 

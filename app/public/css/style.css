@@ -1,3 +1,9 @@
+.btn {
+  display: inline-block;
+}
+.btn.off {
+  display: none;
+}
 .row {
   margin-bottom: 15px;
 }
@@ -141,7 +147,8 @@
   background: #388ec8;
   color: #fff;
 }
-.exploreView tr.active .inFolder {
+.exploreView tr.active .inFolder,
+.exploreView tr.active .fileName {
   color: #fff;
 }
 .exploreView tr .inFolder {
@@ -163,9 +170,6 @@
   display: inline-block;
   margin: 0 15px 0 5px;
   vertical-align: middle;
-}
-.manageBtn .deleteBtn {
-  display: none;
 }
 .pathContainer ul {
   padding: 0;

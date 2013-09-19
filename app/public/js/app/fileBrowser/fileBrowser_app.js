@@ -47,6 +47,7 @@ define([
 
             var Controller = {
                 showFileBrowser: function(){
+
                     var layout = new FileBrowserLayout();
 
                     var pathView = new PathView({
@@ -159,6 +160,25 @@ define([
                         return "/" + parts.join("/") + "/"
                     }
 
+                },
+
+                selectBtnWithData: function( data ){
+                    var files = "";
+
+                    /*for (var i = 0; i < data.paths.length; i++){
+                        files += data.paths[i] + "\n";
+                    }*/
+
+                    var funcName = this.getUrlParam('CKEditorFuncNum');
+                    window.opener.CKEDITOR.tools.callFunction(funcName, data.paths[0]);
+                    window.close()
+                },
+
+                getUrlParam: function (paramName){
+                    var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i') ;
+                    var match = window.location.search.match(reParam) ;
+
+                    return (match && match.length > 1) ? match[1] : '' ;
                 }
             }
 
@@ -171,6 +191,7 @@ define([
             App.channels.fileBrowser.on("deleteItem", function(data){Controller.deleteItem(data)});
             App.channels.fileBrowser.on("showMessage", function(data){Controller.showMessage(data)});
             App.channels.fileBrowser.on("goToPath", function(data){Controller.goToPath(data)});
+            App.channels.fileBrowser.on("selectBtnWithData", function(data){Controller.selectBtnWithData(data)});
             App.channels.fileBrowser.on("createNewFolder", function(data){Controller.createNewFolder(data)});
 
 

@@ -11,7 +11,7 @@ define([
         tagName: "tr",
 
         events: {
-            "click .name" : "nameBtn",
+            "click .fileName" : "fileName",
             "click": "chooseView"
         },
 
@@ -22,6 +22,10 @@ define([
         initialize: function(){
             this.render(this.model.toJSON());
             this.listenTo(this.model, "change:isActive", this.isActiveChange);
+        },
+
+        fileName: function(e){
+
         }
     })
 
