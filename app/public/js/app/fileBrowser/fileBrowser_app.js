@@ -36,17 +36,20 @@ define([
             var Router = Marionette.AppRouter.extend({
 
                 before: function(){
-                    App.startSubApp( "Event", {} );
+                    App.startSubApp( "FileBrowser", {} );
                 },
 
                 appRoutes: {
-                    "": "showFileBrowser"
+                    "" : "showFileBrowser",
+                    "fileBrowser" : "showFileBrowser"
                 }
 
             })
 
             var Controller = {
-                showFileBrowser: function(){
+                showFileBrowser: function(region){
+
+                    var channel = _.extend({}, Backbone.Events);
 
                     var layout = new FileBrowserLayout();
 
@@ -68,7 +71,12 @@ define([
 
                     layout.render();
 
-                    App.main.show(layout);
+                    if( region ){
+                        region.show(layout);
+                    }else{
+                        App.main.show(layout);
+                    }
+
                     layout.explore.show(explorerView);
                     layout.path.show(pathView);
                     layout.upload.show(uploadView);
@@ -183,7 +191,7 @@ define([
             }
 
             var API  = {
-                showFileBrowser: function(){Controller.showFileBrowser()}
+                showFileBrowser: function(region){Controller.showFileBrowser(region)}
             }
 
             /*events*/
