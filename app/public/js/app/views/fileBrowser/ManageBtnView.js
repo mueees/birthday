@@ -9,11 +9,15 @@ define([
         events: {
             "click .upBtn": "upBtn",
             "click .newFolderBtn": "newFolderBtn",
+            "click .selectBtn": "selectBtn",
+            "click .renameBtn": "renameBtn",
             "click .deleteBtn": "deleteBtn"
         },
 
         ui: {
-            "deleteBtn": ".deleteBtn"
+            "deleteBtn": ".deleteBtn",
+            "selectBtn": ".selectBtn",
+            "renameBtn": ".renameBtn"
         },
 
         initialize: function(data){
@@ -33,15 +37,35 @@ define([
 
         itemSelectedChanged: function(data){
             if( data.items.length ){
-                this.ui.deleteBtn.show();
+                this.ui.deleteBtn.removeClass('off');
+                this.ui.selectBtn.removeClass('off');
+
+                if( data.items.length == 1 ){
+                    this.ui.renameBtn.removeClass('off');
+                }else{
+                    this.ui.renameBtn.addClass('off');
+                }
+
             }else{
-                this.ui.deleteBtn.hide();
+                this.ui.deleteBtn.addClass('off');
+                this.ui.selectBtn.addClass('off');
+                this.ui.renameBtn.addClass('off');
             }
         },
 
         deleteBtn: function(e){
             e.preventDefault();
             this.channel.trigger("deleteBtn");
+        },
+
+        selectBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("selectBtn");
+        },
+
+        renameBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("renameBtn");
         }
     })
 
