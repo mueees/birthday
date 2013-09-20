@@ -49,6 +49,8 @@ define([
             this.collection.sort({});
             var views = [];
 
+
+
             this.$el.find('table tbody').html("");
             this.collection.each(function(item){
                 var view = _this.getOneItem(item);
