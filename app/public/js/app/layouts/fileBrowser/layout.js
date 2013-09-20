@@ -14,6 +14,10 @@ define([
             'manageBtn': '.manageBtn',
             'explore': '.explore',
             'upload': '.upload'
+        },
+
+        onRender: function(){
+            console.log(111);
         }
     })
 

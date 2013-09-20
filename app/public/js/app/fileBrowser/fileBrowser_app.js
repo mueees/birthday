@@ -4,8 +4,10 @@ define([
     'marionette',
     'app/app',
 
+    './FileBrowserInstance/FileBrowserInstance',
+
     /*layouts*/
-    'app//layouts/fileBrowser/layout',
+    'app/layouts/fileBrowser/layout',
 
     /*views*/
     'app/views/fileBrowser/PathView',
@@ -19,7 +21,7 @@ define([
     /*modules*/
     'app/modules/notify/module'
 
-], function(jQuery, Backbone, Marionette, App, FileBrowserLayout, PathView, ExplorerView, ManageBtnView, UploadView, ItemsCollect){
+], function(jQuery, Backbone, Marionette, App, FileBrowserInstance, FileBrowserLayout, PathView, ExplorerView, ManageBtnView, UploadView, ItemsCollect){
 
     App.module("FileBrowser", {
         startWithParent: false,
@@ -41,15 +43,31 @@ define([
 
                 appRoutes: {
                     "" : "showFileBrowser",
-                    "fileBrowser" : "showFileBrowser"
+                    "fileBrowser" : "fileBrowserWindow"
                 }
 
             })
 
             var Controller = {
-                showFileBrowser: function(region){
 
-                    var channel = _.extend({}, Backbone.Events);
+                getFileBrowser: function(){
+                    return new FileBrowserInstance({
+                        path: App.config.api.defaultPath,
+                        urls: {
+                            defaultPath: App.config.api.defaultPath,
+                            fileBrowser: App.config.api.fileBrowser,
+                            newFolder: App.config.api.newFolder,
+                            deleteItems: App.config.api.deleteItems
+                        }
+                    });
+                },
+
+                fileBrowserWindow: function(){
+                    var fileBrowserInstance = this.getFileBrowser();
+                    App.main.show(fileBrowserInstance.layout);
+                },
+
+                showFileBrowser: function(region){
 
                     var layout = new FileBrowserLayout();
 
@@ -83,6 +101,8 @@ define([
                     layout.manageBtn.show(manageBtnView);
 
                     opts.currentPath = App.config.api.defaultPath;
+
+
                     this.getContent({path: App.config.api.defaultPath});
 
                 },
@@ -191,7 +211,17 @@ define([
             }
 
             var API  = {
-                showFileBrowser: function(region){Controller.showFileBrowser(region)}
+                showFileBrowser: function(region){Controller.showFileBrowser(region)},
+
+                getFileBrowser: function(){
+                    /*var deferred = new $.Deferred();
+                    Controller.getChangePostView( deferred, data );
+                    return deferred.promise();*/
+
+                    return Controller.getFileBrowser();
+                },
+
+                fileBrowserWindow: function(){Controller.fileBrowserWindow()}
             }
 
             /*events*/
