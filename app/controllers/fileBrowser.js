@@ -6,7 +6,7 @@ var fs = require('fs'),
     FsWorker = require("fsWorker");
 
 var controller = {
-    getData: function(request, response){
+    getData: function(request, response, next){
         var parts = url.parse( request.url, true );
 
         if( !parts.query.path ){
@@ -17,13 +17,7 @@ var controller = {
 
         var fsWorker = new FsWorker();
         fsWorker.listDirWithInfo(parts.query.path, function(err, list){
-
-            if(err){
-                response.status = 400;
-                response.send(err);
-                return false;
-            }
-
+            if(err) return next(err);
             response.send(list);
         });
 

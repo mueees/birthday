@@ -10,6 +10,10 @@
         "handlebars": "1",
         "node-inspector": "0",
         "cron": "",
-        "nodemailer": ""
+        "nodemailer": "",
+        "nconf": "",
+        "winston": "",
+        "hbs": "",
+        "async": ""
     }
 }

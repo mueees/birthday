@@ -1,4 +1,4 @@
-var config = require('../config');
+var config = require("config");
 
 var MongoClient = require('mongodb').MongoClient;
 var db_singleton = null;
@@ -9,7 +9,7 @@ var getConnection= function getConnection(callback){
     }
     else{
 
-        var connURL = "mongodb://"+ config.database.dbIp +":" + config.database.dbPort + "/" + config.database.dbName;
+        var connURL = "mongodb://"+ config.get("db:ip") +":" + config.get("db:port") + "/" + config.get("db:nameDatabase");
         
         MongoClient.connect(connURL,function(err,db){
 

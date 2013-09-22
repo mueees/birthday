@@ -16,17 +16,18 @@ define([
 
         define: function( User, App, Backbone, Marionette, $, _ ){
 
-
             //create Router
+
             var Router = Marionette.AppRouter.extend({
 
                 before: function(){
+                    if(!User.Controller.determineAccess()){
+                        return false;
+                    }
                     App.startSubApp( "User", {} );
                 },
 
                 appRoutes: {
-
-                    "": 'addUser',
 
                     "user/add": 'addUser',
 
@@ -60,6 +61,17 @@ define([
 
             //create Controller
             User.Controller ={
+
+                determineAccess: function(){
+                    var state = App.request('user:islogin');
+                    if(!state){
+                        Backbone.history.navigate("/");
+                        App.channels.main.trigger("accessDenied");
+                        return false;
+                    }else{
+                        return true;
+                    }
+                },
 
                 addUser: function(){
                     var addUserView = this._getAddUserView();

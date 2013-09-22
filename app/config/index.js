@@ -1,9 +1,8 @@
-var globalConf = {
-    database: {
-        dbIp: '109.251.151.22',
-        dbPort: 27017,
-        dbName: 'birthday'
-    }
-}
+var nconf = require("nconf");
+var path = require("path");
 
-module.exports = globalConf;
+nconf.argv()
+    .env()
+    .file({ file:  path.join(__dirname, 'main.json') });
+
+module.exports = nconf;

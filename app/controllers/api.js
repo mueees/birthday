@@ -5,8 +5,8 @@ var UserModel = require('../models/user/user'),
     PostModel = require('../models/blog/post'),
     PresetModel = require('../models/preset/preset'),
     url = require('url'),
-    queryString = require( "querystring"),
     jQuery = require( "jquery"),
+    HttpError = require('error').HttpError,
     _ = require('underscore');
 
 var controller = {
@@ -79,6 +79,7 @@ var controller = {
         },
 
         users: function(request, response){
+
             var parts = url.parse( request.url, true );
             var data = {};
 
@@ -468,8 +469,6 @@ var controller = {
         },
 
         _getPosts: function( err, posts, response ){
-
-
 
             if( err ){
                 response.statusCode = 400;
