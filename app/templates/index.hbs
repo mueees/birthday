@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Birthday</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="css/datepicker.css" rel="stylesheet" type="text/css" />
+    <link href="css/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <link href="css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/sprite.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        var Birthday = {};
+        Birthday.login = "{{user}}"
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <h1 class="span12">Birthday</h1>
+        </div>
+        <div class="row">
+            <div class="span12">
+
+                <ul class="nav nav-pills loginMenu">
+                    {{#if user}}
+                    <li><a class="logout " href="#">Hey, logout me!</a></li>
+                    <li><a class="login off" href="#">Hey, login me!</a></li>
+                    {{else}}
+                    <li><a class="logout off" href="#">Hey, logout me!</a></li>
+                    <li><a class="login" href="#">Hey, login me!</a></li>
+                    {{/if}}
+                </ul>
+
+                <div class="mainMenu"></div>
+                <!--<ul class="nav nav-pills mainMenu">
+                    <li><a data-state="public" href="#">Home</a></li>
+                    {{#if user}}
+                    <li><a href="#users">Users</a></li>
+                    <li><a href="#user/add">Add user</a></li>
+                    <li><a href="#events">Event</a></li>
+                    <li><a href="#event/add">Add event</a></li>
+                    <li><a href="#blog">Blog: Admin Panel</a></li>
+                    <li><a href="#fileBrowser">File Browser</a></li>
+                        {{/if}}
+                    <li><a data-state="public" href="#public/timeline">Timeline</a></li>
+                </ul>-->
+            </div>
+        </div>
+    </div>
+
+</header>
+<section class="main">
+</section>
+
+<script type="text/javascript" src="js/require.js"></script>
+<script type="text/javascript">
+    require([
+        './js/commonConfig'
+    ], function(){
+        require(['app/main'])
+    });
+</script>
+<script type="text/javascript" data-main="js/app/general" src="js/require.js"></script>
+
+</body>
+</html>

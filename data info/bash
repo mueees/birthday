@@ -1,4 +1,9 @@
 cd Dropbox/web/sites/birthday/project/marukp\ bootstrap
 grunt
 
+NODE_ENV=development
+NODE_PATH=/home/mue/Dropbox/web/sites/birthday/app
+node server.js
+
+
 chromium-browser --disable-web-security

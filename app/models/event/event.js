@@ -77,9 +77,7 @@ _.extend(Event, BaseModel, {
                 $or:[
                     {
                         "dateStart.dateStartObj": {
-                            $lte: dt_range.end.endObj
-                        },
-                        "dateStart.dateStartObj": {
+                            $lte: dt_range.end.endObj,
                             $gte: dt_range.start.startObj
                         },
                         'repeat.repeatType' : "no"

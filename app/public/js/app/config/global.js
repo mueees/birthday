@@ -35,7 +35,11 @@ define([], function(){
             defaultPath: "/img/blog/",
             fileBrowser: "/api/fileBrowser",
             newFolder: "/api/fileBrowser/newFolder",
-            deleteItems: "/api/fileBrowser/deleteItems"
+            deleteItems: "/api/fileBrowser/deleteItems",
+
+            /*password*/
+            login: "/api/login",
+            logout: "/api/logout"
 
 
         },

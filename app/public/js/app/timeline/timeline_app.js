@@ -19,7 +19,6 @@ define([
 
                 before: function(){
                     App.startSubApp( "Timeline", {} );
-
                 },
 
                 appRoutes: {
@@ -29,6 +28,7 @@ define([
             })
 
             var Controller = {
+
                 timelineShow: function(){
 
                     var done = _.bind(Controller.getPostsSuccess, this);
