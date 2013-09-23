@@ -28,6 +28,10 @@
 .clear {
   clear: both;
 }
+.size-big {
+  width: 800px;
+  margin-left: -400px;
+}
 .agenda .events .wrapper {
   padding: 10px;
 }

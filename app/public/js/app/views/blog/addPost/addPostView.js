@@ -13,7 +13,8 @@ define([
             "click .btnAddPost": "addPost",
             "focus .tags:last": "lastTagFocus",
             "blur .tags": "tagBlur",
-            "change #preset": "presetChange"
+            "change #preset": "presetChange",
+            "click .chooseFile": "chooseFile"
         },
 
         tagTemplate: _.template('<input class="tags" type="text" name="tags[]" placeholder="tag" />'),
@@ -62,7 +63,6 @@ define([
             setTimeout(function(){
                 _this.body = CKEDITOR.replace('body', {
                     filebrowserBrowseUrl : '/fileBrowser.html',
-                    filebrowserUploadUrl : '/fileBrowser.html'
                 });
                 _this.title = CKEDITOR.replace('title', {toolbar :
                     [
@@ -173,6 +173,14 @@ define([
                 console.log('WTF!');
             }
             return false;
+        },
+
+        chooseFile: function(e){
+            e.preventDefault();
+            this.trigger("chooseFile");
+        },
+        setPreviewUrl: function( url ){
+            this.ui.previewImg.val(url);
         }
     })
 

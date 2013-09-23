@@ -5,6 +5,7 @@ var fs = require('fs'),
     _ = require('underscore'),
     FsWorker = require("fsWorker");
 
+
 var controller = {
     getData: function(request, response){
         var parts = url.parse( request.url, true );
@@ -105,6 +106,17 @@ var controller = {
         })
 
         response.end();
+
+    },
+
+    downloadItems: function(request, response){
+        var body = request.body;
+
+        if(!body.paths){
+            response.status = 400;
+            response.send("paths is required");
+            return false;
+        }
 
     }
 }

@@ -11,13 +11,15 @@ define([
             "click .newFolderBtn": "newFolderBtn",
             "click .selectBtn": "selectBtn",
             "click .renameBtn": "renameBtn",
+            "click .downloadBtn": "downloadBtn",
             "click .deleteBtn": "deleteBtn"
         },
 
         ui: {
             "deleteBtn": ".deleteBtn",
             "selectBtn": ".selectBtn",
-            "renameBtn": ".renameBtn"
+            "renameBtn": ".renameBtn",
+            "downloadBtn": ".downloadBtn"
         },
 
         initialize: function(data){
@@ -39,6 +41,7 @@ define([
             if( data.items.length ){
                 this.ui.deleteBtn.removeClass('off');
                 this.ui.selectBtn.removeClass('off');
+                this.ui.downloadBtn.removeClass('off');
 
                 if( data.items.length == 1 ){
                     this.ui.renameBtn.removeClass('off');
@@ -50,6 +53,7 @@ define([
                 this.ui.deleteBtn.addClass('off');
                 this.ui.selectBtn.addClass('off');
                 this.ui.renameBtn.addClass('off');
+                this.ui.downloadBtn.addClass('off');
             }
         },
 
@@ -66,6 +70,11 @@ define([
         renameBtn: function(e){
             e.preventDefault();
             this.channel.trigger("renameBtn");
+        },
+
+        downloadBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("downloadBtn");
         }
     })
 
