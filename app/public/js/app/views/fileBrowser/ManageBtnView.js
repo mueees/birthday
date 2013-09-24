@@ -11,15 +11,15 @@ define([
             "click .newFolderBtn": "newFolderBtn",
             "click .selectBtn": "selectBtn",
             "click .renameBtn": "renameBtn",
-            "click .downloadBtn": "downloadBtn",
-            "click .deleteBtn": "deleteBtn"
+            "click .deleteBtn": "deleteBtn",
+            "click .downloadBtn": "downloadBtn"
         },
 
         ui: {
             "deleteBtn": ".deleteBtn",
             "selectBtn": ".selectBtn",
-            "renameBtn": ".renameBtn",
-            "downloadBtn": ".downloadBtn"
+            "downloadBtn": ".downloadBtn",
+            "renameBtn": ".renameBtn"
         },
 
         initialize: function(data){
@@ -65,6 +65,11 @@ define([
         selectBtn: function(e){
             e.preventDefault();
             this.channel.trigger("selectBtn");
+        },
+
+        downloadBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("downloadBtn");
         },
 
         renameBtn: function(e){

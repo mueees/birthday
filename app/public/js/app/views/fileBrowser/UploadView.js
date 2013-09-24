@@ -3,10 +3,15 @@ define([
     'text!app/templates/fileBrowser/UploadView.html'
 ], function(Marionette, template){
 
+    var config = {
+        maxFileSize: 50000000
+    }
+
     return Marionette.ItemView.extend({
         template: _.template(template),
 
         events: {
+            "change form": "formChange",
             "submit form": "submit"
         },
 
@@ -19,6 +24,35 @@ define([
             this.channel = data.channel;
 
             this.listenTo(this.channel, "setNewPath", this.setNewPath);
+        },
+
+        formChange: function(){
+
+            var files = this.ui.uploadFile[0].files;
+            var _this = this;
+/*
+            jQuery.each( files, function(i, file){
+                if( !_this.checkSize( file ) ){
+                    showErrorInformation( file );
+                }else if(filesToSend[ file.name ] == undefined ){
+                    filesToSend[ file.name ] = file;
+                    showInformation( filesToSend[ file.name ] );
+                }else{
+                    return false;
+                }
+            });*/
+        },
+
+        displayFiles: function(){
+
+        },
+
+        checkSize: function(f){
+            if( f.size > config.maxFileSize ){
+                return false;
+            }else{
+                return true;
+            }
         },
 
         setNewPath: function(data){
