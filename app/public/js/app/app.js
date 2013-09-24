@@ -17,6 +17,7 @@ define([
     App.channels.fileBrowser = _.extend({}, Backbone.Events);
 
     App.addRegions({
+        mainMenu: ".mainMenu",
         body: 'body',
         header: '.header',
         main: '.main'

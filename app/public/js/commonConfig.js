@@ -18,7 +18,8 @@ requirejs.config({
         ckeditor: 'ckeditor/ckeditor',
 
         /*libs*/
-        bootstrap: "bootstrap/bootstrap"
+        bootstrap: "bootstrap/bootstrap",
+        routefilter: "backbone.routefilter"
     },
 
     shim:{
@@ -47,6 +48,9 @@ requirejs.config({
         },
         ckeditor: {
             exports: 'CKEDITOR'
+        },
+        routefilter: {
+            deps: ['backbone']
         },
 
         /*plugins*/

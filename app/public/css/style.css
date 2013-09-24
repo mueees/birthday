@@ -32,6 +32,15 @@
   width: 800px;
   margin-left: -400px;
 }
+.mainMenu li {
+  display: none;
+}
+.loginMenu {
+  float: right;
+}
+.off {
+  display: none !important;
+}
 .agenda .events .wrapper {
   padding: 10px;
 }
