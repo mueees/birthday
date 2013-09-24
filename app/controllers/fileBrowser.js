@@ -7,7 +7,7 @@ var fs = require('fs'),
 
 
 var controller = {
-    getData: function(request, response){
+    getData: function(request, response, next){
         var parts = url.parse( request.url, true );
 
         if( !parts.query.path ){
@@ -18,13 +18,7 @@ var controller = {
 
         var fsWorker = new FsWorker();
         fsWorker.listDirWithInfo(parts.query.path, function(err, list){
-
-            if(err){
-                response.status = 400;
-                response.send(err);
-                return false;
-            }
-
+            if(err) return next(err);
             response.send(list);
         });
 
@@ -51,7 +45,7 @@ var controller = {
 
     },
 
-    newFolder: function(request, response){
+    newFolder: function(request, response, next){
         var parts = url.parse( request.url, true );
 
         if( !parts.query.dirPath ){
@@ -62,18 +56,12 @@ var controller = {
 
         var fsWorker = new FsWorker();
         fsWorker.makeDir(parts.query.dirPath, null, function(err){
-
-            if(err){
-                response.status = 400;
-                response.send(err);
-                return false;
-            }
-
+            if(err) return next(err);
             response.end();
         });
     },
 
-    upload: function(request, response){
+    upload: function(request, response, next){
         var pathToSave, files;
 
         if( request.body.path ){
@@ -92,10 +80,7 @@ var controller = {
         files.forEach(function(file){
 
             fs.readFile(file.path, function (err, data) {
-                if(err) {
-                    console.log(err);
-                    return false;
-                }
+                if(err) return next(err);
 
                 var newPath = pathToSave + file.name;
                 fs.writeFile(newPath, data, function (err) {

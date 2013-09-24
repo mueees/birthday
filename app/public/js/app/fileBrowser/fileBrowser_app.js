@@ -28,6 +28,9 @@ define([
             var Router = Marionette.AppRouter.extend({
 
                 before: function(){
+                    if(!Controller.determineAccess()){
+                        return false;
+                    }
                     App.startSubApp( "FileBrowser", {} );
                 },
 
@@ -39,6 +42,17 @@ define([
             })
 
             var Controller = {
+
+                determineAccess: function(){
+                    var state = App.request('user:islogin');
+                    if(!state){
+                        Backbone.history.navigate("/");
+                        App.channels.main.trigger("accessDenied");
+                        return false;
+                    }else{
+                        return true;
+                    }
+                },
 
                 getFileBrowser: function(){
                     return new FileBrowserInstance({

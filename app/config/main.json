@@ -1,0 +1,25 @@
+{
+    "port": 56898,
+    "db": {
+        "ip": "109.251.151.22",
+        "port": "27017",
+        "nameDatabase": "birthday"
+    },
+    "session": {
+        "secret": "skymiss",
+        "key": "sed"
+    },
+    "email": {
+        "list": ["mue.miv@gmail.com"],
+        "default":{
+            "from": "birthday project",
+            "subject": "main line"
+        },
+        "auth": {
+            "user": "mue@kologlobal.com",
+            "pass": "n86y11w13!"
+        },
+        "service": "Gmail"
+    }
+
+}

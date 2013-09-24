@@ -36,8 +36,11 @@ define([], function(){
             fileBrowser: "/api/fileBrowser",
             newFolder: "/api/fileBrowser/newFolder",
             deleteItems: "/api/fileBrowser/deleteItems",
-            downloadItems: "/api/fileBrowser/downloadItems"
+            downloadItems: "/api/fileBrowser/downloadItems",
 
+            /*password*/
+            login: "/api/login",
+            logout: "/api/logout"
 
         },
 
