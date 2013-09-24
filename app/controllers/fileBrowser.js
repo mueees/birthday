@@ -21,10 +21,10 @@ var controller = {
             fsWorker;
 
         parts = url.parse( request.url, true );
-        pathDir = Utility.normalize( parts.query.path );
-        if( !pathDir ) return next(new HttpError(400, "Path is required"));
+        if( !parts.query.path ) return next(new HttpError(400, "Path is required"));
 
-        pathDirRoot = root + pathDir;
+        pathDir = Utility.normalize( parts.query.path );
+        pathDirRoot = Utility.addRootToPath(pathDir);
         fsWorker = new FsWorker();
 
         async.waterfall([
@@ -32,7 +32,7 @@ var controller = {
                 //check exist pathDir
                 fsWorker.exists(pathDirRoot, function(err, exists){
                     if(err) callback(err);
-                    callback(err, exists);
+                    callback(null, exists);
                 });
             },
             function(exists, callback){
@@ -57,22 +57,23 @@ var controller = {
     },
 
     deleteItems: function(request, response, next){
-        var body = request.body;
-        if(!body.paths){
-            if( !body.paths ) return next(new HttpError(400, "Path is required"));
-        }
 
-        var fsWorker = new FsWorker();
-        try{
-            fsWorker.removeDirs(body.paths);
-            response.send();
-        }catch(e){
-            response.status = 400;
-            response.send("Server problem.");
-            return false;
-        }
+        var fsWorker,
+            body,
+            paths;
 
+        body = request.body;
+        if(!body.paths) return next(new HttpError(400, "Path is required"));
 
+        paths = Utility.normalizeArray(body.paths);
+        paths = Utility.addRootToPath(paths);
+
+        fsWorker = new FsWorker();
+
+        fsWorker.removeDirs(paths, function(err){
+            if(err) next(err);
+            response.end();
+        });
     },
 
     newFolder: function(request, response, next){
