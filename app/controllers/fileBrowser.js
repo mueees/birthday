@@ -1,8 +1,10 @@
 var fs = require('fs'),
     url = require('url'),
     jQuery = require( "jquery"),
-    fs = require('fs'),
+    async = require('async'),
     _ = require('underscore'),
+    ncp = require('ncp').ncp,
+    pathModule = require('path'),
     FsWorker = require("fsWorker");
 
 
@@ -47,6 +49,7 @@ var controller = {
 
     newFolder: function(request, response, next){
         var parts = url.parse( request.url, true );
+        var root = "./public"
 
         if( !parts.query.dirPath ){
             response.statusCode = 400;
@@ -55,7 +58,7 @@ var controller = {
         }
 
         var fsWorker = new FsWorker();
-        fsWorker.makeDir(parts.query.dirPath, null, function(err){
+        fsWorker.makeDir( root + "/" + parts.query.dirPath, null, function(err){
             if(err) return next(err);
             response.end();
         });
@@ -63,6 +66,7 @@ var controller = {
 
     upload: function(request, response, next){
         var pathToSave, files;
+
 
         if( request.body.path ){
             pathToSave = "./public" + request.body.path;
@@ -84,7 +88,7 @@ var controller = {
 
                 var newPath = pathToSave + file.name;
                 fs.writeFile(newPath, data, function (err) {
-                    console.log(err);
+                    if(err) return next(err);
                 });
             });
 
@@ -93,16 +97,134 @@ var controller = {
         response.end();
 
     },
-
     downloadItems: function(request, response){
-        var body = request.body;
+        var fsWorker = new FsWorker();
+        var paths = request.body.paths,
+            realPath = [],
+            flName = new Date().getTime(),
+            flDestination = "./tmp/" + flName,
+            zipDestination = "./tmp/" + flName + ".zip",
+            root = "./public";
 
-        if(!body.paths){
-            response.status = 400;
-            response.send("paths is required");
+        if( !paths ){
+            next(new Error("Nothing to download"));
             return false;
         }
 
+        _.each(paths, function(path){
+            realPath.push(root + path);
+        })
+
+        //проверить существуют ли файлы
+        async.waterfall([
+            function(callback){
+                fsWorker.existsList(realPath, function(err, results){
+                    if(err) next(err);
+                    callback(null, results);
+                });
+            },
+            function(results, callback){
+                _.each(results, function(result, i){
+                    if(!result){
+                        realPath.splice(i, 1);
+                    }
+                })
+                if( !realPath.length ) {
+                    callback(new Error("Nothing to download"));
+                }else{
+                    callback(null, realPath);
+                }
+
+            },
+            function(realPath, callback){
+                //make zip dir
+
+                fsWorker.makeDir(flDestination, null,  function(err){
+                    if(err) return callback(err);
+                    callback(null, realPath);
+                })
+
+            },
+            function(realPath, callback){
+                //copy file to dir
+
+
+                _.each(realPath, function(path, i){
+
+                    var pathArray = path.split(pathModule.sep);
+
+                    _.each(pathArray, function(path, i){
+                        if(!path){
+                            pathArray.splice(i, 1);
+                        }
+                    })
+
+
+                    async.parallel([
+                        function(callback){
+                            setTimeout(function(){
+                                callback(null, 'one');
+                            }, 200);
+                        },
+                        function(callback){
+                            setTimeout(function(){
+                                callback(null, 'two');
+                            }, 100);
+                        }
+                    ],
+                        function(err, results){
+                            // the results array will equal ['one','two'] even though
+                            // the second function had a shorter timeout.
+                        });
+
+                    ncp(path, flDestination + "/" + pathArray[pathArray.length-1], function (err) {
+                        if (err) {
+                            return callback(err);
+                        }
+                    });
+
+                })
+
+
+            },
+            function(){
+                //если существуют, сделать архив
+                var execFile = require('child_process').exec;
+
+                execFile("zip -r " + zipDestination + " " + flDestination, function(err, stdout) {
+                    if(err) callback(err);
+                    callback(null, stdout);
+                });
+            },
+            function(stdout, callback){
+                console.log(stdout);
+            }
+        ], function (err, realPath) {
+            if(err) next(err);
+        });
+
+
+
+
+        //положить его в public/tmp
+
+
+        /*var root = "./public";
+         var soursePath = "./public" + request.body.paths[0];
+         var archiveName = "/tmp/" + new Date().getTime() + ".zip";
+         var zipPath = root + archiveName;
+
+
+         var execFile = require('child_process').execFile;
+
+         execFile('zip', ['-r', zipPath, soursePath], function(err, stdout) {
+         if(err) {
+         console.log(err);
+         return false;
+         }
+         });*/
+
+        response.end();
     }
 }
 
