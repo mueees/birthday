@@ -4,7 +4,7 @@ var fs = require('fs'),
     async = require('async'),
     _ = require('underscore'),
     ncp = require('ncp').ncp,
-    fsExtra = require('fs-extra'),
+    pathModule = require('path'),
     FsWorker = require("fsWorker");
 
 var controller = {
@@ -48,6 +48,7 @@ var controller = {
 
     newFolder: function(request, response, next){
         var parts = url.parse( request.url, true );
+        var root = "./public"
 
         if( !parts.query.dirPath ){
             response.statusCode = 400;
@@ -56,7 +57,7 @@ var controller = {
         }
 
         var fsWorker = new FsWorker();
-        fsWorker.makeDir(parts.query.dirPath, null, function(err){
+        fsWorker.makeDir( root + "/" + parts.query.dirPath, null, function(err){
             if(err) return next(err);
             response.end();
         });
@@ -101,6 +102,9 @@ var controller = {
         var fsWorker = new FsWorker();
         var paths = request.body.paths,
             realPath = [],
+            flName = new Date().getTime(),
+            flDestination = "./tmp/" + flName,
+            zipDestination = "./tmp/" + flName + ".zip",
             root = "./public";
 
         if( !paths ){
@@ -134,36 +138,64 @@ var controller = {
 
             },
             function(realPath, callback){
+                //make zip dir
+
+                fsWorker.makeDir(flDestination, null,  function(err){
+                    if(err) return callback(err);
+                    callback(null, realPath);
+                })
+
+            },
+            function(realPath, callback){
+                //copy file to dir
 
 
                 _.each(realPath, function(path, i){
-                    /*ncp(path, './tmp/', function (err) {
-                        if (err) {
-                            return console.error(err);
-                        }
-                        console.log('done!');
-                    });*/
 
-                    fsExtra.copy(path, './tmp', function(err){
-                        if (err) {
-                            console.error(err);
+                    var pathArray = path.split(pathModule.sep);
+
+                    _.each(pathArray, function(path, i){
+                        if(!path){
+                            pathArray.splice(i, 1);
                         }
-                        else {
-                            console.log("success!")
+                    })
+
+
+                    async.parallel([
+                        function(callback){
+                            setTimeout(function(){
+                                callback(null, 'one');
+                            }, 200);
+                        },
+                        function(callback){
+                            setTimeout(function(){
+                                callback(null, 'two');
+                            }, 100);
+                        }
+                    ],
+                        function(err, results){
+                            // the results array will equal ['one','two'] even though
+                            // the second function had a shorter timeout.
+                        });
+
+                    ncp(path, flDestination + "/" + pathArray[pathArray.length-1], function (err) {
+                        if (err) {
+                            return callback(err);
                         }
                     });
+
                 })
 
+
+            },
+            function(){
                 //если существуют, сделать архив
-                /*var soursePath = realPath.join(" ");
-                var archiveName = "/tmp/" + new Date().getTime() + ".zip";
-                var zipPath = root + archiveName;
                 var execFile = require('child_process').exec;
 
-                execFile("zip -r " + zipPath + " " + soursePath,function(err, stdout) {
+                execFile("zip -r " + zipDestination + " " + flDestination, function(err, stdout) {
                     if(err) callback(err);
                     callback(null, stdout);
-                });*/
+                });
             },
             function(stdout, callback){
                 console.log(stdout);
