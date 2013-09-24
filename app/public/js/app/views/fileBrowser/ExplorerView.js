@@ -34,6 +34,7 @@ define([
             this.listenTo(this.channel, "newFolderBtn", this.newFolderBtn);
             this.listenTo(this.channel, "deleteBtn", this.deleteBtn);
             this.listenTo(this.channel, "selectBtn", this.selectBtn);
+            this.listenTo(this.channel, "downloadBtn", this.downloadBtn);
             this.listenTo(this.collection, "reset", this.renderTable);
             this.listenTo(this.collection, "add", this.addNewItem);
 
@@ -130,6 +131,18 @@ define([
             });
 
             this.channel.trigger("selectBtnWithData", {paths:paths});
+        },
+
+        downloadBtn: function(){
+            var activeItem =  this.collection.getActiveItem();
+            var paths = [];
+            _.each(activeItem, function(item){
+                paths.push(item.get('path'));
+            });
+
+            this.channel.trigger("downloadItems", {
+                paths: paths
+            });
         },
 
         addNewItem: function(model){

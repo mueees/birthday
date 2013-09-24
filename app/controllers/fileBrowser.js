@@ -1,8 +1,10 @@
 var fs = require('fs'),
     url = require('url'),
     jQuery = require( "jquery"),
-    fs = require('fs'),
+    async = require('async'),
     _ = require('underscore'),
+    ncp = require('ncp').ncp,
+    fsExtra = require('fs-extra'),
     FsWorker = require("fsWorker");
 
 var controller = {
@@ -63,6 +65,7 @@ var controller = {
     upload: function(request, response, next){
         var pathToSave, files;
 
+
         if( request.body.path ){
             pathToSave = "./public" + request.body.path;
         }else{
@@ -83,11 +86,112 @@ var controller = {
 
                 var newPath = pathToSave + file.name;
                 fs.writeFile(newPath, data, function (err) {
-                    console.log(err);
+                    if(err) return next(err);
                 });
             });
 
         })
+
+        response.end();
+
+    },
+
+    downloadItems: function( request, response, next ){
+
+        var fsWorker = new FsWorker();
+        var paths = request.body.paths,
+            realPath = [],
+            root = "./public";
+
+        if( !paths ){
+            next(new Error("Nothing to download"));
+            return false;
+        }
+
+        _.each(paths, function(path){
+            realPath.push(root + path);
+        })
+
+        //проверить существуют ли файлы
+        async.waterfall([
+            function(callback){
+                fsWorker.existsList(realPath, function(err, results){
+                    if(err) next(err);
+                    callback(null, results);
+                });
+            },
+            function(results, callback){
+                _.each(results, function(result, i){
+                    if(!result){
+                        realPath.splice(i, 1);
+                    }
+                })
+                if( !realPath.length ) {
+                    callback(new Error("Nothing to download"));
+                }else{
+                    callback(null, realPath);
+                }
+
+            },
+            function(realPath, callback){
+
+
+                _.each(realPath, function(path, i){
+                    /*ncp(path, './tmp/', function (err) {
+                        if (err) {
+                            return console.error(err);
+                        }
+                        console.log('done!');
+                    });*/
+
+                    fsExtra.copy(path, './tmp', function(err){
+                        if (err) {
+                            console.error(err);
+                        }
+                        else {
+                            console.log("success!")
+                        }
+                    });
+                })
+
+                //если существуют, сделать архив
+                /*var soursePath = realPath.join(" ");
+                var archiveName = "/tmp/" + new Date().getTime() + ".zip";
+                var zipPath = root + archiveName;
+                var execFile = require('child_process').exec;
+
+                execFile("zip -r " + zipPath + " " + soursePath,function(err, stdout) {
+                    if(err) callback(err);
+                    callback(null, stdout);
+                });*/
+            },
+            function(stdout, callback){
+                console.log(stdout);
+            }
+        ], function (err, realPath) {
+            if(err) next(err);
+        });
+
+
+
+
+        //положить его в public/tmp
+
+
+        /*var root = "./public";
+        var soursePath = "./public" + request.body.paths[0];
+        var archiveName = "/tmp/" + new Date().getTime() + ".zip";
+        var zipPath = root + archiveName;
+
+
+        var execFile = require('child_process').execFile;
+
+        execFile('zip', ['-r', zipPath, soursePath], function(err, stdout) {
+            if(err) {
+                console.log(err);
+                return false;
+            }
+        });*/
 
         response.end();
 
