@@ -6,7 +6,10 @@ define([
     'app/views/blog/changePost/ChangePostView',
 
     /*modules*/
-    'app/modules/notify/module'
+    'app/modules/notify/module',
+    'app/blog/preset/preset_app',
+    'app/modules/windows/module',
+    'app/fileBrowser/fileBrowser_app'
 
 
 ], function(App, Marionette, ChangePostView){
@@ -19,7 +22,10 @@ define([
         define: function(ChangePost, App, Backbone, Marionette, $, _){
 
             /*modules*/
+            var Preset = App.module('Blog.Preset');
             var Notify = App.module("Notify");
+            var FileBrowser = App.module("FileBrowser");
+            var Windows = App.module("Windows");
 
             var Controller = {
                 getChangePostView: function(deferred, data){
@@ -53,6 +59,7 @@ define([
                 getChangePostViewByModel: function( deferred, data ){
 
                     var _changePostByModel = _.bind(this._changePostByModel, this);
+                    var _this = this;
 
                     $.when( App.request('preset:getPresets')).fail(function(){
                         Notify.API.showNotify({text: "Cannot download presets"});
@@ -63,9 +70,37 @@ define([
                                 model: data.model,
                                 presets: presetCollection
                             });
+
+                            var getFileBrowser = _.bind(_this.getFileBrowser, _this);
+
                             view.on('changePost', _changePostByModel);
+                            view.on('chooseFile', function(){
+                                getFileBrowser(view);
+                            });
+
                             deferred.resolve(view);
                         });
+                },
+
+                getFileBrowser: function(addPostView){
+
+                    var windowView = Windows.API.factory({
+                        title: "Choose image",
+                        customClass: "size-big"
+                    });
+
+                    var fileBrowserView = FileBrowser.API.getFileBrowser();
+                    fileBrowserView.onShow();
+                    fileBrowserView.clearContainer();
+
+                    windowView.$el.find('.modal-body').append(fileBrowserView.layout.$el);
+
+                    fileBrowserView.on('selectedFiles', function(data){
+                        addPostView.setPreviewUrl(data.paths[0]);
+                        windowView.hideWindow();
+                    });
+
+                    windowView.show();
                 },
 
                 _changePostByModel: function(data){

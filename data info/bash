@@ -3,8 +3,13 @@ grunt
 
 NODE_ENV=development
 NODE_PATH=/home/mue/Dropbox/web/sites/birthday/app
+NODE_PATH=/usr/sites/mue/nodejs/own/birthday/app
+
+export NODE_PATH=/usr/sites/mue/nodejs/own/birthday/app
+export NODE_ENV=development
+
 supervisor --debug server.js
 node server.js
 
-
+supervisor server.js
 chromium-browser --disable-web-security

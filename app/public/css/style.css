@@ -28,6 +28,10 @@
 .clear {
   clear: both;
 }
+.size-big {
+  width: 800px;
+  margin-left: -400px;
+}
 .mainMenu li {
   display: none;
 }

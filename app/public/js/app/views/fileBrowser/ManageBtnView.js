@@ -54,7 +54,6 @@ define([
                 this.ui.selectBtn.addClass('off');
                 this.ui.renameBtn.addClass('off');
                 this.ui.downloadBtn.addClass('off');
-
             }
         },
 
@@ -76,6 +75,11 @@ define([
         renameBtn: function(e){
             e.preventDefault();
             this.channel.trigger("renameBtn");
+        },
+
+        downloadBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("downloadBtn");
         }
     })
 

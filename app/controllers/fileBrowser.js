@@ -4,46 +4,76 @@ var fs = require('fs'),
     async = require('async'),
     _ = require('underscore'),
     ncp = require('ncp').ncp,
-    pathModule = require('path'),
+    path = require('path'),
+    Utility = require('libs/utility'),
+    config = require('config'),
+    HttpError = require('error').HttpError,
     FsWorker = require("fsWorker");
+
+var root = config.get("publicDir");
+
 
 var controller = {
     getData: function(request, response, next){
-        var parts = url.parse( request.url, true );
+        var parts,
+            pathDir,
+            pathDirRoot,
+            fsWorker;
 
-        if( !parts.query.path ){
-            response.statusCode = 400;
-            response.send("Path is required");
-            return false;
-        }
+        parts = url.parse( request.url, true );
+        if( !parts.query.path ) return next(new HttpError(400, "Path is required"));
 
-        var fsWorker = new FsWorker();
-        fsWorker.listDirWithInfo(parts.query.path, function(err, list){
-            if(err) return next(err);
-            response.send(list);
-        });
+        pathDir = Utility.normalize( parts.query.path );
+        pathDirRoot = Utility.addRootToPath(pathDir);
+        fsWorker = new FsWorker();
+
+        async.waterfall([
+            function(callback){
+                //check exist pathDir
+                fsWorker.exists(pathDirRoot, function(err, exists){
+                    if(err) callback(err);
+                    callback(null, exists);
+                });
+            },
+            function(exists, callback){
+                //get folder content
+
+                if( !exists ){
+                    callback( new HttpError(400, "Path is not found") );
+                }
+
+                fsWorker.listDirWithInfo(pathDirRoot, function(err, list){
+                    if(err) callback(err);
+                    callback(null, list);
+                });
+            }
+        ],
+            function(err, list){
+                if(err) return next(err);
+                response.send(list);
+            }
+        )
 
     },
 
-    deleteItems: function(request, response){
-        var body = request.body;
-        if(!body.paths){
-            response.status = 400;
-            response.send("paths is required");
-            return false;
-        }
+    deleteItems: function(request, response, next){
 
-        var fsWorker = new FsWorker();
-        try{
-            fsWorker.removeDirs(body.paths);
-            response.send();
-        }catch(e){
-            response.status = 400;
-            response.send("Server problem.");
-            return false;
-        }
+        var fsWorker,
+            body,
+            paths;
 
+        body = request.body;
+        if(!body.paths) return next(new HttpError(400, "Path is required"));
 
+        paths = Utility.normalizeArray(body.paths);
+        paths = Utility.addRootToPath(paths);
+
+        fsWorker = new FsWorker();
+
+        fsWorker.removeDirs(paths, function(err){
+            if(err) next(err);
+            response.end();
+        });
     },
 
     newFolder: function(request, response, next){
@@ -97,8 +127,7 @@ var controller = {
 
     },
 
-    downloadItems: function( request, response, next ){
-
+    downloadItems: function(request, response){
         var fsWorker = new FsWorker();
         var paths = request.body.paths,
             realPath = [],
@@ -211,22 +240,21 @@ var controller = {
 
 
         /*var root = "./public";
-        var soursePath = "./public" + request.body.paths[0];
-        var archiveName = "/tmp/" + new Date().getTime() + ".zip";
-        var zipPath = root + archiveName;
+         var soursePath = "./public" + request.body.paths[0];
+         var archiveName = "/tmp/" + new Date().getTime() + ".zip";
+         var zipPath = root + archiveName;
 
 
-        var execFile = require('child_process').execFile;
+         var execFile = require('child_process').execFile;
 
-        execFile('zip', ['-r', zipPath, soursePath], function(err, stdout) {
-            if(err) {
-                console.log(err);
-                return false;
-            }
-        });*/
+         execFile('zip', ['-r', zipPath, soursePath], function(err, stdout) {
+         if(err) {
+         console.log(err);
+         return false;
+         }
+         });*/
 
         response.end();
-
     }
 }
 

@@ -16,7 +16,8 @@ define([
             'click .btnChangePost': "btnChangePost",
             'click .btnCancel': 'btnCancel',
             "focus .tags:last": "lastTagFocus",
-            "blur .tags": "tagBlur"
+            "blur .tags": "tagBlur",
+            "click .chooseFile": "chooseFile"
         },
 
         ui: {
@@ -56,7 +57,9 @@ define([
         addCkeEditor: function(){
             var _this = this;
             setTimeout(function(){
-                _this.body = CKEDITOR.replace('body');
+                _this.body = CKEDITOR.replace('body', {
+                    filebrowserBrowseUrl : '/fileBrowser.html'
+                });
                 _this.title = CKEDITOR.replace('title', {toolbar :
                     [
                         { name: 'document', items : [ 'Source' ] },
@@ -146,6 +149,15 @@ define([
                 console.log('WTF!');
             }
             return false;
+        },
+
+        chooseFile: function(e){
+            e.preventDefault();
+            this.trigger("chooseFile");
+        },
+
+        setPreviewUrl: function( url ){
+            this.ui.previewImg.val(url);
         }
     })
 
