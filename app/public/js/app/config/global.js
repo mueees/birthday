@@ -42,7 +42,6 @@ define([], function(){
             login: "/api/login",
             logout: "/api/logout"
 
-
         },
 
         opts:{

@@ -41,6 +41,7 @@ define([
         },
 
         setNewPath: function(data){
+
             this.path = data.path;
             this.collection.reset(data.data);
         },
@@ -140,9 +141,7 @@ define([
                 paths.push(item.get('path'));
             });
 
-            this.channel.trigger("downloadItems", {
-                paths: paths
-            });
+            this.channel.trigger("downloadBtnWithData", {paths:paths});
         },
 
         addNewItem: function(model){

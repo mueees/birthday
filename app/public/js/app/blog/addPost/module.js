@@ -7,7 +7,9 @@ define([
 
     /*modules*/
     'app/blog/preset/preset_app',
-    'app/modules/notify/module'
+    'app/modules/notify/module',
+    'app/modules/windows/module',
+    'app/fileBrowser/fileBrowser_app'
 
 ], function(App, Marionette, AddPostView){
 
@@ -23,6 +25,8 @@ define([
             /*modules*/
             var Preset = App.module('Blog.Preset');
             var Notify = App.module("Notify");
+            var FileBrowser = App.module("FileBrowser");
+            var Windows = App.module("Windows");
 
             var Controller = {
                 addPost: function( data ){
@@ -39,7 +43,12 @@ define([
 
                     var addPostOnServer = _.bind(this.addPostOnServer, this);
                     var changePreset = _.bind(this.changePreset, this);
+                    var getFileBrowser = _.bind(this.getFileBrowser, this);
+
                     addPostView.on('addNewPost', addPostOnServer);
+                    addPostView.on('chooseFile', function(){
+                        getFileBrowser(addPostView);
+                    });
                     addPostView.on("changePreset", function(data){
                         changePreset(data, addPostView);
                     });
@@ -50,6 +59,27 @@ define([
                         AddPost.trigger('getPresetsCollection:internal', data.presetCollection);
                     });
 
+                },
+
+                getFileBrowser: function(addPostView){
+
+                    var windowView = Windows.API.factory({
+                        title: "Choose image",
+                        customClass: "size-big"
+                    });
+
+                    var fileBrowserView = FileBrowser.API.getFileBrowser();
+                    fileBrowserView.onShow();
+                    fileBrowserView.clearContainer();
+
+                    windowView.$el.find('.modal-body').append(fileBrowserView.layout.$el);
+
+                    fileBrowserView.on('selectedFiles', function(data){
+                        addPostView.setPreviewUrl(data.paths[0]);
+                        windowView.hideWindow();
+                    });
+
+                    windowView.show();
                 },
 
                 changePreset: function(data, addPostView){

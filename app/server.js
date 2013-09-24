@@ -1,12 +1,12 @@
 var express = require('express'),
-    config = require("config"),
     app = express(),
     db = require("./db"),
     route = require('./routes/route'),
     http = require('http'),
     HttpError = require('./error').HttpError,
     EmailSender = require('EmailSender'),
-    logger = require("libs/log")(module);
+    logger = require("libs/log")(module),
+    config = require("config");
 
 app.use(express.favicon());
 
@@ -60,14 +60,13 @@ app.use(function(err, req, res, next){
     logger.log('error', { error: err });
     var emailSender;
 
-
     if( typeof err == "number"){
         err = new HttpError(err);
     }
 
-    if( err instanceof HttpError){
+    if( err instanceof HttpError ){
         res.sendHttpError(err);
-        emailSender = new EmailSender({text: err.status + err.message.error});
+        //emailSender = new EmailSender({text: err.status + err.message.error});
     }else{
 
         if( app.get("env") == "development" ){
@@ -76,9 +75,9 @@ app.use(function(err, req, res, next){
             res.send(500);
         }
 
-        emailSender = new EmailSender({text: err.toString()});
+        //emailSender = new EmailSender({text: err.toString()});
     }
-    emailSender.send();
+    //emailSender.send();
 })
 
 http.createServer(app).listen(config.get("port"));
