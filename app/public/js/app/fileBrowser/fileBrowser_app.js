@@ -70,7 +70,8 @@ define([
                             defaultPath: App.config.api.defaultPath,
                             fileBrowser: App.config.api.fileBrowser,
                             newFolder: App.config.api.newFolder,
-                            deleteItems: App.config.api.deleteItems
+                            deleteItems: App.config.api.deleteItems,
+                            downloadItems: App.config.api.downloadItems
                         }
                     });
                 },

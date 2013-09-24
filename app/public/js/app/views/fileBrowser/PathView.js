@@ -42,6 +42,9 @@ define([
         },
 
         chooseFolder: function(e){
+
+            if(e) e.preventDefault();
+
             var li = $(e.target).closest("li"),
                 index = li.index(),
                 path = null,

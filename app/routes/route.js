@@ -54,6 +54,7 @@ module.exports = function(app) {
     app.get("/api/fileBrowser/newFolder", middleware, fileBrowserController.newFolder);
     app.delete("/api/fileBrowser/deleteItems", middleware, fileBrowserController.deleteItems);
     app.post("/upload", middleware, fileBrowserController.upload);
+    app.post("/api/fileBrowser/downloadItems", middleware, fileBrowserController.downloadItems);
 
     //login
     app.post("/api/login", function( req, res, next ){
