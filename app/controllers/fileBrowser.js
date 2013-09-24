@@ -4,34 +4,62 @@ var fs = require('fs'),
     async = require('async'),
     _ = require('underscore'),
     ncp = require('ncp').ncp,
-    pathModule = require('path'),
+    path = require('path'),
+    Utility = require('libs/utility'),
+    config = require('config'),
+    HttpError = require('error').HttpError,
     FsWorker = require("fsWorker");
+
+var root = config.get("publicDir");
 
 
 var controller = {
     getData: function(request, response, next){
-        var parts = url.parse( request.url, true );
+        var parts,
+            pathDir,
+            pathDirRoot,
+            fsWorker;
 
-        if( !parts.query.path ){
-            response.statusCode = 400;
-            response.send("Path is required");
-            return false;
-        }
+        parts = url.parse( request.url, true );
+        pathDir = Utility.normalize( parts.query.path );
+        if( !pathDir ) return next(new HttpError(400, "Path is required"));
 
-        var fsWorker = new FsWorker();
-        fsWorker.listDirWithInfo(parts.query.path, function(err, list){
-            if(err) return next(err);
-            response.send(list);
-        });
+        pathDirRoot = root + pathDir;
+        fsWorker = new FsWorker();
+
+        async.waterfall([
+            function(callback){
+                //check exist pathDir
+                fsWorker.exists(pathDirRoot, function(err, exists){
+                    if(err) callback(err);
+                    callback(err, exists);
+                });
+            },
+            function(exists, callback){
+                //get folder content
+
+                if( !exists ){
+                    callback( new HttpError(400, "Path is not found") );
+                }
+
+                fsWorker.listDirWithInfo(pathDirRoot, function(err, list){
+                    if(err) callback(err);
+                    callback(null, list);
+                });
+            }
+        ],
+            function(err, list){
+                if(err) return next(err);
+                response.send(list);
+            }
+        )
 
     },
 
-    deleteItems: function(request, response){
+    deleteItems: function(request, response, next){
         var body = request.body;
         if(!body.paths){
-            response.status = 400;
-            response.send("paths is required");
-            return false;
+            if( !body.paths ) return next(new HttpError(400, "Path is required"));
         }
 
         var fsWorker = new FsWorker();
@@ -97,6 +125,7 @@ var controller = {
         response.end();
 
     },
+
     downloadItems: function(request, response){
         var fsWorker = new FsWorker();
         var paths = request.body.paths,
