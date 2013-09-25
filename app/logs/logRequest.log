@@ -195,3 +195,8 @@
 {"error":{},"level":"error","message":"","timestamp":"2013-09-25T05:45:03.320Z"}
 {"error":{},"level":"error","message":"","timestamp":"2013-09-25T05:47:47.432Z"}
 {"error":{},"level":"error","message":"","timestamp":"2013-09-25T05:48:02.835Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-09-25T10:00:06.452Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-09-25T11:52:41.957Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-09-25T11:53:01.203Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-09-25T11:53:13.856Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-09-25T11:53:29.358Z"}

@@ -62,6 +62,8 @@ define([
                 _this.getContent({path: _this.currentPath});
                 _this.bind();
             });
+
+            this.keys = App.key.keyCode;
             
         },
 
@@ -82,7 +84,8 @@ define([
         bind: function(){
             
             var _this = this;
-            
+
+            $(document).on('keydown', {this_: _this},  this.keydown);
             this.channel.on("up", function(){_this.up()});
             this.channel.on("goToPath", function(data){_this.goToPath(data)});
             this.channel.on("deleteItem", function(data){_this.deleteItem(data)});
@@ -90,6 +93,9 @@ define([
             this.channel.on("downloadBtnWithData", function(data){_this.downloadBtnWithData(data)});
             this.channel.on("createNewFolder", function(data){_this.createNewFolder(data)});
             this.channel.on("selectBtnWithData", function(data){_this.selectBtnWithData(data)});
+        },
+
+        keydown: function(e){
         },
 
         getContent: function(data){

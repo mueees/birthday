@@ -2,13 +2,15 @@ define([
 	'backbone',
 	'marionette',
 	'app/config/global',
+	'app/config/key',
 	'jquery'
 
-	], function(Backbone, Marionette, globalConfig){
+	], function(Backbone, Marionette, globalConfig, key){
 	
 	var App = new Marionette.Application();
 	
 	App.config = globalConfig;
+	App.key = key;
 
     //add Chanels
     App.channels = {}
