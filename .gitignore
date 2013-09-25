@@ -3,6 +3,7 @@ markup sveta
 psd
 /node_modules
 /app/public/node_modules
+/app/public/tmp
 /app/tmp
 
 #ext
