@@ -11,5 +11,4 @@ export NODE_ENV=development
 supervisor --debug server.js
 node server.js
 
-supervisor server.js
 chromium-browser --disable-web-security

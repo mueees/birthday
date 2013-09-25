@@ -30,8 +30,7 @@ var controller = {
         async.waterfall([
             function(callback){
                 //check exist pathDir
-                fsWorker.exists(pathDirRoot, function(err, exists){
-                    if(err) callback(err);
+                fs.exists(pathDirRoot, function(exists){
                     callback(null, exists);
                 });
             },
@@ -43,7 +42,7 @@ var controller = {
                 }
 
                 fsWorker.listDirWithInfo(pathDirRoot, function(err, list){
-                    if(err) callback(err);
+                    if(err) return callback(err);
                     callback(null, list);
                 });
             }
@@ -98,9 +97,9 @@ var controller = {
 
 
         if( request.body.path ){
-            pathToSave = "./public" + request.body.path;
+            pathToSave = root + request.body.path;
         }else{
-            pathToSave = "./public/tmp/";
+            return next( new HttpError(400, "Path required") );
         }
 
         files = request.files.uploadFile;
@@ -109,47 +108,85 @@ var controller = {
             files = files[0];
         }
 
-
-        files.forEach(function(file){
-
-            fs.readFile(file.path, function (err, data) {
-                if(err) return next(err);
-
-                var newPath = pathToSave + file.name;
-                fs.writeFile(newPath, data, function (err) {
-                    if(err) return next(err);
+        async.waterfall([
+            //check path
+            function (callback){
+                fs.exists(pathToSave, function(exists){
+                    if(exists){
+                        callback(null, true);
+                    }else{
+                        callback(null, false);
+                    }
                 });
-            });
+            },
 
+            //save files
+            function(exists, callback){
+                if(!exists) callback( new Error("Path is not found") );
+
+                var max = files.length;
+                var iterator = 0,
+                    i;
+
+                var methods = [];
+                for ( i = 0; i < max; i++) {
+                    (function(file){
+                        methods.push(function(callback) {
+
+                            fs.readFile(file.path, function (err, data) {
+                                if(err) return next(err);
+
+                                var newPath = pathToSave + file.name;
+                                fs.writeFile(newPath, data, function (err) {
+                                    if(err) return next(err);
+                                    callback(null);
+                                });
+                            });
+
+                        });
+                    })(files[i]);
+                }
+
+                async.parallel(methods, function(err) {
+                    if(err) {
+                        callback(err);
+                        return;
+                    }
+
+                    callback(err);
+                })
+
+            }
+        ], function(err){
+            if(err) next(err);
+            response.end();
         })
-
-        response.end();
 
     },
 
-    downloadItems: function(request, response){
+    downloadItems: function(request, response, next){
         var fsWorker = new FsWorker();
         var paths = request.body.paths,
             realPath = [],
             flName = new Date().getTime(),
-            flDestination = "./tmp/" + flName,
-            zipDestination = "./tmp/" + flName + ".zip",
-            root = "./public";
+            zipPathToSend = "/tmp/" + flName + ".zip";
+        zipDestination = root + zipPathToSend;
 
         if( !paths ){
             next(new Error("Nothing to download"));
             return false;
         }
 
-        _.each(paths, function(path){
-            realPath.push(root + path);
+        //merge root and path
+        _.each(paths, function(currentPath){
+            realPath.push(root + currentPath);
         })
 
         //проверить существуют ли файлы
         async.waterfall([
             function(callback){
                 fsWorker.existsList(realPath, function(err, results){
-                    if(err) next(err);
+                    if(err) return next(err);
                     callback(null, results);
                 });
             },
@@ -167,94 +204,24 @@ var controller = {
 
             },
             function(realPath, callback){
-                //make zip dir
+                //make archive
 
-                fsWorker.makeDir(flDestination, null,  function(err){
-                    if(err) return callback(err);
-                    callback(null, realPath);
-                })
-
-            },
-            function(realPath, callback){
-                //copy file to dir
-
-
-                _.each(realPath, function(path, i){
-
-                    var pathArray = path.split(pathModule.sep);
-
-                    _.each(pathArray, function(path, i){
-                        if(!path){
-                            pathArray.splice(i, 1);
-                        }
-                    })
-
-
-                    async.parallel([
-                        function(callback){
-                            setTimeout(function(){
-                                callback(null, 'one');
-                            }, 200);
-                        },
-                        function(callback){
-                            setTimeout(function(){
-                                callback(null, 'two');
-                            }, 100);
-                        }
-                    ],
-                        function(err, results){
-                            // the results array will equal ['one','two'] even though
-                            // the second function had a shorter timeout.
-                        });
-
-                    ncp(path, flDestination + "/" + pathArray[pathArray.length-1], function (err) {
-                        if (err) {
-                            return callback(err);
-                        }
-                    });
-
-                })
-
-
-            },
-            function(){
-                //если существуют, сделать архив
                 var execFile = require('child_process').exec;
 
-                execFile("zip -r " + zipDestination + " " + flDestination, function(err, stdout) {
-                    if(err) callback(err);
-                    callback(null, stdout);
-                });
-            },
-            function(stdout, callback){
-                console.log(stdout);
+                execFile("zip -r " + zipDestination + " " + realPath.join(" "),
+                    {maxBuffer: 2000000000*1024 },
+                    function(err, stdout) {
+                        if(err) return callback(err);
+                        callback(null);
+                    });
             }
-        ], function (err, realPath) {
-            if(err) next(err);
+        ], function (err) {
+            if(err) return next(err);
+            response.send({
+                redirect: zipPathToSend
+            });
+
         });
-
-
-
-
-        //положить его в public/tmp
-
-
-        /*var root = "./public";
-         var soursePath = "./public" + request.body.paths[0];
-         var archiveName = "/tmp/" + new Date().getTime() + ".zip";
-         var zipPath = root + archiveName;
-
-
-         var execFile = require('child_process').execFile;
-
-         execFile('zip', ['-r', zipPath, soursePath], function(err, stdout) {
-         if(err) {
-         console.log(err);
-         return false;
-         }
-         });*/
-
-        response.end();
     }
 }
 

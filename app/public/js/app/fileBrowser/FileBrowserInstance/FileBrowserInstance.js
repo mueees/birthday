@@ -90,7 +90,6 @@ define([
             this.channel.on("downloadBtnWithData", function(data){_this.downloadBtnWithData(data)});
             this.channel.on("createNewFolder", function(data){_this.createNewFolder(data)});
             this.channel.on("selectBtnWithData", function(data){_this.selectBtnWithData(data)});
-            this.channel.on("downloadItems", function(data){_this.downloadItems(data)});
         },
 
         getContent: function(data){
@@ -128,8 +127,7 @@ define([
                 data: data,
                 url: this.urls.downloadItems,
                 success: function(dataRequest){
-                    //window.location = dataRequest;
-                    _this.getContent({path: _this.currentPath});
+                    window.location.href = dataRequest.redirect;
                 },
                 error: function(){
                     Notify.API.showNotify({text: "Cannot download items."});
@@ -150,22 +148,6 @@ define([
                 error: function(){
                     Notify.API.showNotify({text: "Cannot delete items. Try again."});
                     _this.getContent({path: _this.currentPath});
-                }
-            })
-        },
-
-        downloadItems: function(data){
-            var _this = this;
-
-            $.ajax({
-                type: "POST",
-                data: data,
-                url: this.urls.downloadItems,
-                success: function(dataRequest){
-                    window.location.href = dataRequest.redirect;
-                },
-                error: function(){
-                    Notify.API.showNotify({text: "Cannot download items. Try again."});
                 }
             })
         },
