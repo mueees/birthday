@@ -21,6 +21,9 @@
         },
         "service": "Gmail"
     },
-    "publicDir": "./public"
+    "publicDir": "./public",
+    "fileBrowser": {
+        "allowExt": ""
+    }
 
 }
