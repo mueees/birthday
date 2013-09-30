@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
-    db = require("./db"),
+    db = require("db"),
+    mongooseDb = require("mongooseDb"),
     route = require('./routes/route'),
     http = require('http'),
     HttpError = require('./error').HttpError,

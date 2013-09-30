@@ -15,6 +15,7 @@
         "winston": "",
         "hbs": "",
         "async": "",
-        "ncp": ""
+        "ncp": "",
+        "mongoose": "2"
     }
 }

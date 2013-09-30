@@ -40,7 +40,9 @@ define([], function(){
 
             /*password*/
             login: "/api/login",
-            logout: "/api/logout"
+            logout: "/api/logout",
+
+            stream: "/api/twitter/stream"
 
         },
 
