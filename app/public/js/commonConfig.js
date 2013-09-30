@@ -19,7 +19,8 @@ requirejs.config({
 
         /*libs*/
         bootstrap: "bootstrap/bootstrap",
-        routefilter: "backbone.routefilter"
+        routefilter: "backbone.routefilter",
+        async: "async"
     },
 
     shim:{

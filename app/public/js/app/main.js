@@ -12,6 +12,7 @@ require([
     'app/entities/preset',
     'app/entities/blog',
     'app/entities/login',
+    'app/modules/twitter/entities/twitter',
 
     /*sub application*/
 	'app/user/user_app',
@@ -23,6 +24,7 @@ require([
 	'app/login/login_app',
 	'app/menu/menu_app',
 	'app/home/home_app',
+	'app/modules/twitter/twitter_app',
 
 	/*modules*/
 	'app/modules/cache/cache_app'

@@ -1,6 +1,7 @@
 var rootController = require('../controllers/rootcontroller');
 var apiController = require('../controllers/api');
 var fileBrowserController = require('../controllers/fileBrowser');
+var twitterController = require('../controllers/twitter');
 var checkoAuth = require('middleware/checkAuth');
 var HttpError = require('error').HttpError;
 
@@ -55,6 +56,10 @@ module.exports = function(app) {
     app.delete("/api/fileBrowser/deleteItems", middleware, fileBrowserController.deleteItems);
     app.post("/upload", middleware, fileBrowserController.upload);
     app.post("/api/fileBrowser/downloadItems", middleware, fileBrowserController.downloadItems);
+
+    //twitter
+    app.post("/api/twitter/stream", middleware, twitterController.saveNewStream);
+    app.post("/api/twitter/getStreams", middleware, twitterController.getStreams);
 
     //login
     app.post("/api/login", function( req, res, next ){

@@ -16,6 +16,7 @@ define([
     App.channels = {}
     App.channels.main = _.extend({}, Backbone.Events);
     App.channels.blog = _.extend({}, Backbone.Events);
+    App.channels.twitter = _.extend({}, Backbone.Events);
     App.channels.fileBrowser = _.extend({}, Backbone.Events);
 
     App.addRegions({

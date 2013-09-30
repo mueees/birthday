@@ -1,4 +1,4 @@
-var Twitter = require('twetterClient').Twitter;
+var Twitter = require('twitterClient').Twitter;
 
 var config = {
     "consumerKey": "CWlhcR4IX5FBbLrRzp0rQ",

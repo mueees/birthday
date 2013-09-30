@@ -1,6 +1,6 @@
 var express = require('express'),
     app = express(),
-    db = require("./db"),
+    db = require("db"),
     route = require('./routes/route'),
     http = require('http'),
     HttpError = require('./error').HttpError,
@@ -8,6 +8,8 @@ var express = require('express'),
     logger = require("libs/log")(module),
     config = require("config");
 
+
+require("mongooseDb");
 app.use(express.favicon());
 
 /*if( app.get('env') == "development" ){
@@ -81,4 +83,9 @@ app.use(function(err, req, res, next){
     //emailSender.send();
 })
 
-http.createServer(app).listen(config.get("port"));
+//create server
+var server = http.createServer(app);
+server.listen(config.get("port"));
+
+//twitter stream
+require('twitter/socket')(server);
