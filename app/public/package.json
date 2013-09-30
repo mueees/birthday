@@ -1,25 +1,11 @@
 {
-  "name": "jquery",
-	"title": "jQuery",
-	"description": "JavaScript library for DOM operations",
-	"version": "1.2.0",
-	"homepage": "http://jquery.com",
-	"author": {
-		"name": "Silvio Moreto",
-		"url": "https://github.com/silviomoreto/"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/antonellopasella/bootstrap-select.git"
-	},
-	"licenses": [
-		{
-			"type": "Custom",
-			"url": "https://github.com/silviomoreto/bootstrap-select/blob/master/README.md#copyright-and-license"
-		}
-	],
-	"dependencies": {
-		"jquery": "1.8"
-	},
-	"keywords": []
+    "name": "for-experiment",
+    "version": "0.0.0",
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-contrib-stylus": "~0.6.0",
+        "grunt-contrib-watch": "~0.5.1",
+        "jquery": "",
+        "socket.io": ""
+    }
 }

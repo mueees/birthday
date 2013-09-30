@@ -1,0 +1,19 @@
+<div class="stream">
+    <h3>Stream</h3>
+<p>
+    <span class="btn btn-small addStream" >Add stream</span>
+</p>
+<ul class="list">
+    <% _.each(streamCollection, function(stream){%>
+
+    <li data-id="<%= stream['_id']%>">
+        <p>
+            <a href="#" class="change"><i class="icon-edit"></i></a>
+            <a href="#"><%= stream['name']%></a>
+            <a href="#" class="deleteBtn"><i class="icon-remove"></i></a>
+        </p>
+    </li>
+
+    <% }) %>
+</ul>
+</div>

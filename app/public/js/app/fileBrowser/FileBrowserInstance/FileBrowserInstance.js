@@ -90,9 +90,9 @@ define([
             this.channel.on("goToPath", function(data){_this.goToPath(data)});
             this.channel.on("deleteItem", function(data){_this.deleteItem(data)});
             this.channel.on("showMessage", function(data){_this.showMessage(data)});
-            this.channel.on("downloadBtnWithData", function(data){_this.downloadBtnWithData(data)});
             this.channel.on("createNewFolder", function(data){_this.createNewFolder(data)});
             this.channel.on("selectBtnWithData", function(data){_this.selectBtnWithData(data)});
+            this.channel.on("downloadBtnWithData", function(data){_this.downloadBtnWithData(data)});
         },
 
         keydown: function(e){
