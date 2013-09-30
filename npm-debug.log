@@ -1,0 +1,56 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'instal', 'mngose' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.19
+4 verbose node symlink /usr/bin/node
+5 warn package.json birthday-project@0.0.1 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'mngose', null ]
+8 verbose cache add name=undefined spec="mngose" args=["mngose",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'mngose',
+9 verbose parsed url   path: 'mngose',
+9 verbose parsed url   href: 'mngose' }
+10 silly lockFile 76d7b251-mngose mngose
+11 verbose lock mngose /home/mue/.npm/76d7b251-mngose.lock
+12 silly lockFile 76d7b251-mngose mngose
+13 silly lockFile 76d7b251-mngose mngose
+14 verbose addNamed [ 'mngose', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile b4223537-mngose mngose@
+17 verbose lock mngose@ /home/mue/.npm/b4223537-mngose.lock
+18 silly addNameRange { name: 'mngose', range: '*', hasData: false }
+19 verbose url raw mngose
+20 verbose url resolving [ 'https://registry.npmjs.org/', './mngose' ]
+21 verbose url resolved https://registry.npmjs.org/mngose
+22 info trying registry request attempt 1 at 08:01:59
+23 http GET https://registry.npmjs.org/mngose
+24 http 404 https://registry.npmjs.org/mngose
+25 silly registry.get cb [ 404,
+25 silly registry.get   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+25 silly registry.get     date: 'Mon, 30 Sep 2013 05:02:00 GMT',
+25 silly registry.get     'content-type': 'application/json',
+25 silly registry.get     'content-length': '52',
+25 silly registry.get     'cache-control': 'must-revalidate' } ]
+26 silly lockFile b4223537-mngose mngose@
+27 silly lockFile b4223537-mngose mngose@
+28 error 404 'mngose' is not in the npm registry.
+28 error 404 You should bug the author to publish it
+28 error 404
+28 error 404 Note that you can also install from a
+28 error 404 tarball, folder, or http url, or git url.
+29 error System Linux 3.8.0-31-generic
+30 error command "/usr/bin/node" "/usr/bin/npm" "instal" "mngose"
+31 error cwd /home/mue/Dropbox/web/sites/birthday
+32 error node -v v0.10.19
+33 error npm -v 1.3.11
+34 error code E404
+35 verbose exit [ 1, true ]
