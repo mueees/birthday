@@ -41,9 +41,7 @@ define([
 
         getStreams: function(){
             var deferred = $.Deferred();
-
             var streamCollection = new StreamCollection();
-
             streamCollection.fetch({
                 type: "POST",
                 success: function(){
@@ -55,6 +53,11 @@ define([
                     deferred.resolve({});
                 }
             });
+            return deferred.promise();
+        },
+
+        addListener: function(){
+            var deferred = $.Deferred();
 
             return deferred.promise();
         },
@@ -128,13 +131,16 @@ define([
         }
     }
 
-
     App.reqres.setHandler('twitter:saveNewStream', function(data){
         return API.saveNewStream(data);
     })
 
-    App.reqres.setHandler('twitter:getStreams', function(data){
-        return API.getStreams(data);
+    App.reqres.setHandler('twitter:getStreams', function(){
+        return API.getStreams();
+    })
+
+    App.reqres.setHandler('twitter:addListener', function(){
+        return API.addListener();
     })
 
     /*App.reqres.setHandler('task:getTasks', function( data ){
