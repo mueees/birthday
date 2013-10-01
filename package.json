@@ -18,6 +18,8 @@
         "ncp": "",
         "mongoose": "",
         "twit": "",
-        "socket.io": ""
+        "socket.io": "",
+        "crossroads": "",
+        "sockjs": ""
     }
 }

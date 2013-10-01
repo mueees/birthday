@@ -88,6 +88,6 @@ var server = http.createServer(app);
 server.listen(config.get("port"));
 
 //create websocket server
-require('websocketServer/server')(server);
+require('websocketServer/index')(server);
 
 //twitter stream
