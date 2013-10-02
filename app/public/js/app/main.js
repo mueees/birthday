@@ -13,6 +13,7 @@ require([
     'app/entities/blog',
     'app/entities/login',
     'app/modules/twitter/entities/twitter',
+    'app/modules/websocket/entities/websocket',
 
     /*sub application*/
     'app/user/user_app',
@@ -25,6 +26,7 @@ require([
     'app/menu/menu_app',
     'app/home/home_app',
     'app/modules/twitter/twitter_app',
+    'app/modules/websocket/websocket_app',
 
     /*modules*/
     'app/modules/cache/cache_app'
@@ -33,22 +35,15 @@ require([
     var sock = new SockJS('http://forge:56898/socket');
     var request = {
         id: 12,
-        method: '/twiiter/addLilstener',
-        params: {}
-    }
-
-    var request2 = {
-        id: 13,
-        method: '/twiiter/removeLilstener',
+        method: '/twitter/addListener',
         params: {}
     }
 
     sock.onopen = function() {
         sock.send( JSON.stringify(request) );
-        sock.send( JSON.stringify(request2) );
     };
     sock.onmessage = function(e) {
-        console.log('message', e.data);
+        console.log(e.data);
     };
     sock.onclose = function() {
         console.log('close');

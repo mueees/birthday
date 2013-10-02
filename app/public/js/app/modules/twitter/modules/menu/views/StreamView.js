@@ -9,6 +9,7 @@ define([
 
         events: {
             'click .addStream': 'addStream',
+            'click .streamName': 'changeStream',
             'click .deleteBtn': 'deleteBtn'
         },
 
@@ -44,6 +45,19 @@ define([
 
         addStreamToColl: function(data){
             this.streamCollection.add(data.model);
+        },
+
+        changeStream: function(e){
+            if(e) e.preventDefault();
+            var $li = $(e.target).closest('li');
+            var streamModel = this.streamCollection.get($li.data('id'));
+            debugger
+
+            this.trigger("changeStream", {
+                track: streamModel.get("track"),
+                people: streamModel.get("people"),
+                language: streamModel.get("language")
+            });
         }
     })
 

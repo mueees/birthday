@@ -8,7 +8,7 @@ define([
     return BaseModel.extend({
         defaults: {
             name: "",
-            text: "",
+            track: "",
             people: "",
             language: []
         },
