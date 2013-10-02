@@ -52,14 +52,17 @@ define([
                     $.when( App.request('twitter:getStreams', data)).fail( error ).done(
                         function(data){done(data, layout)}
                     );
-
-                    deleteStream
                 },
 
                 getStreamsSuccess: function(data, layout){
+                    var _this = this;
                     var streamView = new StreamView({
                         streamCollection: data.streamCollection,
                         channel: App.channels.twitter
+                    });
+
+                    streamView.on("changeStream", function(data){
+                        _this.changeStream(data)
                     });
 
                     layout.streamContainer.show(streamView);
@@ -68,7 +71,30 @@ define([
 
                 getStreamsError: function(){
                     debugger
+                },
+
+                changeStream: function(data){
+
+                    var request = {
+                        params: data,
+                        method: App.config.api.twitter.changeChannel
+                    }
+
+                    var done = _.bind(this.changeStreamSuccess, this);
+                    var error = _.bind(this.changeStreamError, this);
+
+                    $.when( App.request('websocket:send', request)).fail( error ).done( done );
+                },
+
+                changeStreamSuccess: function(){
+                    debugger
+                },
+
+                changeStreamError: function(){
+                    debugger
                 }
+
+
             }
 
             var API = {

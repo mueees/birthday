@@ -42,8 +42,14 @@ define([], function(){
             login: "/api/login",
             logout: "/api/logout",
 
+            //twitter
+            //ajax
             stream: "/api/twitter/stream",
-            getStreams: "/api/twitter/getStreams"
+            getStreams: "/api/twitter/getStreams",
+            //websocket
+            twitter:{
+                changeChannel:  "/twitter/changeChannel"
+            }
 
         },
 

@@ -13,7 +13,7 @@ define([
 
         ui: {
             "name": '#name',
-            'text': '#text',
+            'track': '#track',
             'people': '#people',
             'language': '.lang'
         },
@@ -32,7 +32,7 @@ define([
 
         getData: function(){
             return {
-                text: $.trim(this.ui.text.val()),
+                track: $.trim(this.ui.track.val()),
                 name: $.trim(this.ui.name.val()),
                 people: $.trim(this.ui.people.val()),
                 language: this.getLangList()
