@@ -48,6 +48,7 @@ define([], function(){
             getStreams: "/api/twitter/getStreams",
             //websocket
             twitter:{
+                addListener: "/twitter/addListener",
                 changeChannel:  "/twitter/changeChannel"
             }
 
