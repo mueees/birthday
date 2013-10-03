@@ -5,7 +5,6 @@ var twitterController = require('../controllers/twitter');
 var checkoAuth = require('middleware/checkAuth');
 var HttpError = require('error').HttpError;
 
-
 var middleware = [checkoAuth];
 
 module.exports = function(app) {
