@@ -51,7 +51,6 @@ define([
             if(e) e.preventDefault();
             var $li = $(e.target).closest('li');
             var streamModel = this.streamCollection.get($li.data('id'));
-            debugger
 
             this.trigger("changeStream", {
                 track: streamModel.get("track"),

@@ -63,8 +63,6 @@ define([
                     layout.extendContainer.show(addStreamView);
                 },
 
-
-
                 saveNewStream: function(data){
                     var success = _.bind(this.saveNewStreamSuccess, this);
                     var error = _.bind(this.saveNewStreamError, this);
