@@ -153,3 +153,5 @@
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-02T15:38:25.142Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-02T15:38:49.483Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-02T15:39:28.581Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-03T14:33:16.724Z"}
+{"status":404,"url":"/socket/info","level":"warn","message":"","timestamp":"2013-10-03T14:33:19.608Z"}
