@@ -32,7 +32,7 @@ require([
     'app/modules/cache/cache_app'
 ], function(App){
 
-    var sock = new SockJS('http://forge:56898/socket');
+    /*var sock = new SockJS('http://forge:56898/socket');
     var request = {
         id: 12,
         method: '/twitter/addListener',
@@ -47,7 +47,7 @@ require([
     };
     sock.onclose = function() {
         console.log('close');
-    };
+    };*/
 
     //sock.send( JSON.stringify(request) );
 

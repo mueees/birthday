@@ -7,28 +7,31 @@ define([
 
 ], function(jQuery, Backbone, Marionette, App){
 
+
+    var websocket = App.module('Websocket');
+
     var id = 0;
 
-    function generateNewId(){
+    function newId(){
         id++;
     }
 
     var API = {
         send: function(data){
-
             if( data.method ){
                 //this is request
-                generateNewId();
-                data.id = id;
 
                 var deferred = $.Deferred();
+                websocket.API.request(data, deferred);
 
                 return deferred.promise();
             }else if( data.channel ){
                 //this is publish
+                websocket.API.publish(data);
 
             }else if( data.error || data.result ){
                 //this is response
+                websocket.API.response(data);
 
             }else{
                 return false;
