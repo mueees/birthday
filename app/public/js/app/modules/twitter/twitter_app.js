@@ -12,7 +12,9 @@ define([
 
     /*modules*/
     "./modules/menu/module",
-    'app/modules/notify/module'
+    './modules/showTweets/module',
+    'app/modules/notify/module',
+    "app/modules/websocket/websocket_app"
 ], function(jQuery, Backbone, Marionette, App, AddStreamView, Layout){
 
     App.module("Twitter", {
@@ -23,6 +25,7 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
+            var ShowTweets = App.module("Twitter.ShowTweets");
 
             var layout;
 
@@ -77,6 +80,61 @@ define([
 
                 saveNewStreamError: function(){
                     Notify.API.showNotify({text: "Cannot create created"});
+                },
+
+                start: function(){
+                    //подписаться на tweet
+                    this.subscribeNewTweet();
+                },
+
+                subscribeNewTweet: function(){
+
+                    var done = _.bind(this.subscribeNewTweetSuccess, this);
+                    var fail = _.bind(this.subscribeNewTweetError, this);
+
+                    var request = {
+                        method: App.config.api.twitter.subscribe,
+                        params: {}
+                    }
+
+                    $.when( App.request('websocket:send', request)).fail(fail).done(done);
+                },
+
+                subscribeNewTweetSuccess: function(){
+                    Notify.API.showNotify({text: "Waiting for new tweet..."});
+                    
+                    //create view for rendering tweets
+                    ShowTweets.API.showStreamTweet({region: layout.listContainer});
+
+                },
+
+                subscribeNewTweetError: function(error){
+                    Notify.API.showNotify({text: error.message});
+                },
+
+                stop: function(){
+                    //отписаться от tweet
+                    this.unsubscribeNewTweet();
+                },
+
+                unsubscribeNewTweet: function(){
+                    var done = _.bind(this.unsubscribeNewTweetSuccess, this);
+                    var fail = _.bind(this.unsubscribeNewTweetError, this);
+
+                    var request = {
+                        method: App.config.api.twitter.unsubscribe,
+                        params: {}
+                    }
+
+                    $.when( App.request('websocket:send', request)).fail(fail).done(done);
+                },
+
+                unsubscribeNewTweetSuccess: function(){
+                    Notify.API.showNotify({text: "Unsubscribe success"});
+                },
+
+                unsubscribeNewTweetError: function(error){
+                    Notify.API.showNotify({text: error.message});
                 }
 
             }
@@ -85,16 +143,26 @@ define([
                 init: Controller.init
             }
 
-
             App.addInitializer(function(){
                 new Router({
                     controller: API
                 })
             })
 
+            Twitter.on("start", function(){
+                Controller.start();
+            });
+
+            Twitter.on("stop", function(){
+                Controller.stop();
+            });
+
+
+
             /*Events*/
             App.channels.twitter.on("showAddStreamForm", Controller.showAddStreamForm);
             App.channels.twitter.on("saveNewStream", function(data){Controller.saveNewStream(data)});
+            
 
         }
     })

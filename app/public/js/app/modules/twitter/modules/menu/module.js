@@ -97,10 +97,6 @@ define([
                         function(){debugger}
                     );
 
-                    App.channels.websocket.on(App.config.s.twitter.newTweet, function(data){
-
-                    });
-
                 },
 
                 changeStreamSuccess: function(){

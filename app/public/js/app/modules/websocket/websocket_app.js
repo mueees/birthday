@@ -83,6 +83,7 @@ define([
                 },
 
                 publish: function(message){
+
                     if( !socketState ) return false;
                     sock.send( JSON.stringify(message) );
                 },
@@ -96,7 +97,9 @@ define([
                     //todo: добавить валидацию на отправляемые сообщения
 
                     message.id = id;
-                    sock.send( JSON.stringify(message) );
+                    message = JSON.stringify(message);
+                    sock.send( message );
+                    
                     requests[id] = deferred;
                 }
 

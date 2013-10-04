@@ -18,6 +18,7 @@ define([
 
     var API = {
         send: function(message){
+
             if( message.method ){
                 //this is request
 

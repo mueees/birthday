@@ -6,6 +6,7 @@ require([
     'routefilter',
 
     /*entities*/
+    'app/modules/websocket/entities/websocket',
     'app/entities/user',
     'app/entities/event',
     'app/entities/task',
@@ -13,9 +14,10 @@ require([
     'app/entities/blog',
     'app/entities/login',
     'app/modules/twitter/entities/twitter',
-    'app/modules/websocket/entities/websocket',
+
 
     /*sub application*/
+    'app/modules/websocket/websocket_app',
     'app/user/user_app',
     'app/event/event_app',
     'app/task/task_app',
@@ -26,7 +28,6 @@ require([
     'app/menu/menu_app',
     'app/home/home_app',
     'app/modules/twitter/twitter_app',
-    'app/modules/websocket/websocket_app',
 
     /*modules*/
     'app/modules/cache/cache_app'
