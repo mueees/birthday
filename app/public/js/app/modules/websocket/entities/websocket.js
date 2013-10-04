@@ -3,7 +3,7 @@ define([
     'backbone',
     'marionette',
     'app/app',
-    './websocket'
+    '../websocket_app'
 
 ], function(jQuery, Backbone, Marionette, App){
 
@@ -17,21 +17,21 @@ define([
     }
 
     var API = {
-        send: function(data){
-            if( data.method ){
+        send: function(message){
+            if( message.method ){
                 //this is request
 
                 var deferred = $.Deferred();
-                websocket.API.request(data, deferred);
+                websocket.API.request(message, deferred);
 
                 return deferred.promise();
-            }else if( data.channel ){
+            }else if( message.channel ){
                 //this is publish
                 websocket.API.publish(data);
 
-            }else if( data.error || data.result ){
+            }else if( message.error || message.result ){
                 //this is response
-                websocket.API.response(data);
+                websocket.API.response(message);
 
             }else{
                 return false;

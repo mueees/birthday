@@ -1,4 +1,4 @@
-var sock = new SockJS('http://localhost:56899/socket');
+var sock = new SockJS('http://forge:56899/socket');
     var request = {
         id: 12,
         method: '/pub/some/data',

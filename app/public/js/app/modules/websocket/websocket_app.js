@@ -10,7 +10,9 @@ define([
 
         define: function( Websocket, App, Backbone, Marionette, $, _ ){
 
-            var requests = {}
+            //list of sending request
+            var requests = {};
+
             var sock;
             var id = 0;
             var intervalReconnect;
@@ -22,9 +24,11 @@ define([
 
             var Controller = {
                 init: function(){
+                    var _this = this;
+
                     //todo: нужна обертка над SockJS, для автоматического stringify, возможно валидации
-                    sock = new SockJS('http://localhost:56898/socket');
-                    sock.onmessage = this.onMessage;
+                    sock = new SockJS('http://forge:56898/socket');
+                    sock.onmessage = function(e){_this.onMessage(e)};
                     socketState = true;
                     if(intervalReconnect){
                         clearInterval(intervalReconnect);
@@ -37,7 +41,39 @@ define([
 
                 onMessage: function(e){
                     var data = JSON.parse(e.data);
-                    console.log(data);
+
+                    //determine what is it
+                    if( data.id ){
+                        if( data.method ){
+
+                        }else{
+                            //this is response
+                            this.onMessageResponse(data);
+                        }
+                    }else if (data.channel){
+                        //this is publish message
+                        this.onMessagePublish(data);
+                    }
+                },
+
+                onMessagePublish: function(data){
+                    App.channels.websocket.trigger(data.channel, data.params);
+                },
+
+                onMessageResponse: function(data){
+
+                    //todo: можно логировать такие ответы, на которые нет deferred объекта
+                    if(!requests[data.id]) return false;
+
+                    if( !data.error ){
+                        //this is success answer
+                        requests[data.id].resolve(data.result);
+                    }else{
+                        //this is error answer
+                        requests[data.id].reject(data.error);
+                    }
+
+                    delete requests[data.id];
                 },
 
                 onClose: function(){

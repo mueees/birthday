@@ -1,9 +1,9 @@
 var twitter = require("twitter");
 
-module.exports = function(crossroads){
+module.exports = function(server){
 
     //twitter
-    crossroads.addRoute('/twitter/addListener', twitter.addListener);
-    crossroads.addRoute('/twitter/changeChannel', twitter.changeChannel);
+    server.use('/twitter/addListener', twitter.addListener);
+    //server.use('/twitter/changeChannel', twitter.changeChannel);
 
 }
