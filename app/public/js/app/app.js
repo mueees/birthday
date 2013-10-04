@@ -18,6 +18,7 @@ define([
     App.channels.blog = _.extend({}, Backbone.Events);
     App.channels.twitter = _.extend({}, Backbone.Events);
     App.channels.fileBrowser = _.extend({}, Backbone.Events);
+    App.channels.websocket = _.extend({}, Backbone.Events);
 
     App.addRegions({
         mainMenu: ".mainMenu",

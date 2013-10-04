@@ -2,6 +2,12 @@ define([], function(){
 
     return {
 
+        s: {
+            twitter: {
+                newTweet: "twitter:newTweet"
+            }
+        },
+
         api:{
             user: '/api/user',
             getUsers: '/api/users',
