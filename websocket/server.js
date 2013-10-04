@@ -7,8 +7,8 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + "/templates");
 app.set('view engine', 'hbs');
 
-app.use(function(req, res, next){
-    res.render('index');
+app.use('/', function(req, res, next){
+    res.render('index', {});
 });
 
 app.use(function(err, req, res, next){
