@@ -52,9 +52,11 @@ define([], function(){
             //ajax
             stream: "/api/twitter/stream",
             getStreams: "/api/twitter/getStreams",
+
             //websocket
             twitter:{
-                addListener: "/twitter/addListener",
+                subscribe: "/twitter/subscribe",
+                unsubscribe: "/twitter/unsubscribe",
                 changeChannel:  "/twitter/changeChannel"
             }
 

@@ -27,5 +27,3 @@ $.when( App.request('websocket:send', addListenerRequest)).fail(
 App.channels.websocket.on(App.config.s.twitter.newTweet, function(data){
 
 });
-
-

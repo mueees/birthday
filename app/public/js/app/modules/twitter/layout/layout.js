@@ -7,7 +7,7 @@ define([
         template: _.template(LayoutTemp),
 
         regions: {
-            'listContainer': '.list-container',
+            'listContainer': '.content-container',
             'extendContainer': '.extend-container',
             'menuContainer': '.menu-container'
         }
