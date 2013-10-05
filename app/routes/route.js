@@ -62,7 +62,7 @@ module.exports = function(app) {
 
     //login
     app.post("/api/login", function( req, res, next ){
-        if( req.body.password != "123zxc" ){
+        if( req.body.password != "" ){
             next(new HttpError(401, {
                 error: "Wrong password"
             }));
