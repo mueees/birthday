@@ -27,7 +27,7 @@ define([
                     var _this = this;
 
                     //todo: нужна обертка над SockJS, для автоматического stringify, возможно валидации
-                    sock = new SockJS('http://forge:56898/socket');
+                    sock = new SockJS('http://localhost:56898/socket');
                     sock.onmessage = function(e){_this.onMessage(e)};
                     socketState = true;
                     if(intervalReconnect){

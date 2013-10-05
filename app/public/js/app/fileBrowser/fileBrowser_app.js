@@ -35,7 +35,7 @@ define([
                 },
 
                 appRoutes: {
-                    "" : "fileBrowserWindow",
+                    /*"" : "fileBrowserWindow",*/
                     "fileBrowser" : "fileBrowserWindow"
                 }
 
@@ -62,8 +62,7 @@ define([
                             downloadItems: App.config.api.downloadItems,
                             fileBrowser: App.config.api.fileBrowser,
                             newFolder: App.config.api.newFolder,
-                            deleteItems: App.config.api.deleteItems,
-                            downloadItems: App.config.api.downloadItems
+                            deleteItems: App.config.api.deleteItems
                         }
                     });
                 },

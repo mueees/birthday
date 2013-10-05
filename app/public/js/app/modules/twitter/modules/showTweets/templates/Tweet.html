@@ -1,29 +1,49 @@
-<div id="<%=idTweet%>">
-	<i><%= number %></i>
-	<a href="#" class="photo">
-		<img src="<%= photoUrl %>" alt="photo">
-	</a>
+<div id="<%=id_str%>">
+    <i class="number"><%= number%></i>
+    <a target="_blank" href="http://twitter.com/<%= user.screen_name %>" class="photo" style="background-image: url('<%= user.profile_image_url %>')"></a>
 
-	<div class="info">
-		<a href="http://twitter.com/<%= screenName %>"><%= fullName %></a>
+    <div class="content">
+        <div class="info">
+            <a href="http://twitter.com/<%= user.screen_name %>"><%= user.name %></a>
 		<span class="feed">
-			<a href="http://twitter.com/<%= screenName %>" target="_blank"><%= screenName %></a>	
+			<a href="http://twitter.com/<%= user.screen_name %>" target="_blank">@<%= user.screen_name %>(<%= user.followers_count %>)</a>
 		</span>
-	</div>
-	<div class="text">
-		<%= text %>
-	</div>
-	<div class="meta">
-		<div class="time">
-			<%= time %>
-		</div>
-		<div class="button">
-			<a href="#">to black list</a>
-			<a href="#">to white list</a>
-			<a href="#">retweet</a>
-			<a href="#">reply</a>
-			<a href="#">add to favorite</a>
-			<a href="#">saveTweet</a>
-		</div>
-	</div>
+        </div>
+        <div class="text">
+            <%= text %>
+        </div>
+        <div class="meta">
+            <div class="secondary">
+                <span class="retweet icon">
+                    <i class="icon-retweet"></i>
+                    <%= retweet_count %>
+                </span>
+                <span class="favorite icon">
+                    <i class="icon-user"></i>
+                    <%= favorite_count %>
+                </span>
+            </div>
+            <div class="button">
+                <a class="icon" href="#" title="to black list">
+                    <i class="icon-minus-sign"></i>
+                </a>
+                <a class="icon" href="#" title="to white list">
+                    <i class="icon-plus-sign"></i>
+                </a>
+                <a class="icon" href="//twitter.com/intent/retweet?tweet_id=<%= id_str %>" title="retweet" target="_blank">
+                    <i class="icon-retweet"></i>
+                </a>
+                <a class="icon" href="//twitter.com/intent/tweet?in_reply_to=<%= id_str %>" title="reply">
+                    <i class="icon-bullhorn"></i>
+                </a>
+                <a class="icon" href="//twitter.com/intent/favorite?tweet_id=<%= id_str %>" title="add to favorite">
+                    <i class="icon-star"></i>
+                </a>
+                <a class="icon" href="#" title="save tweet">
+                    <i class="icon-bookmark"></i>
+                </a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
 </div>

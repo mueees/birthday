@@ -35,12 +35,10 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + "/templates");
 app.set('view engine', 'hbs');
 
-//todo:remove
-
-app.use(function(req, res, next){
+/*app.use(function(req, res, next){
     req.session.isHaveAccess = true;
     next();
-})
+})*/
 
 // error handling
 app.use( require("middleware/sendHttpError") );

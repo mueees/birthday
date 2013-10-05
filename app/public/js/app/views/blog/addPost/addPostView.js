@@ -62,7 +62,7 @@ define([
             var _this = this;
             setTimeout(function(){
                 _this.body = CKEDITOR.replace('body', {
-                    filebrowserBrowseUrl : '/fileBrowser.html',
+                    filebrowserBrowseUrl : '/fileBrowser.html'
                 });
                 _this.title = CKEDITOR.replace('title', {toolbar :
                     [
