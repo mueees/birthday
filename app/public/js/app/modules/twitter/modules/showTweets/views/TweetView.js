@@ -8,6 +8,8 @@ define([
 
         tagName: "LI",
 
+        className: "tweet",
+
         events: {
 
         },

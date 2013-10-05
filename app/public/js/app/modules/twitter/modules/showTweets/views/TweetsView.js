@@ -19,6 +19,7 @@ define([
 
         initialize: function(data){
             this.collection = data.collection;
+            this.countTweet = 0;
 
             //при добавлении твита в коллеция он вставляется в начало view
             this.listenTo(this.collection, "add", this.addTweet);
@@ -28,6 +29,8 @@ define([
         },
 
         addTweet: function(model){
+            this.countTweet++;
+            model.set('number', this.countTweet);
             var tweetView = new TweetView({model: model});
             tweetView.render();
             this.$el.find('ul').prepend(tweetView.$el);
