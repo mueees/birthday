@@ -8,6 +8,10 @@ define([], function(){
             }
         },
 
+        websocket: {
+            url: "http://localhost:56898/socket"
+        },
+
         api:{
             user: '/api/user',
             getUsers: '/api/users',

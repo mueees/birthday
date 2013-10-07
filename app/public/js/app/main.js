@@ -4,6 +4,7 @@ require([
 
     /*extend*/
     'routefilter',
+    'app/extention/streamModel/module',
 
     /*entities*/
     'app/modules/websocket/entities/websocket',
@@ -52,6 +53,16 @@ require([
 
     //sock.send( JSON.stringify(request) );
 
-
     App.start();
+
+    var request = {
+        method: '/some method',
+        params: {}
+    }
+
+    $.when( App.request('websocket:send', request)).fail(function(){
+        debugger
+    }).done(function(){
+            debugger
+        });
 })

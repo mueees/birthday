@@ -20,6 +20,7 @@
         "twit": "",
         "socket.io": "",
         "crossroads": "",
-        "sockjs": ""
+        "sockjs": "",
+        "jquery": ""
     }
 }

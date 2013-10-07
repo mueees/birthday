@@ -12,6 +12,7 @@ define([
             people: "",
             language: []
         },
+        socket: true,
         idAttribute: '_id',
         urlRoot: App.config.api.stream
     })

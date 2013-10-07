@@ -1,8 +1,9 @@
 cd Dropbox/web/sites/birthday/project/marukp\ bootstrap
 grunt
 
-NODE_ENV=development
-NODE_PATH=/home/mue/Dropbox/web/sites/birthday/app
+cd Dropbox/web/sites/birthday/app
+export NODE_ENV=development
+export NODE_PATH=/home/mue/Dropbox/web/sites/birthday/app
 supervisor --debug server.js
 
 cd nodejs/own/birthday/app
