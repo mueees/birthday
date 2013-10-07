@@ -6,6 +6,7 @@ var express = require('express'),
     HttpError = require('./error').HttpError,
     EmailSender = require('EmailSender'),
     logger = require("libs/log")(module),
+
     config = require("config");
 
 
@@ -35,10 +36,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + "/templates");
 app.set('view engine', 'hbs');
 
-/*app.use(function(req, res, next){
+//todo:remove
+app.use(function(req, res, next){
     req.session.isHaveAccess = true;
     next();
-})*/
+})
 
 // error handling
 app.use( require("middleware/sendHttpError") );
@@ -53,6 +55,7 @@ app.use(function(req, res, next){
     //var emailSender = new EmailSender({text: "Status: 404. Url:" + req.url});
     //emailSender.send();
 
+    res.status(404);
     res.render('error', { status: 404, url: req.url });
 });
 

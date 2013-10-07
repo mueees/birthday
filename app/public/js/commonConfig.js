@@ -19,6 +19,7 @@ requirejs.config({
 
         /*libs*/
         bootstrap: "bootstrap/bootstrap",
+        underscore: "underscore",
         routefilter: "backbone.routefilter",
         async: "async"
     },

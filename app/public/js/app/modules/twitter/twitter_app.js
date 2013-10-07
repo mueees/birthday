@@ -4,6 +4,9 @@ define([
     'marionette',
     'app/app',
 
+    /*models*/
+    './models/stream',
+
     /*views*/
     "./modules/addStream/views/AddStreamView",
 
@@ -15,7 +18,7 @@ define([
     './modules/showTweets/module',
     'app/modules/notify/module',
     "app/modules/websocket/websocket_app"
-], function(jQuery, Backbone, Marionette, App, AddStreamView, Layout){
+], function(jQuery, Backbone, Marionette, App, StreamModel, AddStreamView, Layout){
 
     App.module("Twitter", {
         startWithParent: false,
@@ -70,7 +73,18 @@ define([
                     var success = _.bind(this.saveNewStreamSuccess, this);
                     var error = _.bind(this.saveNewStreamError, this);
 
-                    $.when( App.request('twitter:saveNewStream', data)).fail( error ).done( success );
+
+                    var stream = new StreamModel(data);
+                    stream.save(null,{
+                        success: function(){
+                            debugger
+                        }
+                    })
+
+
+                    //$.when( App.request('twitter:saveNewStream', data)).fail( error ).done( success );
+
+
                 },
 
                 saveNewStreamSuccess: function(data){

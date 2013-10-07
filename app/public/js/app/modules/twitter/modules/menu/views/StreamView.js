@@ -39,11 +39,17 @@ define([
             this.channel.trigger("showAddStreamForm");
         },
 
-        deleteBtn: function(){
-            this.channel.trigger("deleteStream");
+        deleteBtn: function(e){
+            if(e) e.preventDefault();
+            var $li = $(e.target).closest('li');
+
+            this.trigger("deleteStream", {
+                id: $li.data('id')
+            });
         },
 
         addStreamToColl: function(data){
+            debugger
             this.streamCollection.add(data.model);
         },
 
