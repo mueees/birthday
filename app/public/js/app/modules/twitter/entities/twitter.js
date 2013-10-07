@@ -42,8 +42,8 @@ define([
         getStreams: function(){
             var deferred = $.Deferred();
             var streamCollection = new StreamCollection();
+
             streamCollection.fetch({
-                type: "POST",
                 success: function(){
                     deferred.resolve({
                         streamCollection: streamCollection
@@ -53,6 +53,7 @@ define([
                     deferred.resolve({});
                 }
             });
+
             return deferred.promise();
         },
 
@@ -60,74 +61,6 @@ define([
             var deferred = $.Deferred();
 
             return deferred.promise();
-        },
-
-        //------------------------------------------------------
-
-        getEventById: function(id){
-
-            var deferred = $.Deferred();
-            var event = new EventModel();
-            event.set("_id", id);
-
-            event.fetch({
-                success: function(model, data){
-                    deferred.resolve({
-                        model: model,
-                        data: data
-                    })
-                },
-                error: function(model, xhr){
-                    deferred.reject({
-
-                    })
-                }
-            });
-
-            return deferred.promise();
-        },
-        saveNewEvent: function( data ){
-
-            var event = new EventModel(data);
-            var deferred = $.Deferred();
-
-            event.save(null,{
-                success: function(model, data){
-                    deferred.resolve({
-                        model: new EventModel(data)
-                    })
-                },
-                error: function(model, xhr){
-                    deferred.reject({
-                        model: event,
-                        xhr: xhr
-                    })
-                }
-            });
-
-            return deferred.promise();
-        },
-        getEventsToShow: function( data ){
-            var deferred = $.Deferred();
-            this._getEventsToShow(data, deferred);
-            return deferred.promise();
-        },
-        _getEventsToShow: function(data, deferred){
-
-            var eventToShowCollection = new EventToShowCollection();
-
-            eventToShowCollection.fetch({
-                type: "POST",
-                data: data,
-                success: function(){
-                    deferred.resolve({
-                        eventToShowCollection: eventToShowCollection
-                    });
-                },
-                error: function(){
-                    deferred.resolve({});
-                }
-            });
         }
     }
 

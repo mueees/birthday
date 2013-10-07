@@ -1,9 +1,9 @@
 define([
+    'app/app',
     'jquery',
     'backbone',
-    'marionette',
-    'app/app'
-], function(jQuery, Backbone, Marionette, App){
+    'marionette'
+], function(App, jQuery, Backbone, Marionette){
 
     App.module("Websocket", {
         startWithParent: false,
@@ -27,7 +27,8 @@ define([
                     var _this = this;
 
                     //todo: нужна обертка над SockJS, для автоматического stringify, возможно валидации
-                    sock = new SockJS('http://localhost:56898/socket');
+
+                    sock = new SockJS(App.config.websocket.url);
                     sock.onmessage = function(e){_this.onMessage(e)};
                     socketState = true;
                     if(intervalReconnect){
@@ -120,10 +121,7 @@ define([
             }
 
             Websocket.API = API;
-
-            App.addInitializer(function(){
-                Controller.init();
-            })
+            Controller.init();
 
         }
     })

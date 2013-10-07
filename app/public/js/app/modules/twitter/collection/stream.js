@@ -8,7 +8,8 @@ define([
 
     return BaseColletion.extend({
         model: StreamModel,
-        url: App.config.api.getStreams
+        url: App.config.api.getStreams, // "/api/twitter/getStreams"
+        socket: true
     })
 
 })

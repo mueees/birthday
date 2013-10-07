@@ -3,7 +3,7 @@
     "db": {
         "ip": "109.251.151.22",
         "port": "27017",
-        "nameDatabase": "birthday"
+        "nameDatabase": "batros_birthday"
     },
     "session": {
         "secret": "skymiss",
