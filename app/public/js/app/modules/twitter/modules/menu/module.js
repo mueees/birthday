@@ -85,17 +85,7 @@ define([
                     var done = _.bind(this.changeStreamSuccess, this);
                     var error = _.bind(this.changeStreamError, this);
 
-                    //$.when( App.request('websocket:send', request)).fail( error ).done( done );
-
-                    var addListenerRequest = {
-                        method: App.config.api.twitter.addListener, params: {}
-                    }
-
-                    $.when( App.request('websocket:send', addListenerRequest)).fail(
-                        function(){debugger}
-                    ).done(
-                        function(){debugger}
-                    );
+                    $.when( App.request('websocket:send', request)).fail( error ).done( done );
 
                 },
 
