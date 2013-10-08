@@ -30,7 +30,7 @@ define([
         },
 
         render: function(){
-            debugger
+
             var view = this.template({
                 streamCollection: this.streamCollection.toJSON()
             })
@@ -57,6 +57,7 @@ define([
         },
 
         addStreamToColl: function(model){
+
             this.streamCollection.add(model);
         },
 
@@ -67,7 +68,6 @@ define([
 
             this.trigger("changeStream", {
                 track: streamModel.get("track"),
-                people: streamModel.get("people"),
                 language: streamModel.get("language")
             });
         },

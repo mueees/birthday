@@ -1,24 +1,23 @@
-var async = require('async'),
+var twitter = require("twitter"),
+    async = require('async'),
     StreamModel = require('../models/twitter/sream'),
     SocketError = require('socketServer/error').SocketError;
 
 var controller = {
 
-    //only ajax
     saveNewStream: function(req, res, next){
         var data = req.body || req.params;
         var stream = new StreamModel(data);
 
         stream.save(function (err, stream) {
             if(err){
-                res.send({error: err});
+                next( new SocketError(400, "Cannot save new Streams") );
                 return false;
             }
             res.send(stream);
         })
     },
 
-    //only ajax
     getStreams: function(req, res, next){
         StreamModel.find({}, function(err, streams){
             if(err){
@@ -73,6 +72,17 @@ var controller = {
             })
 
         })
+    },
+
+    changeChannel: function(req, res, next){
+        twitter.changeChannel(req, res, next);
+    },
+
+    subscribe: function(req, res, next){
+        twitter.subscribe(req, res, next);
+    },
+    unsubscribe: function(req, res, next){
+        twitter.unsubscribe(req, res, next);
     }
 };
 

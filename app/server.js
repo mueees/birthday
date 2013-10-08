@@ -5,6 +5,7 @@ var express = require('express'),
     http = require('http'),
     HttpError = require('./error').HttpError,
     EmailSender = require('EmailSender'),
+    SocketError = require('socketServer/error').SocketError,
     logger = require("libs/log")(module),
 
     config = require("config");
@@ -89,4 +90,49 @@ var server = http.createServer(app);
 server.listen(config.get("port"));
 
 //create websocket server
-require('socketServer/socketServer').init(server);
+var socketServer = require('socketServer/socketServer');
+//add routing for client request
+require('routes/websocket')(socketServer);
+// default route
+socketServer.use( function(req, res, next){
+    res.send({
+        errors: {
+            message: "undefined request",
+            status: 404
+        }
+    })
+});
+socketServer.use(function(err, req, res, next){
+
+    if( typeof err == "number"){
+        err = new SocketError(err);
+    }
+
+    if( err instanceof SocketError ){
+        res.send({
+            errors: {
+                message: err.message,
+                status: err.status
+            }
+        })
+    }else if( err instanceof Error){
+
+        res.send({
+            errors: {
+                message: err.message,
+                status: 500
+            }
+        })
+
+    }else{
+        //process.env.NODE_ENV == "development"
+
+        res.send({
+            errors: {
+                message: err,
+                status: 500
+            }
+        });
+    }
+})
+socketServer.start(server);
