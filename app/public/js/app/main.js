@@ -34,28 +34,9 @@ require([
     'app/modules/cache/cache_app'
 ], function(App){
 
-    /*var sock = new SockJS('http://forge:56898/socket');
-    var request = {
-        id: 12,
-        method: '/twitter/addListener',
-        params: {}
-    }
-
-    sock.onopen = function() {
-        sock.send( JSON.stringify(request) );
-    };
-    sock.onmessage = function(e) {
-        console.log(e.data);
-    };
-    sock.onclose = function() {
-        console.log('close');
-    };*/
-
-    //sock.send( JSON.stringify(request) );
-
     App.start();
 
-    var request = {
+   /* var request = {
         method: '/some method',
         params: {}
     }
@@ -64,5 +45,5 @@ require([
         debugger
     }).done(function(){
             debugger
-        });
+        });*/
 })

@@ -27,44 +27,49 @@ define([
         destroy: function(model){
             if (model.isNew()) return false;
 
-            var deff = App.request('websocket:send', {
-                method: model.url() + "/delete",
+            if( !model.urlRoot ) {
+                alert("urlRoot should be defined");
+                return false;
+            }
+
+            return App.request('websocket:send', {
+                method: model.urlRoot + "/delete",
                 params: model.toJSON()
             });
-            return deff;
         },
 
         update: function(model){
 
-            var deff = App.request('websocket:send', {
-                method: model.url() + "/update",
+            if( !model.urlRoot ) {
+                alert("urlRoot should be defined");
+                return false;
+            }
+
+            return App.request('websocket:send', {
+                method: model.urlRoot + "/update",
                 params: model.toJSON()
             });
-            return deff;
         },
 
         read: function(model){
-            var deff = App.request('websocket:send', {
+            return App.request('websocket:send', {
                 method: model.url() + "/get",
                 params: model.toJSON()
             });
-            return deff;
         },
 
         find: function(model){
-            var deff = App.request('websocket:send', {
+            return App.request('websocket:send', {
                 method: model.url + "/find",
                 params: model.toJSON()
             });
-            return deff;
         },
 
         findAll: function(model){
-            var deff = App.request('websocket:send', {
+            return App.request('websocket:send', {
                 method: model.url + "/findAll",
                 params: model.toJSON()
             });
-            return deff;
         }
 
     })
@@ -112,24 +117,5 @@ define([
     Backbone.sync = function(method, model, options) {
         return Backbone.getSyncMethod(model).apply(this, [method, model, options]);
     };
-
-    /*setTimeout(function(){
-
-        var Stream = Backbone.Model.extend({
-            url: "/testurl",
-            socket: true
-        });
-        var stream = new Stream();
-        stream.set("id", 'test');
-
-        stream.on("destroy", function(){
-            debugger
-        })
-        stream.destroy();
-        stream.set("some", "sdfsf");
-        stream.save();
-
-
-    }, 1500)*/
 
 })
