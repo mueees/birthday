@@ -10,6 +10,7 @@ define([
         events: {
             'click .addStream': 'addStream',
             'click .streamName': 'changeStream',
+            'click .change': 'changeStreamParams',
             'click .deleteBtn': 'deleteBtn'
         },
 
@@ -25,9 +26,11 @@ define([
 
             //todo: hard-code... should paste only one view, without rerendering all view
             this.listenTo(this.streamCollection, "add", this.render);
+            this.listenTo(this.streamCollection, "change", this.render);
         },
 
         render: function(){
+            debugger
             var view = this.template({
                 streamCollection: this.streamCollection.toJSON()
             })
@@ -41,16 +44,20 @@ define([
 
         deleteBtn: function(e){
             if(e) e.preventDefault();
+            var _this = this;
             var $li = $(e.target).closest('li');
-
-            this.trigger("deleteStream", {
-                id: $li.data('id')
+            var model = this.streamCollection.get($li.data('id'));
+            model.destroy({
+                success: function(model){_this.successDestroy(model)}
             });
         },
 
-        addStreamToColl: function(data){
-            debugger
-            this.streamCollection.add(data.model);
+        successDestroy: function(model){
+            this.$el.find("li[data-id='"+ model.get('_id') +"']").remove();
+        },
+
+        addStreamToColl: function(model){
+            this.streamCollection.add(model);
         },
 
         changeStream: function(e){
@@ -63,6 +70,19 @@ define([
                 people: streamModel.get("people"),
                 language: streamModel.get("language")
             });
+        },
+
+        changeStreamParams:function(e){
+            if(e) e.preventDefault();
+
+            var _this = this;
+            var $li = $(e.target).closest('li');
+            var model = this.streamCollection.get($li.data('id'));
+
+            this.channel.trigger("changeStreamParams",{model:model});
+
+            return false;
+
         }
     })
 

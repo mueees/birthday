@@ -6,8 +6,7 @@ var _ = require('underscore'),
 var Schema = mongoose.Schema;
 var streamSchema = new Schema({
         name: String,
-        text: String,
-        people: String,
+        track: String,
         language: []
     });
 
