@@ -1,7 +1,6 @@
 var async = require('async'),
     StreamModel = require('../models/twitter/sream'),
-    HttpError = require('../error').HttpError,
-    crossroads = require('crossroads');
+    SocketError = require('socketServer/error').SocketError;
 
 var controller = {
 
@@ -23,7 +22,8 @@ var controller = {
     getStreams: function(req, res, next){
         StreamModel.find({}, function(err, streams){
             if(err){
-                return next( new HttpError(400, "Cannot get Streams") );
+                next( new SocketError(400, "Cannot get Streams") );
+                return false;
             }
             res.send(streams);
         });
@@ -31,30 +31,48 @@ var controller = {
 
     deleteStream: function(req, res, next){
 
-        StreamModel.find({ _id: req.params.id }, function(err, streams){
+        StreamModel.find({ _id: req.params._id }, function(err, streams){
             if(err){
-                res.send({error: err});
+                next( new SocketError(400, "Cannot find stream") );
                 return false;
             }
 
             if( !streams.length ){
-                res.send({error: {
-                    code: 400,
-                    message: "Cannot find stream"
-                }});
+                next( new SocketError(400, "Cannot find stream") );
                 return false;
             }
 
             streams[0].remove(function(err, stream){
                 if( err ){
-                    res.send({error: err});
+                    next( new SocketError(400, "Cannot remove stream") );
                     return false;
                 }
+
                 res.send();
             });
 
         })
 
+    },
+
+    updateStream: function(req, res, next){
+
+        var _id = req.params._id;
+        var update = req.params;
+        delete update._id;
+
+        StreamModel.update({ _id: _id }, update, function(err, numberAffected, raw){
+
+            if(err){
+                next( new SocketError(400, "Cannot update stream") );
+                return false;
+            }
+
+            res.send({
+                result: req.params
+            })
+
+        })
     }
 };
 

@@ -9,6 +9,7 @@ define([
 
     /*views*/
     "./modules/addStream/views/AddStreamView",
+    "./modules/changeStream/views/ChangeStreamView",
 
     /*layout*/
     './layout/layout',
@@ -18,7 +19,7 @@ define([
     './modules/showTweets/module',
     'app/modules/notify/module',
     "app/modules/websocket/websocket_app"
-], function(jQuery, Backbone, Marionette, App, StreamModel, AddStreamView, Layout){
+], function(jQuery, Backbone, Marionette, App, StreamModel, AddStreamView, ChangeStreamView, Layout){
 
     App.module("Twitter", {
         startWithParent: false,
@@ -73,23 +74,16 @@ define([
                     var success = _.bind(this.saveNewStreamSuccess, this);
                     var error = _.bind(this.saveNewStreamError, this);
 
-
                     var stream = new StreamModel(data);
                     stream.save(null,{
-                        success: function(){
-                            debugger
-                        }
+                        success: success,
+                        error: error
                     })
-
-
-                    //$.when( App.request('twitter:saveNewStream', data)).fail( error ).done( success );
-
-
                 },
 
-                saveNewStreamSuccess: function(data){
+                saveNewStreamSuccess: function(model){
                     Notify.API.showNotify({text: "Stream created"});
-                    App.channels.twitter.trigger("streamSaved", data);
+                    App.channels.twitter.trigger("streamSaved", model);
                 },
 
                 saveNewStreamError: function(){
@@ -149,6 +143,18 @@ define([
 
                 unsubscribeNewTweetError: function(error){
                     Notify.API.showNotify({text: error.message});
+                },
+
+                changeStreamParams: function(data){
+                    var changeStreamView = new ChangeStreamView({
+                        model: data.model,
+                        channel: App.channels.twitter
+                    })
+                    layout.extendContainer.show(changeStreamView);
+                },
+
+                showMessage: function(text){
+                    Notify.API.showNotify({text: text});
                 }
 
             }
@@ -174,7 +180,9 @@ define([
 
 
             /*Events*/
+            App.channels.twitter.on("showMessage", Controller.showMessage);
             App.channels.twitter.on("showAddStreamForm", Controller.showAddStreamForm);
+            App.channels.twitter.on("changeStreamParams", Controller.changeStreamParams);
             App.channels.twitter.on("saveNewStream", function(data){Controller.saveNewStream(data)});
             
 

@@ -1,4 +1,4 @@
-<h3>Add new Stream</h3>
+<h3>Change Stream</h3>
 <div class="buttons">
     <span class="btn cancel" >Cancel</span>
     <span class="btn btn-success btnAddStream" >Add Stream</span>
@@ -7,14 +7,14 @@
     <div class="control-group">
         <label class="control-label" for="name">Name</label>
         <div class="controls">
-            <input name="name" class="span5" type="text" id="name" placeholder="Name" required="">
+            <input value="<%= name %>" name="name" class="span5" type="text" id="name" placeholder="Name" required="">
         </div>
     </div>
 
     <div class="control-group">
         <label class="control-label" for="track">Track</label>
         <div class="controls">
-            <input class="span5" name="track" type="text" id="track" placeholder="Track" required="">
+            <input value="<%= track %>" class="span5" name="track" type="text" id="track" placeholder="Track" required="">
         </div>
         <div class="info">
             <a href="https://dev.twitter.com/docs/streaming-apis/parameters#track">track example</a>
@@ -25,11 +25,11 @@
         <label class="control-label">Language:</label>
         <div class="controls">
             <label class="checkbox">
-                <input class="lang" type="checkbox" name="language[]" value="ru">
+                <input class="lang" type="checkbox" name="language[]" value="ru" <%= ($.inArray('ru', language) != -1 ) ? "checked" : "" %> >
                 Russian
             </label>
             <label class="checkbox">
-                <input class="lang" type="checkbox" name="language[]" value="en">
+                <input class="lang" type="checkbox" name="language[]" value="en" <%= ($.inArray('en', language) != -1 ) ? "checked" : "" %>>
                 English
             </label>
         </div>
@@ -38,5 +38,5 @@
 </form>
 <div class="buttons">
     <span class="btn cancel">Cancel</span>
-    <span class="btn btn-success btnAddStream" >Add Stream</span>
+    <span class="btn btn-success btnChangeStream">Change Stream</span>
 </div>

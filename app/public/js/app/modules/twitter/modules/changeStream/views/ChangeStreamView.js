@@ -1,6 +1,6 @@
 define([
     'marionette',
-    'text!../templates/AddStreamView.html'
+    'text!../templates/ChangeStreamView.html'
 ], function(Marionette, template){
 
     return Marionette.ItemView.extend({
@@ -8,7 +8,7 @@ define([
 
         events: {
             "click .cancel": "cancelBtn",
-            "click .btnAddStream": "btnAddStream"
+            "click .btnChangeStream": "btnChangeStream"
         },
 
         ui: {
@@ -19,6 +19,7 @@ define([
 
         initialize: function(options){
             this.channel = options.channel;
+            _.bind(this.btnChangeStream, this);
         },
 
         onRender: function(){
@@ -48,8 +49,17 @@ define([
             return result;
         },
 
-        btnAddStream: function(){
-            this.channel.trigger("saveNewStream", this.getData());
+        btnChangeStream: function(){
+            var _this = this;
+            this.model.save(this.getData(), {
+                wait: true,
+                error: function(){
+                    _this.channel.trigger("showMessage", "Cannot update stream")
+                },
+                success: function(){
+                    _this.channel.trigger("showMessage", "Stream updated")
+                }
+            });
             this.close();
         }
     })
