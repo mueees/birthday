@@ -9,7 +9,7 @@ define([], function(){
         },
 
         websocket: {
-            url: "http://localhost:56898/socket"
+            url: "http://forge:56898/socket"
         },
 
         api:{

@@ -66,12 +66,12 @@ define([
                     //todo: можно логировать такие ответы, на которые нет deferred объекта
                     if(!requests[data.id]) return false;
 
-                    if( !data.error ){
+                    if( !data.errors ){
                         //this is success answer
                         requests[data.id].resolve(data.result);
                     }else{
                         //this is error answer
-                        requests[data.id].reject(data.error);
+                        requests[data.id].reject(data.errors);
                     }
 
                     delete requests[data.id];

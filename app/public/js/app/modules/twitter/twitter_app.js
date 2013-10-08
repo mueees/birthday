@@ -82,6 +82,7 @@ define([
                 },
 
                 saveNewStreamSuccess: function(model){
+
                     Notify.API.showNotify({text: "Stream created"});
                     App.channels.twitter.trigger("streamSaved", model);
                 },
