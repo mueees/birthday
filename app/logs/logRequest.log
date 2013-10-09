@@ -736,3 +736,17 @@
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-08T14:10:46.321Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-08T18:39:42.878Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-08T18:40:00.769Z"}
+{"status":404,"url":"/other_paht","level":"warn","message":"","timestamp":"2013-10-09T20:04:57.034Z"}
+{"error":{"status":401,"message":{"error":"Wrong password"}},"level":"error","message":"","timestamp":"2013-10-09T20:16:01.574Z"}
+{"error":{"status":401,"message":{"error":"Wrong password"}},"level":"error","message":"","timestamp":"2013-10-09T20:16:03.817Z"}
+{"error":{"status":401,"message":{"error":"Wrong password"}},"level":"error","message":"","timestamp":"2013-10-09T20:16:07.743Z"}
+{"error":{"status":401,"message":{"error":"Wrong password"}},"level":"error","message":"","timestamp":"2013-10-09T20:16:23.892Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:18:58.620Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:19:40.868Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:19:47.710Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:19:58.723Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:21:12.025Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:21:17.001Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:21:43.171Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:21:48.016Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2013-10-09T20:22:05.566Z"}

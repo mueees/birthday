@@ -5,6 +5,8 @@
         "ip": "109.251.151.22",
         "port": "27017",
         "nameDatabase": "birthday"
-    }
+    },
+
+    "socketUrl": "http://localhost:56898/socket"
 
 }
