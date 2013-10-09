@@ -7,7 +7,6 @@ var express = require('express'),
     EmailSender = require('EmailSender'),
     SocketError = require('socketServer/error').SocketError,
     logger = require("libs/log")(module),
-
     config = require("config");
 
 
@@ -135,4 +134,5 @@ socketServer.use(function(err, req, res, next){
         });
     }
 })
+
 socketServer.start(server);
