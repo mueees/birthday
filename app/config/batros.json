@@ -5,6 +5,8 @@
         "ip": "109.251.151.22",
         "port": "27017",
         "nameDatabase": "batros_birthday"
-    }
+    },
+
+    "socketUrl": "http://batros.in.ua/socket"
 
 }

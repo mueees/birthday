@@ -9,7 +9,7 @@ define([], function(){
         },
 
         websocket: {
-            url: "http://localhost:56898/socket"
+            url: Birthday.socketUrl
         },
 
         api:{

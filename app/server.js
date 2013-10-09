@@ -45,6 +45,7 @@ app.set('view engine', 'hbs');
 // error handling
 app.use( require("middleware/sendHttpError") );
 app.use( require("middleware/loadUser") );
+app.use( require("middleware/publicVariable") );
 
 //routing
 route(app);

@@ -3,6 +3,7 @@ grunt
 
 cd Dropbox/web/sites/birthday/app
 export NODE_ENV=development
+export NODE_SITE=development
 export NODE_PATH=/home/mue/Dropbox/web/sites/birthday/app
 supervisor --debug server.js
 

@@ -13,22 +13,6 @@ define([
 
         define: function( Menu, App, Backbone, Marionette, $, _ ){
 
-
-            var MenuEntire = [
-                {
-                    name: "Home",
-                    link: "#",
-                    state: "public"
-                },
-                {
-                    name: "Users",
-                    link: "#user/add",
-                    state: "private"
-                }
-            ];
-
-
-
             var Controller = {
                 init: function(){
                     var _this = this;
