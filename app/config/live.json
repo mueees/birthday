@@ -5,6 +5,8 @@
         "ip": "109.251.151.22",
         "port": "27017",
         "nameDatabase": "live_birthday"
-    }
+    },
+
+    "socketUrl": "http://live.batros.in.ua/socket"
 
 }

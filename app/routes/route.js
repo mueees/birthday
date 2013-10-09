@@ -4,6 +4,7 @@ var fileBrowserController = require('../controllers/fileBrowser');
 var twitterController = require('../controllers/twitter');
 var checkoAuth = require('middleware/checkAuth');
 var HttpError = require('error').HttpError;
+var config = require("config");
 
 var middleware = [checkoAuth];
 
@@ -62,7 +63,7 @@ module.exports = function(app) {
 
     //login
     app.post("/api/login", function( req, res, next ){
-        if( req.body.password != "" ){
+        if( req.body.password != config.get("password") ){
             next(new HttpError(401, {
                 error: "Wrong password"
             }));
