@@ -5,17 +5,6 @@
         "ip": "109.251.151.22",
         "port": "27017",
         "nameDatabase": "birthday"
-    },
-
-    "session": {
-        "secret": "skymiss",
-        "key": "sed"
-    },
-
-    "publicDir": "./public",
-
-    "fileBrowser": {
-        "allowExt": ""
     }
 
 }

@@ -2,18 +2,17 @@ var nconf = require("nconf");
 var path = require("path");
 var configFile;
 
-var env = process.env.NODE_ENV;
+var node_site = process.env.NODE_SITE;
 
-if((env == 'development')){
+if((node_site == 'development')){
     configFile = 'development.json'
-}else if(env == 'live'){
+}else if(node_site == 'live'){
     configFile = 'live.json'
-}else if(env == 'batros'){
+}else if(node_site == 'batros'){
     configFile = 'batros.json'
 }
 
-nconf.argv().env();
-
+nconf.file('main', {file: path.join(__dirname, 'main.json')});
 nconf.file('secret', {file: path.join(__dirname, 'secret.json')});
 nconf.file('configFile', {file: path.join(__dirname, configFile)});
 
