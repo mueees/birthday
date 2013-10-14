@@ -169,8 +169,8 @@ var controller = {
         var paths = request.body.paths,
             realPath = [],
             flName = new Date().getTime(),
-            zipPathToSend = "/tmp/" + flName + ".zip";
-        zipDestination = root + zipPathToSend;
+            zipPathToSend = "/tmp/" + flName + ".zip",
+            zipDestination = root + zipPathToSend;
 
         if( !paths ){
             next(new Error("Nothing to download"));
@@ -191,12 +191,8 @@ var controller = {
                 });
             },
             function(results, callback){
-                _.each(results, function(result, i){
-                    if(!result){
-                        realPath.splice(i, 1);
-                    }
-                })
-                if( !realPath.length ) {
+
+                if( !results ) {
                     callback(new Error("Nothing to download"));
                 }else{
                     callback(null, realPath);

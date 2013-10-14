@@ -1,18 +1,26 @@
-var http = require('http');
+var http = require("http");
 
-var socketServer = require('socketServer'); // это конструктор сервера
-var server = socketServer(); //создается новый объект сервера, ему необходим только http сервер
+var options = {
+    hostname: 'edition.cnn.com',
+    port: 80,
+    path: '/services/rss/',
+    method: 'get'
+};
 
-var httpServer = http.createServer(function(req, res){});
+var req = http.request(options, function(res) {
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
+    res.setEncoding('utf8');
+    res.on('data', function (chunk) {
+        console.log('BODY: ' + chunk);
+    });
+});
 
-// регистрируются middleware на req запросы
-//first variant
-/*var route = require("route");
-route(server);*/
-//second variant
-server.use( require('./middl') );
+req.on('error', function(e) {
+    console.log('problem with request: ' + e.message);
+});
 
-//регистрируются middleware на обработку входящих publish сообщений
-//server.publish( require('./publish') );
-
-server.start(httpServer);
+// write data to request body
+req.write('data\n');
+req.write('data\n');
+req.end();

@@ -21,6 +21,7 @@
         "socket.io": "",
         "crossroads": "",
         "sockjs": "",
-        "jquery": ""
+        "jquery": "",
+        "time": ""
     }
 }
