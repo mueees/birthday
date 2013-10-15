@@ -22,6 +22,8 @@
         "crossroads": "",
         "sockjs": "",
         "jquery": "",
-        "time": ""
+        "time": "",
+        "feedparser": "",
+        "request": ""
     }
 }

@@ -1,26 +1,42 @@
-var http = require("http");
+var FeedParser = require('feedparser')
+    , fs = require('fs')
+    , request = require('request')
+    , feed = 'http://craphound.com/?feed=rss2';
 
-var options = {
-    hostname: 'edition.cnn.com',
-    port: 80,
-    path: '/services/rss/',
-    method: 'get'
-};
-
-var req = http.request(options, function(res) {
-    console.log('STATUS: ' + res.statusCode);
-    console.log('HEADERS: ' + JSON.stringify(res.headers));
-    res.setEncoding('utf8');
-    res.on('data', function (chunk) {
-        console.log('BODY: ' + chunk);
+request('http://v-fedotov.livejournal.com/data/rss')
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .pipe(new FeedParser())
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .on('meta', function (meta) {
+        console.log(meta.title);
+    })
+    .on('readable', function() {
+        var data, item;
+        var stream = this;
+        while (item = stream.read()) {
+            console.log('Got article: %s', item.title || item.description);
+        }
     });
-});
 
-req.on('error', function(e) {
-    console.log('problem with request: ' + e.message);
-});
-
-// write data to request body
-req.write('data\n');
-req.write('data\n');
-req.end();
+/*
+fs.createReadStream(feed)
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .pipe(new FeedParser())
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .on('meta', function (meta) {
+        console.log('===== %s =====', meta.title);
+    })
+    .on('readable', function() {
+        var stream = this, item;
+        while (item = stream.read()) {
+            console.log('Got article: %s', item.title || item.description);
+        }
+    });*/
