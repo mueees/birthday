@@ -1,6 +1,12 @@
-//создать manager, который будет добавлять фиды для обновления в redis
-var UpdateFeedWorker = require('./updateFeedWorker');
-var updateFeedWorker = new UpdateFeedWorker();
+require("mongooseDb");
+
+//manager, добавляет фиды для обновления в redis
+var updateFeedWorker = require('./updateFeedWorker');
+
+//manager, мониторит очередь и воркеров
+//раздает задания
+var updateQueueManager = require('./updateQueueManager');
 
 //start services
-updateFeedWorker.start();
+//updateFeedWorker.init();
+updateQueueManager.init();
