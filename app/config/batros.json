@@ -6,7 +6,8 @@
         "port": "27017",
         "nameDatabase": "batros_birthday"
     },
+    "socketUrl": "http://batros.in.ua/socket",
 
-    "socketUrl": "http://batros.in.ua/socket"
+    "host": "batros.in.ua"
 
 }

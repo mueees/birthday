@@ -1,18 +1,42 @@
-var http = require('http');
+var FeedParser = require('feedparser')
+    , fs = require('fs')
+    , request = require('request')
+    , feed = 'http://craphound.com/?feed=rss2';
 
-var socketServer = require('socketServer'); // это конструктор сервера
-var server = socketServer(); //создается новый объект сервера, ему необходим только http сервер
+request('http://v-fedotov.livejournal.com/data/rss')
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .pipe(new FeedParser())
+    .on('error', function (error) {
+        console.error(error);
+    })
+    .on('meta', function (meta) {
+        console.log(meta.title);
+    })
+    .on('readable', function() {
+        var data, item;
+        var stream = this;
+        while (item = stream.read()) {
+            console.log('Got article: %s', item.title || item.description);
+        }
+    });
 
-var httpServer = http.createServer(function(req, res){});
-
-// регистрируются middleware на req запросы
-//first variant
-/*var route = require("route");
-route(server);*/
-//second variant
-server.use( require('./middl') );
-
-//регистрируются middleware на обработку входящих publish сообщений
-//server.publish( require('./publish') );
-
-server.start(httpServer);
+/*
+ fs.createReadStream(feed)
+ .on('error', function (error) {
+ console.error(error);
+ })
+ .pipe(new FeedParser())
+ .on('error', function (error) {
+ console.error(error);
+ })
+ .on('meta', function (meta) {
+ console.log('===== %s =====', meta.title);
+ })
+ .on('readable', function() {
+ var stream = this, item;
+ while (item = stream.read()) {
+ console.log('Got article: %s', item.title || item.description);
+ }
+ });*/
