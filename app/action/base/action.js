@@ -4,7 +4,7 @@ function Action(){}
 
 _.extend(Action.prototype, {
     execute: function(){
-        throw new Error("You should revrite  execute method");
+        throw new Error("You should rewrite  execute method");
     }
 })
 

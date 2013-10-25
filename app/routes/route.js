@@ -12,6 +12,7 @@ module.exports = function(app) {
 
     //Root Paths
     app.get('/', rootController.home);
+    app.get('/fileBrowser', rootController.fileBrowser);
 
     //user
     app.post('/api/user', middleware, apiController.user.add);

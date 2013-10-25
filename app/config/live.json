@@ -6,7 +6,7 @@
         "port": "27017",
         "nameDatabase": "live_birthday"
     },
+    "socketUrl": "http://live.batros.in.ua/socket",
 
-    "socketUrl": "http://live.batros.in.ua/socket"
-
+    "host": "live.batros.in.ua"
 }
