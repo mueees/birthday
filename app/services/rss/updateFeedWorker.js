@@ -2,7 +2,10 @@ var cronJob = require('cron').CronJob,
     async = require('async'),
     _ = require('underscore'),
     logger = require("libs/log")(module),
-    Feed = require('models/rss/feed');
+    redis = require("redis"),
+    clientRedis = redis.createClient(),
+    Feed = require('models/rss/feed'),
+    config = require("config");
 
 var queue = [];
 
@@ -26,7 +29,6 @@ UpdateFeedWorker.prototype = {
 
         async.waterfall([
             function(cb){
-
                 //получить все фиды
                 Feed.find({}, function(err, feeds){
                     if( err ) {
@@ -44,18 +46,28 @@ UpdateFeedWorker.prototype = {
                     return false;
                 }
 
-                var tasks = [];
+                //clientRedis.del(config.get('redis:queue:rss_feed_need_update'))
 
                 _.each(feeds, function(feed){
-                    tasks.push(_this.makeTask(feed));
+                    var task = _this.makeTask(feed);
+                    //add task to queue
+                    clientRedis.rpush(config.get('redis:queue:rss_feed_need_update'),  JSON.stringify(task));
                 });
 
-                queue = _.union(queue, tasks);
+                clientRedis.lrange(config.get('redis:queue:rss_feed_need_update'), 0, -1, function (err, tasks) {
+
+                    if(err){
+                        logger.log('error', {error: err});
+                        return false;
+                    }
+
+                    console.log(tasks.length + " tasks:");
+                    /*tasks.forEach(function (task, i) {
+                        console.log("    " + i + ": " + task);
+                    });*/
+                });
 
                 cb(null);
-            },
-            function(){
-                logger.log('info', queue.length);
             }
         ], function(err){
             if( err ){

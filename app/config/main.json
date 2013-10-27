@@ -8,5 +8,11 @@
 
     "fileBrowser": {
         "allowExt": ""
+    },
+
+    "redis": {
+        "queue": {
+            "rss_feed_need_update": "rss_feed_need_update"
+        }
     }
 }

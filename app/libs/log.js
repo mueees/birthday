@@ -6,14 +6,14 @@ function getLogger( module ){
     var pathModule = module.filename.split("/").slice(-2).join('/');
 
     return new winston.Logger({
+
         transports: [
             new winston.transports.Console({
                 colorize: true,
                 level: ENV == "development" ? "debug" : "error",
                 label: pathModule
             }),
-
-            new winston.transports.File({ filename: 'logs/logRequest.log', level: 'debug'  })
+            new winston.transports.File({ filename: __dirname + '/logRequest.log', level: 'debug'  })
         ]
     });
 }
