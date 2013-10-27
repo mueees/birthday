@@ -52,28 +52,92 @@ feedSchema.methods.getPostsFromUrl = function(cb){
 feedSchema.methods.updateFeed = function(globalCb){
     var _this = this;
 
-    this.getPostsFromUrl(function(err, posts){
+
+    async.waterfall([
+        function(cb){
+
+            _this.getPostsFromUrl(function(err, posts){
+                if( err ) {
+                    cb(err);
+                    return false;
+                }
+
+                cb(null, posts);
+            });
+
+        },
+        function(posts, cb){
+
+            //get last post
+            Post.findOne({}, {}, { sort: { 'date' : -1 } }, function(error, lastPost) {
+                if(error){
+                    cb(error);
+                    return false;
+                }
+
+                cb(null, posts, lastPost);
+            });
+
+
+        },
+        function(posts, lastPost, cb){
+
+            _this.newPosts = [];
+            _this.postsRow = posts;
+            _this.posts = [];
+
+            _.each(posts, function(post){
+
+                post.id_feed = _this._id;
+                post.date = new Date(post.date);
+
+                var postModel = new Post(post);
+                if( postModel.valid() ){
+                    _this.posts.push(postModel);
+                }
+
+                if( lastPost ){
+                    var lastDate = new Date(lastPost.date);
+                    var postDate = new Date(post.date);
+
+                    if( postDate <= lastDate ){
+                        return false;
+                    }else{
+                        _this.newPosts.push(postModel);
+                    }
+                }else{
+                    _this.newPosts.push(postModel);
+                }
+
+            })
+
+            _.each(_this.newPosts, function(newPost){
+                newPost.save(function(err){
+                    if( err ){
+                        console.log(err)
+                        logger.log('error', {error: err});
+                    }
+                });
+            })
+
+            cb(null);
+
+        }
+    ], function(err){
         if( err ) {
+            logger.log('error', {error: err});
             globalCb(err);
             return false;
         }
 
-        _this.postsRow = posts;
-        _this.posts = [];
-
-        _.each(posts, function(post){
-            var postModel = new Post(post);
-
-            if( postModel.valid() ){
-                _this.posts.push(postModel);
-            }
-        })
-
         globalCb(null);
+    })
 
-    });
+
 
 }
+
+
 
 var Feed = mongoose.model('Feed', feedSchema);
 

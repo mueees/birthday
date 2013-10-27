@@ -9,17 +9,18 @@ var postSchema = new Schema({
     description: String,
     summary: String,
     link: String,
-    date: String,
+    date: Date,
     pubdate: String,
     guid: String,
     image: String,
-    source: String
+    source: String,
+    id_feed: String
 });
 
 
 postSchema.methods.valid = function(){
 
-    if( !this.title
+    if( !this.date
         ){
         logger.log('error', "Post invalid");
         return false;
@@ -27,7 +28,6 @@ postSchema.methods.valid = function(){
         return true;
     }
 }
-
 
 var Post = mongoose.model('Post', postSchema);
 

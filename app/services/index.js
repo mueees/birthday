@@ -1,7 +1,6 @@
 var rss = require('child_process').fork( __dirname + '/rss/index');
 
-/*
-require("mongooseDb");
+/*require("mongooseDb");
 
 var Feed = require('models/rss/feed');
 
@@ -23,5 +22,4 @@ var feed3 = Feed({
 
 feed1.save();
 feed2.save();
-feed3.save();
-*/
+feed3.save();*/

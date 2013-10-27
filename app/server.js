@@ -9,7 +9,6 @@ var express = require('express'),
     logger = require("libs/log")(module),
     config = require("config");
 
-
 require("mongooseDb");
 app.use(express.favicon());
 
