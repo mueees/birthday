@@ -27,16 +27,6 @@ define([
                     layout.tabCont.show(tabView);
                     layout.addCont.show(addView);
 
-                    var cat = [{
-                      name: "web service",
-                      feeds: [
-                      {
-                        _id: "3rwef43tr"
-                        name: "Osmani",
-                        unreadPost: 2,
-                      }
-                      ]
-                    }]
                 }
             }
 
