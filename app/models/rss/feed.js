@@ -40,7 +40,8 @@ feedSchema.methods.getPostsFromUrl = function(cb){
                     pubdate: post.pubdate || "",
                     guid: post.guid || "",
                     image: post.image || "",
-                    source: post.source || ""
+                    source: post.source || "",
+                    isRead: false
                 });
             }
         })
@@ -49,78 +50,103 @@ feedSchema.methods.getPostsFromUrl = function(cb){
         });
 }
 
-feedSchema.methods.updateFeed = function(globalCb){
+feedSchema.methods.getLastPost = function(globalCb){
+    //get last post
+
+    var query = {id_feed: this._id};
+
+    Post.findOne(query, {}, { sort: { 'date' : -1 } }, function(error, lastPost) {
+        if(error){
+            globalCb(error);
+            return false;
+        }
+
+        globalCb(null, lastPost);
+    });
+}
+
+feedSchema.methods.sortNewOldPost = function(posts, lastPost){
+    var _this = this;
+    this.newPosts = [];
+    this.postsRow = posts;
+    this.posts = [];
+
+    _.each(posts, function(post){
+
+        post.id_feed = _this._id;
+        post.date = new Date(post.date);
+
+        var postModel = new Post(post);
+        if( !postModel.valid() ) return false;
+
+        _this.posts.push(postModel);
+
+        if( lastPost ){
+            var lastDate = new Date(lastPost.date);
+            var postDate = new Date(post.date);
+
+            if( postDate <= lastDate ){
+                return false;
+            }else{
+                _this.newPosts.push(postModel);
+            }
+        }else{
+            _this.newPosts.push(postModel);
+        }
+
+    })
+}
+
+feedSchema.methods.saveNewPost = function(globalCb){
     var _this = this;
 
+    var methods = [];
+    _.each(_this.newPosts, function(newPost){
+        methods.push(function(cb){
+            newPost.save(function(err){
+                if( err ){
+                    logger.log('error', {error: err});
+                    cb(err);
+                    return false;
+                }
+                cb(null);
+            });
+        })
+    })
+
+
+    async.parallel(methods, function(err, results){
+        if( err ){
+            logger.log('error', {error: err});
+            globalCb(err);
+            return false;
+        }
+        globalCb(null);
+    });
+}
+
+feedSchema.methods.loadFeed = function(globalCb){
+    var _this = this;
 
     async.waterfall([
         function(cb){
-
             _this.getPostsFromUrl(function(err, posts){
                 if( err ) {
                     cb(err);
                     return false;
                 }
-
                 cb(null, posts);
             });
-
         },
         function(posts, cb){
-
-            //get last post
-            Post.findOne({}, {}, { sort: { 'date' : -1 } }, function(error, lastPost) {
-                if(error){
-                    cb(error);
+            _this.getLastPost(function(err, lastPost){
+                if( err ) {
+                    cb(err);
                     return false;
                 }
-
-                cb(null, posts, lastPost);
+                _this.sortNewOldPost(posts, lastPost);
+                cb(null);
             });
-
-
-        },
-        function(posts, lastPost, cb){
-
-            _this.newPosts = [];
-            _this.postsRow = posts;
-            _this.posts = [];
-
-            _.each(posts, function(post){
-
-                post.id_feed = _this._id;
-                post.date = new Date(post.date);
-
-                var postModel = new Post(post);
-                if( postModel.valid() ){
-                    _this.posts.push(postModel);
-                }
-
-                if( lastPost ){
-                    var lastDate = new Date(lastPost.date);
-                    var postDate = new Date(post.date);
-
-                    if( postDate <= lastDate ){
-                        return false;
-                    }else{
-                        _this.newPosts.push(postModel);
-                    }
-                }else{
-                    _this.newPosts.push(postModel);
-                }
-
-            })
-
-            _.each(_this.newPosts, function(newPost){
-                newPost.save(function(err){
-                    if( err ){
-                        console.log(err)
-                        logger.log('error', {error: err});
-                    }
-                });
-            })
-
-            cb(null);
 
         }
     ], function(err){
@@ -129,15 +155,29 @@ feedSchema.methods.updateFeed = function(globalCb){
             globalCb(err);
             return false;
         }
-
         globalCb(null);
     })
-
-
-
 }
 
+feedSchema.methods.updateFeed = function(globalCb){
+    var _this = this;
 
+    async.waterfall([
+        function(cb){
+            _this.loadFeed(cb);
+        },
+        function(cb){
+            _this.saveNewPost(cb);
+        },
+    ], function(err){
+        if( err ) {
+            logger.log('error', {error: err});
+            globalCb(err);
+            return false;
+        }
+        globalCb(null);
+    })
+}
 
 var Feed = mongoose.model('Feed', feedSchema);
 

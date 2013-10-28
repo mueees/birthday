@@ -76,8 +76,9 @@ define([
 
     Backbone.Websocket.sync = function(method, model, options){
 
-        var deff;
-
+        var deff,
+            done,
+            fail;
         switch (method){
             case "create":
                 deff = Backbone.Websocket.create(model);
@@ -92,26 +93,21 @@ define([
                 deff = model.id != undefined ? Backbone.Websocket.find(model) : Backbone.Websocket.findAll(model)
                 break;
         }
-
-        var done = function(params){
+        done = function(params){
             options.success(params);
         }
-        var fail = function(params){
+        fail = function(params){
             options.error(params);
         }
-
         deff.done(done).fail(fail);
-
         return deff;
 
     }
     Backbone.ajaxSync = Backbone.sync;
     Backbone.getSyncMethod = function(model) {
-
         if(model.socket) {
             return Backbone.Websocket.sync;
         }
-
         return Backbone.ajaxSync;
     };
     Backbone.sync = function(method, model, options) {
