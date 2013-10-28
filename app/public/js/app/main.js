@@ -29,6 +29,7 @@ require([
     'app/menu/menu_app',
     'app/home/home_app',
     'app/modules/twitter/twitter_app',
+    'app/modules/rss/rss_app',
 
     /*modules*/
     'app/modules/cache/cache_app'
