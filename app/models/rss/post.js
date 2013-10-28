@@ -14,7 +14,8 @@ var postSchema = new Schema({
     guid: String,
     image: String,
     source: String,
-    id_feed: String
+    id_feed: String,
+    isRead: Boolean
 });
 
 
