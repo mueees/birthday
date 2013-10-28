@@ -3,9 +3,11 @@ var cronJob = require('cron').CronJob,
     _ = require('underscore'),
     logger = require("libs/log")(module),
     redis = require("redis"),
-    clientRedis = redis.createClient(),
     Feed = require('models/rss/feed'),
-    config = require("config");
+    config = require("config"),
+    clientRedis = redis.createClient( config.get('redis_settings:port'), config.get('redis_settings:host'));
+
+clientRedis.auth(config.get('redis_settings:pass'))
 
 var queue = [];
 
@@ -63,8 +65,8 @@ UpdateFeedWorker.prototype = {
 
                     console.log(tasks.length + " tasks:");
                     /*tasks.forEach(function (task, i) {
-                        console.log("    " + i + ": " + task);
-                    });*/
+                     console.log("    " + i + ": " + task);
+                     });*/
                 });
 
                 cb(null);
