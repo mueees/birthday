@@ -1,0 +1,2 @@
+redis-cli -h my-host -p 1234 -a mypassword
+/etc/init.d/redis-server restart
