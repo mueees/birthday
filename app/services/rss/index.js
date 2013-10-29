@@ -7,6 +7,6 @@ var updateFeedWorker = require('./updateFeedWorker');
 //раздает задания
 var updateQueueManager = require('./updateQueueManager');
 
-//start services
-//updateFeedWorker.init();
+
 updateQueueManager.init();
+updateFeedWorker.init();

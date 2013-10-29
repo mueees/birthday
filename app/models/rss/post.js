@@ -14,8 +14,12 @@ var postSchema = new Schema({
     guid: String,
     image: String,
     source: String,
+<<<<<<< HEAD
     id_feed: String,
     isRead: Boolean
+=======
+    id_feed: String
+>>>>>>> 3df8d1a9712e96caa5181a53e6cdbc35ae4de579
 });
 
 
