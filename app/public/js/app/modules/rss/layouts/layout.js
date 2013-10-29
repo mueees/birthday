@@ -10,6 +10,7 @@ define([
             'menu': '.menu_rss',
             'tabCont': ".tabCont",
             'addCont': ".addCont",
+            'contentCont': '.contentCont',
             'header_rss': '.header',
             'main_rss': '.main'
         }
