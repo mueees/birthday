@@ -1,19 +1,27 @@
 define([
     'marionette',
-    'text!app/templates/fileBrowser/ExplorerView.html',
+    'text!app/templates/fileBrowser/ExplorerTableView.html',
+    'text!app/templates/fileBrowser/ExplorerIconView.html',
+    
 
     /*views*/
     'app/views/fileBrowser/FolderView',
-    'app/views/fileBrowser/FileView'
+    'app/views/fileBrowser/FileView',
+    'app/views/fileBrowser/FileIconView'
 
-], function(Marionette, template, FolderView, FileView){
+], function(Marionette, ExplorerTableView, ExplorerIconView, FolderView, FileView, FileIconView){
 
     return Marionette.ItemView.extend({
-        template: _.template(template),
+
+        explorerTableView: _.template(ExplorerTableView),
+
+        explorerIconView: _.template(ExplorerIconView),
 
         events: {
 
         },
+
+        viewMode: 'list',
 
         ui: {
             "table": "table"
@@ -35,25 +43,50 @@ define([
             this.listenTo(this.channel, "deleteBtn", this.deleteBtn);
             this.listenTo(this.channel, "selectBtn", this.selectBtn);
             this.listenTo(this.channel, "downloadBtn", this.downloadBtn);
+            this.listenTo(this.channel, "viewModeBtn", this.viewModeBtn);
             this.listenTo(this.collection, "reset", this.renderTable);
             this.listenTo(this.collection, "add", this.addNewItem);
 
         },
 
         setNewPath: function(data){
-
             this.path = data.path;
             this.collection.reset(data.data);
+        },
+
+        render: function(){
+            if( this.viewMode == "list" ){
+                this.renderTable();
+            }else if( this.viewMode == "icon" ){
+                this.renderIcon();
+            }
+        },
+
+        renderIcon: function(){
+            var _this = this,
+                tableTemplate;
+
+            this.$el.html(this.explorerTableView());
+
+            this.collection.each(function(item){
+                var view = _this.getOneItem(item);
+
+                _this.listenTo(view, "inFolderBtn", _this.goToPath);
+                _this.listenTo(view, "rename", _this.rename);
+                _this.listenTo(view, "isActiveChange", _this.isActiveChange);
+
+                _this.$el.find('table tbody').append(view.$el);
+            });
         },
 
         renderTable: function(){
             var _this = this;
             this.collection.sort({});
-            var views = [];
 
+            this.$el.html("");
+            var tableTemplate = this.explorerTableView();
+            this.$el.html(tableTemplate);
 
-
-            this.$el.find('table tbody').html("");
             this.collection.each(function(item){
                 var view = _this.getOneItem(item);
 
@@ -64,11 +97,10 @@ define([
                 _this.$el.find('table tbody').append(view.$el);
             });
 
-            this.isActiveChange();
+            setTimeout(function(){_this.isActiveChange();},0)
         },
 
         isActiveChange: function(){
-
             var activeItem =  this.collection.getActiveItem();
             this.channel.trigger("currentItemSelected", {
                 items: activeItem
@@ -101,10 +133,19 @@ define([
         },
 
         getOneItem: function(model){
-            if( model.get("isDirectory") ){
+
+            var isDirectory = model.get("isDirectory")
+
+            if( isDirectory ){
                 return new FolderView({model:model});
             }else{
-                return new FileView({model:model});
+
+                if(this.viewMode == "list"){
+                    return new FileView({model:model});    
+                }else if(this.viewMode == "icon"){
+                    return new FileIconView({model:model});    
+                }
+                
             }
         },
 
@@ -153,6 +194,11 @@ define([
             this.listenTo(folder, "createNewFolder", this.createNewFolder);
             this.listenTo(folder, "inFolderBtn", this.goToPath);
             this.listenTo(folder, "isActiveChange", this.isActiveChange);
+        },
+
+        viewModeBtn: function(data){
+            this.viewMode = data;
+            this.render();
         }
     })
 
