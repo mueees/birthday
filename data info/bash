@@ -17,3 +17,10 @@ cd nodejs/own/birthday/app/public
 grunt
 
 chromium-browser --disable-web-security
+
+cd web/backup/sites/batros.in.ua/
+mkdir 30.10.2013
+mongodump --db live_birthday
+
+cd web/backup/sites/batros.in.ua/
+mongodump --db batros_birthday
