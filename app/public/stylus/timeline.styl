@@ -38,27 +38,40 @@
 		color white
 		list-style none
 
+		.text
+			padding 0 8px
+
 		&:hover
 			transition all 200ms linear
 			background rgba(255, 255, 255, 0.92)
 			color #000000
-		
-		&.white
-			background rgb(255, 255, 255)
-			color #000000
-
-			&:hover
-				transition all 200ms linear
-				background rgba(177, 177, 177, 0.37)
-				color white
 
 		img
 			margin 0 0 10px 0
 			display block
 
-		&.quote
-			font-size 14px
-			line-height 20px
+.white
+	background rgb(255, 255, 255)
+	color #000000
+
+	&:hover
+		transition all 400ms linear
+		background rgba(177, 177, 177, 0.37)
+		color white
+
+.quote
+	font-size 14px
+	line-height 20px
+
+.polaroid_320.white
+	color black
+	&.post
+		border-bottom 0
+	&:hover
+		background rgba(255, 255, 255, 1)
+		outline 4px solid white
+		color black
+
 
 .postModal
 	width 80%
