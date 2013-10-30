@@ -10,6 +10,7 @@ supervisor --debug server.js
 cd nodejs/own/birthday/app
 export NODE_PATH=/usr/sites/mue/nodejs/own/birthday/app
 export NODE_ENV=development
+export NODE_SITE=development
 node server.js
 
 cd nodejs/own/birthday/app/public

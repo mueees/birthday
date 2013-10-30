@@ -8,7 +8,10 @@ define([
     './layouts/layout',
 
     /*modules*/
-    './modules/menu/menu_controller'
+    './modules/menu/menu_controller',
+
+    /*entites*/
+    './entities/rss'
 ], function(jQuery, Backbone, Marionette, App, Layout){
 
     App.module("Rss", {

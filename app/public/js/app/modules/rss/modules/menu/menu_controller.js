@@ -23,10 +23,17 @@ define([
                 showMenu: function( layout ){
                     var tabView = new TabView();
                     var addView = new AddView();
+                    //var contentView = new ContentView();
+
+                    //App.request('rss:getPost', {_id: "123123"});
+                    App.request('rss:getPosts');
+                    
+
+                    //$.when( App.request('websocket:send', request) ).fail(fail).done(done);
+
 
                     layout.tabCont.show(tabView);
                     layout.addCont.show(addView);
-
                 }
             }
 
@@ -36,3 +43,17 @@ define([
     })
 
 })
+
+
+
+var modelData = {
+    category: {
+        _id: '123df',
+        name: "web",
+        feeds: [{
+                id: "sdfsdf",
+                name: "sdfgdgh",
+                unread: 5
+        }]
+    }
+}
