@@ -169,9 +169,14 @@ define([
 
         selectBtnWithData: function( data ){
 
+            
             if(window.opener){
                 var funcName = this.getUrlParam('CKEditorFuncNum');
-                window.opener.CKEDITOR.tools.callFunction(funcName, data.paths[0]);
+                window.opener.CKEDITOR.tools.callFunction(funcName, data.paths, function(){
+                    var dialog = this.getDialog();
+                    
+                    debugger
+                });
                 window.close()
             }
 
