@@ -6,20 +6,22 @@ define([
     return Marionette.ItemView.extend({
         template: _.template(template),
 
+        viewMode: "list",
+
         events: {
             "click .upBtn": "upBtn",
             "click .newFolderBtn": "newFolderBtn",
             "click .selectBtn": "selectBtn",
-            "click .renameBtn": "renameBtn",
             "click .deleteBtn": "deleteBtn",
-            "click .downloadBtn": "downloadBtn"
+            "click .downloadBtn": "downloadBtn",
+            "click .viewMode button": "viewModeBtn"
         },
 
         ui: {
             "deleteBtn": ".deleteBtn",
             "selectBtn": ".selectBtn",
             "downloadBtn": ".downloadBtn",
-            "renameBtn": ".renameBtn"
+            "viewModeBtn" : ".viewMode button"
         },
 
         initialize: function(data){
@@ -43,16 +45,9 @@ define([
                 this.ui.selectBtn.removeClass('off');
                 this.ui.downloadBtn.removeClass('off');
 
-                if( data.items.length == 1 ){
-                    this.ui.renameBtn.removeClass('off');
-                }else{
-                    this.ui.renameBtn.addClass('off');
-                }
-
             }else{
                 this.ui.deleteBtn.addClass('off');
                 this.ui.selectBtn.addClass('off');
-                this.ui.renameBtn.addClass('off');
                 this.ui.downloadBtn.addClass('off');
             }
         },
@@ -72,14 +67,18 @@ define([
             this.channel.trigger("downloadBtn");
         },
 
-        renameBtn: function(e){
+        viewModeBtn: function(e){
             e.preventDefault();
-            this.channel.trigger("renameBtn");
-        },
 
-        downloadBtn: function(e){
-            e.preventDefault();
-            this.channel.trigger("downloadBtn");
+            var $el = $(e.target),
+                type = $el.data('type');
+
+            if( this.viewMode == type ) return false;
+            this.ui.viewModeBtn.removeClass('active');
+            $el.addClass("active");
+
+            this.viewMode = type;
+            this.channel.trigger("viewModeBtn", type);
         }
     })
 
