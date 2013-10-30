@@ -65,7 +65,7 @@ UpdateFeedWorker.prototype = {
 
                     console.log(tasks.length + " tasks:");
                     /*tasks.forEach(function (task, i) {
-                     console.log("    " + i + ": " + task);
+                        console.log("    " + i + ": " + task);
                      });*/
                 });
 
