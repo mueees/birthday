@@ -19,12 +19,30 @@
             border-bottom 1px solid #b2dffc
             border-top 1px solid #b2dffc
 
+            .previewImg
+                display block
+                position absolute
+                bottom 42px
+                left 0
+                max-width none
+
         &.active
             background #388ec8
             color white
 
             .inFolder, .fileName
                 color white
+        
+        .previewCont
+            position relative
+
+        .previewImg
+            display none
+            width 240px !important
+
+        .smallPreviewImg
+            width 40px
+            margin 0 6px 0 0
 
         .inFolder
             cursor pointer
@@ -43,6 +61,33 @@
             display inline-block
             margin 0 15px 0 5px
             vertical-align middle
+    
+    ul
+        padding 0
+    li
+        list-style none
+        float left
+        margin 0 15px 15px 0
+        padding 10px
+
+        &.active
+            background #388ec8
+            color white
+
+        .iconCont
+            text-align center
+            max-width 110px
+            min-height 90px
+
+        &.folder
+            min-width 120px
+            text-align center
+            border 1px solid #E7E7E7
+            background azure
+
+        &.folder.active
+            background #388ec8
+
 
 .pathContainer
 

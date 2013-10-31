@@ -1,12 +1,10 @@
 define([
     'marionette',
-    'text!app/templates/fileBrowser/FileView.html',
 
     '../base/ItemBase'
-], function(Marionette, template, ItemBase){
+], function(Marionette, ItemBase){
 
     return ItemBase.extend({
-        template: _.template(template),
 
         tagName: "tr",
 

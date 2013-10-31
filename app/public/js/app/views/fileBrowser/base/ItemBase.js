@@ -4,6 +4,8 @@ define([
 
     return Marionette.ItemView.extend({
 
+        delayClick: 70,
+
         events: {
             "click": "chooseView"
         },
@@ -11,11 +13,24 @@ define([
         initialize: function(){
             this.listenTo(this.model, "change:isActive", this.isActiveChange);
             this.listenTo(this.model, "destroy", this.close);
+            this.clicks = 0;
         },
 
         chooseView: function(){
-            var isActive = this.model.get("isActive");
-            this.model.set("isActive", !isActive);
+
+            var _this = this;
+            this.clicks++;
+
+            if(this.clicks === 1) {
+                _this.timer = setTimeout(function() {
+                    var isActive = _this.model.get("isActive");
+                    _this.model.set("isActive", !isActive);
+                    _this.clicks = 0;
+                }, _this.delayClick);
+            }else{
+                clearTimeout(this.timer);
+                this.clicks = 0;
+            }
         },
 
         isActiveChange: function(){

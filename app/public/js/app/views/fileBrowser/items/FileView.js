@@ -6,7 +6,6 @@ define([
 ], function(Marionette, template, ItemBase){
 
     return ItemBase.extend({
-        template: _.template(template),
 
         tagName: "tr",
 

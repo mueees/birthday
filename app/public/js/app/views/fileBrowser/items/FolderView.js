@@ -12,7 +12,8 @@ define([
         events: {
             "click .inFolder": "inFolderBtn",
             "click": "chooseView",
-            "blur .newName": "newNameBlur"
+            "blur .newName": "newNameBlur",
+            "dblclick": "inFolderBtn"
         },
 
         tagName: "tr",
@@ -40,6 +41,7 @@ define([
         inFolderBtn: function(e){
             e.preventDefault();
             e.stopPropagation();
+
             this.trigger('inFolderBtn', {
                 model: this.model
             });

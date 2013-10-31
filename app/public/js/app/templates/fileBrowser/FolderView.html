@@ -1,6 +1,6 @@
 <td class="name">
     <i class="i_folder icon"></i>
-    <a class="inFolder  <%= isSavedOnServer ? 'on' : 'off' %>"><%=name%></a>
+    <%=name%>
     <input type="text" class="newName <%= isSavedOnServer ? 'off' : 'on' %>" placeholder="<%=name%>">
 </td>
 <td class="type">
@@ -13,3 +13,4 @@
 <td class="size">
     <%=size%>
 </td>
+<td><a class="inFolder <%= isSavedOnServer ? 'on' : 'off' %>">in folder</a></td>
