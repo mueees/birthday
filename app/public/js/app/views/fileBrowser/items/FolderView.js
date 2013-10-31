@@ -3,7 +3,7 @@ define([
     'text!app/templates/fileBrowser/FolderView.html',
 
     /*views*/
-    './base/ItemBase'
+    '../base/ItemBase'
 ], function(Marionette, template, ItemBase){
 
     return ItemBase.extend({

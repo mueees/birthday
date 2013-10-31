@@ -5,11 +5,11 @@ define([
     
 
     /*views*/
-    'app/views/fileBrowser/FolderView',
-    'app/views/fileBrowser/FileView',
-    'app/views/fileBrowser/FileIconView'
+    'app/views/fileBrowser/items/FolderView',
+    'app/views/fileBrowser/items/FileView',
+    'app/views/fileBrowser/items/ImageView'
 
-], function(Marionette, ExplorerTableView, ExplorerIconView, FolderView, FileView, FileIconView){
+], function(Marionette, ExplorerTableView, ExplorerIconView, FolderView, FileView, ImageView ){
 
     return Marionette.ItemView.extend({
 
@@ -20,6 +20,8 @@ define([
         events: {
 
         },
+
+        images: ['jpg', 'jpeg', 'png', 'bmp'],
 
         viewMode: 'list',
 
@@ -134,18 +136,21 @@ define([
 
         getOneItem: function(model){
 
-            var isDirectory = model.get("isDirectory")
+            var isDirectory = model.get("isDirectory");
 
             if( isDirectory ){
                 return new FolderView({model:model});
             }else{
+                //this is file
 
-                if(this.viewMode == "list"){
-                    return new FileView({model:model});    
-                }else if(this.viewMode == "icon"){
-                    return new FileIconView({model:model});    
+                if($.inArray(model.get('typeFile'), this.images) != -1 ){
+                    //this is image
+                    return new ImageView({model:model});
+                }else{
+                    //this is unknown file type
+                    return new FileView({model:model});
                 }
-                
+
             }
         },
 
