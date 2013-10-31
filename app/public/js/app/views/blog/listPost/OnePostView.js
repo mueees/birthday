@@ -25,7 +25,6 @@ define([
         },
 
         changeTitle: function(model){
-            debugger
         },
 
         editBtn: function(){

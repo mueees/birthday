@@ -60,7 +60,6 @@ define([
         },
 
         render: function(){
-            debugger
             if( this.viewMode == "list" ){
                 this.renderTable();
             }else if( this.viewMode == "icon" ){

@@ -173,13 +173,25 @@
 }
 .exploreView tr .previewCont {
   position: relative;
+  width: 40px;
+  max-height: 28px;
+  float: left;
+  margin: 0 11px 0 5px;
+  text-align: center;
 }
 .exploreView tr .previewImg {
   display: none;
   width: 240px !important;
 }
-.exploreView tr .smallPreviewImg {
+.exploreView tr .smallPreviewCont {
   width: 40px;
+  max-height: 28px;
+  float: left;
+  margin: 0 11px 0 5px;
+  text-align: center;
+}
+.exploreView tr .smallPreviewImg {
+  max-height: 28px;
   margin: 0 6px 0 0;
 }
 .exploreView tr .inFolder {
@@ -207,9 +219,16 @@
 }
 .exploreView li {
   list-style: none;
-  float: left;
+  display: inline-block;
   margin: 0 15px 15px 0;
   padding: 10px;
+  width: 110px;
+}
+.exploreView li .name {
+  word-wrap: break-word;
+}
+.exploreView li .previewImg {
+  max-height: 90px;
 }
 .exploreView li.active {
   background: #388ec8;
@@ -223,7 +242,6 @@
 .exploreView li.folder {
   min-width: 120px;
   text-align: center;
-  border: 1px solid #e7e7e7;
   background: #f0ffff;
 }
 .exploreView li.folder.active {

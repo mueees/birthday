@@ -11,7 +11,6 @@ define([
         },
 
         initialize: function(){
-            debugger
             FileIcon.prototype.initialize.apply(this);
             this.appendImg();
         },
