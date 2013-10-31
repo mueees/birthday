@@ -5,11 +5,14 @@ define([
     
 
     /*views*/
-    'app/views/fileBrowser/items/FolderView',
-    'app/views/fileBrowser/items/FileView',
-    'app/views/fileBrowser/items/ImageView'
+    'app/views/fileBrowser/base/FolderList',
+    'app/views/fileBrowser/base/FolderIcon',
+    'app/views/fileBrowser/base/FileList',
+    'app/views/fileBrowser/base/FileIcon',
+    'app/views/fileBrowser/items/FileListImage',
+    'app/views/fileBrowser/items/FileIconImage'
 
-], function(Marionette, ExplorerTableView, ExplorerIconView, FolderView, FileView, ImageView ){
+], function(Marionette, ExplorerTableView, ExplorerIconView, FolderList, FolderIcon, FileList, FileIcon, FileListImage, FileIconImage ){
 
     return Marionette.ItemView.extend({
 
@@ -46,7 +49,7 @@ define([
             this.listenTo(this.channel, "selectBtn", this.selectBtn);
             this.listenTo(this.channel, "downloadBtn", this.downloadBtn);
             this.listenTo(this.channel, "viewModeBtn", this.viewModeBtn);
-            this.listenTo(this.collection, "reset", this.renderTable);
+            this.listenTo(this.collection, "reset", this.render);
             this.listenTo(this.collection, "add", this.addNewItem);
 
         },
@@ -57,6 +60,7 @@ define([
         },
 
         render: function(){
+            debugger
             if( this.viewMode == "list" ){
                 this.renderTable();
             }else if( this.viewMode == "icon" ){
@@ -68,7 +72,8 @@ define([
             var _this = this,
                 tableTemplate;
 
-            this.$el.html(this.explorerTableView());
+            this.$el.html("");
+            this.$el.html(this.explorerIconView());
 
             this.collection.each(function(item){
                 var view = _this.getOneItem(item);
@@ -77,17 +82,15 @@ define([
                 _this.listenTo(view, "rename", _this.rename);
                 _this.listenTo(view, "isActiveChange", _this.isActiveChange);
 
-                _this.$el.find('table tbody').append(view.$el);
+                _this.$el.find('ul').append(view.$el);
             });
         },
 
         renderTable: function(){
             var _this = this;
-            this.collection.sort({});
 
             this.$el.html("");
-            var tableTemplate = this.explorerTableView();
-            this.$el.html(tableTemplate);
+            this.$el.html(this.explorerTableView());
 
             this.collection.each(function(item){
                 var view = _this.getOneItem(item);
@@ -137,18 +140,32 @@ define([
         getOneItem: function(model){
 
             var isDirectory = model.get("isDirectory");
+            var _this = this;
 
             if( isDirectory ){
-                return new FolderView({model:model});
+                if( this.viewMode == "list" ){
+                    return new FolderList({model:model});
+                }else if(this.viewMode == "icon"){
+                    return new FolderIcon({model:model});
+                }
             }else{
                 //this is file
+                var isImage = (function(){ return ( $.inArray(model.get('typeFile'), _this.images) != -1) ? true : false; })();
 
-                if($.inArray(model.get('typeFile'), this.images) != -1 ){
-                    //this is image
-                    return new ImageView({model:model});
-                }else{
-                    //this is unknown file type
-                    return new FileView({model:model});
+                if( this.viewMode == "list" ){
+                    if(isImage) {
+                        //this is image
+                        return new FileListImage({model:model});
+                    }else{
+                        //this is unknown file type
+                        return new FileList({model:model});
+                    }
+                }else if( this.viewMode == "icon" ){
+                    if(isImage){
+                        return new FileIconImage({model:model});
+                    }else{
+                        return new FileIcon({model:model});
+                    }
                 }
 
             }

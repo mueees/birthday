@@ -1,8 +1,6 @@
 <td class="name">
-    <i class="i_file icon"></i>
-    <a href="<%=path%>" class="fileName">
-        <span class="  <%= isSavedOnServer ? 'on' : 'off' %>"><%=name%></span>
-    </a>
+    <i class="i_folder icon"></i>
+    <%=name%>
     <input type="text" class="newName <%= isSavedOnServer ? 'off' : 'on' %>" placeholder="<%=name%>">
 </td>
 <td class="type">
@@ -15,3 +13,4 @@
 <td class="size">
     <%=size%>
 </td>
+<td><a class="inFolder <%= isSavedOnServer ? 'on' : 'off' %>">in folder</a></td>

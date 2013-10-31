@@ -156,6 +156,13 @@
   border-bottom: 1px solid #b2dffc;
   border-top: 1px solid #b2dffc;
 }
+.exploreView tr:hover .previewImg {
+  display: block;
+  position: absolute;
+  bottom: 42px;
+  left: 0;
+  max-width: none;
+}
 .exploreView tr.active {
   background: #388ec8;
   color: #fff;
@@ -163,6 +170,17 @@
 .exploreView tr.active .inFolder,
 .exploreView tr.active .fileName {
   color: #fff;
+}
+.exploreView tr .previewCont {
+  position: relative;
+}
+.exploreView tr .previewImg {
+  display: none;
+  width: 240px !important;
+}
+.exploreView tr .smallPreviewImg {
+  width: 40px;
+  margin: 0 6px 0 0;
 }
 .exploreView tr .inFolder {
   cursor: pointer;
@@ -183,6 +201,33 @@
   display: inline-block;
   margin: 0 15px 0 5px;
   vertical-align: middle;
+}
+.exploreView ul {
+  padding: 0;
+}
+.exploreView li {
+  list-style: none;
+  float: left;
+  margin: 0 15px 15px 0;
+  padding: 10px;
+}
+.exploreView li.active {
+  background: #388ec8;
+  color: #fff;
+}
+.exploreView li .iconCont {
+  text-align: center;
+  max-width: 110px;
+  min-height: 90px;
+}
+.exploreView li.folder {
+  min-width: 120px;
+  text-align: center;
+  border: 1px solid #e7e7e7;
+  background: #f0ffff;
+}
+.exploreView li.folder.active {
+  background: #388ec8;
 }
 .pathContainer ul {
   padding: 0;
@@ -249,27 +294,41 @@
   color: #fff;
   list-style: none;
 }
+.tl .post .text {
+  padding: 0 8px;
+}
 .tl .post:hover {
   transition: all 200ms linear;
   background: rgba(255,255,255,0.92);
   color: #000;
 }
-.tl .post.white {
-  background: #fff;
-  color: #000;
-}
-.tl .post.white:hover {
-  transition: all 200ms linear;
-  background: rgba(177,177,177,0.37);
-  color: #fff;
-}
 .tl .post img {
   margin: 0 0 10px 0;
   display: block;
 }
-.tl .post.quote {
+.white {
+  background: #fff;
+  color: #000;
+}
+.white:hover {
+  transition: all 400ms linear;
+  background: rgba(177,177,177,0.37);
+  color: #fff;
+}
+.quote {
   font-size: 14px;
   line-height: 20px;
+}
+.polaroid_320.white {
+  color: #000;
+}
+.polaroid_320.white.post {
+  border-bottom: 0;
+}
+.polaroid_320.white:hover {
+  background: #fff;
+  outline: 4px solid #fff;
+  color: #000;
 }
 .postModal {
   width: 80%;
