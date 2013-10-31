@@ -2,7 +2,7 @@ define([
     'marionette',
     'text!app/templates/fileBrowser/FileView.html',
 
-    './base/ItemBase'
+    '../base/ItemBase'
 ], function(Marionette, template, ItemBase){
 
     return ItemBase.extend({
