@@ -32,16 +32,28 @@
 
             .inFolder, .fileName
                 color white
-        
+
         .previewCont
             position relative
+            width 40px
+            max-height 28px
+            float left
+            margin 0 11px 0 5px
+            text-align center
 
         .previewImg
             display none
             width 240px !important
 
-        .smallPreviewImg
+        .smallPreviewCont
             width 40px
+            max-height 28px
+            float left
+            margin 0 11px 0 5px
+            text-align center
+
+        .smallPreviewImg
+            max-height 28px
             margin 0 6px 0 0
 
         .inFolder
@@ -61,14 +73,21 @@
             display inline-block
             margin 0 15px 0 5px
             vertical-align middle
-    
+
     ul
         padding 0
     li
         list-style none
-        float left
+        display inline-block
         margin 0 15px 15px 0
         padding 10px
+        width 110px
+
+        .name
+            word-wrap break-word
+
+        .previewImg
+          max-height 90px
 
         &.active
             background #388ec8
@@ -82,7 +101,6 @@
         &.folder
             min-width 120px
             text-align center
-            border 1px solid #E7E7E7
             background azure
 
         &.folder.active
@@ -90,16 +108,15 @@
 
 
 .pathContainer
-
     ul
         padding 0
         overflow hidden
         margin-left 0
-
     li
         float left
         margin 0 7px 0 0
         list-style none
+
     .arrow
         display inline-block
         margin-left 5px

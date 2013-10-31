@@ -27,11 +27,13 @@ define([
 
 
             this.$el.find(".name i").remove();
-            
-            this.$el.find(".name").prepend($('<img />', {
+
+            this.$el.find('.name').prepend('<div class="smallPreviewCont" />')
+            this.$el.find(".smallPreviewCont").append($('<img />', {
                 src: path,
                 class: "smallPreviewImg"
             }));
+
         }
     })
 
