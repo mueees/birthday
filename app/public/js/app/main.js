@@ -5,6 +5,8 @@ require([
     /*extend*/
     'routefilter',
     'app/extention/streamModel/module',
+    //backbone relation
+    'relationalBackbone',
 
     /*entities*/
     'app/modules/websocket/entities/websocket',
