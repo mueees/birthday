@@ -21,6 +21,7 @@ requirejs.config({
         bootstrap: "bootstrap/bootstrap",
         underscore: "underscore",
         routefilter: "backbone.routefilter",
+        relationalBackbone: "backbone.relational",
         async: "async"
     },
 
@@ -49,9 +50,13 @@ requirejs.config({
             deps: ['jquery']
         },
         ckeditor: {
-            exports: 'CKEDITOR'
+            exports: 'CKEDITfroutefilterOR'
         },
         routefilter: {
+            deps: ['backbone']
+        },
+
+        relationalBackbone: {
             deps: ['backbone']
         },
 
