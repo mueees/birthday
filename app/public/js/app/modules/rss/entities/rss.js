@@ -8,9 +8,10 @@ define([
     "../models/post",
 
     /*collections*/
-    '../collections/posts'
+    '../collections/posts',
+    '../collections/categories'
 
-], function(jQuery, Backbone, Marionette, App, PostModel, PostsColl){
+], function(jQuery, Backbone, Marionette, App, PostModel, PostsColl, CategoriesColl){
 
     var API = {
 
@@ -57,6 +58,27 @@ define([
 
             return deferred.promise();
         },
+
+        getCategories: function(){
+
+            var categoriesColl = new CategoriesColl();
+            var deferred = $.Deferred();
+
+            categoriesColl.fetch({
+                success: function(model, data){
+                    deferred.resolve({
+                        categoriesColl: categoriesColl
+                    })
+                },
+                error: function(model, xhr){
+                    deferred.reject({
+                        xhr: xhr
+                    })
+                }
+            })
+
+            return deferred.promise();
+        }
 
         /*saveNewStream: function( data ){
 
@@ -111,6 +133,10 @@ define([
 
     App.reqres.setHandler('rss:getPosts', function(data){
         return API.getPosts(data);
+    })
+
+    App.reqres.setHandler('rss:getCategories', function(data){
+        return API.getCategories(data);
     })
 
 })

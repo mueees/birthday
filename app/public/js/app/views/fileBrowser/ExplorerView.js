@@ -33,7 +33,6 @@ define([
         },
 
         initialize: function(data){
-            var _this = this;
 
             _.bind(this.setNewPath, this);
             _.bind(this.newFolderBtn, this);
@@ -68,8 +67,7 @@ define([
         },
 
         renderIcon: function(){
-            var _this = this,
-                tableTemplate;
+            var _this = this;
 
             this.$el.html("");
             this.$el.html(this.explorerIconView());
@@ -168,10 +166,13 @@ define([
                 }
 
             }
+            return false;
         },
 
         newFolderBtn: function(){
-            this.collection.push({})
+            this.collection.push({
+                isDirectory: true
+            });
         },
 
         deleteBtn: function(){
@@ -208,7 +209,7 @@ define([
 
         addNewItem: function(model){
             model.set("isSavedOnServer", false);
-            var folder = new FolderView({model:model});
+            var folder = this.getOneItem(model);
             this.$el.find('table tbody').prepend(folder.$el);
             folder.setNewName();
 
