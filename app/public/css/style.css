@@ -12,7 +12,13 @@ body a:hover {
   padding: 0 0 100px;
 }
 .separator {
-  height: 120px;
+  height: 60px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 60px;
+  font-style: italic;
+  padding: 0 15px 0 0;
+  color: #636363;
 }
 .separator.mainColorSep {
   background: #efefef;
@@ -397,9 +403,9 @@ body a:hover {
   color: #000;
 }
 .postModal {
-  width: 90%;
+  width: 76%;
   position: absolute;
-  margin-left: -45%;
+  margin-left: -38%;
 }
 .postMain {
   padding: 36px 20px 20px;
@@ -514,6 +520,7 @@ body a:hover {
 }
 .header .siteTitle {
   float: left;
+  color: #636363;
 }
 .header-bg {
   background: #fff;
