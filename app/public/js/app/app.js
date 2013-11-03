@@ -35,7 +35,10 @@ define([
 
 	App.startSubApp = function(appName, args){
 	    var currentApp = App.module(appName);
-	    if (App.currentApp === currentApp){ return; }
+        if (App.currentApp === currentApp){ return; }
+
+        $('body').removeClass().addClass(currentApp.moduleName);
+
 
 	    if (App.currentApp){
 	      App.currentApp.stop();

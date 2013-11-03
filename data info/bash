@@ -18,8 +18,8 @@ grunt
 
 chromium-browser --disable-web-security
 
-cd web/backup/sites/batros.in.ua/
-mkdir 30.10.2013
+cd web/backup/sites/live.batros.in.ua
+mkdir 30.10.2013ls
 mongodump --db live_birthday
 
 cd web/backup/sites/batros.in.ua/
