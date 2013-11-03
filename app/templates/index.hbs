@@ -21,26 +21,26 @@
     </script>
 </head>
 <body>
-<header class="header">
-    <div class="container">
-        <div class="row">
-            <h1 class="span12">Birthday</h1>
-        </div>
-        <div class="row">
-            <div class="span12">
 
-                <ul class="nav nav-pills loginMenu">
-                    {{#if user}}
+
+<header class="header">
+    <div class="main-bg">
+        <img src="/img/site-bg/DSC_0470.JPG"/>
+    </div>
+    <div class="header-bg">
+        <div class="container">
+            <h1 class="siteTitle">Life tools</h1>
+            <ul class="nav nav-pills loginMenu">
+                {{#if user}}
                     <li><a class="logout " href="#">Hey, logout me!</a></li>
                     <li><a class="login off" href="#">Hey, login me!</a></li>
-                    {{else}}
+                {{else}}
                     <li><a class="logout off" href="#">Hey, logout me!</a></li>
                     <li><a class="login" href="#">Hey, login me!</a></li>
-                    {{/if}}
-                </ul>
+                {{/if}}
+            </ul>
 
-                <div class="mainMenu"></div>
-            </div>
+            <div class="mainMenu"></div>
         </div>
     </div>
 

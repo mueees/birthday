@@ -37,22 +37,17 @@ define([
                             type: Backbone.HasMany,
                             key: 'posts',
                             relatedModel: 'Post',
-                            collectionType: 'PostCollection',
-                            includeInJSON: true
+                            collectionType: 'PostCollection'
                         }]
                     })
 
+                    var post = new Post({name: "super post"})
+
                     var feed = new Feed({
                         name: 'News',
-                        posts: [
-                            {
-                                "title": "test"
-                            },
-                            {
-                                "title": "test2"
-                            }
-                        ]
+                        posts: [ post ]
                     });
+
                     /*var post = new Post({
                         title: "this is test post"
                     });*/
