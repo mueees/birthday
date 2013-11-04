@@ -2,6 +2,39 @@ var CategoryModel = require('models/rss/category'),
     SocketError = require('socketServer/error').SocketError;;
 
 var controller = {
+
+    categoryFindAll: function(req, res, next){
+        res.send([
+                {
+                    _id: "cat1",
+                    name: "cat1",
+                    feeds: [
+                        {
+                            _id: "feed1",
+                            name: 'feed1',
+                            unread: 5
+                        }
+                    ]
+                },
+                {
+                    _id: "cat12",
+                    name: "cat2",
+                    feeds: [
+                        {
+                            _id: "feed1",
+                            name: 'feed1',
+                            unread: 7
+                        },
+                        {
+                            _id: "feed2",
+                            name: 'feed2',
+                            unread: 2
+                        }
+                    ]
+                }
+            ]);
+    },
+
     categoryCreate: function(req, res, next){
         var data = req.body || req.params;
         var category = new CategoryModel(data);

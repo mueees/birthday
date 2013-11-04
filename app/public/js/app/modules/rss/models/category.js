@@ -6,9 +6,14 @@ define([
 		return Backbone.Model.extend({
 			defaults: {
 				name: "",
-                feeds: new FeedCollection()
+				feeds: null
 			},
+
+			initialize: function(data){
+				this.set('feeds', new FeedCollection(data.feeds))
+			},
+
             idAttribute: '_id'
 		})
-
+		
 });

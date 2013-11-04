@@ -9,6 +9,7 @@ define([
 
     /*modules*/
     './modules/menu/menu_controller',
+    './modules/Personalize/module',
 
     /*entites*/
     './entities/rss'
@@ -18,6 +19,33 @@ define([
         startWithParent: false,
 
         define: function( Rss, App, Backbone, Marionette, $, _ ){
+
+/*
+            var category = new CategoryModel({
+                _id: 12e11
+            });
+            category = {
+                _id: "sdsgdfg2234"б
+                name: "web category",
+                feeds: new FeedColl()
+            }
+            category.fetch();
+
+            var feed = new Feed({
+                _id: "132"
+            });
+
+            var feed = {
+                _id: "132",
+                name: "seper feeed",
+                posts: null,
+                unread: 5 
+            }
+            feed.fetch();
+
+            // все что связано с постами будет проксировать к Post модели
+            feed.getAllPosts();
+            feed.getPost(idPost);*/
 
             var Router = Marionette.AppRouter.extend({
 
@@ -31,15 +59,27 @@ define([
                     "rss(/:feed)": "showFeed",
                 }
 
-            })
+            });
+
+            var layout;
 
             var Controller = {
                 main: function(){
-                    var layout = new Layout();
+                    layout = new Layout();
                     layout.render();
                     App.main.show(layout);
+                    
+                    this.subscribe(layout);
 
                     Rss.Menu.Controller.showMenu(layout);
+                },
+
+                subscribe: function(){
+                    App.channels.rss.on('personalize', this.showPersonalize);
+                },
+
+                showPersonalize: function(){
+                    Rss.Personalize.Controller.show(layout);
                 },
 
                 showCategory: function(){

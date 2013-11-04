@@ -4,9 +4,16 @@ define([
 
     /*views*/
     './views/TabView',
-    './views/AddView'
+    './views/AddView',
+    './views/Feeds',
 
-], function(App, Marionette, TabView, AddView){
+    /*collections*/
+    '../../collections/categories',
+
+    /*models*/
+    './models/AddFeedModel'
+
+], function(App, Marionette, TabView, AddView, FeedsView, Categories, AddFeedModel){
 
 
     App.module("Rss.Menu", {
@@ -21,57 +28,34 @@ define([
 
             var Controller = {
                 showMenu: function( layout ){
+                    //create tab view
                     var tabView = new TabView();
-                    var addView = new AddView();
 
-                    var Post = Backbone.RelationalModel.extend({
-                        urlRoot: '/api/posts'
-                    });
-
-                    var PostCollection  = Backbone.Collection.extend({
-                        model: Post
-                    });
-
-                    var Feed = Backbone.RelationalModel.extend({
-                        relations: [{
-                            type: Backbone.HasMany,
-                            key: 'posts',
-                            relatedModel: 'Post',
-                            collectionType: 'PostCollection'
-                        }]
+                    //create add view
+                    var addFeedModel = new AddFeedModel();
+                    addFeedModel.on('change:feed_url', function(){
+                        debugger
                     })
-
-                    var post = new Post({name: "super post"})
-
-                    var feed = new Feed({
-                        name: 'News',
-                        posts: [ post ]
+                    var addView = new AddView({
+                        model: addFeedModel
                     });
 
-                    /*var post = new Post({
-                        title: "this is test post"
-                    });*/
+                    //create  all categories
+                    var categories = new Categories();
+                    categories.fetch().done(function(categories){
+                        var feedsTab = new FeedsView({collection: categories});
+                        layout.contentCont.show(feedsTab);
 
-                    //getCategories
-                    /*var request = {
-                        method: App.config.api.twitter.subscribe,
-                        params: {}
-                    }*/
-                    //$.when( App.request('rss:getCategories') ).fail(function(){debugger}).done(function(){debugger});
-
-                    //$.when( App.request('rss:getCategory', {_id: 23}) ).fail(function(){debugger}).done(function(){debugger});
-
-                    //var contentView = new ContentView();
-
-                    //App.request('rss:getPost', {_id: "123123"});
-                    //App.request('rss:getPosts');
-
-
-                    //$.when( App.request('websocket:send', request) ).fail(fail).done(done);
+                        feedsTab.on('personalize', function(){
+                            App.channels.rss.trigger( 'personalize', categories );
+                        })
+                    });
 
 
                     layout.tabCont.show(tabView);
                     layout.addCont.show(addView);
+
+                    
                 }
             }
 
