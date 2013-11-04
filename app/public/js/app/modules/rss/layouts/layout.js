@@ -12,7 +12,7 @@ define([
             'addCont': ".addCont",
             'contentCont': '.contentCont',
             'header_rss': '.header',
-            'main_rss': '.main'
+            'main_rss': '.main_rss'
         }
     })
 

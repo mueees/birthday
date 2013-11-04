@@ -16,7 +16,7 @@ define([
 			    id_feed: String,
 			    isRead: Boolean
 			},
-			urlRoot: "/api/posts",
+			urlRoot: "/api/rss/post",
 			idAttribute: '_id'
 		})
 
