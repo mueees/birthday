@@ -7,7 +7,7 @@ define([
         template: _.template(template),
 
         events: {
-
+            "click": "checkPost"
         },
 
         tagName: "li",
@@ -20,10 +20,15 @@ define([
 
         initialize: function(){
             this.render();
+            this.$el.addClass( this.model.cid )
         },
 
         onRender: function(){
 
+        },
+
+        checkPost: function(){
+            this.trigger("checkPost", this.model);
         }
     })
 

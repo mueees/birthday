@@ -70,6 +70,9 @@ define([
             this.listenTo(this.availableView, "availableFeedSelected", function(feed){
                 _this.trigger("availableFeedSelected", feed);
             })
+            this.listenTo(this.availableView, "saveNewFeed", function(feed){
+                _this.trigger("saveNewFeed", feed);
+            })
 
             this.$el.append(this.availableView.$el);
 

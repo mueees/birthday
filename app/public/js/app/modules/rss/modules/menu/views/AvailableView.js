@@ -44,7 +44,12 @@ define([
 
         addFeedBtn: function(e){
             e.preventDefault();
+            var $el = $(e.target).closest('li');
+            var feed = this.collection.get( $el.data('cid') );
 
+            if(!feed) return false;
+
+            this.trigger("saveNewFeed", feed);
         }
     })
 

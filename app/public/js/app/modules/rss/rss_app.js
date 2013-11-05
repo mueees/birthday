@@ -11,6 +11,7 @@ define([
     './modules/menu/menu_controller',
     './modules/Personalize/module',
     './modules/ShowFeed/module',
+    './modules/SaveNewFeed/module',
 
     /*entites*/
     './entities/rss'
@@ -51,6 +52,7 @@ define([
                 subscribe: function(){
                     App.channels.rss.on('personalize', this.showPersonalize);
                     App.channels.rss.on('availableFeedSelected', this.showAvailableFeed);
+                    App.channels.rss.on('saveNewFeed', this.showSaveFeedDialog);
                 },
 
                 showAvailableFeed: function(feed){
@@ -59,6 +61,10 @@ define([
 
                 showPersonalize: function(){
                     Rss.Personalize.Controller.show(layout);
+                },
+
+                showSaveFeedDialog: function(feed){
+                    Rss.SaveNewFeed.Controller.show(feed);
                 },
 
                 showCategory: function(){

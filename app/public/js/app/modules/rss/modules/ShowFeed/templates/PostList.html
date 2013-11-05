@@ -1,1 +1,10 @@
-<div class="title"><%= title%></div>
+<span class="icon-bookmark item"></span>
+<span class="title item"><%= title || 'No title' %></span>
+<div class="panel">
+	<a href="<%=link %>" alt="open in new tab" target="_blank">
+		<i class="icon-eye-open"></i>
+	</a>
+	<a href="//twitter.com/intent/tweet?url=<%=link %>&text=<%= title || 'No title' %>" alt="tweet" class="tweetBtn">
+		<i class="icon-thumbs-up"></i>
+	</a>
+</div>
