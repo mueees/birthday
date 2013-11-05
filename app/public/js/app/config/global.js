@@ -65,7 +65,8 @@ define([], function(){
             },
 
             rss: {
-                getFeedsByUrl: '/api/rss/getFeedsByUrl'
+                getFeedsByUrl: '/api/rss/getFeedsByUrl',
+                category: '/api/rss/category'
             }
 
         },

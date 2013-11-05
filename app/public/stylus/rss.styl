@@ -1,3 +1,5 @@
+@import mixin
+
 .rss
     padding 35px 0 0 0
 
@@ -131,3 +133,30 @@
 
                 a
                     padding 0 3px
+.addNewFeed
+    position fixed
+    top 0
+    left -345px
+    width 260px
+    transition left 0.5s
+    background #efefef
+    padding: 0 40px
+    height 100%
+    border-right: 1px solid silver
+
+    &.show
+        left 0
+
+    .category
+        input
+            margin 0 10px 0 0
+
+    .buttons
+        border-top 1px solid silver
+        padding 15px 0 0 0
+        position absolute
+        bottom 50px
+        right 40px
+
+        a
+            margin 0 0 0 30px

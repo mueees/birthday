@@ -19,18 +19,20 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
-            /*Notify.API.showNotify({text: "Preset changed"});*/
 
             var Controller = {
                 show: function( feed ){
 
                     //get all categories
                     var categories = new Categories();
-                    categories.fetch().done(function(categories){
-
+                    categories.fetch().done(function(){
                         var saveNewFeedView = new SaveNewFeedView({
                             categories: categories,
                             feed: feed
+                        })
+
+                        saveNewFeedView.on("errorText", function(error){
+                            Notify.API.showNotify({text: error});
                         })
 
                         $('body').append(saveNewFeedView.$el);

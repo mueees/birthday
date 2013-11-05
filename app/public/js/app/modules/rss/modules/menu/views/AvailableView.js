@@ -12,7 +12,7 @@ define([
         className: "availableSource",
 
         events: {
-            "click li": "chooseFeed",
+            "click .source": "chooseFeed",
             "click .addFeed": "addFeedBtn"
         },
 
@@ -33,6 +33,7 @@ define([
         },
 
         chooseFeed: function(e){
+            e.preventDefault();
             var $el = $(e.target).closest('li');
             var feed = this.collection.get( $el.data('cid') );
 
@@ -44,6 +45,7 @@ define([
 
         addFeedBtn: function(e){
             e.preventDefault();
+            e.stopPropagation();
             var $el = $(e.target).closest('li');
             var feed = this.collection.get( $el.data('cid') );
 

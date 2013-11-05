@@ -4,16 +4,35 @@ define([
 	], function(Backbone, PostCollection){
 
 		return Backbone.Model.extend({
-			defaults: {
+
+            model: {
+                posts: PostCollection
+            },
+
+            defaults: {
 				name: "",
                 url: "",
                 unread: "",
                 posts: null
 			},
+
             idAttribute: '_id',
 
             initialize: function(data){
-                this.set('posts', new PostCollection(data.posts))
+                //debugger
+                //this.set('posts', new PostCollection(data.posts))
+            },
+
+            parse: function(response){
+
+                //debugger
+                for(var key in this.model)
+                {
+                    var embeddedClass = this.model[key];
+                    var embeddedData = response[key];
+                    response[key] = new embeddedClass(embeddedData, {parse:true});
+                }
+                return response;
             },
 
             toJSON: function() {

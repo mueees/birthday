@@ -1,7 +1,8 @@
 define([
+    'app/app',
 	'backbone',
     '../collections/feeds'
-	], function(Backbone, FeedCollection){
+	], function(App, Backbone, FeedCollection){
 
 		return Backbone.Model.extend({
 			defaults: {
@@ -9,11 +10,28 @@ define([
 				feeds: null
 			},
 
+            urlRoot: App.config.api.rss.category,
+
+            socket: true,
+
             initialize: function(data){
-                this.set('feeds', new FeedCollection(data.feeds))
+
             },
 
-            idAttribute: '_id'
+            idAttribute: '_id',
+
+            model: {
+                feeds: FeedCollection
+            },
+
+            parse: function(response){
+                for(var key in this.model){
+                    var embeddedClass = this.model[key];
+                    var embeddedData = response[key];
+                    response[key] = new embeddedClass(embeddedData, {parse:true});
+                }
+                return response;
+            }
 		})
 		
 });

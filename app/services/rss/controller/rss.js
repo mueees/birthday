@@ -29,47 +29,27 @@ var controller = {
             }
 
             //тут в будущем будет много фидов, которые были найдены по указаному пользователем url
-            res.send([
-                {
-                    name: data.feed_url,
-                    posts: feed.postsRow,
-                    url: data.feed_url
+            res.send({
+                    feeds: [{
+                        name: data.feed_url,
+                        posts: feed.postsRow,
+                        url: data.feed_url
+                    }]
                 }
-            ]);
+            );
         });
 
     },
 
     categoryFindAll: function(req, res, next){
-        res.send([
-                {
-                    _id: "cat1",
-                    name: "cat1",
-                    feeds: [
-                        {
-                            _id: "feed1",
-                            name: 'feed1',
-                            unread: 5
-                        }
-                    ]
-                },
-                {
-                    _id: "cat12",
-                    name: "cat2",
-                    feeds: [
-                        {
-                            _id: "feed1",
-                            name: 'feed1',
-                            unread: 7
-                        },
-                        {
-                            _id: "feed2",
-                            name: 'feed2',
-                            unread: 2
-                        }
-                    ]
-                }
-            ]);
+
+        CategoryModel.find({}, function(err, categories){
+            if(err){
+                next( new SocketError(400, "Cannot get Categories") );
+                return false;
+            }
+            res.send(categories);
+        });
     },
 
     categoryCreate: function(req, res, next){

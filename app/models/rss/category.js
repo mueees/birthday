@@ -7,6 +7,6 @@ var categorySchema = new Schema({
     feeds_id: []
 });
 
-var Category = mongoose.model('Category', categorySchema);
+var Category = mongoose.model('Rss_category', categorySchema);
 
 module.exports = Category;
