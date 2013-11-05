@@ -17,7 +17,7 @@ feedSchema.methods.getPostsFromUrl = function(cb){
 
     var posts = [];
 
-    request("http://tonsky.livejournal.com/data/rss")
+    request( this.url )
         .on('error', function (error) {
             logger.log('error', { error: error });
             cb(error);
@@ -53,6 +53,9 @@ feedSchema.methods.getPostsFromUrl = function(cb){
 feedSchema.methods.getLastPost = function(globalCb){
     //get last post
 
+    if( !this._id ){
+        globalCb(null, null);
+    }
     var query = {id_feed: this._id};
 
     Post.findOne(query, {}, { sort: { 'date' : -1 } }, function(error, lastPost) {

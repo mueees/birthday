@@ -9,9 +9,9 @@ define([
 				feeds: null
 			},
 
-			initialize: function(data){
-				this.set('feeds', new FeedCollection(data.feeds))
-			},
+            initialize: function(data){
+                this.set('feeds', new FeedCollection(data.feeds))
+            },
 
             idAttribute: '_id'
 		})
