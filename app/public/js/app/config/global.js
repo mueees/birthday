@@ -62,6 +62,10 @@ define([], function(){
                 subscribe: "/twitter/subscribe",
                 unsubscribe: "/twitter/unsubscribe",
                 changeChannel:  "/twitter/changeChannel"
+            },
+
+            rss: {
+                getFeedsByUrl: '/api/rss/getFeedsByUrl'
             }
 
         },

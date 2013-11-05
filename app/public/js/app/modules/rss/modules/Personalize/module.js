@@ -29,7 +29,6 @@ define([
                     categories.fetch().done(function(categories){
                         var personalizeView = new PersonalizeView({collection: categories});
                         layout.main_rss.show(personalizeView);
-
                     });
                     
                 }

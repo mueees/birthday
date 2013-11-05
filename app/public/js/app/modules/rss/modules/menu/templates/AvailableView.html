@@ -1,0 +1,7 @@
+<% for(var i = 0; i < feeds.length; i++) { %>
+<li data-cid="<%= feeds[i].cid %>" >
+    <div class="name">name: <%= feeds[i].name %></div>
+    <div class="url">url: <a href="<%= feeds[i].url %>"><%= feeds[i].url %></a></div>
+    <div class="btn addFeed"><a href="#">add</a></div>
+</li>
+<% }%>

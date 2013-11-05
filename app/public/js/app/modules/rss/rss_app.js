@@ -10,6 +10,7 @@ define([
     /*modules*/
     './modules/menu/menu_controller',
     './modules/Personalize/module',
+    './modules/ShowFeed/module',
 
     /*entites*/
     './entities/rss'
@@ -20,33 +21,6 @@ define([
 
         define: function( Rss, App, Backbone, Marionette, $, _ ){
 
-/*
-            var category = new CategoryModel({
-                _id: 12e11
-            });
-            category = {
-                _id: "sdsgdfg2234"б
-                name: "web category",
-                feeds: new FeedColl()
-            }
-            category.fetch();
-
-            var feed = new Feed({
-                _id: "132"
-            });
-
-            var feed = {
-                _id: "132",
-                name: "seper feeed",
-                posts: null,
-                unread: 5 
-            }
-            feed.fetch();
-
-            // все что связано с постами будет проксировать к Post модели
-            feed.getAllPosts();
-            feed.getPost(idPost);*/
-
             var Router = Marionette.AppRouter.extend({
 
                 before: function(){
@@ -56,7 +30,7 @@ define([
                 appRoutes: {
                     "rss": "main",
                     "rss(/category/:id)": "showCategory",
-                    "rss(/:feed)": "showFeed",
+                    "rss(/:feed)": "showFeed"
                 }
 
             });
@@ -69,13 +43,18 @@ define([
                     layout.render();
                     App.main.show(layout);
                     
-                    this.subscribe(layout);
+                    this.subscribe();
 
                     Rss.Menu.Controller.showMenu(layout);
                 },
 
                 subscribe: function(){
                     App.channels.rss.on('personalize', this.showPersonalize);
+                    App.channels.rss.on('availableFeedSelected', this.showAvailableFeed);
+                },
+
+                showAvailableFeed: function(feed){
+                    Rss.ShowFeed.Controller.show(layout, feed);
                 },
 
                 showPersonalize: function(){

@@ -6,12 +6,13 @@ define([
     var Layout = Marionette.Layout.extend({
         template: _.template(LayoutTemp),
 
+        className: "rss",
+
         regions: {
             'menu': '.menu_rss',
             'tabCont': ".tabCont",
             'addCont': ".addCont",
             'contentCont': '.contentCont',
-            'header_rss': '.header',
             'main_rss': '.main_rss'
         }
     })

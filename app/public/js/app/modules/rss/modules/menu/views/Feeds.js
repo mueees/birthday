@@ -10,6 +10,8 @@ define([
             "click .personalize": "personalizeBtn"
         },
 
+        className: "feedContent",
+
         ui: {
 
         },

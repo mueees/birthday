@@ -532,3 +532,84 @@ body a:hover {
 .loginMenu {
   padding: 13px 0 0 0;
 }
+.rss {
+  padding: 35px 0 0 0;
+}
+.rss .tabCont {
+  margin: 0 0 20px;
+}
+.rss .addRss {
+  display: none;
+}
+.rss .availableSource {
+  padding: 0;
+  margin: 0;
+}
+.rss .availableSource li {
+  list-style: none;
+  padding: 5px;
+  border: 1px solid #fff;
+}
+.rss .availableSource li:hover {
+  background: #efefef;
+  border: 1px solid #9e9e9e;
+  cursor: pointer;
+}
+.rss .availableSource .addFeed {
+  margin: 15px 0 0 0;
+}
+.rss .header_rss {
+  overflow: hidden;
+}
+.rss .header_rss .title {
+  float: left;
+}
+.rss .header_rss .actionBar {
+  float: right;
+}
+.rss .header_rss .actionBar ul {
+  overflow: hidden;
+  float: left;
+}
+.rss .header_rss .actionBar .viewMode a {
+  opacity: 0.4;
+}
+.rss .header_rss .actionBar .viewMode a.active {
+  opacity: 1;
+}
+.rss .header_rss .actionBar .viewMode a:hover {
+  opacity: 1;
+}
+.rss .header_rss .actionBar .settings a {
+  opacity: 0.4;
+}
+.rss .header_rss .actionBar .settings a:hover {
+  opacity: 1;
+}
+.rss .header_rss .actionBar li {
+  float: left;
+  list-style: none;
+}
+.rss .header_rss .actionBar a {
+  padding: 10px;
+  text-align: center;
+}
+.rss .header_rss .actionBar a display inline-block:hover {
+  background: #eee;
+  color: #989898;
+}
+.rss .content ul {
+  padding: 0;
+  margin: 0;
+}
+.rss .content li {
+  list-style: none;
+}
+.rss .content .list {
+  border-bottom: 1px solid #efefef;
+  padding: 8px 0;
+}
+.rss .content .list:hover {
+  background: #efefef;
+  cursor: pointer;
+}

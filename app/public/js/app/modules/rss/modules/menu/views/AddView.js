@@ -1,41 +1,85 @@
 define([
     'marionette',
-    'text!../templates/AddView.html'
-], function(Marionette, template){
+    'text!../templates/AddView.html',
+
+    /*views*/
+    './AvailableView'
+], function(Marionette, template, AvailableView){
 
     return Marionette.ItemView.extend({
         template: _.template(template),
 
         events: {
-            'blur .feed_url': "feedUrlChanged"
+            'blur .feed_url': "feedUrlBlur",
+            "click .clearUrl": "clearUrl"
         },
+
+        className: "addRss",
 
         ui: {
             "feed_url": ".feed_url",
-            "availableSource": ".availableSource",
+            "availableSource": ".availableSource"
         },
 
         initialize: function(){
-
+            this.listenTo(this.model, "change:feed_url", this.changeFeedUrl)
+            this.listenTo(this.model, "change:feeds", this.feedsChanged)
         },
 
         onRender: function(){
             
         },
 
-        feedUrlChanged: function(e){
+        feedUrlBlur: function(e){
+            var _this = this;
+
             if(e) e.preventDefault();
             var value = $.trim(this.ui.feed_url.val());
+
             if( !value ) {
-                this.model.defaults();
+                this.model.set( this.model.defaults );
                 return false;
             }
 
             this.model.set('feed_url', value);
+            this.model.fetch({
+                error: function(model, err){
+                    _this.model.trigger("errorMessage", err.message);
+                }
+            })
         },
 
-        clearAvailableSource: function(){
-            this.ui.availableSource.html("");
+        changeFeedUrl: function(){
+            var feedUrl = this.model.get('feed_url');
+            this.ui.feed_url.val(feedUrl);
+        },
+
+        feedsChanged: function(){
+
+            var feeds = this.model.get('feeds'),
+                _this = this;
+
+            if(this.availableView){
+                this.availableView.close();
+                this.stopListening("availableFeedSelected");
+            }
+
+            if( !feeds || !feeds.length ) return false;
+
+            this.availableView = new AvailableView({collection: feeds});
+            this.listenTo(this.availableView, "availableFeedSelected", function(feed){
+                _this.trigger("availableFeedSelected", feed);
+            })
+
+            this.$el.append(this.availableView.$el);
+
+        },
+
+        clearUrl: function(){
+            this.model.set({
+                feed_url: "",
+                feeds: null
+            });
         }
     })
 

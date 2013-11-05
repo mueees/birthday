@@ -1,7 +1,44 @@
 var CategoryModel = require('models/rss/category'),
-    SocketError = require('socketServer/error').SocketError;;
+    SocketError = require('socketServer/error').SocketError,
+    Feed = require('models/rss/feed'),
+    url = require('url');
 
 var controller = {
+
+    getFeedsByUrl: function( req, res, next ){
+        var data = req.body || req.params;
+
+        if( !data.feed_url ){
+            next( new SocketError(400, "Url is required") );
+            return false;
+        }
+
+        if(!url.parse( data.feed_url ).protocol) {
+            next( new SocketError(400, "Cannot parse url") );
+            return false;
+        }
+
+        var feed = new Feed({
+            url: data.feed_url
+        });
+
+        feed.loadFeed(function(err){
+            if( err ){
+                next( new SocketError(400, "Cannot download feeds") );
+                return false;
+            }
+
+            //тут в будущем будет много фидов, которые были найдены по указаному пользователем url
+            res.send([
+                {
+                    name: data.feed_url,
+                    posts: feed.postsRow,
+                    url: data.feed_url
+                }
+            ]);
+        });
+
+    },
 
     categoryFindAll: function(req, res, next){
         res.send([
