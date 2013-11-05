@@ -7,6 +7,9 @@ body a {
 body a:hover {
   color: #989898;
 }
+li {
+  list-style: none;
+}
 .main {
   background: #fff;
   padding: 0 0 100px;
@@ -40,6 +43,9 @@ body a:hover {
 }
 .btn.off {
   display: none;
+}
+.btn.active {
+  z-index: 0 !important;
 }
 .row {
   margin-bottom: 15px;
@@ -135,9 +141,9 @@ body a:hover {
 }
 .standart input.error {
   border-color: #e9322d;
-  -webkit-box-shadow: 0;
-  -moz-box-shadow: 0;
-  box-shadow: 0;
+  -webkit-box-shadow: 0 0 6px #f8b9b7;
+  -moz-box-shadow: 0 0 6px #f8b9b7;
+  box-shadow: 0 0 6px #f8b9b7;
 }
 .standart .inputMargin input {
   margin-bottom: 10px;
@@ -333,9 +339,9 @@ body a:hover {
   width: 100%;
   border-bottom: 1px solid #c0c0c0;
   border-top: 1px solid #707070;
-  -webkit-box-shadow: 0;
-  -moz-box-shadow: 0;
-  box-shadow: 0;
+  -webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+  -moz-box-shadow: 0 2px 10px rgba(0,0,0,0.45);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.45);
   -webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.45);
   -moz-box-shadow: 0 2px 10px rgba(0,0,0,0.45);
 }
@@ -370,6 +376,9 @@ body a:hover {
   padding: 0 8px;
 }
 .post:hover {
+  -webkit-transition: all 200ms linear;
+  -moz-transition: all 200ms linear;
+  -o-transition: all 200ms linear;
   transition: all 200ms linear;
   background: rgba(255,255,255,0.92);
   color: #000;
@@ -383,6 +392,9 @@ body a:hover {
   color: #000;
 }
 .white:hover {
+  -webkit-transition: all 400ms linear;
+  -moz-transition: all 400ms linear;
+  -o-transition: all 400ms linear;
   transition: all 400ms linear;
   background: rgba(177,177,177,0.37);
   color: #fff;
@@ -669,4 +681,34 @@ body a:hover {
 }
 .rss .content .list .panel a {
   padding: 0 3px;
+}
+.addNewFeed {
+  position: fixed;
+  top: 0;
+  left: -345px;
+  width: 260px;
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
+  background: #efefef;
+  padding: 0 40px;
+  height: 100%;
+  border-right: 1px solid #c0c0c0;
+}
+.addNewFeed.show {
+  left: 0;
+}
+.addNewFeed .category input {
+  margin: 0 10px 0 0;
+}
+.addNewFeed .buttons {
+  border-top: 1px solid #c0c0c0;
+  padding: 15px 0 0 0;
+  position: absolute;
+  bottom: 50px;
+  right: 40px;
+}
+.addNewFeed .buttons a {
+  margin: 0 0 0 30px;
 }

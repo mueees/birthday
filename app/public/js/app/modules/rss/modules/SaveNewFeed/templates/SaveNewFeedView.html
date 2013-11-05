@@ -1,21 +1,29 @@
 <h3>Add new feed</h3>
 
 <form action="#">
-	<label for="feed_name">Feed name</label>
-	<input id="feed_name" type="text" name="feed_name" value="<%= feed.name%>">
+    <label for="feed_name">Feed name</label>
+    <input id="feed_name" type="text" name="feed_name" value="<%= feed.name%>">
 </form>
 
-<h4>Categories:</h4>
+<div class="category">
+    <h4>Categories:</h4>
+    <ul>
+        <% for( var i = 0; i < categories.length; i++ ) {%>
+        <li>
+            <label >
+            <input type="checkbox" value="<%= categories[i]._id %>">
+                <%= categories[i].name %>
+            </label>
+        </li>
+        <% }%>
+        <li>
+            <input id="new_category" type="text" placeholder="new category">
+        </li>
+    </ul>
+</div>
 
-<ul>
-	<% for( var i = 0; i < categories.length; i++ ) {%>
-	<li>
-		<label for="x_<%= i%>"></label>
-		<input id="x_<%= i%>" type="checkbox" value="<%= categories[i]._id %>">
-	</li>
-	<% }%>
-	<li>
-		<label for="new_category>"></label>
-		<input id="new_category>" type="checkbox" value="new category">
-	</li>
-</ul>
+
+<div class="buttons">
+    <a href="#" class="cancel" >Cancel</a>
+    <a href="#" class="btn success create" >Create New feed</a>
+</div>

@@ -53,7 +53,7 @@ define([
 
                     //create  all categories
                     categories = new Categories();
-                    categories.fetch().done(function(categories){
+                    categories.fetch().done(function(){
                         feedsTab = new FeedsView({collection: categories});
                         layout.contentCont.show(feedsTab);
 

@@ -1,7 +1,7 @@
 define([
 	'backbone',
 	'../../../collections/feeds'
-	], function(Backbone, Feeds){
+	], function(Backbone, FeedsCollection){
 
 		return Backbone.Model.extend({
 
@@ -10,15 +10,27 @@ define([
 				feeds: null
 			},
 
+            model: {
+                feeds: FeedsCollection
+            },
+
             socket: true,
 
 			initialize: function(){
 				console.log('initialize');
 			},
 
-            parse: function( feeds ){
-                this.set('feeds', new Feeds(feeds) );
+            parse: function(response){
+
+                for(var key in this.model)
+                {
+                    var embeddedClass = this.model[key];
+                    var embeddedData = response[key];
+                    response[key] = new embeddedClass(embeddedData, {parse:true});
+                }
+                return response;
             }
+
 		})
 
 });
