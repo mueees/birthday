@@ -47,6 +47,9 @@ define([
                     addView.on("availableFeedSelected", function(feed){
                         App.channels.rss.trigger( 'availableFeedSelected', feed );
                     })
+                    addView.on("saveNewFeed", function(feed){
+                        App.channels.rss.trigger( 'saveNewFeed', feed );
+                    })
 
                     //create  all categories
                     categories = new Categories();

@@ -7,7 +7,7 @@
         "nameDatabase": "birthday"
     },
 
-    "socketUrl": "http://localhost:56898/socket",
+    "socketUrl": "http://forge:56898/socket",
 
     "host": "development_batros"
 

@@ -1,0 +1,27 @@
+<div class="closeView"></div>
+
+
+<div class="additionalInfo">
+	<span class="time ago">33 min</span>
+	<span class="feedName">feed name</span> //
+	<a href="#" title="save for read later" class="keepUnread">keep unread</a> //
+	<a href="#" title="remove from server" class="trash">trash</a>
+</div>
+<span class="title item"><%= title || 'No title' %></span>
+<div class="panel">
+	<a href="#" title="check for read late">
+		<span class="icon-bookmark item"></span>
+	</a>
+	<a href="#" title="send to email">
+		<span class="icon-envelope sendToEmail"></span>
+	</a>
+	<a href="//twitter.com/intent/tweet?url=<%=link %>&text=<%= title || 'No title' %>" alt="tweet" class="tweetBtn">
+		<i class="icon-thumbs-up"></i>
+	</a>
+	<a href="<%=link %>" title="open in new tab" target="_blank">
+		<i class="icon-eye-open"></i>
+	</a>
+	<a href="#" title="add to pdf letter">
+		<span class="icon-file createPdf"></span>
+	</a>
+</div>

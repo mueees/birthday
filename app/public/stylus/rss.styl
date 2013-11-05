@@ -55,16 +55,79 @@
                     &:hover
                         background #eeeeee
                         color linkHoverColor
+    .fullView
+        .closeView
+            height 25px
+            background linkColor
+            cursor pointer
+            margin 0 0 20px 
+
+        .title
+            font-size 24px
+            line-height 28px
+            font-weight 700
+            color #404040
+
+    .panel
+        a 
+            display inline-block
+            margin 0 1px
+            padding 8px
+            opacity 0.4
+
+            &:hover
+                opacity 1
+
+    
+
+    .additionalInfo
+        font-size 12px
+        margin 0 0 10px
+
     .content
         ul
             padding 0
             margin 0
         li
             list-style none
+            position relative
+
+            &:hover
+                .panel
+                    display block
+
         .list
             border-bottom 1px solid mainColor
-            padding 8px 0
+            padding 8px
+
+            .icon-bookmark
+                opacity 0.4
+
+            .item
+                display inline-block
+                vertical-align top
+
+            .description
+                text-overflow ellipsis
+                white-space nowrap
+                overflow hidden
+                width 80%
+                font-style italic
+
+            .icon-bookmark
+                margin 0 10px 0 0
 
             &:hover
                 background mainColor
                 cursor pointer
+                
+            .panel
+                display none
+                position absolute
+                right 10px
+                top 0
+                background mainColor
+                padding 8px 0
+
+                a
+                    padding 0 3px
