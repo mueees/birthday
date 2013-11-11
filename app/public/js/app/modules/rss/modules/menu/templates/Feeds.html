@@ -3,3 +3,34 @@
 	<li>Saved</li>
 	<li><a href="#" class="personalize">Personalize</a></li>
 </ul>
+
+<ul class="categories">
+	<%  _.each(categories, function(category){ %>
+		<li>
+			<div class="tab">
+				<span class="switcher">
+					<span class="icon-circle-arrow-down down"></span>
+					<span class="icon-circle-arrow-right right"></span>
+				</span>
+				<span class="name"><%= category.name %></span>
+				<span class="count">(<%= (category.feeds) ? category.feeds.length : 0 %>)</span>
+				<span class="unread">46</span>
+			</div>
+			
+			<% if(category.feeds.length) {%>
+				<ul class="feeds">
+					<%  _.each(category.feeds, function(feed){ %>			
+						<li>
+							<div class="tab">
+								<span class="icon-file"></span>
+								<a href="#" title="<%= feed.name %>"><%= feed.name %></a>
+								<span class="unread"><%= feed.unread %></span>
+							</div>
+						</li>
+					<% }) %>
+				</ul>			
+			<% }%>
+
+		</li>
+	<% }) %>
+</ul>

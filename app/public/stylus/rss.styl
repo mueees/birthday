@@ -133,6 +133,51 @@
 
                 a
                     padding 0 3px
+    .feedContent
+        .tab
+            padding 5px 30px 5px 5px
+            position relative
+            cursor pointer
+
+            &:hover
+                background mainColor
+
+            &.active
+                background mainColor
+
+        .feeds
+            display none
+
+        .categories
+            .open
+                .down
+                    display inline-block
+                .right
+                    display none
+
+                .feeds
+                    display block
+
+        .switcher
+            span
+                padding 3px
+                margin 0 5px 0 0
+
+            .down
+                display none
+
+        .unread
+            position absolute
+            top 2px
+            right 2px
+            font-size 12px
+            padding 4px
+
+            &:hover
+                background #B6B6B6
+
+
+
 .addNewFeed
     position fixed
     top 0
@@ -160,3 +205,5 @@
 
         a
             margin 0 0 0 30px
+    .create
+        display none

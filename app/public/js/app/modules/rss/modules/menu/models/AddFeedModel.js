@@ -17,7 +17,7 @@ define([
             socket: true,
 
 			initialize: function(){
-				console.log('initialize');
+                
 			},
 
             parse: function(response){

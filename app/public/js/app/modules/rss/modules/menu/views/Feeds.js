@@ -7,7 +7,8 @@ define([
         template: _.template(template),
 
         events: {
-            "click .personalize": "personalizeBtn"
+            "click .personalize": "personalizeBtn",
+            "click .switcher": "changeSwitcher"
         },
 
         className: "feedContent",
@@ -16,8 +17,16 @@ define([
 
         },
 
-        initialize: function(){
+        initialize: function(options){
+            this.collection = options.collection;
+            this.render();
+        },
 
+        render: function(){
+            var view = this.template({
+                categories: this.collection.toJSON()
+            });
+            this.$el.html(view);
         },
 
         onRender: function(){
@@ -27,6 +36,19 @@ define([
         personalizeBtn: function(e){
             e.preventDefault();
             this.trigger('personalize');
+        },
+
+        changeSwitcher: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            var $li = $(e.target).closest("li");
+
+            if($li.hasClass("open")){
+                $li.removeClass("open")
+            }else{
+                $li.addClass("open");
+            }
         },
 
         serializeData: function(){

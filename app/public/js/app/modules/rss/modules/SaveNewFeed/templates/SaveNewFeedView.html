@@ -9,7 +9,7 @@
     <h4>Categories:</h4>
     <ul>
         <% for( var i = 0; i < categories.length; i++ ) {%>
-        <li>
+        <li data-id="<%= categories[i]._id %>">
             <label >
             <input type="checkbox" value="<%= categories[i]._id %>">
                 <%= categories[i].name %>
@@ -21,7 +21,6 @@
         </li>
     </ul>
 </div>
-
 
 <div class="buttons">
     <a href="#" class="cancel" >Cancel</a>
