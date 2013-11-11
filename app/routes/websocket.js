@@ -16,4 +16,6 @@ module.exports = function(server){
     server.use('/api/rss/category/create', rssController.categoryCreate);
     server.use('/api/rss/categories/findAll', rssController.categoryFindAll);
     server.use('/api/rss/getFeedsByUrl/findAll', rssController.getFeedsByUrl);
+
+    server.use('/api/rss/feed/create', rssController.feedCreate);
 }

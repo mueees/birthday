@@ -26,12 +26,13 @@ define([
                     //get all categories
                     var categories = new Categories();
                     categories.fetch().done(function(){
+
                         var saveNewFeedView = new SaveNewFeedView({
                             categories: categories,
                             feed: feed
                         })
 
-                        saveNewFeedView.on("errorText", function(error){
+                        saveNewFeedView.on("text", function(error){
                             Notify.API.showNotify({text: error});
                         })
 

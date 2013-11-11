@@ -1,7 +1,8 @@
 define([
+    'app/app',
 	'backbone',
     '../collections/posts'
-	], function(Backbone, PostCollection){
+	], function(App, Backbone, PostCollection){
 
 		return Backbone.Model.extend({
 
@@ -22,6 +23,10 @@ define([
                 //debugger
                 //this.set('posts', new PostCollection(data.posts))
             },
+
+            urlRoot: App.config.api.rss.feed,
+
+            socket: true,
 
             parse: function(response){
 
