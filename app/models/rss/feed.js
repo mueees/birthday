@@ -182,7 +182,7 @@ feedSchema.methods.updateFeed = function(globalCb){
     })
 }
 
-var Feed = mongoose.model('Feed', feedSchema);
+var Feed = mongoose.model('rss_feed', feedSchema);
 
 module.exports = Feed;
 
