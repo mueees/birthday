@@ -8,7 +8,14 @@ define([
     return BaseColletion.extend({
         model: CategoryModel,
         url: "/api/rss/categories",
-        socket: true
+        socket: true,
+        save: function(){
+            Backbone.sync('create', this, {
+                success: function() {
+                    console.log('Saved!');
+                }
+            });
+        }
     })
 
 })

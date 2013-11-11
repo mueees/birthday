@@ -1,4 +1,5 @@
 var CategoryModel = require('models/rss/category'),
+    FeedModel = require('models/rss/feed'),
     SocketError = require('socketServer/error').SocketError,
     Feed = require('models/rss/feed'),
     url = require('url');
@@ -110,6 +111,21 @@ var controller = {
                 res.send();
             });
 
+        })
+    },
+
+    feedCreate: function(req, res, next){
+        var data = req.body || req.params;
+        var feed = new FeedModel(data);
+
+        debugger
+
+        feed.save(function(err){
+            if(err){
+                next( new SocketError(400, "Cannot save new Category") );
+                return false;
+            }
+            res.send(feed);
         })
     }
 }
