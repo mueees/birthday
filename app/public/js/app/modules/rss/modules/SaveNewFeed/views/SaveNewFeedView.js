@@ -12,7 +12,8 @@ define([
 
         events: {
             'click .cancel': "cancelBtn",
-            'blur #new_category': "blueNewCategory"
+            'blur #new_category': "blueNewCategory",
+            'click .create' : "createNewFeed"
         },
 
         className: "addNewFeed",
@@ -40,7 +41,7 @@ define([
             this.$el.html(view);
             setTimeout(function(){
                 _this.$el.addClass("show");
-            }, 0)
+            }, 100)
         },
 
         blueNewCategory: function(e){
@@ -56,11 +57,11 @@ define([
 
         },
 
-        addNewCategory: function(model){
+        addNewCategory: function(categoryModel){
             var _this = this;
 
-            model.save().done(function(){
-                var el = _this.newCategoryTemp(model.toJSON());
+            categoryModel.save().done(function(){
+                var el = _this.newCategoryTemp(categoryModel.toJSON());
                 _this.$el.find('.category ul li').last().before(el);
                 _this.$el.find('#new_category').val("");
 
@@ -68,6 +69,10 @@ define([
                 _this.trigger("errorText", "Cannot save category");
                 debugger
             })
+        },
+
+        createNewFeed: function(){
+            
         },
 
         cancelBtn: function(e){
