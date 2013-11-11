@@ -37,7 +37,7 @@ define([
 
                     //create add view
                     addFeedModel = new AddFeedModel();
-                    addFeedModel.url = App.config.api.rss.getFeedsByUrl;
+                    addFeedModel.url = function(){return App.config.api.rss.getFeedsByUrl}
                     addFeedModel.on('errorMessage', function(err){
                         Notify.API.showNotify({text: err});
                     })

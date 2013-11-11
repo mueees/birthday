@@ -16,7 +16,8 @@ define([
             'click .cancel': "cancelBtn",
             'blur #new_category': "blueNewCategory",
             'blur .feed_name': "blurFeedName",
-            "click .create": "createBtn"
+            "click .create": "createBtn",
+            'click .category input': "checkedCategory"
         },
 
         className: "addNewFeed",
@@ -78,13 +79,14 @@ define([
             this.$el.find('.feed_name').val( this.feed.get('name') );
         },
 
-        addNewCategory: function(model){
+        addNewCategory: function(categoryModel){
             var _this = this;
 
             categoryModel.save().done(function(){
                 var el = _this.newCategoryTemp(categoryModel.toJSON());
                 _this.$el.find('.category ul li').last().before(el);
                 _this.$el.find('#new_category').val("");
+                _this.checkedCategory();
 
             }).fail(function(){
                     _this.trigger("text", "Cannot save category");
@@ -95,9 +97,13 @@ define([
             if(e) e.preventDefault();
             var _this = this;
 
+            var selectedCategory = this.getSelectedCategory();
+
             async.waterfall([
                 function(cb){
-                    _this.feed.save().done(function(){
+                    _this.feed.save(null, {
+                        params: _this.feed.getDataForSave()
+                    }).done(function(){
                         cb(null);
                     }).fail(function(xhr){
                             cb(xhr);
@@ -105,30 +111,54 @@ define([
                 },
                 function(cb){
 
-
                     _this.categories.each(function(category){
-                        debugger
+
+                        var idCategory = category.get('_id');
+                        if( $.inArray(idCategory, selectedCategory) == -1 ) return false;
+
                         var feedsCollection = category.get('feeds');
                         feedsCollection.add({
                             _id: _this.feed.get('_id')
                         })
                     })
-                    debugger
 
-                    _this.categories.save()
-                        .done(function(){debugger})
-                        .fail(function(){debugger})
+                    _this.categories.sync('update', _this.categories, {
+                        params: _this.categories.getDataForUpdate(),
+                        success: function(){
+                            cb(null)
+                        },
+                        error: function(err){
+                            cb(err)
+                        }
+                    })
                 }
             ],function(err){
                 if( err ){
                     alert(err);
                     return false;
                 }
-                _this.trigger("text", "Cannot save feed");
+                _this.trigger("text", "Save feed");
+                _this.cancelBtn();
             })
         },
-        saveFeed: function(){
 
+        checkedCategory: function(){
+            var selectedCategory = this.getSelectedCategory();
+            if( !selectedCategory.length ){
+                this.$el.find(".create").hide();
+            }else{
+                this.$el.find(".create").show();
+            }
+        },
+
+        getSelectedCategory: function(){
+            var result = [];
+            this.$el.find('.category input:checked').each(function(){
+                var $input = $(this);
+                var categoryId = $input.closest('li').data('id')
+                result.push(categoryId);
+            })
+            return result;
         },
 
         cancelBtn: function(e){

@@ -24,7 +24,9 @@ define([
                 //this.set('posts', new PostCollection(data.posts))
             },
 
-            urlRoot: App.config.api.rss.feed,
+            url: function(){
+                return App.config.api.rss.feed
+            },
 
             socket: true,
 
@@ -44,6 +46,12 @@ define([
                 var json = Backbone.Model.prototype.toJSON.apply(this, arguments);
                 json.cid = this.cid;
                 return json;
+            },
+
+            getDataForSave: function(){
+                var data = this.toJSON();
+                delete data.posts
+                return data;
             }
 		})
 

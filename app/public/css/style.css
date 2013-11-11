@@ -682,6 +682,46 @@ li {
 .rss .content .list .panel a {
   padding: 0 3px;
 }
+.rss .feedContent .tab {
+  padding: 5px 30px 5px 5px;
+  position: relative;
+  cursor: pointer;
+}
+.rss .feedContent .tab:hover {
+  background: #efefef;
+}
+.rss .feedContent .tab.active {
+  background: #efefef;
+}
+.rss .feedContent .feeds {
+  display: none;
+}
+.rss .feedContent .categories .open .down {
+  display: inline-block;
+}
+.rss .feedContent .categories .open .right {
+  display: none;
+}
+.rss .feedContent .categories .open .feeds {
+  display: block;
+}
+.rss .feedContent .switcher span {
+  padding: 3px;
+  margin: 0 5px 0 0;
+}
+.rss .feedContent .switcher .down {
+  display: none;
+}
+.rss .feedContent .unread {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 12px;
+  padding: 4px;
+}
+.rss .feedContent .unread:hover {
+  background: #b6b6b6;
+}
 .addNewFeed {
   position: fixed;
   top: 0;
@@ -711,4 +751,7 @@ li {
 }
 .addNewFeed .buttons a {
   margin: 0 0 0 30px;
+}
+.addNewFeed .create {
+  display: none;
 }
