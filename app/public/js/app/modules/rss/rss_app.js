@@ -45,7 +45,6 @@ define([
                     App.main.show(layout);
                     
                     this.subscribe();
-
                     Rss.Menu.Controller.showMenu(layout);
                 },
 
@@ -53,10 +52,15 @@ define([
                     App.channels.rss.on('personalize', this.showPersonalize);
                     App.channels.rss.on('availableFeedSelected', this.showAvailableFeed);
                     App.channels.rss.on('saveNewFeed', this.showSaveFeedDialog);
+                    App.channels.rss.on('showFeed', this.showFeed);
+                },
+
+                showFeed: function(data){
+                    Rss.ShowFeed.Controller.showFeed(layout, data);
                 },
 
                 showAvailableFeed: function(feed){
-                    Rss.ShowFeed.Controller.show(layout, feed);
+                    Rss.ShowFeed.Controller.showAvailableFeed(layout, feed);
                 },
 
                 showPersonalize: function(){
@@ -69,10 +73,6 @@ define([
 
                 showCategory: function(){
                     console.log('showCategory');
-                },
-
-                showFeed: function(){
-                    console.log('showFeed');
                 }
             }
 

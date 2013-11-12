@@ -16,12 +16,35 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
-            /*Notify.API.showNotify({text: "Preset changed"});*/
+            
 
             var Controller = {
-                show: function( layout, feed ){
+                showAvailableFeed: function( layout, feed ){
                     var feedView = new FeedView({model: feed});
                     layout.main_rss.show(feedView)
+                },
+
+                showFeed: function( layout, data ){
+
+                    $.when( App.request('rss:getFeed', data)).fail(function(){
+                        Notify.API.showNotify({text: "Cannot download feed info"});
+                    }).done(function(data){
+
+                        data.model.getPosts({
+                            params: {
+                                count: 25,
+                                start: 0
+                            },
+                            success: function(){
+                                var feedView = new FeedView({model: data.model});
+                                layout.main_rss.show(feedView);
+                            },
+                            error: function(){
+                                Notify.API.showNotify({text: "Cannot download posts info"});
+                            }
+                        })
+                        
+                    });
                 }
             }
 

@@ -6,14 +6,36 @@ define([
 
     /*models*/
     "../models/post",
+    "../models/feed",
 
     /*collections*/
     '../collections/posts',
     '../collections/categories'
 
-], function(jQuery, Backbone, Marionette, App, PostModel, PostsColl, CategoriesColl){
+], function(jQuery, Backbone, Marionette, App, PostModel, FeedModel, PostsColl, CategoriesColl){
 
     var API = {
+
+        getFeed: function(data){
+            var feed = new FeedModel(data);
+            var deferred = $.Deferred();
+
+            feed.fetch({
+                success: function(model, data){
+                    deferred.resolve({
+                        model: new FeedModel(data)
+                    })
+                },
+                error: function(model, xhr){
+                    deferred.reject({
+                        model: feed,
+                        xhr: xhr
+                    })
+                }
+            })
+
+            return deferred.promise();
+        },
 
         getPost: function(data){
             var post = new PostModel(data);
@@ -79,53 +101,11 @@ define([
 
             return deferred.promise();
         }
-
-        /*saveNewStream: function( data ){
-
-            var stream = new StreamModel(data);
-            var deferred = $.Deferred();
-
-            stream.save(null,{
-                success: function(model, data){
-                    deferred.resolve({
-                        model: new StreamModel(data)
-                    })
-                },
-                error: function(model, xhr){
-                    deferred.reject({
-                        model: stream,
-                        xhr: xhr
-                    })
-                }
-            });
-
-            return deferred.promise();
-        },
-
-        getStreams: function(){
-            var deferred = $.Deferred();
-            var streamCollection = new StreamCollection();
-
-            streamCollection.fetch({
-                success: function(){
-                    deferred.resolve({
-                        streamCollection: streamCollection
-                    });
-                },
-                error: function(){
-                    deferred.resolve({});
-                }
-            });
-
-            return deferred.promise();
-        },
-
-        addListener: function(){
-            var deferred = $.Deferred();
-
-            return deferred.promise();
-        }*/
     }
+
+    App.reqres.setHandler('rss:getFeed', function(data){
+        return API.getFeed(data);
+    })
 
     App.reqres.setHandler('rss:getPost', function(data){
         return API.getPost(data);

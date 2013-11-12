@@ -60,6 +60,10 @@ define([
                         feedsTab.on('personalize', function(){
                             App.channels.rss.trigger( 'personalize', categories );
                         })
+
+                        feedsTab.on('showFeed', function(data){
+                            App.channels.rss.trigger( 'showFeed', data );
+                        })
                     });
 
                     //create tab view
@@ -81,7 +85,6 @@ define([
 
                     layout.tabCont.show(tabView);
                     layout.addCont.show(addView);
-
                     
                 }
             }
@@ -92,32 +95,3 @@ define([
     })
 
 })
-
-var model = {
-    categories: [
-        {
-            _id: '123df',
-            name: "web",
-            feeds: [{
-                id: "some id",
-                name: "name feed",
-                unread: 5
-            }]
-        },
-        {
-            _id: 'dfgdg',
-            name: "web2",
-            feeds: [
-                {
-                    id: "some id",
-                    name: "name feed",
-                    unread: 5
-                },
-                {
-                    id: "some id",
-                    name: "name feed",
-                    unread: 2
-                }]
-        }
-    ]
-}

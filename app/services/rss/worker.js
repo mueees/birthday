@@ -33,6 +33,12 @@ Worker.prototype = {
                 _this._findFeed(cb);
             },
             function(feed, cb){
+
+                if( !feed ) {
+                    cb('Cannot find feed');
+                    return false;
+                }
+
                 _this.feed = feed;
                 //get new post
                 _this.feed.loadFeed(cb);
@@ -68,6 +74,12 @@ Worker.prototype = {
                 _this._findFeed(cb);
             },
             function(feed, cb){
+
+                if( !feed ) {
+                    cb('Cannot find feed');
+                    return false;
+                }
+
                 _this.feed = feed;
                 //get new post
                 _this.feed.updateFeed(cb);
@@ -109,15 +121,15 @@ Worker.prototype = {
     },
 
     getNewPosts: function(){
-        return this.feed.newPosts;
+        return this.feed.newPosts || [];
     },
 
     getPostsRow: function(){
-        return this.feed.postsRow;
+        return this.feed.postsRow  || [];
     },
 
     getPosts: function(){
-        return this.feed.posts;
+        return this.feed.posts || [];
     }
 }
 

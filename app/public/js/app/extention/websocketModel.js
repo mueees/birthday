@@ -79,7 +79,7 @@ define([
                 deff = Backbone.Websocket.update(model, request);
                 break;
             case "read":
-                if( model.id != undefined ){
+                if( model.id != undefined || model._id != undefined ){
                     type = 'find';
                     request = Backbone.Websocket.getRequest(model, type, options);
                     deff = Backbone.Websocket.find(model, request)

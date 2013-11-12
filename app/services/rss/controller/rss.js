@@ -67,6 +67,17 @@ var controller = {
         });
     },
 
+    getPostsByCreteria: function( req, res, next ){
+        var _this = this;
+        var data = req.body || req.params;
+
+        if( !data.feed_id ){
+            next( new SocketError(400, "Feed_id is required") );
+            return false;
+        }
+        
+    },
+
     _unionCategoriesAndFeeds: function(categories, feeds){
         var result = [];
         var _this = this;
@@ -226,6 +237,29 @@ var controller = {
                 _id: feed._id
             });
         })
+    },
+
+    feedFind: function(req, res, next){
+        var data = req.body || req.params;
+
+        if( !data._id ){
+            next( new SocketError(400, "Id is required") );
+            return false;
+        }
+
+        FeedModel.find({ _id: data._id }, function(err, feed){
+            if(err){
+                next( new SocketError(400, "Cannot get Feed") );
+                return false;
+            }
+
+            if( !feed.length ){
+                res.send({});
+            }else{
+                res.send(feed[0]);
+            }
+
+        });
     }
 }
 

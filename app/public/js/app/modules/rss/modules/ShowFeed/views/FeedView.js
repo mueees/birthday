@@ -47,15 +47,13 @@ define([
             _this = this;
             this.clearFullView();
 
-            if( this.viewMode == "list" ){
-                var $viewSmall = this.$el.find('.' + cid).hide();
-                var fullView = new FullView({model:postModel});
-                fullView.on("closeFullView", function(){
-                    _this.clearFullView();
-                });
-                $viewSmall.hide();
-                $viewSmall.after(fullView.$el);
-            }
+            var $viewSmall = this.$el.find('.' + cid).hide();
+            var fullView = new FullView({model:postModel});
+            fullView.on("closeFullView", function(){
+                _this.clearFullView();
+            });
+            $viewSmall.hide();
+            $viewSmall.after(fullView.$el);
         },
 
         clearFullView: function(){

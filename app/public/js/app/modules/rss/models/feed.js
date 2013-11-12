@@ -42,6 +42,12 @@ define([
                 return response;
             },
 
+            getPosts: function(data){
+                var postsCollection = this.get('posts');
+                data.params.feed_id = this.get('_id');
+                postsCollection.getPosts(data);
+            },
+
             toJSON: function() {
                 var json = Backbone.Model.prototype.toJSON.apply(this, arguments);
                 json.cid = this.cid;
