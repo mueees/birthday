@@ -68,21 +68,28 @@ feedSchema.methods.getLastPost = function(globalCb){
     });
 }
 
-feedSchema.methods.sortNewOldPost = function(posts, lastPost){
+feedSchema.methods._createPostModel = function(postsRow){
     var _this = this;
-    this.newPosts = [];
-    this.postsRow = posts;
     this.posts = [];
 
-    _.each(posts, function(post){
+    _.each( postsRow, function(postRow){
+        postRow.id_feed = _this._id;
+        postRow.date = new Date(postRow.date);
 
-        post.id_feed = _this._id;
-        post.date = new Date(post.date);
+        var postModel = new Post(postRow);
+        if( postModel.valid() ){
+            postModel.refactor();
+            _this.posts.push( postModel );
+        }
 
-        var postModel = new Post(post);
-        if( !postModel.valid() ) return false;
+    })
+}
 
-        _this.posts.push(postModel);
+feedSchema.methods.sortNewPost = function(lastPost){
+    var _this = this;
+    this.newPosts = [];
+
+    _.each(_this.posts, function(post){
 
         if( lastPost ){
             var lastDate = new Date(lastPost.date);
@@ -91,10 +98,10 @@ feedSchema.methods.sortNewOldPost = function(posts, lastPost){
             if( postDate <= lastDate ){
                 return false;
             }else{
-                _this.newPosts.push(postModel);
+                _this.newPosts.push(post);
             }
         }else{
-            _this.newPosts.push(postModel);
+            _this.newPosts.push(post);
         }
 
     })
@@ -142,12 +149,16 @@ feedSchema.methods.loadFeed = function(globalCb){
             });
         },
         function(posts, cb){
+
+            _this.postsRow = posts;
+            _this._createPostModel(posts);
+
             _this.getLastPost(function(err, lastPost){
                 if( err ) {
                     cb(err);
                     return false;
                 }
-                _this.sortNewOldPost(posts, lastPost);
+                _this.sortNewPost(lastPost);
                 cb(null);
             });
 

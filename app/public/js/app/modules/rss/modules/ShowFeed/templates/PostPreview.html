@@ -1,0 +1,25 @@
+<div class="img">
+    <img src="<%= image %>" alt="<%= title %>"/>
+</div>
+<div class="content">
+    <div class="title"><%= title %></div>
+    <div class="summary"><%= summary %></div>
+</div>
+<div class="clear"></div>
+<div class="panel">
+    <a href="#" title="check for read late">
+        <span class="icon-bookmark item"></span>
+    </a>
+    <a href="#" title="send to email">
+        <span class="icon-envelope sendToEmail"></span>
+    </a>
+    <a href="//twitter.com/intent/tweet?url=<%=link %>&text=<%= title || 'No title' %>" alt="tweet" class="tweetBtn">
+        <i class="icon-thumbs-up"></i>
+    </a>
+    <a href="<%=link %>" title="open in new tab" target="_blank">
+        <i class="icon-eye-open"></i>
+    </a>
+    <a href="#" title="add to pdf letter">
+        <span class="icon-file createPdf"></span>
+    </a>
+</div>

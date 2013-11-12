@@ -2,14 +2,15 @@ define([
     'marionette',
     'text!../templates/FeedView.html',
     './PostList',
-    './FullView'
-], function(Marionette, template, PostList, FullView){
+    './FullView',
+    './PostPreview'
+], function(Marionette, template, PostList, FullView, PostPreview){
 
     return Marionette.ItemView.extend({
         template: _.template(template),
 
         events: {
-
+            "click .viewMode a": "changeViewMode"
         },
 
         ui: {
@@ -30,6 +31,8 @@ define([
             var PostView = this.getPostView(),
                 _this = this,
                 posts = this.model.get('posts');
+
+            this.$el.find('.content ul').html("");
 
             posts.each(function(post){
                 var postView = new PostView({model:post});
@@ -63,7 +66,24 @@ define([
         getPostView: function(){
             if( this.viewMode == "list" ){
                 return PostList;
+            }else if( this.viewMode == "preview" ){
+                return PostPreview;
             }
+        },
+
+        changeViewMode: function(e){
+            e.preventDefault();
+
+            var $el = $(e.target).closest('a');
+            var type = $el.data('type');
+
+            if( this.viewMode == type ) return false;
+
+            this.$el.find('.viewMode a').removeClass("active");
+            $el.addClass('active');
+
+            this.viewMode = type;
+            this.renderPosts();
         }
     })
 
