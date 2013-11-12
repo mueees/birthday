@@ -18,8 +18,8 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 200);
-        this.intervalWorkers = setInterval(_this.monitorWorkers, 0);
+        this.intervalQueue = setInterval(_this.monitorQueue, 1000);
+        this.intervalWorkers = setInterval(_this.monitorWorkers, 2000);
 
         //this.monitorQueue();
     },
@@ -41,14 +41,23 @@ UpdateQueueManager.prototype = {
                     clientRedis.rpush(config.get('redis:queue:rss_new_feed'),  JSON.stringify(post));
                 });
 
-                delete workers[i];
+                workers.splice(i, 1);
+                i--
+                max--
 
             }else if( worker.state == 3 ){
                 //error state
                 //return task to queue
-                clientRedis.rpush(config.get('redis:queue:rss_feed_need_update'),  JSON.stringify(worker.task));
+                //clientRedis.rpush(config.get('redis:queue:rss_feed_need_update'),  JSON.stringify(worker.task));
+                workers.splice(i, 1);
+                i--
+                max--
             }
+
+
         }
+        
+        logger.log('info', "Workers length: " + workers.length);
 
     },
 
@@ -56,7 +65,7 @@ UpdateQueueManager.prototype = {
 
         var worker;
 
-        if( this.opts.maxWorkersCount < workers ) return false;
+        if( this.opts.maxWorkersCount < workers.length ) return false;
 
         clientRedis.lpop(config.get('redis:queue:rss_feed_need_update'), function(err, task) {
             if(err){

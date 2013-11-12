@@ -8,7 +8,8 @@ define([
 
         events: {
             "click .personalize": "personalizeBtn",
-            "click .switcher": "changeSwitcher"
+            "click .switcher": "changeSwitcher",
+            "click .categories .feeds li" : "showFeed"
         },
 
         className: "feedContent",
@@ -49,6 +50,12 @@ define([
             }else{
                 $li.addClass("open");
             }
+        },
+
+        showFeed: function(e){
+            e.preventDefault();
+            var $li = $(e.target).closest("li");
+            this.trigger('showFeed', {_id: $li.data('id')});
         },
 
         serializeData: function(){

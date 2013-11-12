@@ -72,6 +72,6 @@ postSchema.methods._setImage = function(){
 }
 
 
-var Post = mongoose.model('Post', postSchema);
+var Post = mongoose.model('rss_post', postSchema);
 
 module.exports = Post;

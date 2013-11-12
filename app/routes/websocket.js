@@ -20,4 +20,8 @@ module.exports = function(server){
     server.use('/api/rss/getFeedsByUrl/findAll', rssController.getFeedsByUrl);
 
     server.use('/api/rss/feed/create', rssController.feedCreate);
+    server.use('/api/rss/feed/find', rssController.feedFind);
+
+    server.use('api/rss/getPostsByCreteria', rssController.getPostsByCreteria);
+    
 }

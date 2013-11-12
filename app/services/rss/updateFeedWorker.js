@@ -23,11 +23,13 @@ UpdateFeedWorker.prototype = {
     },
 
     startJobByCron: function(){
-        new cronJob('* * * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
+        new cronJob('1 * * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
     },
 
     setAllFeedToQueue: function(){
         var _this = this;
+
+        logger.log('info', "Find feeds and add it to queue");
 
         async.waterfall([
             function(cb){
@@ -64,9 +66,6 @@ UpdateFeedWorker.prototype = {
                     }
 
                     console.log(tasks.length + " tasks:");
-                    /*tasks.forEach(function (task, i) {
-                        console.log("    " + i + ": " + task);
-                     });*/
                 });
 
                 cb(null);

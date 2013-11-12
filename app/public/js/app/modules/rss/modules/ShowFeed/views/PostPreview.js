@@ -21,12 +21,17 @@ define([
         initialize: function(){
             this.render();
             this.sliceSummary();
+            this.addImage();
             this.$el.addClass( this.model.cid )
         },
 
         sliceSummary: function(){
             var summary = this.model.get('summary');
             this.$el.find('.summary').html( summary.slice(0, 450) );
+        },
+
+        addImage: function(){
+            
         },
 
         onRender: function(){

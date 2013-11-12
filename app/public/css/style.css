@@ -613,9 +613,15 @@ li {
 .rss .previewView .img {
   float: left;
   width: 200px;
-}
-.rss .previewView .img img {
-  width: 100%;
+  height: 105px;
+  background-position: 50% 30%;
+  -webkit-transition: opacity 0.35s linear;
+  -moz-transition: opacity 0.35s linear;
+  -o-transition: opacity 0.35s linear;
+  transition: opacity 0.35s linear;
+  transition-delay: 0.2s;
+  opacity: 1;
+  background-size: cover;
 }
 .rss .previewView .content {
   padding: 0 0 0 220px;
