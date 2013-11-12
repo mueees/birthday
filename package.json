@@ -25,6 +25,7 @@
         "time": "",
         "feedparser": "",
         "request": "",
-        "redis": ""
+        "redis": "",
+        "jsdom": ""
     }
 }

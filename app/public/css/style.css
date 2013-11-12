@@ -610,6 +610,30 @@ li {
   background: #eee;
   color: #989898;
 }
+.rss .previewView .img {
+  float: left;
+  width: 200px;
+}
+.rss .previewView .img img {
+  width: 100%;
+}
+.rss .previewView .content {
+  padding: 0 0 0 220px;
+}
+.rss .previewView .content .title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.rss .previewView .content .summary {
+  font-size: 12px;
+}
+.rss .fullView {
+  padding: 10px;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  margin: 10px 0 0 0;
+}
 .rss .fullView .closeView {
   height: 25px;
   background: #3ec6a1;
@@ -621,6 +645,12 @@ li {
   line-height: 28px;
   font-weight: 700;
   color: #404040;
+}
+.rss .fullView .visitWebSite {
+  background: #efefef;
+  padding: 15px;
+  display: block;
+  text-align: center;
 }
 .rss .panel a {
   display: inline-block;

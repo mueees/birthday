@@ -35,7 +35,7 @@ var controller = {
             res.send({
                     feeds: [{
                         name: data.feed_url,
-                        posts: feed.postsRow,
+                        posts: feed.posts,
                         url: data.feed_url
                     }]
                 }

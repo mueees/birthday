@@ -20,7 +20,9 @@ define([
 
         initialize: function(){
             this.render();
-            this.$el.addClass( this.model.cid )
+            this.$el.addClass( this.model.cid );
+
+            debugger
         },
 
         onRender: function(){
