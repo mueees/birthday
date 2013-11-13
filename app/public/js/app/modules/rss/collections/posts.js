@@ -8,10 +8,17 @@ define([
 
     return BaseColletion.extend({
         model: PostModel,
+
         url: function(){
         	return "/api/rss/posts";
         },
+
         socket: true,
+
+        params: {
+            startFrom: 0,
+            count: 25
+        },
 
         getPosts: function(data){
         	data.method = App.config.api.rss.getPostsByCreteria;

@@ -30,17 +30,19 @@ define([
                         Notify.API.showNotify({text: "Cannot download feed info"});
                     }).done(function(data){
 
-                        data.model.getPosts({
+                        var feed = data.model;
+
+                        feed.getPosts({
                             params: {
                                 count: 25,
-                                start: 0
+                                page: 0
                             },
                             success: function(){
                                 var feedView = new FeedView({model: data.model});
                                 layout.main_rss.show(feedView);
                             },
-                            error: function(){
-                                Notify.API.showNotify({text: "Cannot download posts info"});
+                            error: function(collection, err){
+                                Notify.API.showNotify({text: err.message});
                             }
                         })
                         

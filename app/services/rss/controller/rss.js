@@ -2,6 +2,7 @@ var CategoryModel = require('models/rss/category'),
     FeedModel = require('models/rss/feed'),
     SocketError = require('socketServer/error').SocketError,
     Feed = require('models/rss/feed'),
+    Post = require('models/rss/post'),
     async = require('async'),
     _ = require('underscore'),
     url = require('url');
@@ -55,7 +56,7 @@ var controller = {
 
             Feed.find({}, function(err, feeds){
                 if(err){
-                    next( new SocketError(400, "Cannot get Categories") );
+                    next( new SocketError(400, "Cannot get Feeds") );
                     return false;
                 }
 
@@ -71,10 +72,19 @@ var controller = {
         var _this = this;
         var data = req.body || req.params;
 
-        if( !data.feed_id ){
-            next( new SocketError(400, "Feed_id is required") );
+        if( !data.id_feed ){
+            next( new SocketError(400, "Id_feed is required") );
             return false;
         }
+
+        Post.getPosts(data, function(err, posts){
+            if(err){
+                next( new SocketError(400, "Cannot get posts") );
+                return false;
+            }
+
+            res.send(posts);
+        })
         
     },
 

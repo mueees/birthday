@@ -70,6 +70,22 @@ postSchema.methods._setImage = function(){
     }
 
 }
+postSchema.statics.getPosts = function(data, cb){
+
+    var query = {
+        id_feed: data.id_feed
+    }
+    this.find(query, null, {
+
+        skip: data.start,
+        limit: data.count,
+        sort: {
+            date: 1 //Sort by Date Added DESC
+        }
+
+    }, cb);
+
+}
 
 
 var Post = mongoose.model('rss_post', postSchema);
