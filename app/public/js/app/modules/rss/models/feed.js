@@ -44,9 +44,21 @@ define([
 
             getPosts: function(data){
                 var postsCollection = this.get('posts');
-                data.params.feed_id = this.get('_id');
+                data.params.id_feed = this.get('_id');
                 postsCollection.getPosts(data);
             },
+
+            getCurrentPage: function(data){
+                var postsCollection = this.get('posts');
+                data.params = {
+                    id_feed: this.get('_id')
+                }
+                postsCollection.getPosts(data);
+            },
+
+            getNextPage: function(){},
+
+            getPreviousPage: function(){},
 
             toJSON: function() {
                 var json = Backbone.Model.prototype.toJSON.apply(this, arguments);

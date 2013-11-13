@@ -68,7 +68,7 @@ define([], function(){
                 getFeedsByUrl: '/api/rss/getFeedsByUrl',
                 category: '/api/rss/category',
                 feed: '/api/rss/feed',
-                getPostsByCreteria: : 'api/rss/getPostsByCreteria'
+                getPostsByCreteria: 'api/rss/getPostsByCreteria'
             }
 
         },
