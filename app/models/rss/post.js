@@ -80,7 +80,7 @@ postSchema.statics.getPosts = function(data, cb){
         skip: data.getFrom,
         limit: data.count,
         sort: {
-            date: 1 //Sort by Date Added DESC
+            date: -1 //Sort by Date Added DESC
         }
 
     }, cb);

@@ -17,7 +17,7 @@ define([
 
         getFrom: 0,
 
-        count: 20,
+        count: 99999999,
 
         getPosts: function(data){
             data.method = App.config.api.rss.getPostsByCreteria;

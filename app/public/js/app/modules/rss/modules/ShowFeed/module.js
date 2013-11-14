@@ -41,18 +41,6 @@ define([
                                 Notify.API.showNotify({text: err.message});
                             }
                         })
-
-                            setInterval(function(){
-                                feed.getMore({
-                                    success: function(){
-                                        var feedView = new FeedView({model: data.model});
-                                        layout.main_rss.show(feedView);
-                                    },
-                                    error: function(collection, err){
-                                        Notify.API.showNotify({text: err.message});
-                                    }
-                                })
-                            }, 1000)
                         
                     });
                 }

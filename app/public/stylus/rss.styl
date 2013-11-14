@@ -135,14 +135,29 @@
 
         .list
             border-bottom 1px solid mainColor
-            padding 8px
+            padding 6px 8px 8px
+            height 22px
+            overflow hidden
+            padding-right 65px
+
+            .title
+                line-height 27px
+
+            .timeAgo
+                position absolute
+                top 11px
+                right 11px
+                font-size 12px
+                color #777
+
+            .summary
+                color #777
+                padding-left 7px
+                line-height 27px
+                font-size 12px
 
             .icon-bookmark
                 opacity 0.4
-
-            .item
-                display inline-block
-                vertical-align top
 
             .description
                 text-overflow ellipsis
@@ -157,6 +172,10 @@
             &:hover
                 background mainColor
                 cursor pointer
+
+            &.new
+                .title, .summary
+                    font-weight bold
                 
             .panel
                 display none
@@ -164,7 +183,7 @@
                 right 10px
                 top 0
                 background mainColor
-                padding 8px 0
+                padding 8px 0px 8px 25px
 
                 a
                     padding 0 3px

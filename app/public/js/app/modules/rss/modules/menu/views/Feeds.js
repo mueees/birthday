@@ -55,7 +55,14 @@ define([
         showFeed: function(e){
             e.preventDefault();
             var $li = $(e.target).closest("li");
+            var $tab = $li.find(".tab");
+            this.removeAllActiveClass();
+            $tab.addClass('active');
             this.trigger('showFeed', {_id: $li.data('id')});
+        },
+
+        removeAllActiveClass: function(){
+            this.$el.find('.active').removeClass('active');
         },
 
         serializeData: function(){

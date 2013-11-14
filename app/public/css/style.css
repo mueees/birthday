@@ -2,7 +2,7 @@ body {
   background: #efefef;
 }
 body a {
-  color: #3ec6a1;
+  color: #0a8563;
 }
 body a:hover {
   color: #989898;
@@ -427,7 +427,7 @@ li {
   font-family: HelveticaCustom, arial, sans-serif;
   margin: 20px 130px 20px -20px;
   padding: 15px 20px;
-  background: #3ec6a1;
+  background: #0a8563;
   font-style: normal;
   font-weight: normal;
   color: #fff;
@@ -526,7 +526,7 @@ li {
 }
 .header {
   padding: 90px 0 20px;
-  border-bottom: 5px solid #3ec6a1;
+  border-bottom: 5px solid #0a8563;
   position: relative;
   overflow: hidden;
 }
@@ -642,7 +642,7 @@ li {
 }
 .rss .fullView .closeView {
   height: 25px;
-  background: #3ec6a1;
+  background: #0a8563;
   cursor: pointer;
   margin: 0 0 20px;
 }
@@ -684,14 +684,29 @@ li {
 }
 .rss .content .list {
   border-bottom: 1px solid #efefef;
-  padding: 8px;
+  padding: 6px 8px 8px;
+  height: 22px;
+  overflow: hidden;
+  padding-right: 65px;
+}
+.rss .content .list .title {
+  line-height: 27px;
+}
+.rss .content .list .timeAgo {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  font-size: 12px;
+  color: #777;
+}
+.rss .content .list .summary {
+  color: #777;
+  padding-left: 7px;
+  line-height: 27px;
+  font-size: 12px;
 }
 .rss .content .list .icon-bookmark {
   opacity: 0.4;
-}
-.rss .content .list .item {
-  display: inline-block;
-  vertical-align: top;
 }
 .rss .content .list .description {
   text-overflow: ellipsis;
@@ -707,13 +722,17 @@ li {
   background: #efefef;
   cursor: pointer;
 }
+.rss .content .list.new .title,
+.rss .content .list.new .summary {
+  font-weight: bold;
+}
 .rss .content .list .panel {
   display: none;
   position: absolute;
   right: 10px;
   top: 0;
   background: #efefef;
-  padding: 8px 0;
+  padding: 8px 0px 8px 25px;
 }
 .rss .content .list .panel a {
   padding: 0 3px;
