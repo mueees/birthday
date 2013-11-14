@@ -111,6 +111,7 @@ feedSchema.methods.saveNewPost = function(globalCb){
     var _this = this;
 
     var methods = [];
+
     _.each(_this.newPosts, function(newPost){
         methods.push(function(cb){
             newPost.save(function(err){
@@ -189,6 +190,8 @@ feedSchema.methods.updateFeed = function(globalCb){
             globalCb(err);
             return false;
         }
+
+
         globalCb(null);
     })
 }

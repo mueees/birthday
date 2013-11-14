@@ -9,4 +9,4 @@ var updateQueueManager = require('./updateQueueManager');
 
 
 updateQueueManager.init();
-updateFeedWorker.init();
+//updateFeedWorker.init();
