@@ -77,7 +77,7 @@ postSchema.statics.getPosts = function(data, cb){
     }
     this.find(query, null, {
 
-        skip: data.start,
+        skip: data.getFrom,
         limit: data.count,
         sort: {
             date: 1 //Sort by Date Added DESC

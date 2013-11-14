@@ -21,10 +21,12 @@ define([
 
         initialize: function(){
             _.bindAll(this, "checkPost");
+            this.posts = this.model.get('posts');
+            this.listenTo(this.posts, "add", this.renderPosts)
         },
 
         onRender: function(){
-            this.renderPosts()
+            this.renderPosts();
         },
 
         renderPosts: function(){

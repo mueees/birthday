@@ -18,10 +18,12 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 1000);
+        //this.intervalQueue = setInterval(_this.monitorQueue, 1000);
         this.intervalWorkers = setInterval(_this.monitorWorkers, 2000);
 
-        //this.monitorQueue();
+        setTimeout(function(){
+            _this.monitorQueue();
+        }, 4000)
     },
 
     monitorWorkers: function(){
@@ -53,7 +55,6 @@ UpdateQueueManager.prototype = {
                 i--
                 max--
             }
-
 
         }
         
