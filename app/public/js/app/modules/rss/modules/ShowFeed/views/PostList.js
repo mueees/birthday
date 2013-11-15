@@ -118,7 +118,6 @@ define([
             if( !this.model.get('isRead') ){
                 this.model.setRead();
             }
-            
         }
     })
 

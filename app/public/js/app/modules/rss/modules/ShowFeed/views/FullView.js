@@ -39,8 +39,6 @@ define([
             
             var postDate = new Date(this.model.get('date'));
 
-            
-
             var currentDate = new Date();
             var data = currentDate - postDate;
             var duration = moment.duration(data);

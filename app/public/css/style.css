@@ -634,6 +634,9 @@ li {
 .rss .previewView .content .summary {
   font-size: 12px;
 }
+.rss .previewView.lastViewed {
+  background: #b8e9db;
+}
 .rss .fullView {
   padding: 10px;
   border: 1px solid #efefef;
@@ -785,6 +788,9 @@ li {
 .rss .content .list.new .title,
 .rss .content .list.new .summary {
   font-weight: bold;
+}
+.rss .content .list.lastViewed {
+  background: #b8e9db;
 }
 .rss .content .list .panel {
   display: none;
