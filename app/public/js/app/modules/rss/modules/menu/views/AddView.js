@@ -59,9 +59,11 @@ define([
             var feeds = this.model.get('feeds'),
                 _this = this;
 
+                //debugger
+
             if(this.availableView){
                 this.availableView.close();
-                this.stopListening("availableFeedSelected");
+                //this.stopListening();
             }
 
             if( !feeds || !feeds.length ) return false;

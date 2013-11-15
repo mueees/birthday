@@ -2,7 +2,7 @@ body {
   background: #efefef;
 }
 body a {
-  color: #3ec6a1;
+  color: #0a8563;
 }
 body a:hover {
   color: #989898;
@@ -427,7 +427,7 @@ li {
   font-family: HelveticaCustom, arial, sans-serif;
   margin: 20px 130px 20px -20px;
   padding: 15px 20px;
-  background: #3ec6a1;
+  background: #0a8563;
   font-style: normal;
   font-weight: normal;
   color: #fff;
@@ -526,7 +526,7 @@ li {
 }
 .header {
   padding: 90px 0 20px;
-  border-bottom: 5px solid #3ec6a1;
+  border-bottom: 5px solid #0a8563;
   position: relative;
   overflow: hidden;
 }
@@ -634,6 +634,9 @@ li {
 .rss .previewView .content .summary {
   font-size: 12px;
 }
+.rss .previewView.lastViewed {
+  background: #b8e9db;
+}
 .rss .fullView {
   padding: 10px;
   border: 1px solid #efefef;
@@ -642,7 +645,7 @@ li {
 }
 .rss .fullView .closeView {
   height: 25px;
-  background: #3ec6a1;
+  background: #0a8563;
   cursor: pointer;
   margin: 0 0 20px;
 }
@@ -667,9 +670,63 @@ li {
 .rss .panel a:hover {
   opacity: 1;
 }
+.rss .panel a.active {
+  opacity: 1;
+}
 .rss .additionalInfo {
   font-size: 12px;
   margin: 0 0 10px;
+}
+.rss .organize .categories {
+  padding: 0;
+  margin: 0;
+}
+.rss .organize .categories .category {
+  list-style: none;
+  position: relative;
+  float: left;
+  width: 250px;
+  margin: 0 20px 30px 0;
+  height: 215px;
+  padding: 10px;
+  background: #f1f1f1;
+}
+.rss .organize .categories .category.over {
+  background: #e2e2e2;
+}
+.rss .organize .categories .category ul {
+  overflow: overlay;
+  height: 172px;
+  border: 1px solid #efefef;
+  margin: 0;
+}
+.rss .organize .categories .organize {
+  margin: 5px 0;
+  padding: 5px;
+}
+.rss .organize .categories .organize:hover {
+  background: #e2e2e2;
+}
+.rss .organize .editPanel {
+  float: right;
+  margin: 0 20px 0 0;
+}
+.rss .organize .editPanel a {
+  opacity: 0.4;
+}
+.rss .organize .editPanel a:hover {
+  opacity: 1;
+}
+.rss .organize .head {
+  margin: 0 0 10px;
+  padding: 0 0 9px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.rss .organize .head .title {
+  font-weight: bold;
+}
+.rss .organize .name {
+  cursor: pointer;
 }
 .rss .content ul {
   padding: 0;
@@ -684,14 +741,39 @@ li {
 }
 .rss .content .list {
   border-bottom: 1px solid #efefef;
-  padding: 8px;
+  padding: 6px 8px 8px;
+  height: 22px;
+  overflow: hidden;
+  padding-right: 65px;
 }
-.rss .content .list .icon-bookmark {
+.rss .content .list .title {
+  line-height: 27px;
+  cursor: pointer;
+}
+.rss .content .list .timeAgo {
+  position: absolute;
+  top: 11px;
+  right: 11px;
+  font-size: 12px;
+  color: #777;
+}
+.rss .content .list .summary {
+  color: #777;
+  padding-left: 7px;
+  line-height: 27px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.rss .content .list .readLater {
   opacity: 0.4;
+  margin: 0 10px 0 0;
 }
-.rss .content .list .item {
-  display: inline-block;
-  vertical-align: top;
+.rss .content .list .readLater.active {
+  opacity: 1;
+}
+.rss .content .list .readLater:hover {
+  opacity: 1;
+  text-decoration: none;
 }
 .rss .content .list .description {
   text-overflow: ellipsis;
@@ -700,12 +782,15 @@ li {
   width: 80%;
   font-style: italic;
 }
-.rss .content .list .icon-bookmark {
-  margin: 0 10px 0 0;
-}
 .rss .content .list:hover {
   background: #efefef;
-  cursor: pointer;
+}
+.rss .content .list.new .title,
+.rss .content .list.new .summary {
+  font-weight: bold;
+}
+.rss .content .list.lastViewed {
+  background: #b8e9db;
 }
 .rss .content .list .panel {
   display: none;
@@ -713,7 +798,7 @@ li {
   right: 10px;
   top: 0;
   background: #efefef;
-  padding: 8px 0;
+  padding: 8px 0px 8px 25px;
 }
 .rss .content .list .panel a {
   padding: 0 3px;

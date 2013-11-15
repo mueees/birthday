@@ -1,7 +1,11 @@
-<span class="icon-bookmark item"></span>
+<a href="#" class="<%= readLater ? 'active' : '' %> readLater">
+	<span class="icon-bookmark item"></span>
+</a>
 <span class="title item"><%= title || 'No title' %></span>
+<span class="summary"><%= summary || '' %></span>
+<span class="timeAgo"></span>
 <div class="panel">
-	<a href="<%=link %>" alt="open in new tab" target="_blank">
+	<a href="<%=link %>" alt="open in new tab" target="_blank" class="">
 		<i class="icon-eye-open"></i>
 	</a>
 	<a href="//twitter.com/intent/tweet?url=<%=link %>&text=<%= title || 'No title' %>" alt="tweet" class="tweetBtn">

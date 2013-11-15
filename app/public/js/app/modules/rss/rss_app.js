@@ -50,9 +50,14 @@ define([
 
                 subscribe: function(){
                     App.channels.rss.on('personalize', this.showPersonalize);
+                    App.channels.rss.on('showSavedPost', this.showSavedPost);
                     App.channels.rss.on('availableFeedSelected', this.showAvailableFeed);
                     App.channels.rss.on('saveNewFeed', this.showSaveFeedDialog);
                     App.channels.rss.on('showFeed', this.showFeed);
+                },
+
+                unsubscribe: function(){
+                    App.channels.rss.off();
                 },
 
                 showFeed: function(data){
@@ -71,10 +76,18 @@ define([
                     Rss.SaveNewFeed.Controller.show(feed);
                 },
 
+                showSavedPost: function(){
+                    Rss.ShowFeed.Controller.showSavedPost(layout);
+                },
+
                 showCategory: function(){
                     console.log('showCategory');
                 }
             }
+
+            Rss.on("stop", function(options){
+                Controller.unsubscribe();
+            });
 
             var API  = {
                 main: function(){

@@ -16,8 +16,13 @@ var postSchema = new Schema({
     guid: String,
     image: String,
     source: String,
+
     id_feed: String,
-    isRead: Boolean
+    isRead: Boolean,
+    readLater: {
+        type: Boolean,
+        default: false
+    }
 });
 
 
@@ -80,7 +85,7 @@ postSchema.statics.getPosts = function(data, cb){
         skip: data.getFrom,
         limit: data.count,
         sort: {
-            date: 1 //Sort by Date Added DESC
+            date: -1 //Sort by Date Added DESC
         }
 
     }, cb);

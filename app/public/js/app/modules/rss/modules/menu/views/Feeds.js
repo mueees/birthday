@@ -8,6 +8,7 @@ define([
 
         events: {
             "click .personalize": "personalizeBtn",
+            "click .showSavedPost": "showSavedPost",
             "click .switcher": "changeSwitcher",
             "click .categories .feeds li" : "showFeed"
         },
@@ -39,6 +40,11 @@ define([
             this.trigger('personalize');
         },
 
+        showSavedPost: function(e){
+            e.preventDefault();
+            this.trigger('showSavedPost');  
+        },
+
         changeSwitcher: function(e){
             e.preventDefault();
             e.stopPropagation();
@@ -55,9 +61,15 @@ define([
         showFeed: function(e){
             e.preventDefault();
             var $li = $(e.target).closest("li");
+            var $tab = $li.find(".tab");
+            this.removeAllActiveClass();
+            $tab.addClass('active');
             this.trigger('showFeed', {_id: $li.data('id')});
         },
 
+        removeAllActiveClass: function(){
+            this.$el.find('.active').removeClass('active');
+        },
         serializeData: function(){
             return {}
         }

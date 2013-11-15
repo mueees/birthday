@@ -22,6 +22,10 @@ module.exports = function(server){
     server.use('/api/rss/feed/create', rssController.feedCreate);
     server.use('/api/rss/feed/find', rssController.feedFind);
 
-    server.use('api/rss/getPostsByCreteria', rssController.getPostsByCreteria);
+    server.use('/api/rss/getPostsByCreteria', rssController.getPostsByCreteria);
+    server.use('/api/rss/post/postReadLater', rssController.postReadLater);
+    server.use('/api/rss/post/changeIsReadState', rssController.changeIsReadState);
+    
+
     
 }
