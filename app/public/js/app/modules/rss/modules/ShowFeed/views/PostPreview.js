@@ -7,7 +7,8 @@ define([
         template: _.template(template),
 
         events: {
-            "click": "checkPost"
+            "click": "checkPost",
+            "click .readLater": "readLater"
         },
 
         tagName: "li",
@@ -23,6 +24,8 @@ define([
             this.sliceSummary();
             this.addImage();
             this.$el.addClass( this.model.cid )
+
+            this.listenTo(this.model, "change:readLater", this.setReadLaterState);
         },
 
         sliceSummary: function(){
@@ -36,6 +39,20 @@ define([
 
         onRender: function(){
 
+        },
+
+        readLater: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if( this.model.get('readLater') ){
+                this.model.unReadLater();
+            }else{
+                this.model.readLater();    
+            }
+        },
+
+        setReadLaterState: function(){
+            ( this.model.get('readLater') ) ? this.$el.find('.readLater').addClass('active') : this.$el.find('.readLater').removeClass('active');
         },
 
         checkPost: function(){

@@ -270,6 +270,48 @@ var controller = {
             }
 
         });
+    },
+
+    changeIsReadState: function(req, res, next){
+        var data = req.body || req.params;
+
+        if( !data._id ){
+            next( new SocketError(400, "Id is required") );
+            return false;
+        }
+
+        Post.update({ _id: data._id }, { isRead: data.isRead }, function (err, numberAffected, raw) {
+          if(err){
+                next( new SocketError(400, "Cannot update isRead") );
+                return false;
+            }
+
+            res.send({
+                isRead: data.isRead
+            });
+            
+        });
+    },
+
+    postReadLater: function(req, res, next){
+        var data = req.body || req.params;
+
+        if( !data._id ){
+            next( new SocketError(400, "Id is required") );
+            return false;
+        }
+
+        Post.update({ _id: data._id }, { readLater: data.readLater }, function (err, numberAffected, raw) {
+          if(err){
+                next( new SocketError(400, "Cannot update readLater") );
+                return false;
+            }
+
+            res.send({
+                readLater: data.readLater
+            });
+            
+        });
     }
 }
 

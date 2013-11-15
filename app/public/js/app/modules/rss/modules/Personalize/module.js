@@ -26,7 +26,7 @@ define([
 
                     //get all categories
                     var categories = new Categories();
-                    categories.fetch().done(function(categories){
+                    categories.fetch().done(function(){
                         var personalizeView = new PersonalizeView({collection: categories});
                         layout.main_rss.show(personalizeView);
                     });

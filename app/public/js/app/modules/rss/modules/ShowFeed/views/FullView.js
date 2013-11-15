@@ -7,7 +7,9 @@ define([
         template: _.template(template),
 
         events: {
-            "click .closeView": "closeView"
+            "click .closeView": "closeView",
+            "click .keepUnread": "keepUnread",
+            "click .readLater": "readLater"
         },
 
         tagName: "li",
@@ -23,6 +25,9 @@ define([
             this.render();
             this.$el.addClass( this.model.cid );
             this.timeAgoTimer = setInterval( function(){_this.calculateTimeAgo()}, 1000 );
+
+            this.listenTo(this.model, "change:readLater", this.setReadLaterState);
+
             this.calculateTimeAgo();
         },
 
@@ -63,6 +68,27 @@ define([
 
         onRender: function(){
 
+        },
+
+        keepUnread: function(e){
+            e.preventDefault();
+            var _this = this;
+            this.model.setUnRead();
+            this.closeView();
+        },
+
+        readLater: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if( this.model.get('readLater') ){
+                this.model.unReadLater();
+            }else{
+                this.model.readLater();    
+            }
+        },
+
+        setReadLaterState: function(){
+            ( this.model.get('readLater') ) ? this.$el.find('.readLater').addClass('active') : this.$el.find('.readLater').removeClass('active');
         },
 
         closeView: function(){

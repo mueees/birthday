@@ -8,7 +8,8 @@ define([
         template: _.template(template),
 
         events: {
-            "click": "checkPost"
+            "click": "checkPost",
+            "click .readLater": "readLater"
         },
 
         tagName: "li",
@@ -25,12 +26,15 @@ define([
             this.$el.addClass( this.model.cid )
             this.timeAgoTimer = setInterval( function(){_this.calculateTimeAgo()}, 1000 );
 
+            this.listenTo(this.model, "change:isRead", this.setIsReadClass);
+            this.listenTo(this.model, "change:readLater", this.setReadLaterState);
+
             this.setIsReadClass();
             this.calculateTimeAgo();
         },
 
         setIsReadClass: function(){
-            ( !this.model.get('isRead') ) ? this.$el.addClass('new') : '';
+            ( !this.model.get('isRead') ) ? this.$el.addClass('new') : this.$el.removeClass('new');
         },
 
         calculateTimeAgo: function(){
@@ -40,9 +44,6 @@ define([
         getTimeAgo: function(){
             
             var postDate = new Date(this.model.get('date'));
-
-            
-
             var currentDate = new Date();
             var data = currentDate - postDate;
             var duration = moment.duration(data);
@@ -96,8 +97,28 @@ define([
 
         },
 
+        readLater: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if( this.model.get('readLater') ){
+                this.model.unReadLater();
+            }else{
+                this.model.readLater();    
+            }
+        },
+
+        setReadLaterState: function(){
+            ( this.model.get('readLater') ) ? this.$el.find('.readLater').addClass('active') : this.$el.find('.readLater').removeClass('active');
+        },
+
         checkPost: function(){
+            var _this = this;
             this.trigger("checkPost", this.model);
+
+            if( !this.model.get('isRead') ){
+                this.model.setRead();
+            }
+            
         }
     })
 

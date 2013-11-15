@@ -8,6 +8,7 @@ define([
 
         events: {
             "click .personalize": "personalizeBtn",
+            "click .showSavedPost": "showSavedPost",
             "click .switcher": "changeSwitcher",
             "click .categories .feeds li" : "showFeed"
         },
@@ -37,6 +38,11 @@ define([
         personalizeBtn: function(e){
             e.preventDefault();
             this.trigger('personalize');
+        },
+
+        showSavedPost: function(e){
+            e.preventDefault();
+            this.trigger('showSavedPost');  
         },
 
         changeSwitcher: function(e){

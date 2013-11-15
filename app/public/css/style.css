@@ -667,9 +667,63 @@ li {
 .rss .panel a:hover {
   opacity: 1;
 }
+.rss .panel a.active {
+  opacity: 1;
+}
 .rss .additionalInfo {
   font-size: 12px;
   margin: 0 0 10px;
+}
+.rss .organize .categories {
+  padding: 0;
+  margin: 0;
+}
+.rss .organize .categories .category {
+  list-style: none;
+  position: relative;
+  float: left;
+  width: 250px;
+  margin: 0 20px 30px 0;
+  height: 215px;
+  padding: 10px;
+  background: #f1f1f1;
+}
+.rss .organize .categories .category.over {
+  background: #e2e2e2;
+}
+.rss .organize .categories .category ul {
+  overflow: overlay;
+  height: 172px;
+  border: 1px solid #efefef;
+  margin: 0;
+}
+.rss .organize .categories .organize {
+  margin: 5px 0;
+  padding: 5px;
+}
+.rss .organize .categories .organize:hover {
+  background: #e2e2e2;
+}
+.rss .organize .editPanel {
+  float: right;
+  margin: 0 20px 0 0;
+}
+.rss .organize .editPanel a {
+  opacity: 0.4;
+}
+.rss .organize .editPanel a:hover {
+  opacity: 1;
+}
+.rss .organize .head {
+  margin: 0 0 10px;
+  padding: 0 0 9px;
+  border-bottom: 1px solid #c0c0c0;
+}
+.rss .organize .head .title {
+  font-weight: bold;
+}
+.rss .organize .name {
+  cursor: pointer;
 }
 .rss .content ul {
   padding: 0;
@@ -691,6 +745,7 @@ li {
 }
 .rss .content .list .title {
   line-height: 27px;
+  cursor: pointer;
 }
 .rss .content .list .timeAgo {
   position: absolute;
@@ -704,9 +759,18 @@ li {
   padding-left: 7px;
   line-height: 27px;
   font-size: 12px;
+  cursor: pointer;
 }
-.rss .content .list .icon-bookmark {
+.rss .content .list .readLater {
   opacity: 0.4;
+  margin: 0 10px 0 0;
+}
+.rss .content .list .readLater.active {
+  opacity: 1;
+}
+.rss .content .list .readLater:hover {
+  opacity: 1;
+  text-decoration: none;
 }
 .rss .content .list .description {
   text-overflow: ellipsis;
@@ -715,12 +779,8 @@ li {
   width: 80%;
   font-style: italic;
 }
-.rss .content .list .icon-bookmark {
-  margin: 0 10px 0 0;
-}
 .rss .content .list:hover {
   background: #efefef;
-  cursor: pointer;
 }
 .rss .content .list.new .title,
 .rss .content .list.new .summary {

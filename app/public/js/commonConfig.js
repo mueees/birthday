@@ -29,6 +29,10 @@ requirejs.config({
         jquery: {
             exports: "jQuery"
         },
+        jqueryUi: {
+            deps: ['jquery'],
+            exports: 'jQuery'
+        },
     	backbone: {
     		deps: ['jquery', 'underscore'],
     		exports: 'Backbone'

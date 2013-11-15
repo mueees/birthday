@@ -16,8 +16,13 @@ var postSchema = new Schema({
     guid: String,
     image: String,
     source: String,
+
     id_feed: String,
-    isRead: Boolean
+    isRead: Boolean,
+    readLater: {
+        type: Boolean,
+        default: false
+    }
 });
 
 

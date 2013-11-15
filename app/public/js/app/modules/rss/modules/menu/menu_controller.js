@@ -61,6 +61,10 @@ define([
                             App.channels.rss.trigger( 'personalize', categories );
                         })
 
+                        feedsTab.on('showSavedPost', function(){
+                            App.channels.rss.trigger( 'showSavedPost' );
+                        })
+
                         feedsTab.on('showFeed', function(data){
                             App.channels.rss.trigger( 'showFeed', data );
                         })
