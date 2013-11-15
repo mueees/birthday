@@ -64,7 +64,6 @@ define([
         removeAllActiveClass: function(){
             this.$el.find('.active').removeClass('active');
         },
-
         serializeData: function(){
             return {}
         }

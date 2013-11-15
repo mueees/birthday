@@ -59,7 +59,6 @@ define([
             }else if( seconds ){
                 return seconds + " sec"
             }
-
         },
 
         onRender: function(){
