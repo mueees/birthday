@@ -10,7 +10,7 @@ clientRedis.auth(config.get('redis_settings:pass'))
 
 function UpdateQueueManager(){
     this.opts = {
-        maxWorkersCount: 10
+        maxWorkersCount: 1
     }
     _.bindAll(this, "monitorQueue", "monitorWorkers");
 }
@@ -18,8 +18,8 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 200);
-        this.intervalWorkers = setInterval(_this.monitorWorkers, 100);
+        this.intervalQueue = setInterval(_this.monitorQueue, 1000);
+        this.intervalWorkers = setInterval(_this.monitorWorkers, 500);
     },
 
     monitorWorkers: function(){
@@ -62,7 +62,10 @@ UpdateQueueManager.prototype = {
 
         var worker;
 
-        if( this.opts.maxWorkersCount < workers.length ) return false;
+
+        if( this.opts.maxWorkersCount < workers.length ){
+            return false;
+        }
 
         clientRedis.lpop(config.get('redis:queue:rss_feed_need_update'), function(err, task) {
             if(err){

@@ -15,11 +15,14 @@ module.exports = function(server){
 
     //rss
     server.use('/api/rss/category/create', rssController.categoryCreate);
+    server.use('/api/rss/category/update', rssController.categoryUpdate);
+    server.use('/api/rss/category/delete', rssController.categoryDelete);
     server.use('/api/rss/categories/findAll', rssController.categoryFindAll);
     server.use('/api/rss/categories/update', rssController.categoriesUpdate);
     server.use('/api/rss/getFeedsByUrl/findAll', rssController.getFeedsByUrl);
 
     server.use('/api/rss/feed/create', rssController.feedCreate);
+    server.use('/api/rss/feed/delete', rssController.feedDelete);
     server.use('/api/rss/feed/find', rssController.feedFind);
 
     server.use('/api/rss/getPostsByCreteria', rssController.getPostsByCreteria);

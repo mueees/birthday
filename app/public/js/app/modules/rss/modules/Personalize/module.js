@@ -19,6 +19,7 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
+            var Dialog = App.module('Dialog');
             /*Notify.API.showNotify({text: "Preset changed"});*/
 
             var Controller = {
@@ -26,8 +27,16 @@ define([
 
                     //get all categories
                     var categories = new Categories();
+
+                    categories.on('editFeed', function(){debugger})
+
                     categories.fetch().done(function(){
-                        var personalizeView = new PersonalizeView({collection: categories});
+
+                        var personalizeView = new PersonalizeView({
+                            collection: categories,
+                            Dialog: Dialog
+                        });
+
                         layout.main_rss.show(personalizeView);
                     });
                     

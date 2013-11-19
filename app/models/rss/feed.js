@@ -24,7 +24,7 @@ feedSchema.methods.getPostsFromUrl = function(cb){
         })
         .pipe(new FeedParser())
         .on('error', function (error) {
-            logger.log('error', { error: error });
+            logger.log('error', error);
             cb(error);
         })
         .on('readable', function() {
@@ -143,6 +143,8 @@ feedSchema.methods.loadFeed = function(globalCb){
         function(cb){
             _this.getPostsFromUrl(function(err, posts){
                 if( err ) {
+                    console.log(_this)
+                    console.log(err)
                     cb(err);
                     return false;
                 }

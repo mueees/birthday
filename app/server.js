@@ -18,7 +18,6 @@ app.use(express.favicon());
     app.use(express.logger("default"));File Browser
 }*/
 
-
 app.use(express.bodyParser({ keepExtensions: true, uploadDir: './tmp' }));
 app.use(express.cookieParser());
 app.use(express.session({
@@ -140,3 +139,10 @@ socketServer.start(server);
 
 //start services
 require('services/rss/index');
+
+
+
+
+process.on('uncaughtException', function(){
+    console.log( arguments );
+})

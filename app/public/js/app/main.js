@@ -7,7 +7,7 @@ require([
     'app/extention/websocketModel',
     'app/extention/jsonExtention',
     //backbone relation
-    'relationalBackbone',
+    /*'relationalBackbone',*/
 
     /*entities*/
     'app/modules/websocket/entities/websocket',

@@ -91,11 +91,16 @@ define([
                 break;
         }
         done = function(params){
-            options.success(params);
+            if( options.success ){
+                options.success(params);
+            }
         }
         fail = function(params){
-            options.error(params);
+            if(options.error){
+                options.error(params);    
+            }
         }
+        
         deff.done(done).fail(fail);
         return deff;
 

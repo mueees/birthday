@@ -140,10 +140,13 @@ var controller = {
                 next( new SocketError(400, "Cannot save new Category") );
                 return false;
             }
-            res.send(category);
+            res.send({
+                _id: category._id
+            });
         })
 
     },
+
     categoryUpdate: function(req, res, next){
         var _id = req.params._id;
         var update = req.params;
@@ -152,12 +155,12 @@ var controller = {
         CategoryModel.update({ _id: _id }, update, function(err, numberAffected, raw){
 
             if(err){
-                next( new SocketError(400, "Cannot update stream") );
+                next( new SocketError(400, "Cannot update category") );
                 return false;
             }
 
             res.send({
-                result: req.params
+                _id: _id
             })
 
         })
@@ -211,18 +214,18 @@ var controller = {
             next( new SocketError(400, "Cannot delete category") );
         }
 
-        CategoryModel.find({ _id: _id }, function(err, streams){
+        CategoryModel.find({ _id: _id }, function(err, categories){
             if(err){
                 next( new SocketError(400, "Cannot find category") );
                 return false;
             }
 
-            if( !streams.length ){
+            if( !categories.length ){
                 next( new SocketError(400, "Cannot find category") );
                 return false;
             }
 
-            streams[0].remove(function(err, stream){
+            categories[0].remove(function(err, category){
                 if( err ){
                     next( new SocketError(400, "Cannot remove category") );
                     return false;
@@ -232,6 +235,45 @@ var controller = {
             });
 
         })
+    },
+
+    feedDelete: function(req, res, next){
+        var _id = req.params._id;
+        if(!_id){
+            next( new SocketError(400, "Cannot find feed _id") );
+        }
+
+        FeedModel.find({ _id: _id }, function(err, feeds){
+            if(err){
+                next( new SocketError(400, "Error when try to find feed") );
+                return false;
+            }
+
+            if( !feeds.length ){
+                next( new SocketError(400, "Cannot find feed") );
+                return false;
+            }
+
+            feeds[0].remove(function(err, feed){
+                if( err ){
+                    next( new SocketError(400, "Cannot remove feed") );
+                    return false;
+                }
+
+                Post.remove({ id_feed: _id }, function(err){
+                    if(err){
+                        next( new SocketError(400, "Error when try to remove related posts") );
+                        return false;
+                    }
+
+                    res.send();
+                })
+                
+            });
+
+        })
+
+
     },
 
     feedCreate: function(req, res, next){

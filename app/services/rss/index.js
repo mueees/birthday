@@ -8,5 +8,5 @@ var updateFeedWorker = require('./updateFeedWorker');
 var updateQueueManager = require('./updateQueueManager');
 
 
-updateQueueManager.init();
-updateFeedWorker.init();
+//updateQueueManager.init();
+//updateFeedWorker.init();
