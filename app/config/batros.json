@@ -8,6 +8,13 @@
     },
     "socketUrl": "http://batros.in.ua/socket",
 
-    "host": "batros.in.ua"
+    "host": "batros.in.ua",
+
+    "redis": {
+        "queue": {
+            "rss_feed_need_update": "batros:rss_feed_need_update",
+            "rss_new_feed": "batros:rss_new_feed"
+        }
+    }
 
 }
