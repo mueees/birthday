@@ -71,6 +71,11 @@ define([
 
                 data.feeds = feedsForSave;
                 return data;
+            },
+
+            toJSON: function(){
+                var _this = this;
+                return JSON.parse(JSON.stringify(_this.attributes));
             }
 		})
 		

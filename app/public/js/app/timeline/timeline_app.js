@@ -68,9 +68,11 @@ define([
                         posts = postCollection.toJSON(),
                         date;
 
-
                     for( i = 0; i < max; i++ ){
                         post = posts[i];
+                        /*debugger
+                        postCollection.get("528be2cf2872d8fe75000001").get('date');
+                        postCollection.get("528be2cf2872d8fe75000001").toJSON();*/
                         date = post['date'];
 
                         /*создаем год, если такого еще нет*/

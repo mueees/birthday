@@ -25,6 +25,7 @@ define([
         },
 
         render: function(){
+            debugger
             var view = this.template({
                 categories: this.collection.toJSON()
             });

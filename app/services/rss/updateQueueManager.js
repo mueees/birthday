@@ -10,7 +10,7 @@ clientRedis.auth(config.get('redis_settings:pass'))
 
 function UpdateQueueManager(){
     this.opts = {
-        maxWorkersCount: 1
+        maxWorkersCount: 10
     }
     _.bindAll(this, "monitorQueue", "monitorWorkers");
 }
@@ -18,7 +18,7 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 1000);
+        this.intervalQueue = setInterval(_this.monitorQueue, 500);
         this.intervalWorkers = setInterval(_this.monitorWorkers, 500);
     },
 

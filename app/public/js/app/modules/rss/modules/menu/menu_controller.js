@@ -72,6 +72,7 @@ define([
 
                     //create tab view
                     tabView = new TabView();
+
                     tabView.on('changeTab', function(type){
                         if( type == "content" ){
                             addView.$el.hide();

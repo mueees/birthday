@@ -462,7 +462,6 @@ var controller = {
         },
 
         getPosts: function(request, response){
-
             PostModel.getPosts( function(err, posts){
                 controller.blog._getPosts( err, posts, response );
             });
