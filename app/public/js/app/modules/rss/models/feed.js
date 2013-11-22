@@ -14,6 +14,7 @@ define([
 				name: "",
                 url: "",
                 unread: "",
+                hasReadLater: false,
                 posts: null
 			},
 

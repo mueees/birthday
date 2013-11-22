@@ -22,6 +22,9 @@
 					<%  _.each(category.feeds, function(feed){ %>			
 						<li data-id="<%= feed._id %>" >
 							<div class="tab">
+								<% if( feed.hasReadLater ) {%>
+									<span class="icon-bookmark saved"></span>
+								<% }%>
 								<span class="icon-file"></span>
 								<a href="#" title="<%= feed.name %>"><%= feed.name %></a>
 								<span class="unread"><%= feed.unread %></span>

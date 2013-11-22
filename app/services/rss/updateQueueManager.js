@@ -4,13 +4,14 @@ var _ = require('underscore'),
     logger = require("libs/log")(module),
     clientRedis = redis.createClient( config.get('redis_settings:port'), config.get('redis_settings:host')),
     Worker = require('./worker'),
-    workers = [];
+    workers = []
+    RecalculateUnread = require('action/rss/feed_recalculateUnread').RecalculateUnread;
 
 clientRedis.auth(config.get('redis_settings:pass'))
 
 function UpdateQueueManager(){
     this.opts = {
-        maxWorkersCount: 10
+        maxWorkersCount: 1
     }
     _.bindAll(this, "monitorQueue", "monitorWorkers");
 }
@@ -40,8 +41,11 @@ UpdateQueueManager.prototype = {
                 });
 
                 workers.splice(i, 1);
-                i--
-                max--
+                i--;
+                max--;
+
+                var recalculateUnread = new RecalculateUnread()
+                recalculateUnread.execute( worker.getFeedId() );
 
             }else if( worker.state == 3 ){
                 //error state

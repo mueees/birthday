@@ -10,7 +10,15 @@ var _ = require('underscore'),
 var Schema = mongoose.Schema;
 var feedSchema = new Schema({
     name: String,
-    url: String
+    url: String,
+    hasReadLater: {
+        type: Boolean,
+        default: false
+    },
+    unread: {
+        type: Number,
+        default: 0
+    }
 });
 
 feedSchema.methods.getPostsFromUrl = function(cb){

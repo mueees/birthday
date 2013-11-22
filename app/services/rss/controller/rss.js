@@ -5,6 +5,7 @@ var CategoryModel = require('models/rss/category'),
     Post = require('models/rss/post'),
     async = require('async'),
     _ = require('underscore'),
+    RecalculateHasReadLater = require('action/rss/feed_recalculateHasReadLater').RecalculateHasReadLater;
     url = require('url');
 
 var controller = {
@@ -349,11 +350,29 @@ var controller = {
                 return false;
             }
 
+            Post.find({_id: data._id}, function(err, post){
+                if(err){
+                    console.log("Cannot get post");
+                    logger.log('error', {error: "Cannot get post"});
+                    return false;
+                }
+
+                if( post.length == 1 ){
+                    var recalculateHasReadLater = new RecalculateHasReadLater();
+                    recalculateHasReadLater.execute( post[0].id_feed );
+                }else{
+                    console.log("Cannot get post. post.length = 0");
+                    logger.log('error', {error: "Cannot get post. post.length = 0"});
+                }
+
+            });
+
             res.send({
                 readLater: data.readLater
             });
             
         });
+        
     }
 }
 

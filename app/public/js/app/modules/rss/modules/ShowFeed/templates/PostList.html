@@ -11,4 +11,9 @@
 	<a href="//twitter.com/intent/tweet?url=<%=link %>&text=<%= title || 'No title' %>" alt="tweet" class="tweetBtn">
 		<i class="icon-thumbs-up"></i>
 	</a>
+	<% if( !isRead ) {%>
+		<a href="<%=link %>" alt="mark as read" target="_blank" class="markAsRead">
+			<i class="icon-folder-open"></i>
+		</a>
+	<%}%>
 </div>

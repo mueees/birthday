@@ -36,14 +36,16 @@ define([
 
             _.extend(options, {
                 method : App.config.api.rss.getPostsByCreteria,
-                params: {
+                remove: false
+            });
+
+            if( !options.params ) options.params = {};
+            _.extend(options.params, {
                     id_feed: this.id_feed,
                     getFrom: this.getFrom,
                     count: this.count
-                },
-
-                remove: false
-            });
+                });
+            
 
             this.fetch( options );
         },

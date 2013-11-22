@@ -10,7 +10,8 @@ define([
             "click .personalize": "personalizeBtn",
             "click .showSavedPost": "showSavedPost",
             "click .switcher": "changeSwitcher",
-            "click .categories .feeds li" : "showFeed"
+            "click .categories .feeds li" : "showFeed",
+            "click .categories .feeds li .saved" : "showSavedFeed"
         },
 
         className: "feedContent",
@@ -25,7 +26,6 @@ define([
         },
 
         render: function(){
-            debugger
             var view = this.template({
                 categories: this.collection.toJSON()
             });
@@ -66,6 +66,16 @@ define([
             this.removeAllActiveClass();
             $tab.addClass('active');
             this.trigger('showFeed', {_id: $li.data('id')});
+        },
+
+        showSavedFeed: function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            var $li = $(e.target).closest("li");
+            var $tab = $li.find(".tab");
+            this.removeAllActiveClass();
+            $tab.addClass('active');
+            this.trigger('showSavedFeed', {_id: $li.data('id')});
         },
 
         removeAllActiveClass: function(){

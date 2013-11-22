@@ -54,6 +54,7 @@ define([
                     //create  all categories
                     categories = new Categories();
                     categories.fetch().done(function(){
+
                         feedsTab = new FeedsView({collection: categories});
                         layout.contentCont.show(feedsTab);
 
@@ -68,6 +69,11 @@ define([
                         feedsTab.on('showFeed', function(data){
                             App.channels.rss.trigger( 'showFeed', data );
                         })
+
+                        feedsTab.on('showSavedFeed', function(data){
+                            App.channels.rss.trigger( 'showSavedFeed', data );
+                        })
+                        
                     });
 
                     //create tab view

@@ -42,6 +42,7 @@ define([
 
     App.reqres.setHandler('websocket:send', function(data){
         return API.send(data);
+        
     })
 
 })

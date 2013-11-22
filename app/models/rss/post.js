@@ -18,7 +18,10 @@ var postSchema = new Schema({
     source: String,
 
     id_feed: String,
-    isRead: Boolean,
+    isRead: {
+        type: Boolean,
+        default: false
+    },
     readLater: {
         type: Boolean,
         default: false
@@ -80,14 +83,17 @@ postSchema.statics.getPosts = function(data, cb){
     var query = {
         id_feed: data.id_feed
     }
-    this.find(query, null, {
 
+    if( data.readLater != undefined ){
+        query.readLater = data.readLater;
+    }
+
+    this.find(query, null, {
         skip: data.getFrom,
         limit: data.count,
         sort: {
             date: -1 //Sort by Date Added DESC
         }
-
     }, cb);
 
 }

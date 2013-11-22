@@ -54,6 +54,7 @@ define([
                     App.channels.rss.on('availableFeedSelected', this.showAvailableFeed);
                     App.channels.rss.on('saveNewFeed', this.showSaveFeedDialog);
                     App.channels.rss.on('showFeed', this.showFeed);
+                    App.channels.rss.on('showSavedFeed', this.showSavedFeed)
                 },
 
                 unsubscribe: function(){
@@ -78,6 +79,10 @@ define([
 
                 showSavedPost: function(){
                     Rss.ShowFeed.Controller.showSavedPost(layout);
+                },
+
+                showSavedFeed: function(data){
+                    Rss.ShowFeed.Controller.showSavedFeed(layout, data);
                 },
 
                 showCategory: function(){

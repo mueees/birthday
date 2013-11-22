@@ -9,7 +9,8 @@ define([
 
         events: {
             "click": "checkPost",
-            "click .readLater": "readLater"
+            "click .readLater": "readLater",
+            "click .markAsRead": "markAsRead"
         },
 
         tagName: "li",
@@ -115,6 +116,14 @@ define([
             var _this = this;
             this.trigger("checkPost", this.model);
 
+            if( !this.model.get('isRead') ){
+                this.model.setRead();
+            }
+        },
+
+        markAsRead: function(e){
+            e.preventDefault();
+            e.stopPropagation();
             if( !this.model.get('isRead') ){
                 this.model.setRead();
             }

@@ -19,14 +19,24 @@ define([
 
         viewMode: "list",
 
-        initialize: function(){
+        initialize: function(options){
+
+            this.readLater = options.readLater;
+
             _.bindAll(this, "checkPost");
             this.posts = this.model.get('posts');
             this.listenTo(this.posts, "add", this.renderPosts)
         },
 
         onRender: function(){
+            this.addReadLaterState();
             this.renderPosts();
+        },
+
+        addReadLaterState: function(){
+            if( this.readLater ){
+                this.$el.find('.title').html( this.model.get('name') + " :saved" );    
+            }
         },
 
         renderPosts: function(){

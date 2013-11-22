@@ -130,6 +130,10 @@ Worker.prototype = {
 
     getPosts: function(){
         return this.feed.posts || [];
+    },
+
+    getFeedId: function(){
+         return this.task.data._id
     }
 }
 
