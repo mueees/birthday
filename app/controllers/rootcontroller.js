@@ -7,3 +7,6 @@ exports.home = function(req, res, next) {
 exports.fileBrowser = function(req, res, next) {
     res.render('fileBrowser');
 }
+exports.angular = function(req, res, next) {
+    res.render('angular');
+}

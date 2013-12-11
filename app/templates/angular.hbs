@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <title>Birthday</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <link href="/css/datetimepicker.css" rel="stylesheet" type="text/css" />
+    <link href="/css/bootstrap-timepicker.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/sprite.css" rel="stylesheet" type="text/css" />
+
+    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="//platform.twitter.com/widgets.js"id="twitter-wjs"></script>
+
+    <script type="text/javascript">
+        var Birthday = {};
+        Birthday.login = "{{user}}"
+        Birthday.socketUrl = "{{socketUrl}}"
+    </script>
+
+    <script type="text/javascript" src="/js/angular/dist/jquery.js"></script>
+    <script type="text/javascript" src="/js/angular/dist/angular.js"></script>
+    <script type="text/javascript" src="/js/angular/dist/angular-app.js"></script>
+</head>
+<body ng-controller="AppCtrl">
+
+<div class="main-bg">
+    <img src="/img/site-bg/DSC_0470.JPG"/>
+</div>
+
+<header class="header">
+    <div class="header-bg">
+        <div class="container">
+            <h1 class="siteTitle">
+                <a href="/">Life tools</a>
+            </h1>
+        </div>
+    </div>
+</header>
+
+<section class="main">
+    <div ng-include="'header.tpl.html'"></div>
+    <div ng-view class="container-fluid"></div>
+</section>
+</body>
+</html>
