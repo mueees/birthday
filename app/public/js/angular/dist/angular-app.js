@@ -1,17 +1,27 @@
 angular.module('app', [
-  'ngRoute',
-  'templates.app',
-  'templates.common',
-  'todo'
-  ]);
+    'ngRoute',
+    'templates.app',
+    'templates.common',
+    'todo',
+    'text'
+]);
 
 angular.module('app').config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-	$locationProvider.html5Mode(true);
-	//$routeProvider.otherwise({redirectTo:'/angular/todo'});  
+    $locationProvider.html5Mode(true);
 }]);
 
 angular.module('app').controller('AppCtrl', ['$scope', function($scope) {}]);
 angular.module('app').controller('HeaderCtrl', ['$scope', function($scope) {}]);
+angular.module('text', [], ['$routeProvider', function($routeProvider){
+    $routeProvider.when('/angular/text', {
+        templateUrl: 'text/text.tpl.html',
+        controller: 'TextCtrl'
+    })
+}]);
+
+angular.module('text').controller('TextCtrl', ['$scope', function($scope){
+
+}])
 angular.module('todo', [], ['$routeProvider', function($routeProvider){
 
   $routeProvider.when('/angular/todo', {
@@ -35,7 +45,7 @@ angular.module('todo').factory('todoStorage', function(){
 	};
 });
 
-angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function($scope, todoStorage){
+angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', 'filterFilter', function($scope, todoStorage, filterFilter){
 	var todos = $scope.todos = todoStorage.get();
 
 	$scope.newTodo = '';
@@ -57,9 +67,9 @@ angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function
 	};
 
 	$scope.$watch('todos', function (newValue, oldValue) {
-		//$scope.remainingCount = filterFilter(todos, { completed: false }).length;
-		//$scope.completedCount = todos.length - $scope.remainingCount;
-		//$scope.allChecked = !$scope.remainingCount;
+		$scope.remainingCount = filterFilter(todos, { completed: false }).length;
+		$scope.completedCount = todos.length - $scope.remainingCount;
+		$scope.allChecked = !$scope.remainingCount;
 		if (newValue !== oldValue) { // This prevents unneeded calls to the local storage
 			todoStorage.set(todos);
 		}
@@ -76,8 +86,14 @@ angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function
 		});
 	};
 
+    $scope.clearCompletedTodos = function(){
+        $scope.todos = todos = todos.filter(function (val) {
+            return !val.completed;
+        });
+    };
+
 }]); 
-angular.module('templates.app', ['header.tpl.html', 'todo/todo.tpl.html']);
+angular.module('templates.app', ['header.tpl.html', 'text/text.tpl.html', 'todo/todo.tpl.html']);
 
 angular.module("header.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("header.tpl.html",
@@ -126,31 +142,52 @@ angular.module("header.tpl.html", []).run(["$templateCache", function($templateC
     "</div>");
 }]);
 
+angular.module("text/text.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("text/text.tpl.html",
+    "this's text");
+}]);
+
 angular.module("todo/todo.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("todo/todo.tpl.html",
     "<section id=\"todo\" ng-controller=\"TodoCtrl\">\n" +
-    "	<header id=\"header\">\n" +
-    "		<h1>Todo application</h1>\n" +
-    "		<form id=\"todo-form\" ng-submit=\"addTodo()\">\n" +
-    "			<input id=\"new-todo\" placeholder=\"What needs to be done?\" ng-model=\"newTodo\" autofocus>\n" +
-    "		</form>\n" +
-    "		\n" +
-    "	</header> \n" +
-    "	<section id=\"main\" ng-show=\"todos.length\" ng-cloak>\n" +
+    "    <header id=\"header\">\n" +
+    "        <h1>Todo application</h1>\n" +
+    "        <form id=\"todo-form\" ng-submit=\"addTodo()\">\n" +
+    "            <input id=\"new-todo\" placeholder=\"What needs to be done?\" ng-model=\"newTodo\" autofocus>\n" +
+    "        </form>\n" +
     "\n" +
-    "		<input id=\"toggle-all\" type=\"checkbox\" ng-model=\"allChecked\" ng-click=\"markAll(!allChecked)\">\n" +
-    "		<label for=\"toggle-all\">Mark all as complete</label>\n" +
-    "		<ul id=\"todo-list\">\n" +
-    "					<li ng-repeat=\"todo in todos track by $index\">\n" +
-    "						<div class=\"view\">\n" +
-    "							<input class=\"toggle\" type=\"checkbox\" ng-model=\"todo.completed\">\n" +
-    "							<label ng-dblclick=\"editTodo(todo)\">{{todo.title}}</label>\n" +
-    "							<button class=\"destroy\" ng-click=\"removeTodo(todo)\">remove</button>\n" +
-    "						</div>\n" +
-    "					</li>\n" +
-    "				</ul>\n" +
-    "	</section>\n" +
-    "\n" +
+    "    </header>\n" +
+    "    <section id=\"main\" ng-show=\"todos.length\" ng-cloak>\n" +
+    "        <input id=\"toggle-all\" type=\"checkbox\" ng-model=\"allChecked\" ng-click=\"markAll(!allChecked)\">\n" +
+    "        <label for=\"toggle-all\">Mark all as complete</label>\n" +
+    "        <ul id=\"todo-list\">\n" +
+    "            <li ng-repeat=\"todo in todos track by $index\">\n" +
+    "                <div class=\"view\">\n" +
+    "                    <input class=\"toggle\" type=\"checkbox\" ng-model=\"todo.completed\">\n" +
+    "                    <label ng-dblclick=\"editTodo(todo)\">{{todo.title}}</label>\n" +
+    "                    <button class=\"destroy\" ng-click=\"removeTodo(todo)\">remove</button>\n" +
+    "                </div>\n" +
+    "            </li>\n" +
+    "        </ul>\n" +
+    "    </section>\n" +
+    "    <footer id=\"footer\" ng-show=\"todos.length\" ng-cloak>\n" +
+    "        <span id=\"todo-count\">\n" +
+    "            <strong>{{remainingCount}}</strong>\n" +
+    "            <ng-pluralize count=\"remainingCount\" when=\"{ one: 'item left', other: 'items left' }\"></ng-pluralize>\n" +
+    "        </span>\n" +
+    "        <ul id=\"filters\">\n" +
+    "            <li>\n" +
+    "                <a ng-class=\"{selected: location.path() == '/angular/todo'} \" href=\"/angular/todo\">All</a>\n" +
+    "            </li>\n" +
+    "            <li>\n" +
+    "                <a ng-class=\"{selected: location.path() == '/angular/todo/active'}\" href=\"/angular/todo/active\">Active</a>\n" +
+    "            </li>\n" +
+    "            <li>\n" +
+    "                <a ng-class=\"{selected: location.path() == '/angular/todo/completed'}\" href=\"/angular/todo/completed\">Completed</a>\n" +
+    "            </li>\n" +
+    "        </ul>\n" +
+    "        <button id=\"clear-completed\" ng-click=\"clearCompletedTodos()\" ng-show=\"completedCount\">Clear completed ({{completedCount}})</button>\n" +
+    "    </footer>\n" +
     "</section>");
 }]);
 

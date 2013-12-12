@@ -12,8 +12,7 @@ module.exports = function(app) {
 
     //Root Paths
     app.get('/', rootController.home);
-    app.get('/angular', rootController.angular);
-    app.get('/angular/todo', rootController.angular);
+    app.get('\/angular(\/)?*', rootController.angular);
     app.get('/fileBrowser', rootController.fileBrowser);
 
     //user

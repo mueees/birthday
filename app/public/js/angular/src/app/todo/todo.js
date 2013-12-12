@@ -21,7 +21,7 @@ angular.module('todo').factory('todoStorage', function(){
 	};
 });
 
-angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function($scope, todoStorage){
+angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', 'filterFilter', function($scope, todoStorage, filterFilter){
 	var todos = $scope.todos = todoStorage.get();
 
 	$scope.newTodo = '';
@@ -43,9 +43,9 @@ angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function
 	};
 
 	$scope.$watch('todos', function (newValue, oldValue) {
-		//$scope.remainingCount = filterFilter(todos, { completed: false }).length;
-		//$scope.completedCount = todos.length - $scope.remainingCount;
-		//$scope.allChecked = !$scope.remainingCount;
+		$scope.remainingCount = filterFilter(todos, { completed: false }).length;
+		$scope.completedCount = todos.length - $scope.remainingCount;
+		$scope.allChecked = !$scope.remainingCount;
 		if (newValue !== oldValue) { // This prevents unneeded calls to the local storage
 			todoStorage.set(todos);
 		}
@@ -61,5 +61,11 @@ angular.module('todo').controller('TodoCtrl', ['$scope', 'todoStorage', function
 			todo.completed = completed;
 		});
 	};
+
+    $scope.clearCompletedTodos = function(){
+        $scope.todos = todos = todos.filter(function (val) {
+            return !val.completed;
+        });
+    };
 
 }]); 

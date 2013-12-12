@@ -41,8 +41,10 @@
 </header>
 
 <section class="main">
-    <div ng-include="'header.tpl.html'"></div>
-    <div ng-view class="container-fluid"></div>
+    <div class="container">
+        <div ng-include="'header.tpl.html'"></div>
+        <div ng-view class="container-fluid"></div>
+    </div>
 </section>
 </body>
 </html>
