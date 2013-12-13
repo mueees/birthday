@@ -10,19 +10,19 @@ require([
     /*'relationalBackbone',*/
 
     /*entities*/
-    /*'app/modules/websocket/entities/websocket',
+    'app/modules/websocket/entities/websocket',
     'app/entities/user',
     'app/entities/event',
     'app/entities/task',
     'app/entities/preset',
     'app/entities/blog',
-    'app/modules/twitter/entities/twitter',*/
+    'app/modules/twitter/entities/twitter',
     'app/entities/login',
 
 
     /*sub application*/
     'app/modules/websocket/websocket_app',
-    /*'app/user/user_app',
+    'app/user/user_app',
     'app/event/event_app',
     'app/task/task_app',
     'app/blog/blog_app',
@@ -32,9 +32,9 @@ require([
     'app/menu/menu_app',
     'app/home/home_app',
     'app/modules/twitter/twitter_app',
-    'app/modules/rss/rss_app',*/
+    'app/modules/rss/rss_app',
     'app/menu/menu_app',
-    'app/modules/monitoring/monitoring_app',
+    /*'app/modules/monitoring/monitoring_app',*/
 
     /*modules*/
     'app/modules/cache/cache_app'

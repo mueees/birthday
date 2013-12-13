@@ -98,6 +98,25 @@ define([
 
         getWidth: function(){
             return this.width;
+        },
+
+        getPostById: function(idPost){
+            var postModel = null;
+            _.each(this.postPreviewView, function(postPreviewView, i){
+                if( idPost == postPreviewView.model.get('_id') ){
+                    postModel = postPreviewView.model;
+                    return;
+                }
+            });
+
+            if( postModel ){
+                return {
+                    monthLeft: this.left,
+                    postModel: postModel
+                }
+            }else{
+                return null
+            }
         }
     })
 

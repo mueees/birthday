@@ -42,8 +42,10 @@ define([
             this.left = 0;
             this.w = jQuery(window);
             this.windowWidth = this.w.width();
+            this.fullPost = null; //текущий открытый пост
 
             this.listenTo(this.channel, "showPost", this.showPost);
+            this.listenTo(this.channel, "showPostById", this.showPostById);
 
             this.createMonthView();
             this.calculateMonth();
@@ -61,7 +63,7 @@ define([
             if( newLeftPos > 0 ){
                 newLeftPos = 0;
 
-                /*если импульс дошел до правого конца, то импульс должен прекратиться*/
+            /*если импульс дошел до правого конца, то импульс должен прекратиться*/
             }else if( Math.abs( newLeftPos - this.windowWidth ) > this.width ){
                 newLeftPos = -(this.width - this.windowWidth);
             }
@@ -75,9 +77,30 @@ define([
 
         },
 
+        showPostById: function(idPost){
+            this.closeCurrentFullPost();
+            var data, i;
+
+            for( i = 0; i < this.monthLine.length; i++ ){
+                data = this.monthLine[i].getPostById(idPost);
+                if( data ) break;
+            }
+
+            if( !data ) return false
+
+            this.showPost(data)
+        },
+
+        closeCurrentFullPost: function(){
+            if(this.fullPost){
+                this.fullPost.$el.modal('hide');
+                this.fullPost = null;
+            }
+        },
+
         showFullPost: function(data){
-            var fullPost = new PostFullView(data);
-            fullPost.$el.modal();
+            this.fullPost = new PostFullView(data);
+            this.fullPost.$el.modal();
 
             /*this.listenTo(fullPost, "nextPost", function(data){
                 this.channel("showNextPost", data);

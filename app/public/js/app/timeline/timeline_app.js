@@ -14,6 +14,8 @@ define([
 
         define: function( Timeline, App, Backbone, Marionette, $, _ ){
 
+            var Notify = App.module("Notify");
+
 
             var Router = Marionette.AppRouter.extend({
 
@@ -22,23 +24,25 @@ define([
                 },
 
                 appRoutes: {
-                    "public/timeline": "timelineShow"
+                    "public/timeline(/:idPost)": "timelineShow"
                 }
 
             })
 
             var Controller = {
 
-                timelineShow: function(){
+                timelineShow: function(idPost){
 
                     var done = _.bind(Controller.getPostsSuccess, this);
                     var error = _.bind(Controller.getPostsError, this);
 
-                    $.when(  App.request('blog:getPosts')).fail( error ).done(done);
+                    $.when(  App.request('blog:getPosts')).fail( error ).done(function(data){
+                        done(data, idPost);
+                    });
 
                 },
 
-                getPostsSuccess: function(data){
+                getPostsSuccess: function(data, idPost){
 
                     var postCollection = data.postCollection;
 
@@ -55,7 +59,7 @@ define([
 
                     App.main.show(timeLineView);
 
-
+                    Timeline.Channel.trigger('showPostById', idPost);
                 },
 
                 parsePost: function(postCollection){
@@ -95,14 +99,23 @@ define([
                 },
 
                 getPostsError: function(){
-                    console.log("WTF!");
+                    Notify.API.showNotify({text: "Cannot download posts"});
+                },
+
+                showPost: function(idPost){
+
                 }
+
             }
 
             var API  = {
-                timelineShow: function(){
+                timelineShow: function(idPost){
                     Timeline.Channel.off();
-                    Controller.timelineShow();
+                    Controller.timelineShow(idPost);
+                },
+                timelineShowPost: function(idPost){
+                    Timeline.Channel.off();
+                    Controller.timelineShowPost(idPost);
                 }
             }
 

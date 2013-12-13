@@ -1,7 +1,8 @@
 define([
+    'backbone',
     'marionette',
     'text!app/templates/timeline/PostPreviewView.html'
-], function(Marionette, template){
+], function(Backbone, Marionette, template){
 
     return Marionette.ItemView.extend({
         template: _.template(template),
@@ -31,6 +32,8 @@ define([
                 width: model.preset.width,
                 left: model.left
             });
+
+            this.$el.attr( 'id', model._id );
         },
 
         onRender: function(){
@@ -38,7 +41,6 @@ define([
         },
 
         getTitlePhoto: function(){
-            console.log('getTitlePhoto')
             this.$el.find('img').attr('src', this.model.get('previewImg') );
         },
 
@@ -56,6 +58,8 @@ define([
             this.trigger("showPost", {
                 postModel: this.model
             });
+
+            Backbone.history.navigate('/public/timeline/' + this.model.get('_id'));
             return false;
         }
     })
