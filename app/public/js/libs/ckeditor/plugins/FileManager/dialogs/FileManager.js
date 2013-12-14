@@ -73,6 +73,7 @@ CKEDITOR.dialog.add( 'FileManagerDialog', function( editor ) {
                 image.setAttribute( 'width', width );
                 editor.insertElement( image );
                 editor.insertElement( br );
+                editor.insertElement( br );
             }
 
         }

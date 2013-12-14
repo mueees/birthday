@@ -117,6 +117,67 @@ define([
             }else{
                 return null
             }
+        },
+
+        getNextPostById: function(idPost){
+            var position = this.getPostPositionById(idPost);
+
+            if( position || position == 0 ){
+                if( position == this.postPreviewView.length-1 ){
+                    //this is last post on this month
+                    return 'lastPost'
+                }else{
+                    return {
+                        postModel: this.postPreviewView[position+1].model,
+                        monthLeft: this.left
+                    }
+                }
+            }else{
+                return null
+            }
+        },
+
+        getPrevPostById: function(idPost){
+            var position = this.getPostPositionById(idPost);
+
+            if( position || position == 0 ){
+                if( position == 0 ){
+                    //this is first post on this month
+                    return 'firstPost'
+                }else{
+                    return {
+                        postModel: this.postPreviewView[position+1].model,
+                        monthLeft: this.left
+                    }
+                }
+            }else{
+                return null
+            }
+        },
+
+        getPostPositionById: function(idPost){
+            var position;
+            _.each(this.postPreviewView, function(postPreviewView, i){
+                if( idPost == postPreviewView.model.get('_id') ){
+                    position = i;
+                    return;
+                }
+            });
+            return position;
+        },
+
+        getFirstPost: function(){
+            return {
+                postModel: this.postPreviewView[0].model,
+                monthLeft: this.left
+            }
+        },
+
+        getLastPost: function(){
+            return {
+                postModel: this.postPreviewView[this.postPreviewView.length-1].model,
+                monthLeft: this.left
+            }
         }
     })
 

@@ -446,7 +446,7 @@ li {
   top: 0%;
   padding: 10px;
   cursor: pointer;
-  background: #9cc;
+  background: #0a8563;
   color: #fff;
 }
 .postMain .nav .navBtn:hover {
@@ -454,10 +454,10 @@ li {
   color: #9cc;
 }
 .postMain .nav .navBtn.prev {
-  left: -50px;
+  left: 0;
 }
 .postMain .nav .navBtn.next {
-  right: -50px;
+  right: 0;
 }
 .twitterPanel .list li {
   list-style: none;

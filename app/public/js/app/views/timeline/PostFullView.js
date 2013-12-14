@@ -18,26 +18,34 @@ define([
         },
 
         initialize: function(){
+            var _this = this;
             this.render();
+            this.$el.on('hidden', function () {
+                _this.$el.remove();
+            })
         },
 
         prevPost: function(){
-            this.$el.modal('hide');
-            this.trigger("prevPost", {
-                model: this.model
-            });
+            this.hideAndRemove();
+            this.trigger("prevPost", this.model);
 
             return false;
         },
 
         nextPost: function(){
-            this.$el.modal('hide');
-            this.trigger("nextPost", {
-                model: this.model
-            });
-
+            this.hideAndRemove();
+            this.trigger("nextPost", this.model);
             return false;
+        },
+
+        hideAndRemove: function(){
+            var _this = this;
+            this.$el.modal('hide');
+            setTimeout(function(){
+                _this.close();
+            }, 200);
         }
+
     })
 
 })

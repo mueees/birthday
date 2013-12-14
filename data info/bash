@@ -27,7 +27,6 @@ mongodump --db batros_birthday
 
 mongoimport --db batros_birthday --collection rss_posts --file rss_posts.bson
 
-
 mongorestore --collection rss_posts --db batros_birthday rss_posts.bson
 mongorestore --collection rss_feeds --db batros_birthday rss_feeds.bson
 mongorestore --collection rss_categories --db batros_birthday rss_categories.bson

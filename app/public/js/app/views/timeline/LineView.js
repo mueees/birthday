@@ -93,7 +93,7 @@ define([
 
         closeCurrentFullPost: function(){
             if(this.fullPost){
-                this.fullPost.$el.modal('hide');
+                this.fullPost.hideAndRemove();
                 this.fullPost = null;
             }
         },
@@ -102,14 +102,59 @@ define([
             this.fullPost = new PostFullView(data);
             this.fullPost.$el.modal();
 
-            /*this.listenTo(fullPost, "nextPost", function(data){
-                this.channel("showNextPost", data);
-            });*/
+            this.listenTo(this.fullPost, "nextPost", function(data){
+                this.showNextPost(data);
+                //this.channel("showNextPost", data);
+            });
+
+            this.listenTo(this.fullPost, "prevPost", function(data){
+                this.showPrevPost(data);
+            });
 
         },
 
-        showNextPost: function(){
+        showNextPost: function(currentModel){
+            var data, i;
 
+            for( i = 0; i < this.monthLine.length; i++ ){
+                data = this.monthLine[i].getNextPostById(currentModel.get('_id'));
+                if( data == "lastPost" ){
+                    if( i < (this.monthLine.length-1) ){
+                        data = this.monthLine[i+1].getFirstPost();
+                        break;
+                    }else{
+                        data = null;
+                        break;
+                    }
+                }else if( data ){
+                    break;
+                }
+            }
+
+            if( !data ) return false;
+            this.showPost(data);
+        },
+
+        showPrevPost: function(currentModel){
+            var data, i;
+
+            for( i = 0; i < this.monthLine.length; i++ ){
+                data = this.monthLine[i].getPrevPostById(currentModel.get('_id'));
+                if( data == "firstPost" ){
+                    if( i != 0 ){
+                        data = this.monthLine[i-1].getLastPost();
+                        break;
+                    }else{
+                        data = null;
+                        break;
+                    }
+                }else if( data ){
+                    break;
+                }
+            }
+
+            if( !data ) return false;
+            this.showPost(data);
         },
 
         bindEvent: function(){

@@ -58,8 +58,11 @@ define([
             var _this = this;
             setTimeout(function(){
                 _this.body = CKEDITOR.replace('body', {
-                    filebrowserBrowseUrl : '/fileBrowser.html'
+                    filebrowserBrowseUrl : '/fileBrowser',
+                    extraPlugins: 'FileManager,Slider'
                 });
+
+
                 _this.title = CKEDITOR.replace('title', {toolbar :
                     [
                         { name: 'document', items : [ 'Source' ] },

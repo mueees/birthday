@@ -71,7 +71,6 @@ define([
                 },
 
                 showChangeView: function(data, layoutBlogAdminPanel){
-
                     $.when(Blog.ChangePost.API.getChangePostViewByModel({model: data})).done(function(changeView){
                         layoutBlogAdminPanel.extendContainer.show(changeView);
                     }).fail(function(){console.log("WTF!")});
@@ -105,16 +104,11 @@ define([
                 }
             }
 
-
-
-
             App.addInitializer(function(){
                 new Router({
                     controller: API
                 })
             })
-
-            //Blog.Channel = _.extend({}, Backbone.Events);
 
 
         }
