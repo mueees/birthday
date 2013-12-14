@@ -146,7 +146,7 @@ define([
                     return 'firstPost'
                 }else{
                     return {
-                        postModel: this.postPreviewView[position+1].model,
+                        postModel: this.postPreviewView[position-1].model,
                         monthLeft: this.left
                     }
                 }
