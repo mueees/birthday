@@ -46,6 +46,8 @@ define([
             this.listenTo(this.channel, "newFolderBtn", this.newFolderBtn);
             this.listenTo(this.channel, "deleteBtn", this.deleteBtn);
             this.listenTo(this.channel, "selectBtn", this.selectBtn);
+            this.listenTo(this.channel, "selectAllBtn", this.selectAllBtn);
+            this.listenTo(this.channel, "unSelectAllBtn", this.unSelectAllBtn);
             this.listenTo(this.channel, "downloadBtn", this.downloadBtn);
             this.listenTo(this.channel, "viewModeBtn", this.viewModeBtn);
             this.listenTo(this.collection, "reset", this.render);
@@ -195,6 +197,18 @@ define([
             });
 
             this.channel.trigger("selectBtnWithData", {paths:paths});
+        },
+
+        selectAllBtn: function(){
+            this.collection.each(function(model){
+                model.set("isActive", true);
+            })
+        },
+
+        unSelectAllBtn: function(){
+            this.collection.each(function(model){
+                model.set("isActive", false);
+            })
         },
 
         downloadBtn: function(){

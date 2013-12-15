@@ -12,6 +12,8 @@ define([
             "click .upBtn": "upBtn",
             "click .newFolderBtn": "newFolderBtn",
             "click .selectBtn": "selectBtn",
+            "click .selectAllBtn": "selectAllBtn",
+            "click .unSelectAllBtn": "unSelectAllBtn",
             "click .deleteBtn": "deleteBtn",
             "click .downloadBtn": "downloadBtn",
             "click .viewMode button": "viewModeBtn"
@@ -20,13 +22,16 @@ define([
         ui: {
             "deleteBtn": ".deleteBtn",
             "selectBtn": ".selectBtn",
+            "selectAllBtn": ".selectAllBtn",
+            "unSelectAllBtn": ".unSelectAllBtn",
             "downloadBtn": ".downloadBtn",
             "viewModeBtn" : ".viewMode button"
         },
 
         initialize: function(data){
             this.channel = data.channel;
-            this.listenTo(this.channel, "currentItemSelected", this.itemSelectedChanged)
+            this.listenTo(this.channel, "currentItemSelected", this.itemSelectedChanged);
+            this.listenTo(this.channel, "setNewPath", this.setNewPath);
         },
 
         upBtn: function(e){
@@ -60,6 +65,25 @@ define([
         selectBtn: function(e){
             e.preventDefault();
             this.channel.trigger("selectBtn");
+        },
+
+        selectAllBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("selectAllBtn");
+            this.ui.selectAllBtn.addClass('off');
+            this.ui.unSelectAllBtn.removeClass('off');
+        },
+
+        unSelectAllBtn: function(e){
+            e.preventDefault();
+            this.channel.trigger("unSelectAllBtn");
+            this.ui.selectAllBtn.removeClass('off');
+            this.ui.unSelectAllBtn.addClass('off');
+        },
+
+        setNewPath: function(){
+            this.ui.selectAllBtn.removeClass('off');
+            this.ui.unSelectAllBtn.addClass('off');
         },
 
         downloadBtn: function(e){

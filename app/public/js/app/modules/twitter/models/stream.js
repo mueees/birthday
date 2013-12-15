@@ -14,6 +14,9 @@ define([
         },
         socket: true,
         idAttribute: '_id',
+        url: function(){
+            return App.config.api.stream
+        },
         urlRoot: App.config.api.stream
     })
 

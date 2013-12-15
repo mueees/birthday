@@ -136,12 +136,8 @@ socketServer.use(function(err, req, res, next){
 
 socketServer.start(server);
 
-
 //start services
 require('services/rss/index');
-
-
-
 
 process.on('uncaughtException', function(){
     console.log( arguments );

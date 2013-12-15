@@ -14,7 +14,7 @@ define([
             b = b.get("isDirectory");
             return a > b ?  -1
                 : a < b ? 1
-                :          0;
+                : 0;
         },
 
         getActiveItem: function(){

@@ -90,13 +90,16 @@ define([
                 },
 
                 changeStreamSuccess: function(){
-                    debugger
+                    Notify.API.showNotify({
+                        text: "Channel was changed"
+                    });
                 },
 
                 changeStreamError: function(){
-                    debugger
+                    Notify.API.showNotify({
+                        text: "Cannot change channel"
+                    });
                 }
-
 
             }
 

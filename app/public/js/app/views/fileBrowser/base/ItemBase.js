@@ -17,7 +17,6 @@ define([
         },
 
         chooseView: function(){
-
             var _this = this;
             this.clicks++;
 
