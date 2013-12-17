@@ -10,7 +10,8 @@ define([
         template: _.template(template),
 
         events: {
-            "click .viewMode a": "changeViewMode"
+            "click .viewMode a": "changeViewMode",
+            "click .getMore": "getMore"
         },
 
         ui: {
@@ -25,7 +26,7 @@ define([
 
             _.bindAll(this, "checkPost");
             this.posts = this.model.get('posts');
-            this.listenTo(this.posts, "add", this.renderPosts)
+            this.listenTo(this.posts, "add", this.renderPosts);
         },
 
         onRender: function(){
@@ -105,6 +106,11 @@ define([
 
             this.viewMode = type;
             this.renderPosts();
+        },
+
+        getMore: function(e){
+            e.preventDefault();
+            this.model.getMore();
         }
     })
 

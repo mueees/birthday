@@ -11,7 +11,7 @@ util.inherits(Post, BaseModel);
 
 
 _.extend(Post, BaseModel, {
-    getPosts: function( cb ){
+    getPosts: function( userState, cb ){
 
         var _this = this;
 
@@ -19,12 +19,29 @@ _.extend(Post, BaseModel, {
             if( err ){
                 cb(err);
             }else{
-                _this._getPosts(db, cb);
+                _this._getPosts(userState, db, cb);
             }
         })
     },
-    _getPosts: function(db, cb){
-        var query = {};
+    _getPosts: function(userState, db, cb){
+        var query;
+
+        if( userState ){
+            query = {};
+        }else{
+            query = {
+                $or: [ 
+                    {
+                        privateType: {
+                            $exists: false
+                        }
+                    },
+                        {
+                            privateType: "public"
+                        }
+                    ]
+            }
+        }
 
         db.collection('posts').find(query).toArray( function(err, result){
             if(err){

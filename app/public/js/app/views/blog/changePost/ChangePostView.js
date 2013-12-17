@@ -28,7 +28,8 @@ define([
             "previewImg": "#previewImg",
             "previewTitle": "#previewTitle",
             "preset": "#preset",
-            "tags": "input[name='tags[]']"
+            "tags": "input[name='tags[]']",
+            "privateType": "input[name='privateType']"
         },
 
         initialize: function(data){
@@ -112,7 +113,8 @@ define([
                 previewTitle: this.previewTitle.getData(),
                 previewImg: this.ui.previewImg.val(),
                 preset: this.ui.preset.val(),
-                tags: this.getTags()
+                tags: this.getTags(),
+                privateType: this.ui.privateType.filter(':checked').val()
             };
 
             return data;

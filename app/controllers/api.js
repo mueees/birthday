@@ -462,7 +462,7 @@ var controller = {
         },
 
         getPosts: function(request, response){
-            PostModel.getPosts( function(err, posts){
+            PostModel.getPosts( request.user, function(err, posts){
                 controller.blog._getPosts( err, posts, response );
             });
         },
@@ -478,7 +478,6 @@ var controller = {
             var deffered = jQuery.Deferred();
             var defferedPromise = deffered.promise();
             defferedPromise.done(function(data){
-
                 var postsToSend = controller.blog.mergePostPreset(posts, data.presets);
                 response.send(postsToSend);
             });

@@ -12,7 +12,25 @@
         <div class="span9">
             <form class="form-horizontal standart changePostForm">
 
+                
+
                 <legend>Main</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="title">Is public</label>
+                    <div class="controls">
+                        <div class="span1">
+                            <label>Private
+                                <input type="radio" name="privateType" value="private" <%= privateType == 'private' ? 'checked': ''%> >
+                            </label>
+                        </div>
+                        <div class="span1">
+                            <label>Public
+                                <input type="radio" name="privateType" value="public" <%= privateType == 'public' ? 'checked': ''%>>
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="control-group">
                     <label class="control-label" for="title">Title</label>

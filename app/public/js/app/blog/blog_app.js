@@ -88,7 +88,7 @@ define([
                 },
 
                 changePost: function( id ){
-                    Blog.ChangePost.API.changeUser( id );
+                    Blog.ChangePost.API.changeUser( id ); 
                 },
 
                 showPost: function(id){

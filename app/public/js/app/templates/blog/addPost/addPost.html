@@ -3,10 +3,26 @@
         <h3>Add Post</h3>
     </div>
     <div class="row">
-        <div class="span7">
+        <div class="span9">
             <form class="form-horizontal standart addPostForm">
 
                 <legend>Main</legend>
+
+                <div class="control-group">
+                    <label class="control-label" for="title">Is public</label>
+                    <div class="controls">
+                        <div class="span1">
+                            <label>Private
+                                <input type="radio" name="privateType" value="private" checked>
+                            </label>
+                        </div>
+                        <div class="span1">
+                            <label>Public
+                                <input type="radio" name="privateType" value="public">
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="control-group">
                     <label class="control-label" for="title">Title</label>
@@ -81,7 +97,7 @@
 
             </form>
         </div>
-        <div class="span2 extra-area">
+        <div class="extra-area">
         </div>
     </div>
 </div>

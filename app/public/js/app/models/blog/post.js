@@ -13,7 +13,8 @@ define([
             previewTitle: "",
             previewImg: "",
             preset: "",
-            tags: []
+            tags: [],
+            privateType: 'public'
         },
         idAttribute: '_id',
         urlRoot: App.config.api.post,
