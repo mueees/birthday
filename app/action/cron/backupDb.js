@@ -10,11 +10,13 @@ _.extend(BackupDb.prototype, {
     execute: function(){
         var makeDir = require('child_process').exec;
         var makeBackupDb = require('child_process').exec;
+        var copyFiles = require('child_process').exec;
         var currentData = new Date();
         var timestamp = currentData.getTime();
 
         makeDir("mkdir /home/mue/web/backup/sites/" + config.get('host') + "/" + timestamp);
         makeBackupDb("mongodump --db " + config.get("db:nameDatabase") + " --out /home/mue/web/backup/sites/" + config.get('host') + "/" + timestamp);
+        copyFiles("cp -r /home/mue/web/sites/public/" + config.get('host') + " /home/mue/web/backup/sites/" + config.get('host') + "/" + timestamp );
     }
 });
 
