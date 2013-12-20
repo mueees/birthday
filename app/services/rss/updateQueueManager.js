@@ -75,6 +75,7 @@ UpdateQueueManager.prototype = {
         }
         
         logger.log('info', "Workers length: " + workers.length);
+        console.log("Workers length: " + workers.length);
 
     },
 
