@@ -138,10 +138,7 @@ socketServer.start(server);
 
 //start services
 require('services/rss/index');
-
-process.on('uncaughtException', function(){
-    console.log( arguments );
-})
+//require('services/index');
 
 //start cron
-var cron = require('child_process').fork( __dirname + '/cron');
+//var cron = require('child_process').fork( __dirname + '/cron');

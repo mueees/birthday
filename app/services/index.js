@@ -1,5 +1,13 @@
 var rss = require('child_process').fork( __dirname + '/rss/index');
 
+rss.on('exit', function(){
+	
+})
+
+
+
+
+
 /*require("mongooseDb");
 
 var Feed = require('models/rss/feed');

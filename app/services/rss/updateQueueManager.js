@@ -11,7 +11,8 @@ clientRedis.auth(config.get('redis_settings:pass'))
 
 function UpdateQueueManager(){
     this.opts = {
-        maxWorkersCount: 1
+        maxWorkersCount: 5,
+        maxTimeLiveworker: 60000*1.5//ms   //  60000*1.5 - полторы минуты
     }
     _.bindAll(this, "monitorQueue", "monitorWorkers");
 }
@@ -19,8 +20,10 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 500);
-        this.intervalWorkers = setInterval(_this.monitorWorkers, 500);
+        this.intervalQueue = setInterval(_this.monitorQueue, 5000);
+        this.intervalWorkers = setInterval(_this.monitorWorkers, 2000);
+
+        this.monitorQueue();
     },
 
     monitorWorkers: function(){
@@ -40,20 +43,33 @@ UpdateQueueManager.prototype = {
                     clientRedis.rpush(config.get('redis:queue:rss_new_feed'),  JSON.stringify(post));
                 });
 
-                workers.splice(i, 1);
-                i--;
-                max--;
-
                 var recalculateUnread = new RecalculateUnread()
                 recalculateUnread.execute( worker.getFeedId() );
+
+                //delete worker
+                worker = null;
+
+                workers.splice(i, 1);
+
+                i--;
+                max--;
 
             }else if( worker.state == 3 ){
                 //error state
                 //return task to queue
                 //clientRedis.rpush(config.get('redis:queue:rss_feed_need_update'),  JSON.stringify(worker.task));
+                worker = null;
                 workers.splice(i, 1);
                 i--
                 max--
+            }else if( worker.state == 4 ){
+                var executeTime = new Date() - worker.start;
+                if( executeTime > this.opts.maxTimeLiveworker ){
+                    worker = null;
+                    workers.splice(i, 1);
+                    i--
+                    max--
+                }
             }
 
         }
@@ -83,6 +99,12 @@ UpdateQueueManager.prototype = {
             }
 
             task = JSON.parse(task);
+
+            if( !task.name || !task.data) {
+                logger.log('info', "Invalid task");
+                return false
+            };
+
             worker = new Worker(task);
             workers.push( worker );
 

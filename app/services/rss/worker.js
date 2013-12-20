@@ -65,6 +65,7 @@ Worker.prototype = {
         if(!this._valid()) {
             this.error = "task is not valid";
             _this.calculateExecuteTime();
+            _this.state = state.WORKER_ERROR;
             return false;
         }
 
@@ -133,7 +134,7 @@ Worker.prototype = {
     },
 
     getFeedId: function(){
-         return this.task.data._id
+        return this.task.data._id
     }
 }
 
