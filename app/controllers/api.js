@@ -5,6 +5,7 @@ var UserModel = require('../models/user/user'),
     PostModel = require('../models/blog/post'),
     PresetModel = require('../models/preset/preset'),
     url = require('url'),
+    async = require('async'),
     jQuery = require( "jquery"),
     HttpError = require('error').HttpError,
     _ = require('underscore');
@@ -251,6 +252,58 @@ var controller = {
 
         },
 
+
+        /*getEventsToShow: function(request, response ){
+            var data = request.body;
+
+            if( !data.dt_range ) {
+                response.statusCode = 400;
+                response.send("dt_range is necessary");
+                return false;
+            }
+
+            data.dt_range.start.startObj = new Date(data.dt_range.start.startObj);
+            data.dt_range.end.endObj = new Date(data.dt_range.end.endObj);
+
+
+            async.paralell([
+                function(cb){
+
+                    EventModel.getEventsToShow( data, function(err, events){
+                        if( err ){
+                            cb(err);
+                            return false;
+                        }
+
+                        cb(null, events);
+                    });
+
+                },
+                function(cb){
+
+                    TaskListModel.getTasksForEventTable( data, function(err, lists){
+                        if( err ){
+                            cb(err);
+                            return false;
+                        }
+
+                        cb(null, events);
+                    });
+
+                },
+                ], function(err, results){
+
+                    if( err ){
+                        response.send(err);
+                        return false;
+                    }
+
+                    console.log( result );
+
+            })
+        },*/
+
+
         get: function( request, response ){
             var id = request.params.id;
 
@@ -298,6 +351,7 @@ var controller = {
             var data = request.body;
 
             if(data.date) data.date = new Date(data.date);
+
 
 
             var task = new TaskModel( data );
@@ -421,6 +475,8 @@ var controller = {
             if( !parts.query._id ){
                 response.send(null);
             }
+
+            if(parts.query.date) parts.query.date = new Date(parts.query.date);
 
             TaskModel.getTasks( parts.query._id, function(err, events){
                 controller.task._getTasks( err, events, response )

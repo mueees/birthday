@@ -15,7 +15,12 @@ define([
             isSaved: false
         },
         idAttribute: '_id',
-        urlRoot: App.config.api.task
+        urlRoot: App.config.api.task,
+
+        parse: function (response) {
+            response.date = new Date(response.date);
+            return response;
+        }
     })
 
 })

@@ -20,8 +20,8 @@ function UpdateQueueManager(){
 UpdateQueueManager.prototype = {
     init: function(){
         var _this = this;
-        this.intervalQueue = setInterval(_this.monitorQueue, 200);
-        this.intervalWorkers = setInterval(_this.monitorWorkers, 200);
+        this.intervalQueue = setInterval(_this.monitorQueue, 5000);
+        this.intervalWorkers = setInterval(_this.monitorWorkers, 5000);
 
         this.monitorQueue();
     },
