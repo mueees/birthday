@@ -141,4 +141,4 @@ socketServer.start(server);
 //require('services/index');
 
 //start cron
-//var cron = require('child_process').fork( __dirname + '/cron');
+var cron = require('child_process').fork( __dirname + '/cron');

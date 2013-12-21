@@ -23,7 +23,7 @@ UpdateFeedWorker.prototype = {
     },
 
     startJobByCron: function(){
-        new cronJob('10 * * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
+        new cronJob('2 * * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
     },
 
     setAllFeedToQueue: function(){

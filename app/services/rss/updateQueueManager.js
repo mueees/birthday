@@ -4,7 +4,7 @@ var _ = require('underscore'),
     logger = require("libs/log")(module),
     clientRedis = redis.createClient( config.get('redis_settings:port'), config.get('redis_settings:host')),
     Worker = require('./worker'),
-    workers = []
+    workers = [],
     RecalculateUnread = require('action/rss/feed_recalculateUnread').RecalculateUnread;
 
 clientRedis.auth(config.get('redis_settings:pass'))
@@ -22,8 +22,6 @@ UpdateQueueManager.prototype = {
         var _this = this;
         this.intervalQueue = setInterval(_this.monitorQueue, 5000);
         this.intervalWorkers = setInterval(_this.monitorWorkers, 5000);
-
-        this.monitorQueue();
     },
 
     monitorWorkers: function(){
