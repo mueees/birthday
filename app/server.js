@@ -35,10 +35,10 @@ app.set('views', __dirname + "/templates");
 app.set('view engine', 'hbs');
 
 //todo:remove
-app.use(function(req, res, next){
+/*app.use(function(req, res, next){
     req.session.isHaveAccess = true;
     next();
-})
+})*/
 
 // error handling
 app.use( require("middleware/sendHttpError") );
@@ -137,8 +137,7 @@ socketServer.use(function(err, req, res, next){
 socketServer.start(server);
 
 //start services
-//require('services/rss/index');
-//require('services/index');
+require('services/rss/index');
 
 //start cron
-//var cron = require('child_process').fork( __dirname + '/cron');
+var cron = require('child_process').fork( __dirname + '/cron');
