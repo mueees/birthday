@@ -224,22 +224,22 @@ var controller = {
 
         },
 
-        getEventsToShow: function(request, response ){
-            var data = request.body;
+        /*getEventsToShow: function(request, response ){
+         var data = request.body;
 
-            if( !data.dt_range ) {
-                response.statusCode = 400;
-                response.send("dt_range is necessary");
-                return false;
-            }
+         if( !data.dt_range ) {
+         response.statusCode = 400;
+         response.send("dt_range is necessary");
+         return false;
+         }
 
-            data.dt_range.start.startObj = new Date(data.dt_range.start.startObj);
-            data.dt_range.end.endObj = new Date(data.dt_range.end.endObj);
+         data.dt_range.start.startObj = new Date(data.dt_range.start.startObj);
+         data.dt_range.end.endObj = new Date(data.dt_range.end.endObj);
 
-            EventModel.getEventsToShow( data, function(err, events){
-                controller.event._getEventsToShow( err, events, response )
-            });
-        },
+         EventModel.getEventsToShow( data, function(err, events){
+         controller.event._getEventsToShow( err, events, response )
+         });
+         },*/
 
         _getEventsToShow: function( err, events, response ){
 
@@ -253,7 +253,7 @@ var controller = {
         },
 
 
-        /*getEventsToShow: function(request, response ){
+        getEventsToShow: function(request, response ){
             var data = request.body;
 
             if( !data.dt_range ) {
@@ -265,9 +265,10 @@ var controller = {
             data.dt_range.start.startObj = new Date(data.dt_range.start.startObj);
             data.dt_range.end.endObj = new Date(data.dt_range.end.endObj);
 
-
-            async.paralell([
+            async.parallel([
                 function(cb){
+
+                    //get events
 
                     EventModel.getEventsToShow( data, function(err, events){
                         if( err ){
@@ -281,27 +282,111 @@ var controller = {
                 },
                 function(cb){
 
-                    TaskListModel.getTasksForEventTable( data, function(err, lists){
+                    //get tasks
+
+                    TaskModel.getTasksForEventTable( data, function(err, tasks){
+                        if( err ){
+                            cb(err);
+                            return false;
+                        }
+                        tasks = controller.event.convertTaskToEventFormat(tasks);
+
+                        cb(null, tasks);
+                    });
+
+                },
+                function(cb){
+                    UserModel.getUserForEventTable(data, function(err, users){
                         if( err ){
                             cb(err);
                             return false;
                         }
 
-                        cb(null, events);
-                    });
 
-                },
-                ], function(err, results){
+                        users = controller.event.convertUserToEventFormat(users);
 
-                    if( err ){
-                        response.send(err);
-                        return false;
-                    }
+                        cb(null, users);
+                    })
+                }
 
-                    console.log( result );
+
+            ], function(err, results){
+
+                if( err ){
+                    console.log(err);
+                    response.send(err);
+                    return false;
+                }
+
+                response.send(_.union(results[0], results[1], results[2]));
 
             })
-        },*/
+        },
+
+        convertUserToEventFormat: function(users){
+            var i,
+                result = [];
+
+            for( i = 0; i < users.length; i++ ){
+                users[i].dateStart = {
+                    year: users[i].dateBirthdayObj.getFullYear(),
+                    month: users[i].dateBirthdayObj.getMonth(),
+                    day: users[i].dateBirthdayObj.getDay(),
+                    dateStartObj: users[i].dateBirthdayObj,
+                    end: {
+                        hour: users[i].dateBirthdayObj.getHours(),
+                        minute: users[i].dateBirthdayObj.getMinutes()
+                    }
+                };
+                users[i].type = 'user';
+                result.push(users[i]);
+            }
+
+            return result;
+        },
+
+        convertTaskToEventFormat: function(tasks){
+
+            var i,
+                result = [];
+
+            for( i = 0; i < tasks.length; i++ ){
+                tasks[i].dateStart = {
+                    year: tasks[i].date.getFullYear(),
+                    month: tasks[i].date.getMonth(),
+                    day: tasks[i].date.getDay(),
+                    dateStartObj: tasks[i].date,
+                    end: {
+                        hour: tasks[i].date.getHours(),
+                        minute: tasks[i].date.getMinutes()
+                    }
+                };
+                tasks[i].type = 'task';
+                result.push(tasks[i]);
+            }
+
+            return result;
+
+            /*{
+                "title": "test",
+                "description": "",
+                "dateStart": {
+                "year": 2013,
+                    "month": 11,
+                    "day": 25,
+                    "start": {
+                    "hour": "19",
+                        "minute": "30"
+                },
+                "end": {
+                    "hour": "19",
+                        "minute": "30"
+                },
+                "dateStartObj": "2013-12-24T22:00:00.000Z"
+            },
+                "_idRaw": "52b7223e3281d3c054000001"
+            }*/
+        },
 
 
         get: function( request, response ){
@@ -351,8 +436,6 @@ var controller = {
             var data = request.body;
 
             if(data.date) data.date = new Date(data.date);
-
-
 
             var task = new TaskModel( data );
             task.save(function(err, result){

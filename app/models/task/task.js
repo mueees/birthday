@@ -10,24 +10,25 @@ util.inherits(Task, BaseModel);
 
 _.extend(Task, BaseModel, {
 
-    getTasksForEventTable: function( dt_range, cb ){
+    getTasksForEventTable: function( data, cb ){
         var _this = this;
+
+        var dt_range = data.dt_range;
 
         this.connection(function(err, db){
             if( err ){
                 cb(err);
             }else{
-                _this._getTasksForEventTable(dt_range, cb);
+                _this._getTasksForEventTable(dt_range, db, cb);
             }
         })
     },
 
-    _getTasksForEventTable: function(){
+    _getTasksForEventTable: function(dt_range, db, cb){
+
         var query = {
             date: {
-                $exist: true
-            },
-            date: {
+                $exists: true,
                 $lte: dt_range.end.endObj,
                 $gte: dt_range.start.startObj
             }
@@ -40,6 +41,36 @@ _.extend(Task, BaseModel, {
                 cb(null, tasks);
             }
         })
+
+        /*{ start:
+        { string: '23-12-2013',
+            year: '2013',
+            month: '12',
+            day: '23',
+            startObj: Mon Dec 23 2013 00:00:00 GMT+0200 (EET) },
+            end:
+            { string: '22-01-2014',
+                year: '2014',
+                month: '01',
+                day: '22',
+                endObj: Wed Jan 22 2014 00:00:00 GMT+0200 (EET) } }*/
+
+        /*{
+            "dateBirthday" : {
+            "year" : 1986,
+                "month" : 10,
+                "day" : 13
+        },
+            "wishes" : [ ],
+            "skypes" : [ ],
+            "phones" : [ ],
+            "realAddresses" : [ ],
+            "emails" : [ ],
+            "age" : 0,
+            "dateBirthdayObj" : ISODate("1986-11-12T22:00:00Z"),
+            "_id" : ObjectId("52b7c77ac3d66eee65000001")
+        }
+*/
     },
 
     getTasks: function( id, cb ){

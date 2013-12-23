@@ -17,7 +17,17 @@ define([
 
                 var data = event.toJSON();
 
-                if( date.valueOf() == data.dateStart.dateStartObj.valueOf() ) result.push(event.toJSON());
+                if( data.type == "user" ){
+
+                    if( date.getMonth() == data.dateStart.dateStartObj.getMonth() &&
+                        date.getDate() == data.dateStart.dateStartObj.getDate()) {
+                        result.push(event.toJSON());
+                    }
+                }else{
+                    if( date.valueOf() == data.dateStart.dateStartObj.valueOf() ) result.push(event.toJSON());
+                }
+
+
             })
             return result;
 

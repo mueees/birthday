@@ -18,7 +18,9 @@ define([
         urlRoot: App.config.api.task,
 
         parse: function (response) {
-            response.date = new Date(response.date);
+            if(response.date) {
+                response.date = new Date(response.date);
+            }
             return response;
         }
     })

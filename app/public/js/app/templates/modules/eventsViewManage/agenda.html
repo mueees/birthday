@@ -8,12 +8,31 @@
             <div class="eventsList">
                 <ul class="unstyled ">
                     <% _.each(dateObj.events, function(event){ %>
-                    <li data-rowid="<%= event._idRaw %>">
+                    <% if(event.type == "user") {%>
+                    <li data-rowid="<%= event._idRaw %>" class="user">
+                        <span>Birthday: </span>
+                        <span class="title"> <%= event.name %> <%= event.surName %> <%= event.middleName %></span>
+                    </li>
+                    <%}%>
+                    <% }) %>
+
+                    <% _.each(dateObj.events, function(event){ %>
+                    <% if(event.type == "task") {%>
+                    <li data-rowid="<%= event._idRaw %>" class="task">
+                        <span class="">task: </span>
+                        <span class="title"> <%= event.title %></span>
+                    </li>
+                    <%}%>
+                    <% }) %>
+
+                    <% _.each(dateObj.events, function(event){ %>
+                    <% if(event.type == "event") {%>
+                    <li data-rowid="<%= event._idRaw %>" class="event">
                         <div class="item change"><a href="#"><i class="icon-edit"></i></a></div>
-                        <div class="time item"><%= event.dateStart.start.hour %>:<%= event.dateStart.start.minute %> - <%= event.dateStart.end.hour %>:<%= event.dateStart.end.minute %></div>
                         <div class="title item"><%= event.title %></div>
                         <div class="clear"></div>
                     </li>
+                    <%}%>
                     <% }) %>
                 </ul>
             </div>

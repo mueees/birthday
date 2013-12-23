@@ -68,7 +68,7 @@ define([
                 },
 
                 changeEventError: function(model, response, options){
-                    debugger
+
                 },
 
                 removeEvent: function( data ){

@@ -125,6 +125,53 @@ _.extend(User, BaseModel, {
 
     },
 
+    getUserForEventTable: function(data, cb){
+        var _this = this;
+
+        var dt_range = data.dt_range;
+
+        this.connection(function(err, db){
+            if( err ){
+                cb(err);
+            }else{
+                _this._getUserForEventTable(dt_range, db, cb);
+            }
+        })
+    },
+
+    _getUserForEventTable: function(dt_range, db, cb){
+
+        var query = {
+            $or: [
+                //start
+                {
+                    "dateBirthday.month": dt_range.start.startObj.getMonth()*1,
+                    "dateBirthday.day": {
+                        $gte: dt_range.start.day*1,
+                        $lte: 31
+                    }
+                },
+
+                //end
+                {
+                    "dateBirthday.month": dt_range.end.endObj.getMonth()*1,
+                    "dateBirthday.day": {
+                        $gte: 1,
+                        $lte: dt_range.end.day*1
+                    }
+                }
+            ]
+        }
+
+        db.collection('user').find(query).toArray( function(err, result){
+            if(err){
+                cb(err)
+            }else{
+                cb(null, result)
+            }
+        })
+    },
+
     getCount: function( cb ){
 
         var _this = this;

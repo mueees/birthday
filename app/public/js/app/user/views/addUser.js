@@ -138,6 +138,7 @@ define([
 
         getBirthday: function(){
             var value = this.ui.birthdayInput.data('datepicker').getDate();
+
             return{
                 year: value.getFullYear(),
                 month: value.getMonth(),

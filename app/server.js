@@ -137,8 +137,8 @@ socketServer.use(function(err, req, res, next){
 socketServer.start(server);
 
 //start services
-require('services/rss/index');
+//require('services/rss/index');
 //require('services/index');
 
 //start cron
-var cron = require('child_process').fork( __dirname + '/cron');
+//var cron = require('child_process').fork( __dirname + '/cron');

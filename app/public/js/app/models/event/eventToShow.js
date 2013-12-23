@@ -29,7 +29,9 @@ define([
                 },
 
                 dateStartObj: ""
-            }
+            },
+
+            type: "event"
         },
         idAttribute: '_id',
         urlRoot: App.config.api.event

@@ -133,7 +133,6 @@ define([
 
             var API = {
                 addPost: function(){
-                    debugger
                     Controller.addPost();
                 },
                 setRegion: function( region ){
