@@ -296,6 +296,9 @@ var controller = {
 
                 },
                 function(cb){
+
+                    //get User birthday
+
                     UserModel.getUserForEventTable(data, function(err, users){
                         if( err ){
                             cb(err);

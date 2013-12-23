@@ -7,8 +7,8 @@ var BaseModel = require('./base/action'),
 
 function EmailAction(data){
 
-    if( !data.body )  {
-        throw new Error("Body should be!")
+    if( !data.html )  {
+        throw new Error("Body should be!");
     }
 
     var defaultOption = {

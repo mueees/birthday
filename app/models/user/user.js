@@ -140,27 +140,38 @@ _.extend(User, BaseModel, {
     },
 
     _getUserForEventTable: function(dt_range, db, cb){
+        var query;
 
-        var query = {
-            $or: [
-                //start
-                {
-                    "dateBirthday.month": dt_range.start.startObj.getMonth()*1,
-                    "dateBirthday.day": {
-                        $gte: dt_range.start.day*1,
-                        $lte: 31
+        if( dt_range.start.startObj.getMonth() == dt_range.end.endObj.getMonth() ){
+            query = {
+                "dateBirthday.month": dt_range.start.startObj.getMonth(),
+                "dateBirthday.day": {
+                        $gte: dt_range.start.startObj.getDate()*1,
+                        $lte: dt_range.end.endObj.getDate()*1
                     }
-                },
+            }
+        }else{
+            query = {
+                $or: [
+                    //start
+                    {
+                        "dateBirthday.month": dt_range.start.startObj.getMonth()*1,
+                        "dateBirthday.day": {
+                            $gte: dt_range.start.startObj.getDate()*1,
+                            $lte: 31
+                        }
+                    },
 
-                //end
-                {
-                    "dateBirthday.month": dt_range.end.endObj.getMonth()*1,
-                    "dateBirthday.day": {
-                        $gte: 1,
-                        $lte: dt_range.end.day*1
+                    //end
+                    {
+                        "dateBirthday.month": dt_range.end.endObj.getMonth()*1,
+                        "dateBirthday.day": {
+                            $gte: 1,
+                            $lte: dt_range.end.endObj.getDate()*1
+                        }
                     }
-                }
-            ]
+                ]
+            }
         }
 
         db.collection('user').find(query).toArray( function(err, result){

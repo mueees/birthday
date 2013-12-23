@@ -1,7 +1,40 @@
-<div>{{date}} - {{month}} - {{year}}</div>
+<div>
+<h2>Today</h2>
+( {{date}}.{{month}}.{{year}} )
+<hr />
+</div>
+
+<strong>Events</strong>
 {{#each events}}
 <ul>
     <li>{{title}}</li>
 </ul>
+{{/each}}
 
+<strong>Tasks</strong>
+{{#each tasks}}
+<ul>
+    <li>{{title}}</li>
+</ul>
+{{/each}}
+
+<strong>Birthday</strong>
+{{#each users}}
+<ul>
+    <li>
+    	<div>{{name}} {{surName}} {{middleName}}</div>
+    </li>
+</ul>
+{{/each}}
+
+
+<h2>Next week birthday</h2>
+<hr />
+{{#each usersNextWeek}}
+<ul>
+    <li>
+    	{{dateBirthdayObj}}
+    	<div>{{name}} {{surName}} {{middleName}}</div>
+    </li>
+</ul>
 {{/each}}
