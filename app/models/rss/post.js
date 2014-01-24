@@ -66,12 +66,12 @@ postSchema.methods._setImage = function(){
     var _this = this;
     if( this.image ) return false;
 
-    var images = $('<div>').html(this.description).find('img');
+    /*var images = $('<div>').html(this.description).find('img');
 
     images.each(function(i, image){
         if( _this.image ) return false;
         _this.image = $(image).attr('src');
-    })
+    })*/
 
     if( !this.image ){
         this.image = "";

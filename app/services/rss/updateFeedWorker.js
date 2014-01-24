@@ -23,12 +23,11 @@ UpdateFeedWorker.prototype = {
     },
 
     startJobByCron: function(){
-        new cronJob('2 * * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
+        new cronJob('* 0,15,30,45 * * * *', this.setAllFeedToQueue, null, true, "Europe/Kiev");
     },
 
     setAllFeedToQueue: function(){
         var _this = this;
-
         logger.log('info', "Find feeds and add it to queue");
 
         async.waterfall([

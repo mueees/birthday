@@ -30,6 +30,9 @@ define([
 
                     sock = new SockJS(App.config.websocket.url);
                     sock.onmessage = function(e){_this.onMessage(e)};
+                    sock.onclose = function() {
+                        _this.onClose();
+                    };
                     socketState = true;
                     if(intervalReconnect){
                         clearInterval(intervalReconnect);
@@ -80,7 +83,7 @@ define([
                 onClose: function(){
                     socketState = false;
                     if( !opts.reconnect ) return false;
-                    intervalReconnect  = setInterval(Controller.init, opts.timeIntervalReconnect);
+                    intervalReconnect  = setInterval(function(){ Controller.init() }, opts.timeIntervalReconnect);
                 },
 
                 publish: function(message){

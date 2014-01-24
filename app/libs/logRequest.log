@@ -47,3 +47,1033 @@
 {"level":"info","message":"Message sent: 250 2.0.0 OK 1387792808 np10sm11229888lbb.7 - gsmtp","timestamp":"2013-12-23T10:00:09.041Z"}
 {"status":404,"url":"/socket/info","level":"warn","message":"","timestamp":"2013-12-23T10:03:04.777Z"}
 {"status":404,"url":"/socket/info","level":"warn","message":"","timestamp":"2013-12-23T10:03:20.988Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:49.992Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:49.994Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:50.197Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:50.219Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:50.398Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:50.400Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:50.599Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:50.600Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:50.801Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:50.804Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:51.002Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:51.003Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:51.204Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:51.205Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:51.405Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:51.406Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:51.608Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:51.608Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:51.808Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:51.809Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:52.009Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:52.011Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:52.212Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T21:32:52.213Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T21:32:52.412Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T21:32:52.613Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T21:32:52.815Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T21:32:53.015Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T21:32:53.236Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T21:32:53.438Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T21:32:53.642Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T21:32:53.870Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T21:32:54.072Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T21:32:54.272Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T21:32:54.482Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:54.682Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:54.910Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:55.110Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:55.424Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:55.624Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:55.825Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:56.032Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:56.233Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:56.434Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:56.636Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:56.837Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:57.038Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:57.238Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T21:32:57.440Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:35:07.419Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:36:25.771Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:38:20.601Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:39:05.987Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:40:27.470Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-24T21:41:57.443Z"}
+{"error":{"status":401,"message":"You are not login"},"level":"error","message":"","timestamp":"2014-01-24T21:43:37.872Z"}
+{"error":{"status":401,"message":"You are not login"},"level":"error","message":"","timestamp":"2014-01-24T21:43:43.958Z"}
+{"error":{"status":401,"message":"You are not login"},"level":"error","message":"","timestamp":"2014-01-24T21:43:48.419Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600382 bo10sm2471767lbb.16 - gsmtp","timestamp":"2014-01-24T21:53:04.090Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600441 ld10sm3388671lab.8 - gsmtp","timestamp":"2014-01-24T21:54:03.654Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600495 p3sm3449294lae.2 - gsmtp","timestamp":"2014-01-24T21:54:57.749Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600497 mv9sm2529127lbc.0 - gsmtp","timestamp":"2014-01-24T21:54:59.149Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600497 g8sm3448815lae.1 - gsmtp","timestamp":"2014-01-24T21:54:59.595Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600681 n13sm2494065lbl.17 - gsmtp","timestamp":"2014-01-24T21:58:03.470Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600741 a8sm3431881lae.5 - gsmtp","timestamp":"2014-01-24T21:59:03.147Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600800 bn5sm2513393lbc.10 - gsmtp","timestamp":"2014-01-24T22:00:02.689Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390600861 n13sm2494764lbl.17 - gsmtp","timestamp":"2014-01-24T22:01:02.830Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:07:44.406Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:07:44.609Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:07:44.841Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:07:45.059Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:07:45.611Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:07:45.813Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:07:46.033Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:07:46.491Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:07:46.706Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:07:46.939Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:07:47.150Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:47.383Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:47.585Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:47.786Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:47.987Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:48.187Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:48.388Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:48.588Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:48.789Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:07:49.010Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:07:49.213Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:07:49.413Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:13.430Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:08:13.635Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:13.836Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:14.037Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:14.253Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:14.283Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:14.435Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:08:14.462Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:14.635Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:14.666Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:14.836Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:14.867Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:15.037Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:15.069Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:15.237Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:15.270Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:15.438Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:15.470Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:15.640Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:15.672Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:15.840Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:15.873Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:16.040Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:16.073Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:16.241Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:16.274Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:16.442Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:16.474Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:16.642Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:16.675Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:16.841Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:16.875Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:17.042Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:17.075Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:17.243Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:17.275Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:17.475Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:08:17.675Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:17.876Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:18.109Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:18.315Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:08:18.515Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:08:18.716Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:08:18.947Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:08:19.150Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:08:19.374Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:08:19.603Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:19.807Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:20.250Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:20.456Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:20.661Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:43.119Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:43.324Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:08:43.546Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:43.820Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:43.926Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:44.023Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:44.482Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:44.701Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:44.925Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:44.934Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:45.128Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:08:45.365Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:08:45.586Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:08:45.787Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:45.954Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:45.972Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:08:45.991Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:08:46.339Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:46.430Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:08:46.566Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:46.600Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:08:46.877Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:46.916Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:46.994Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:47.116Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:47.201Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:47.360Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:47.448Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:47.594Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:47.649Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:47.818Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:47.883Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:48.121Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:48.121Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:48.233Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:48.343Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:48.439Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:48.621Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:48.679Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:48.845Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:48.918Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:49.047Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:49.121Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:49.123Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:49.269Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:49.397Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:49.472Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:49.542Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:49.697Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:49.749Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:49.937Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:50.171Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:08:50.189Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:08:58.340Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:08:58.345Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:08:58.550Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:08:58.750Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:08:58.951Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:59.191Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:08:59.397Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:08:59.602Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:08:59.870Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:09:00.076Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:09:00.146Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:09:00.315Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:09:00.529Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:09:00.736Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:09:00.943Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:09:01.397Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:09:01.603Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:09:01.866Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:09:02.143Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:09:02.451Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:09:02.653Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:09:02.859Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:09:03.208Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:09:03.449Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:09:03.790Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:09:04.030Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:09:04.238Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:09:04.634Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:09:04.924Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:09:05.163Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:09:05.555Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:04.256Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:04.260Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:04.453Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:04.459Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:04.652Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:04.660Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:04.853Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:04.860Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:05.053Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:05.061Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:05.253Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:05.261Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:05.454Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:05.462Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:05.655Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:05.663Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:05.855Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:05.864Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:06.055Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:06.065Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:06.256Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:06.266Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:06.456Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:06.468Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:06.657Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:06.668Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:06.857Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:06.869Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:11:07.057Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:11:07.070Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:11:07.273Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:11:07.473Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:11:07.673Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:11:07.875Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:11:08.075Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:11:08.277Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:11:08.480Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:11:08.681Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:11:08.891Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:11:09.093Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:11:09.297Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:09.498Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:09.699Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:09.900Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:10.111Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:10.312Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:10.527Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:10.727Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:10.927Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:11.129Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:11.330Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:11.531Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:11.732Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:11.938Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:12.139Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:12.340Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:12.542Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:12.743Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:12.944Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:13.145Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:11:13.345Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:12:52.542Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:12:52.747Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:12:52.948Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:12:53.162Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:12:53.456Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:12:53.656Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:12:53.910Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:12:54.155Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:12:54.356Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:12:54.563Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:12:54.820Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:55.020Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:55.221Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:55.422Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:55.624Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:55.824Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:56.025Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:56.227Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:56.428Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:56.630Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:56.830Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:57.031Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:57.231Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:57.432Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:57.634Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:57.835Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:58.035Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:58.236Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:58.437Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:58.638Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:58.838Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:59.038Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:59.239Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:59.439Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:59.641Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:12:59.841Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:00.043Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:00.244Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:00.450Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:00.651Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:00.853Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:01.058Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:01.259Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:01.459Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:01.661Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:01.862Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:02.062Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:02.263Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:02.464Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:02.665Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:02.865Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:03.067Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:03.267Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:03.467Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:03.668Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:03.868Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:04.070Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:04.270Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:04.471Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:04.671Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:04.871Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:05.081Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:13:05.294Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:05.340Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:05.529Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:05.733Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:05.971Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:06.185Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:06.345Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:13:06.412Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:13:06.636Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:13:06.858Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:13:07.064Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:13:07.277Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:07.376Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:13:07.501Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:13:07.708Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:13:07.968Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:13:08.512Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:08.513Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:13:08.733Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:09.049Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:09.359Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:09.660Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:09.661Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:09.877Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:10.112Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:13:10.355Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:13:10.561Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:13:10.691Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:10.780Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:11.219Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:11.514Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:13:11.756Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:18:32.414Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:18:32.622Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:18:32.823Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:33.025Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:33.230Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:33.430Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:33.431Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:33.632Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:33.633Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:33.832Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:33.832Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:34.033Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:34.033Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:34.237Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:34.237Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:34.437Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:34.439Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:34.638Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:34.639Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:34.837Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:34.840Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:35.037Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:35.041Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:35.239Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:35.242Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:35.440Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:35.444Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:35.641Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:35.647Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:35.841Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:35.847Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:36.042Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:36.049Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:36.243Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:36.250Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:36.444Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:36.451Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:36.644Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:36.652Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:36.845Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:36.852Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:37.046Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:37.053Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:37.247Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:37.254Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:37.447Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:37.454Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:37.655Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:37.856Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:38.058Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:38.258Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:38.461Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:38.661Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:38.861Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:39.061Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:39.261Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:39.461Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:39.662Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:39.862Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:40.064Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:40.265Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:40.465Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:40.666Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:40.869Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:41.070Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:41.273Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:41.475Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:41.675Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:41.877Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:42.080Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:42.280Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:42.481Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:42.681Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:42.881Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:43.084Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:43.285Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:43.486Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:43.687Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:43.889Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:44.090Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:44.291Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:44.491Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:44.692Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:44.894Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:45.095Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:45.296Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:45.497Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:45.699Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:45.899Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:46.099Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:46.299Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:46.499Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:46.701Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:46.903Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:47.103Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:47.303Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:47.504Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:47.705Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:47.906Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:48.109Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:48.311Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:48.513Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:18:48.713Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:48.914Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:49.114Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:49.314Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:49.516Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:49.717Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:49.922Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:50.131Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:50.403Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:18:50.614Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:50.819Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:51.019Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:51.226Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:51.430Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:51.631Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:51.831Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:52.033Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:52.236Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:52.444Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:52.647Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:52.851Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:53.055Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:53.258Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:53.469Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:53.680Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:53.880Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:54.091Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:18:54.293Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:54.496Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:18:54.709Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:54.917Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:55.118Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:55.324Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:55.527Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:55.736Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:55.945Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:56.146Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:56.357Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:56.567Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:56.767Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:56.968Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:57.174Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:57.393Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:57.621Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:18:57.829Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:58.030Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:58.230Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:18:58.431Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:58.633Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:18:58.834Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:58.871Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:59.040Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:59.065Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:59.241Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:59.266Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:18:59.445Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:59.468Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:18:59.646Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:59.671Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:18:59.847Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:18:59.870Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:00.047Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:00.070Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:00.249Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:00.273Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:00.450Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:00.479Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:00.650Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:00.680Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:00.850Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:00.879Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:01.050Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:01.078Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:01.251Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:01.279Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:01.451Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:01.479Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:01.651Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:01.680Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:01.853Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:01.880Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:02.053Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:02.081Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:02.254Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:02.281Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:02.454Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:19:02.482Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:02.656Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:02.856Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:03.058Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:03.264Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:03.465Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:19:03.667Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:19:03.867Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:19:04.069Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:19:04.269Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:04.471Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:19:04.677Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:04.882Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:05.084Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:05.217Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:05.285Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:05.496Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:05.716Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:05.916Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:06.117Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:06.215Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:06.319Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:06.520Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:06.721Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:06.921Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:07.123Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:07.217Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:07.324Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:07.525Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:07.726Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:07.926Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:08.128Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:08.217Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:08.328Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:08.530Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:08.731Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:08.932Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:09.133Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:09.217Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:09.333Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:09.534Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:09.735Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:09.937Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:10.138Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:19:10.225Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:10.339Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:10.540Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:10.741Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:19:10.942Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:11.145Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:11.357Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:11.567Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:11.786Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:12.025Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:12.260Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:12.489Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:12.747Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:12.959Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:13.194Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:13.409Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:13.707Z"}
+{"level":"info","message":"Workers length: 29","timestamp":"2014-01-24T22:19:13.976Z"}
+{"level":"info","message":"Workers length: 28","timestamp":"2014-01-24T22:19:14.235Z"}
+{"level":"info","message":"Workers length: 26","timestamp":"2014-01-24T22:19:14.488Z"}
+{"level":"info","message":"Workers length: 23","timestamp":"2014-01-24T22:19:14.734Z"}
+{"level":"info","message":"Workers length: 21","timestamp":"2014-01-24T22:19:14.964Z"}
+{"level":"info","message":"Workers length: 19","timestamp":"2014-01-24T22:19:15.212Z"}
+{"level":"info","message":"Workers length: 16","timestamp":"2014-01-24T22:19:15.427Z"}
+{"level":"info","message":"Workers length: 13","timestamp":"2014-01-24T22:19:15.646Z"}
+{"level":"info","message":"Workers length: 13","timestamp":"2014-01-24T22:19:15.877Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:19:16.128Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:19:16.333Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:19:16.563Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:19:16.799Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:19:17.046Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:19:17.352Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:19:17.684Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:19:18.020Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:19:18.416Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:19:18.856Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:19:19.150Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:19:19.436Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:19:23.037Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:19:27.406Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:32.870Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:33.078Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:19:33.306Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:19:33.514Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:19:33.744Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:19:34.013Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:19:34.419Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:19:34.653Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:19:36.569Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:19:39.546Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:19:43.085Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:19:47.302Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:21:07.183Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:21:07.387Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:21:07.588Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:21:07.792Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:21:08.122Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:21:08.121Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:21:08.323Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:21:08.529Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:21:08.853Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:21:09.098Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:21:09.183Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:21:09.398Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:21:09.613Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:21:09.832Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:21:10.035Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:21:10.260Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:21:10.260Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:21:10.605Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:21:10.831Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:21:11.181Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:22:11.150Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:22:11.353Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:11.571Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:11.749Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:22:11.773Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:11.950Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:22:11.982Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:12.149Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:12.183Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:12.349Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:12.383Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:12.548Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:12.583Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:12.750Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:12.785Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:12.950Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:12.986Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:13.150Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:13.186Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:13.351Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:13.388Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:13.552Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:13.591Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:13.752Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:13.791Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:13.957Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:13.992Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:14.157Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:14.194Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:14.358Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:14.394Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:14.558Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:14.594Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:14.759Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:14.796Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:14.961Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:14.997Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:15.163Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:15.197Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:15.364Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:15.397Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:15.564Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:15.598Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:15.765Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:15.799Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:15.966Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:16.000Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:16.167Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:16.201Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:22:16.367Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:22:16.401Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:22:16.602Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:22:16.803Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:17.003Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:17.204Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:17.405Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:22:17.606Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:22:17.867Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:22:18.071Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:18.272Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:18.574Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:18.782Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:19.048Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:19.250Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:19.460Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:22:19.750Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:22:20.025Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:22:20.236Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:20.442Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:20.644Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:20.878Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:21.083Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:22:21.284Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:23:27.866Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:23:28.071Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:28.273Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:28.473Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:28.674Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:28.875Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:28.884Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:29.073Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:29.085Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:29.274Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:29.289Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:29.475Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:29.495Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:29.679Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:29.696Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:29.877Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:29.898Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:30.079Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:30.098Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:30.279Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:30.300Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:30.479Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:30.500Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:30.680Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:30.701Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:30.881Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:30.902Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:31.082Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:31.102Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:31.282Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:31.303Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:31.483Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:31.504Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:31.684Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:31.705Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:31.885Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:31.906Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:23:32.086Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:32.107Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:32.308Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:32.509Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:32.710Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:23:32.911Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:23:33.112Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:33.313Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:33.514Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:33.714Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:33.915Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:34.115Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:34.322Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:34.523Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:23:34.723Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:34.930Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:35.131Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:35.336Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:35.538Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:35.744Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:35.946Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:36.161Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:36.368Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:36.569Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:36.769Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:36.971Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:37.173Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:37.379Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:37.590Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:37.791Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:38.055Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:38.290Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:38.492Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:38.693Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:38.893Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:39.093Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:39.294Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:39.496Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:39.697Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:39.898Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:40.099Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:40.311Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:40.513Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:40.717Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:40.925Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:41.126Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:41.332Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:41.533Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:41.745Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:41.948Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:42.150Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:42.354Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:42.566Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:42.767Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:42.969Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:43.172Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:43.390Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:43.592Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:43.793Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:23:43.994Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:44.195Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:44.396Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:44.596Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:44.800Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:45.000Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:45.201Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:45.401Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:45.601Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:45.801Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:46.001Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:46.204Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:46.405Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:46.609Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:46.816Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:47.018Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:47.221Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:47.424Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:47.626Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:47.833Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:48.033Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:48.235Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:48.443Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:48.644Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:48.861Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:49.074Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:49.305Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:49.512Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:23:49.714Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:49.915Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:50.116Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:50.318Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:50.519Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:50.720Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:50.933Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:51.139Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:51.343Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:51.543Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:51.745Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:51.945Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:52.145Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:52.355Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:52.556Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:52.778Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:52.989Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:53.215Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:53.423Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:53.623Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:53.827Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:54.039Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:54.239Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:54.439Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:54.640Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:54.840Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:55.099Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:55.307Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:23:55.517Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:23:55.719Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:23:55.919Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:23:56.120Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:56.321Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:56.522Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:56.734Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:56.934Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:57.135Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:57.335Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:57.538Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:57.740Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:57.942Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:23:58.158Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:58.364Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:58.575Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:58.775Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:58.975Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:59.178Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:59.393Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:23:59.616Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:23:59.820Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:00.023Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:00.229Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:00.438Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:00.663Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:00.891Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:24:01.092Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:01.292Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:01.493Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:01.693Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:01.895Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:02.095Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:02.297Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:02.499Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:02.532Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:02.700Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:02.727Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:02.901Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:02.946Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:03.102Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:03.142Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:03.304Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:03.334Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:03.506Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:03.535Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:03.709Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:03.736Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:03.909Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:03.957Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:04.114Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:04.160Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:04.315Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:04.374Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:04.516Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:04.565Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:04.723Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:04.768Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:04.923Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:04.977Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:05.125Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:05.185Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:05.326Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:05.372Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:05.526Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:05.572Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:24:05.663Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:05.728Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:05.775Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:05.935Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:06.005Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:24:06.151Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:06.233Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:24:06.481Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:06.536Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:24:06.682Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:24:06.682Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:06.734Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:24:06.883Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:06.952Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:24:07.096Z"}
+{"level":"info","message":"Invalid task","timestamp":"2014-01-24T22:24:07.159Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:24:07.331Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:24:07.551Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:24:09.279Z"}
+{"level":"info","message":"Workers length: 1","timestamp":"2014-01-24T22:24:09.279Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:11.711Z"}
+{"level":"info","message":"Find feeds and add it to queue","timestamp":"2014-01-24T22:24:11.714Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:11.982Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:12.904Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:13.147Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:17.200Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:22.200Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:25.363Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:25.577Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:25.788Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:26.016Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:24:26.230Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:24:26.459Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:24:26.683Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:26.899Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:27.160Z"}
+{"level":"info","message":"Workers length: 9","timestamp":"2014-01-24T22:24:27.367Z"}
+{"level":"info","message":"Workers length: 10","timestamp":"2014-01-24T22:24:27.594Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:27.828Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:28.096Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:28.337Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:28.556Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:28.774Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:29.080Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:30.783Z"}
+{"level":"info","message":"Workers length: 11","timestamp":"2014-01-24T22:24:33.927Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:24:37.818Z"}
+{"level":"info","message":"Workers length: 0","timestamp":"2014-01-24T22:24:42.319Z"}
+{"level":"info","message":"Workers length: 2","timestamp":"2014-01-24T22:24:46.498Z"}
+{"level":"info","message":"Workers length: 3","timestamp":"2014-01-24T22:24:46.715Z"}
+{"level":"info","message":"Workers length: 4","timestamp":"2014-01-24T22:24:46.935Z"}
+{"level":"info","message":"Workers length: 5","timestamp":"2014-01-24T22:24:47.139Z"}
+{"level":"info","message":"Workers length: 6","timestamp":"2014-01-24T22:24:47.346Z"}
+{"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:47.578Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:24:49.439Z"}
+{"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:24:51.697Z"}
