@@ -12,7 +12,7 @@ clientRedis.auth(config.get('redis_settings:pass'))
 function UpdateQueueManager(){
     this.opts = {
         maxWorkersCount: 10,
-        maxTimeLiveworker: 60000*1.5//ms   //  60000*1.5 - полторы минуты
+        maxTimeLiveworker: 10000   //  60000*1.5 - полторы минуты
     }
     _.bindAll(this, "monitorQueue", "monitorWorkers");
 }

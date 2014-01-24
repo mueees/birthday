@@ -23,7 +23,8 @@ Worker.prototype = {
 
         if(!this._valid()) {
             this.error = "task is not valid";
-            _this.calculateExecuteTime();
+            this.state = state.WORKER_ERROR;
+            this.calculateExecuteTime();
             return false;
         }
 
