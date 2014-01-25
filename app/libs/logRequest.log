@@ -1077,3 +1077,6 @@
 {"level":"info","message":"Workers length: 7","timestamp":"2014-01-24T22:24:47.578Z"}
 {"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:24:49.439Z"}
 {"level":"info","message":"Workers length: 8","timestamp":"2014-01-24T22:24:51.697Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T09:12:41.601Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T09:12:48.760Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T09:13:00.239Z"}

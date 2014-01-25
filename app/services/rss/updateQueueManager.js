@@ -71,9 +71,12 @@ UpdateQueueManager.prototype = {
             }
 
         }
-        
-        logger.log('info', "Workers length: " + workers.length);
-        console.log("Workers length: " + workers.length);
+
+        if( workers.length > 0 ){
+            console.log(new Date());
+            console.log("Workers length: " + workers.length);
+        }
+
 
     },
 

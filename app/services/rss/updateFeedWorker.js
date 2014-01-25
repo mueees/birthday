@@ -49,9 +49,6 @@ UpdateFeedWorker.prototype = {
                     return false;
                 }
 
-                /*clientRedis.del(config.get('redis:queue:rss_feed_need_update'))
-                logger.log('info', "Delete all tasks");*/
-
                 _.each(feeds, function(feed){
                     var task = _this.makeTask(feed);
                     //add task to queue
@@ -66,9 +63,6 @@ UpdateFeedWorker.prototype = {
                     }
 
                     console.log(tasks.length + " tasks:");
-                    /*_.each(tasks, function(task){
-                        console.log(task);
-                    })*/
                 });
 
                 cb(null);
