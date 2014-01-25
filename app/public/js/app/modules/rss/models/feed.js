@@ -1,65 +1,84 @@
 define([
     'app/app',
-	'backbone',
+    'backbone',
     '../collections/posts'
-	], function(App, Backbone, PostCollection){
+], function(App, Backbone, PostCollection){
 
-		return Backbone.Model.extend({
+    return Backbone.Model.extend({
 
-            model: {
-                posts: PostCollection
-            },
+        model: {
+            posts: PostCollection
+        },
 
-            defaults: {
-				name: "",
-                url: "",
-                unread: "",
-                hasReadLater: false,
-                posts: null
-			},
+        defaults: {
+            name: "",
+            url: "",
+            unread: "",
+            hasReadLater: false,
+            posts: null
+        },
 
-            idAttribute: '_id',
+        idAttribute: '_id',
 
-            initialize: function(data){
-            },
+        initialize: function(data){
+        },
 
-            url: function(){
-                return App.config.api.rss.feed
-            },
+        url: function(){
+            return App.config.api.rss.feed
+        },
 
-            socket: true,
+        socket: true,
 
-            parse: function(response){
+        parse: function(response){
 
-                //debugger
-                for(var key in this.model)
-                {
-                    var embeddedClass = this.model[key];
-                    var embeddedData = response[key];
-                    response[key] = new embeddedClass(embeddedData, {parse:true});
-                    if (key == 'posts'){
-                        response[key].id_feed = this.get('_id');
-                    }
+            //debugger
+            for(var key in this.model)
+            {
+                var embeddedClass = this.model[key];
+                var embeddedData = response[key];
+                response[key] = new embeddedClass(embeddedData, {parse:true});
+                if (key == 'posts'){
+                    response[key].id_feed = this.get('_id');
                 }
-                return response;
-            },
-
-            toJSON: function() {
-                var json = Backbone.Model.prototype.toJSON.apply(this, arguments);
-                json.cid = this.cid;
-                return json;
-            },
-
-            getDataForSave: function(){
-                var data = this.toJSON();
-                delete data.posts;
-                return data;
-            },
-
-            getMore: function(options){
-                var postsCollection = this.get('posts');
-                postsCollection.getMore(options);
             }
-		})
+            return response;
+        },
+
+        toJSON: function() {
+            var json = Backbone.Model.prototype.toJSON.apply(this, arguments);
+            json.cid = this.cid;
+            return json;
+        },
+
+        getDataForSave: function(){
+            var data = this.toJSON();
+            delete data.posts;
+            return data;
+        },
+
+        getMore: function(options){
+            var postsCollection = this.get('posts');
+            postsCollection.getMore(options);
+        },
+
+        setAllPostUnread: function(options){
+            options = options || {};
+
+            _.extend(options, {
+                params: {
+                    _id: this.get('_id')
+                },
+                method: '/api/rss/post/setAllPostUnread',
+                success: function(model){
+                    model.set('unread', 0);
+                },
+                error: function(){
+
+                }
+            })
+
+            this.fetch(options);
+        }
+    })
 
 });

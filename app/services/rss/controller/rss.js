@@ -6,7 +6,7 @@ var CategoryModel = require('models/rss/category'),
     async = require('async'),
     _ = require('underscore'),
     RecalculateHasReadLater = require('action/rss/feed_recalculateHasReadLater').RecalculateHasReadLater;
-    url = require('url');
+url = require('url');
 
 var controller = {
 
@@ -65,7 +65,7 @@ var controller = {
                 res.send(categoriesFull);
             })
 
-            
+
         });
     },
 
@@ -86,7 +86,7 @@ var controller = {
 
             res.send(posts);
         })
-        
+
     },
 
     _unionCategoriesAndFeeds: function(categories, feeds){
@@ -201,7 +201,7 @@ var controller = {
                 globalCb(err);
                 return false;
             }
-            
+
             res.send();
 
         });
@@ -269,7 +269,7 @@ var controller = {
 
                     res.send();
                 })
-                
+
             });
 
         })
@@ -324,7 +324,7 @@ var controller = {
         }
 
         Post.update({ _id: data._id }, { isRead: data.isRead }, function (err, numberAffected, raw) {
-          if(err){
+            if(err){
                 next( new SocketError(400, "Cannot update isRead") );
                 return false;
             }
@@ -332,7 +332,7 @@ var controller = {
             res.send({
                 isRead: data.isRead
             });
-            
+
         });
     },
 
@@ -345,7 +345,7 @@ var controller = {
         }
 
         Post.update({ _id: data._id }, { readLater: data.readLater }, function (err, numberAffected, raw) {
-          if(err){
+            if(err){
                 next( new SocketError(400, "Cannot update readLater") );
                 return false;
             }
@@ -370,9 +370,47 @@ var controller = {
             res.send({
                 readLater: data.readLater
             });
-            
+
         });
-        
+
+    },
+
+    setAllPostUnread: function(req, res, next){
+        var data = req.body || req.params;
+
+        if( !data._id ){
+            next( new SocketError(400, "Id is required") );
+            return false;
+        }
+
+        async.parallel([
+            function(cb){
+                Post.update({id_feed: data._id, isRead: false},{ isRead: true }, {multi: true},
+                    function (err, numberAffected, raw) {
+                        if(err){
+                            cb(err);
+                            return false;
+                        }
+                        cb(null);
+                    });
+            },
+            function(cb){
+                Feed.update({_id: data._id}, {unread: 0}, function(err){
+                    if(err){
+                        cb(err);
+                        return false;
+                    }
+                    cb(null);
+                });
+            }
+        ], function(err){
+            if( err ){
+                next( new SocketError(400, "Cannot update isRead and unread") );
+                return false;
+            }
+            res.send();
+        });
+
     }
 }
 

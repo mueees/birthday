@@ -34,6 +34,21 @@ define([
                 dataToSave.push(category);
             })
             return dataToSave;
+        },
+
+        getFeedById: function(id){
+            var model;
+
+            this.each(function(category, i){
+                if(model) return;
+                category.get('feeds').each(function(feed, i){
+                    if( feed.get('_id') == id ){
+                        model = feed;
+                        return;
+                    }
+                })
+            })
+            return model;
         }
     })
 

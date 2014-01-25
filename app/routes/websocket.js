@@ -28,6 +28,7 @@ module.exports = function(server){
     server.use('/api/rss/getPostsByCreteria', rssController.getPostsByCreteria);
     server.use('/api/rss/post/postReadLater', rssController.postReadLater);
     server.use('/api/rss/post/changeIsReadState', rssController.changeIsReadState);
+    server.use('/api/rss/post/setAllPostUnread', rssController.setAllPostUnread);
 
     
 }

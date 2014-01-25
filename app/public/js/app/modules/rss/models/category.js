@@ -33,9 +33,18 @@ define([
                     var embeddedClass = this.model[key];
                     var embeddedData = response[key];
                     if( !embeddedData && this.get(key) ) continue;
+
                     response[key] = new embeddedClass(embeddedData, {parse:true});
+
+                    if( key == "feeds" ){
+                        response[key].on('change:unread', this.unreadChanged, this);
+                    }
                 }
                 return response;
+            },
+
+            unreadChanged: function(model){
+                this.trigger('change:unread', model);
             },
 
             save: function(key, value, options){

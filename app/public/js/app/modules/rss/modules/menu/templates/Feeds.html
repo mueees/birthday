@@ -6,15 +6,15 @@
 
 <ul class="categories">
 	<%  _.each(categories, function(category){ %>
-		<li>
-			<div class="tab">
+		<li data-id="<%= category._id %>">
+			<div class="tab categoryTab">
 				<span class="switcher">
 					<span class="icon-circle-arrow-down down"></span>
 					<span class="icon-circle-arrow-right right"></span>
 				</span>
 				<span class="name"><%= category.name %></span>
 				<span class="count">(<%= (category.feeds) ? category.feeds.length : 0 %>)</span>
-				<span class="unread">46</span>
+				<span class="unread"></span>
 			</div>
 			
 			<% if(category.feeds.length) {%>

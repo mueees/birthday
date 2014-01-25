@@ -11,7 +11,8 @@ define([
             "click .showSavedPost": "showSavedPost",
             "click .switcher": "changeSwitcher",
             "click .categories .feeds li" : "showFeed",
-            "click .categories .feeds li .saved" : "showSavedFeed"
+            "click .categories .feeds li .saved" : "showSavedFeed",
+            "click .categories .feeds .unread": "setAllPostUnread"
         },
 
         className: "feedContent",
@@ -22,6 +23,7 @@ define([
 
         initialize: function(options){
             this.collection = options.collection;
+            this.listenTo( this.collection, "change:unread", this.changeUnread);
             this.render();
         },
 
@@ -29,11 +31,22 @@ define([
             var view = this.template({
                 categories: this.collection.toJSON()
             });
+
             this.$el.html(view);
+            this.reRenderTotalUnreadPosts();
         },
 
-        onRender: function(){
+        reRenderTotalUnreadPosts: function(){
+            var total,
+                _this = this;
 
+            this.collection.each(function( category ){
+                total = 0;
+                category.get('feeds').each(function(feed){
+                    total += feed.get('unread');
+                });
+                _this.$el.find("[data-id='" + category.get('_id') + "']").find(".categoryTab .unread").html(total);
+            })
         },
 
         personalizeBtn: function(e){
@@ -81,8 +94,27 @@ define([
         removeAllActiveClass: function(){
             this.$el.find('.active').removeClass('active');
         },
+
+        setAllPostUnread: function(e){
+            if(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            var id = $(e.target).closest("li").data('id');
+            if(!id) return false;
+
+            this.trigger("isSetAllPostUnread", id);
+        },
+
+        changeUnread: function(model){
+            var id = model.get('_id');
+            this.$el.find("[data-id='" + id + "']").find(".unread").html(model.get('unread'));
+            this.reRenderTotalUnreadPosts();
+        },
+
         serializeData: function(){
-            return {}
+            return {};
         }
     })
 

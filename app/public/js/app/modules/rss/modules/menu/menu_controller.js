@@ -11,10 +11,12 @@ define([
     '../../collections/categories',
 
     /*models*/
-    './models/AddFeedModel'
+    './models/AddFeedModel',
+
+    /*modules*/
+    'app/modules/dialog/module'
 
 ], function(App, Marionette, TabView, AddView, FeedsView, Categories, AddFeedModel){
-
 
     App.module("Rss.Menu", {
 
@@ -24,6 +26,7 @@ define([
 
             /*modules*/
             var Notify = App.module("Notify");
+            var Dialog = App.module('Dialog');
 
             var Controller = {
                 showMenu: function( layout ){
@@ -72,6 +75,24 @@ define([
 
                         feedsTab.on('showSavedFeed', function(data){
                             App.channels.rss.trigger( 'showSavedFeed', data );
+                        })
+
+                        feedsTab.on('isSetAllPostUnread', function(id){
+                            var confirm = Dialog.API.factory({
+                                type: 'confirm',
+
+                                title: "Attention",
+                                text: "Do you want set all post like read?"
+                            });
+
+                            this.listenTo(confirm, "accept", function(){
+                                var feedModel = categories.getFeedById(id);
+                                if(!feedModel) return false;
+                                feedModel.setAllPostUnread();
+                            });
+
+                            confirm.show();
+                            return false;
                         })
                         
                     });
