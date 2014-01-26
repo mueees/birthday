@@ -1139,3 +1139,4 @@
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T21:14:19.421Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T21:15:25.678Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-01-25T21:16:51.527Z"}
+{"level":"info","message":"Message sent: 250 2.0.0 OK 1390685404 w2sm3870564lad.4 - gsmtp","timestamp":"2014-01-25T21:30:04.660Z"}
