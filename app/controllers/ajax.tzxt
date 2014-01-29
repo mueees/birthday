@@ -1,0 +1,57 @@
+$.ajax({
+	type: 'post',
+	url: "/api/tag/add",
+	data: {
+		name: ''
+	}
+})
+
+$.ajax({
+	type: 'post',
+	url: "/api/tag/edit/52e90cb990a6498b11000001",
+	data: {
+		name: 'new name2'
+	}
+})
+
+$.ajax({
+	type: 'post',
+	url: "/api/tag/delete/52e8ef471f824aee08000001",
+})
+
+$.ajax({
+	type: 'get',
+	url: "/api/tag/52e90cb990a6498b11000001",
+})
+
+
+$.ajax({
+	type: 'get',
+	url: "/api/tags",
+})
+
+____________________
+
+$.ajax({
+	type: 'post',
+	url: "/api/doc/add",
+	data: {
+		title: 'first doc',
+		body: "this is body"
+	}
+})
+
+$.ajax({
+	type: 'post',
+	url: "/api/doc/delete/52e91abe3428af5313000001"
+})
+
+$.ajax({
+	type: 'get',
+	url: "/api/doc/52e91b26c1a7c5711e000001",
+})
+
+$.ajax({
+	type: 'get',
+	url: "/api/docs",
+})

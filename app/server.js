@@ -35,10 +35,10 @@ app.set('views', __dirname + "/templates");
 app.set('view engine', 'hbs');
 
 //todo:remove
-/*app.use(function(req, res, next){
+app.use(function(req, res, next){
     req.session.isHaveAccess = true;
     next();
-})*/
+})
 
 // error handling
 app.use( require("middleware/sendHttpError") );
@@ -87,7 +87,7 @@ app.use(function(err, req, res, next){
 var server = http.createServer(app);
 server.listen(config.get("port"));
 
-//create websocket server
+/*//create websocket server
 var socketServer = require('socketServer/socketServer');
 //add routing for client request
 require('routes/websocket')(socketServer);
@@ -134,10 +134,10 @@ socketServer.use(function(err, req, res, next){
     }
 })
 
-socketServer.start(server);
+socketServer.start(server);*/
 
 //start services
 //require('services/rss/index');
 
 //start cron
-var cron = require('child_process').fork( __dirname + '/cron');
+//var cron = require('child_process').fork( __dirname + '/cron');

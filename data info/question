@@ -45,19 +45,15 @@
 
 3.
 
-POST /api/entity/add {fields}
+POST /api/doc/add {fields}
+POST /api/doc/remove/:id
+GET  /api/docs {fields}
+GET  /api/doc/:id
 
-
-/api/entity/add
-/api/entity/remove/:id
-/api/entity/getByTag
-
-/api/entity/tags/add
-/api/entity/tags/remove/:id
-/api/entity/tags/getAll
-/api/entity/tags/edit
-/api/entity/:id/setIsRead
-/api/entity/:id/setImportant
+POST /api/tag/add {fields}
+POST /api/tag/remove/:id
+GET  /api/tags {fields}
+POST /api/tag/edit/:id {fields}
 
 - добавление статьи
 /api/entity/add

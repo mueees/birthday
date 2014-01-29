@@ -2,6 +2,8 @@ var rootController = require('../controllers/rootcontroller');
 var apiController = require('../controllers/api');
 var fileBrowserController = require('../controllers/fileBrowser');
 var twitterController = require('../controllers/twitter');
+var docController = require('../controllers/docController');
+var tagController = require('../controllers/tagController');
 var checkoAuth = require('middleware/checkAuth');
 var HttpError = require('error').HttpError;
 var config = require("config");
@@ -62,6 +64,20 @@ module.exports = function(app) {
     //twitter
     app.post("/api/twitter/stream", middleware, twitterController.saveNewStream);
     app.post("/api/twitter/getStreams", middleware, twitterController.getStreams);
+
+    //docs
+    app.post("/api/doc/add" , middleware, docController.add); //{fields}
+    app.post("/api/doc/delete/:id" , middleware, docController.delete);
+    app.get("/api/doc/:id", middleware, docController.doc); //{fields}
+    app.get("/api/docs", middleware, docController.docs); //{fields}
+
+    //tag
+    app.post("/api/tag/add", middleware, tagController.add); //{fields}
+    app.post("/api/tag/delete/:id", middleware, tagController.delete);
+    app.post("/api/tag/edit/:id", middleware, tagController.edit); //{fields}
+    app.get("/api/tags", middleware, tagController.tags); //{fields}
+    app.get("/api/tag/:id", middleware, tagController.tag); //{fields}
+
 
     //login
     app.post("/api/login", function( req, res, next ){
