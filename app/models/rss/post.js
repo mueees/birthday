@@ -78,6 +78,7 @@ postSchema.methods._setImage = function(){
     }
 
 }
+
 postSchema.statics.getPosts = function(data, cb){
 
     var query = {
@@ -97,7 +98,6 @@ postSchema.statics.getPosts = function(data, cb){
     }, cb);
 
 }
-
 
 var Post = mongoose.model('rss_post', postSchema);
 

@@ -22,10 +22,93 @@
 Иметь возможность создавать связанные посты.
 
 Шаги.
-Продумать таблицу (таблицы) с подходящими полями.
-Продумать таксономию.
-Продумать АПИ для редактирования и доступа к такому сервису.
+1. Продумать таблицу (таблицы) с подходящими полями.
+2. Продумать таксономию.
+3. Продумать АПИ для редактирования и доступа к такому сервису.
 Реализовать АПИ (серверное) - только на добавление постов.
 Реализовать автоматическое сохранение любого помеченного поста в рсс в хранилище.
 Продумать интерфейс досупа к такой информации.
 Реализовать интерфейс без возможности удаления и редактирования информации.
+
+1. entity
+- title
+- body
+- relatedEntity: id ...
+- linkToOriginal: ... / null
+- tags: [id, id, ...]
+- dateCreate: ...
+- isRead: ...
+- important: from 1 to 5
+
+2. tags
+- name
+
+3.
+
+POST /api/entity/add {fields}
+
+
+/api/entity/add
+/api/entity/remove/:id
+/api/entity/getByTag
+
+/api/entity/tags/add
+/api/entity/tags/remove/:id
+/api/entity/tags/getAll
+/api/entity/tags/edit
+/api/entity/:id/setIsRead
+/api/entity/:id/setImportant
+
+- добавление статьи
+/api/entity/add
+{
+    title: "",
+    body: "",
+    relatedEntity: [],
+    linkToOriginal: "http://bla-bla-bla",
+    tags: [],
+    dateCreate: date,
+    isRed: true,
+    important: 2
+}
+
+- удаление статьи
+/api/entity/remove/:id
+
+- получение списка тегов
+/api/entity/tags/getAll
+
+- добавление тега
+/api/entity/tags/add
+{
+    name: "bla bla"
+}
+
+- удаление тега
+/api/entity/tags/remove/:id
+
+- редактирование тега
+/api/entity/tags/edit
+{
+    _id: '',
+    name: 'sdfsdf'
+}
+
+- получение постов по тегам
+/api/entity/getByTag
+{
+    tags: [id, id]
+}
+
+- выставить прочитан пост или нет
+/api/entity/:id/setIsRead
+{
+    isRead: false/true
+}
+
+- выставление оценки посту
+/api/entity/:id/setImportant
+{
+    important: 1-5
+}
+
