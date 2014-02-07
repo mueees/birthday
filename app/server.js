@@ -7,7 +7,8 @@ var express = require('express'),
     EmailSender = require('EmailSender'),
     SocketError = require('socketServer/error').SocketError,
     logger = require("libs/log")(module),
-    config = require("config");
+    config = require("config"),
+    oauth2 = require('oauth2');
 
 require("mongooseDb");
 app.use(express.favicon());
@@ -48,6 +49,8 @@ app.use( require("middleware/publicVariable") );
 //routing
 route(app);
 
+app.get('/dialog/authorize', oauth2.authorization);
+
 //404
 app.use(function(req, res, next){
     logger.log('warn', { status: 404, url: req.url });
@@ -61,7 +64,6 @@ app.use(function(req, res, next){
 app.use(function(err, req, res, next){
 
     logger.log('error', { error: err });
-    var emailSender;
 
     if( typeof err == "number"){
         err = new HttpError(err);
@@ -74,18 +76,25 @@ app.use(function(err, req, res, next){
 
         if( app.get("env") == "development" ){
             express.errorHandler()(err, req, res, next);
+        }else if( err.name == "AuthorizationError" ){
+            express.errorHandler()(err, req, res, next);
+            //res.sendHttpError(err);
         }else{
+            express.errorHandler()(err, req, res, next);
             res.send(500);
         }
-
-        //emailSender = new EmailSender({text: err.toString()});
     }
-    //emailSender.send();
+
 })
 
 //create server
 var server = http.createServer(app);
 server.listen(config.get("port"));
+logger.info("Web server listening: " + config.get("port"));
+
+// Passport configuration
+require('auth');
+
 
 /*//create websocket server
 var socketServer = require('socketServer/socketServer');

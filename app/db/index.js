@@ -25,6 +25,4 @@ var getConnection= function getConnection(callback){
     }
 }
 
-//getConnection(function(){})
-
 module.exports = getConnection;

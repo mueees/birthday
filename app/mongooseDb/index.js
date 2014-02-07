@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    logger = require('libs/log')(module),
     config = require('config');
 
 mongoose.connect('mongodb://' + config.get('db:ip') + '/' + config.get('db:nameDatabase'));
@@ -8,5 +9,5 @@ mongoose.connection.on('error', function (err) {
 });
 
 mongoose.connection.on('open', function () {
-    console.log('open connection');
+    logger.info('Mongoose open connection: ' + 'mongodb://' + config.get('db:ip') + '/' + config.get('db:nameDatabase'));
 });

@@ -10,7 +10,7 @@ function getLogger( module ){
         transports: [
             new winston.transports.Console({
                 colorize: true,
-                level: ENV == "development" ? "debug" : "error",
+                level:  "info", //ENV == "development" ? "debug" : "error",
                 label: pathModule
             }),
             new winston.transports.File({ filename: __dirname + '/logRequest.log', level: 'debug'  })
