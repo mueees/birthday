@@ -1,7 +1,9 @@
 var HttpError = require('../error').HttpError;
 
 exports.home = function(req, res, next) {
-   res.render('index');
+   res.render('index', {
+   	user: (req.user) ? true : false
+   });
 }
 
 exports.fileBrowser = function(req, res, next) {

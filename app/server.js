@@ -1,3 +1,7 @@
+/*
+/dialog/authorize/?redirect_uri=http://localhost:56899&response_type=code&client_id=abc123
+
+*/
 var express = require('express'),
     app = express(),
     db = require("db"),
@@ -8,6 +12,7 @@ var express = require('express'),
     SocketError = require('socketServer/error').SocketError,
     logger = require("libs/log")(module),
     config = require("config"),
+    passport = require('passport'),
     oauth2 = require('oauth2');
 
 require("mongooseDb");
@@ -19,36 +24,41 @@ app.use(express.favicon());
     app.use(express.logger("default"));File Browser
 }*/
 
-app.use(express.bodyParser({ keepExtensions: true, uploadDir: './tmp' }));
-app.use(express.cookieParser());
-app.use(express.session({
-    secret: config.get("session:secret"),
-    key: config.get("session:key"),
-    "cookie": {
-        "path": "/",
-        "httpOnly": true,
-        "maxAge": null
-    }
-}));
-
-app.use(express.static(__dirname + '/public'));
-app.set('views', __dirname + "/templates");
-app.set('view engine', 'hbs');
+app.configure(function() {
+    app.use(express.static(__dirname + '/public'));
+    app.use(express.cookieParser());
+    app.use(express.bodyParser({ keepExtensions: true, uploadDir: './tmp' }));
+    app.use(express.session({
+        secret: config.get("session:secret"),
+        key: config.get("session:key"),
+        "cookie": {
+            "path": "/",
+            "httpOnly": true,
+            "maxAge": null
+        }
+    }));
+    app.use(passport.initialize()); 
+    app.use(passport.session());
+    app.set('views', __dirname + "/templates");
+    app.set('view engine', 'hbs');
+});
 
 //todo:remove
-app.use(function(req, res, next){
+/*app.use(function(req, res, next){
     req.session.isHaveAccess = true;
     next();
-})
+})*/
+
+// Passport configuration
+require('auth');
 
 // error handling
 app.use( require("middleware/sendHttpError") );
-app.use( require("middleware/loadUser") );
+//app.use( require("middleware/loadUser") );
 app.use( require("middleware/publicVariable") );
 
 //routing
 route(app);
-
 app.get('/dialog/authorize', oauth2.authorization);
 
 //404
@@ -92,8 +102,7 @@ var server = http.createServer(app);
 server.listen(config.get("port"));
 logger.info("Web server listening: " + config.get("port"));
 
-// Passport configuration
-require('auth');
+
 
 
 /*//create websocket server

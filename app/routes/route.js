@@ -6,6 +6,7 @@ var docController = require('../controllers/docController');
 var tagController = require('../controllers/tagController');
 var checkoAuth = require('middleware/checkAuth');
 var HttpError = require('error').HttpError;
+var passport = require('passport');
 var config = require("config");
 
 var middleware = [checkoAuth];
@@ -80,20 +81,16 @@ module.exports = function(app) {
 
 
     //login
-    app.post("/api/login", function( req, res, next ){
-        if( req.body.password != config.get("password") ){
-            next(new HttpError(401, {
-                error: "Wrong password"
-            }));
-        }else{
-            req.session.isHaveAccess = true;
-            res.end();
-        }
+    app.post("/api/login", function(req, res, next){
+        req.body.username = 'default';
+        next();
+    }, passport.authenticate('local', {}), function( req, res, next ){
+        res.end();
     })
 
     //logout
     app.post("/api/logout", function( req, res, next ){
-        req.session.destroy();
-        res.end();
+        req.logout();
+        res.redirect('/');
     })
 };
