@@ -1,7 +1,4 @@
-var _ = require('underscore'),
-    BaseModel = require('../_base/model'),
-    util = require('util'),
-    mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var streamSchema = new Schema({

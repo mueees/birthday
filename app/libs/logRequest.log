@@ -3842,3 +3842,226 @@
 {"error":{},"level":"error","message":"","timestamp":"2014-02-07T16:04:50.385Z"}
 {"error":{},"level":"error","message":"","timestamp":"2014-02-07T16:04:50.805Z"}
 {"error":{},"level":"error","message":"","timestamp":"2014-02-07T16:04:54.045Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:44:02.220Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:44:02.409Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-10T21:44:43.352Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-10T21:46:45.598Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-10T21:46:56.021Z"}
+{"status":404,"url":"/dialog/authorize/decision","level":"warn","message":"","timestamp":"2014-02-10T21:48:29.402Z"}
+{"status":404,"url":"/dialog/authorize/decision","level":"warn","message":"","timestamp":"2014-02-10T21:48:31.008Z"}
+{"status":404,"url":"/dialog/authorize/decision","level":"warn","message":"","timestamp":"2014-02-10T21:48:32.712Z"}
+{"status":404,"url":"/dialog/authorize/decision","level":"warn","message":"","timestamp":"2014-02-10T21:48:35.758Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:53:49.821Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:53:49.865Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-10T21:54:00.891Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:54:26.648Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:54:26.700Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-10T21:54:34.725Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:56:23.388Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:56:23.447Z"}
+{"error":{"view":{"name":"\"auth/autorization\"","root":"/home/mue/Dropbox/web/sites/birthday/app/templates","defaultEngine":"hbs","ext":".hbs"}},"level":"error","message":"","timestamp":"2014-02-10T21:56:27.795Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:56:35.979Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:56:36.034Z"}
+{"error":{"view":{"name":"\"auth/autorization\"","root":"/home/mue/Dropbox/web/sites/birthday/app/templates","defaultEngine":"hbs","ext":".hbs"}},"level":"error","message":"","timestamp":"2014-02-10T21:56:37.155Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:56:53.204Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:56:53.246Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:57:26.472Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:57:26.525Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-10T21:57:31.744Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:57:37.765Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:57:37.806Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:58:00.438Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:58:00.491Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-10T21:58:07.834Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:59:22.657Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:59:22.717Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-10T21:59:32.512Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T21:59:56.078Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T21:59:56.125Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-10T22:00:29.038Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-10T22:00:29.097Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-10T22:00:35.905Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-10T22:00:55.097Z"}
+{"level":"info","message":"test","timestamp":"2014-02-11T05:28:31.194Z"}
+{"level":"info","message":"test","timestamp":"2014-02-11T05:28:42.155Z"}
+{"level":"info","message":"","timestamp":"2014-02-11T05:28:42.156Z"}
+{"level":"info","message":"","timestamp":"2014-02-11T05:33:37.694Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:33:50.663Z"}
+{"level":"info","message":"","timestamp":"2014-02-11T05:33:50.665Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:34:49.567Z"}
+{"level":"info","message":"","timestamp":"2014-02-11T05:34:49.568Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:34:59.966Z"}
+{"options":{},"_conditions":{},"_updateArg":{},"op":"remove","level":"info","message":"","timestamp":"2014-02-11T05:34:59.968Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:35:24.416Z"}
+{"options":{},"_conditions":{},"_updateArg":{},"op":"remove","level":"info","message":"","timestamp":"2014-02-11T05:35:24.422Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:35:45.835Z"}
+{"options":{},"_conditions":{},"_updateArg":{},"op":"remove","level":"info","message":"","timestamp":"2014-02-11T05:35:45.837Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:35:52.488Z"}
+{"options":{},"_conditions":{},"_updateArg":{},"op":"remove","level":"info","message":"","timestamp":"2014-02-11T05:35:52.494Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:36:03.394Z"}
+{"level":"info","message":"df","timestamp":"2014-02-11T05:36:15.088Z"}
+{"connections":[{"base":{"$ref":"$"},"collections":{"clients":{"collection":null,"opts":{"bufferCommands":true,"capped":false},"name":"clients","conn":{"$ref":"$[\"connections\"][0]"},"queue":[["ensureIndex",{"0":{"name":1},"1":{"unique":true,"background":true}}]],"buffer":true}},"models":{},"replica":false,"hosts":null,"host":null,"port":null,"user":null,"pass":null,"name":null,"options":null,"_readyState":0,"_closeCalled":false,"_hasOpened":false,"_listening":false}],"plugins":[],"models":{},"modelSchemas":{"Client":{"paths":{"name":{"enumValues":[],"regExp":null,"path":"name","instance":"String","validators":[[null,"required"]],"setters":[],"getters":[],"options":{"unique":true,"required":true},"_index":{"$ref":"$[\"connections\"][0][\"collections\"][\"clients\"][\"queue\"][0][1][\"1\"]"},"isRequired":true},"clientId":{"enumValues":[],"regExp":null,"path":"clientId","instance":"String","validators":[[null,"required"]],"setters":[],"getters":[],"options":{"unique":true,"required":true},"_index":{"unique":true,"background":true},"isRequired":true},"clientSecret":{"enumValues":[],"regExp":null,"path":"clientSecret","instance":"String","validators":[[null,"required"]],"setters":[],"getters":[],"options":{"required":true},"_index":null,"isRequired":true},"_id":{"path":"_id","instance":"ObjectID","validators":[],"setters":[null],"getters":[],"options":{"auto":true},"_index":null},"__v":{"path":"__v","instance":"Number","validators":[],"setters":[],"getters":[],"options":{},"_index":null}},"subpaths":{},"virtuals":{"id":{"path":"id","getters":[null],"setters":[],"options":{}}},"nested":{},"inherits":{},"callQueue":[],"_indexes":[],"methods":{},"statics":{},"tree":{"name":{"required":true,"unique":true},"clientId":{"required":true,"unique":true},"clientSecret":{"required":true},"_id":{"auto":true},"id":{"$ref":"$[\"modelSchemas\"][\"Client\"][\"virtuals\"][\"id\"]"}},"options":{"id":true,"noVirtualId":false,"_id":true,"noId":false,"read":null,"shardKey":null,"autoIndex":true,"minimize":true,"versionKey":"__v","capped":false,"bufferCommands":true,"strict":true},"_events":{}}},"options":{},"level":"info","message":"","timestamp":"2014-02-11T05:37:26.326Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:38:35.024Z"}
+{"level":"info","message":"All client was deleted","timestamp":"2014-02-11T05:38:35.034Z"}
+{"level":"info","message":"New client - :hTr5JEHDWqwFQdBkZd5HP89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","timestamp":"2014-02-11T05:38:35.508Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:38:47.773Z"}
+{"level":"info","message":"All client was deleted","timestamp":"2014-02-11T05:38:47.870Z"}
+{"level":"info","message":"New client - :hTr5JEHDWqwFQdBkZd5HP89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","timestamp":"2014-02-11T05:38:47.906Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:38:56.536Z"}
+{"level":"info","message":"All client was deleted","timestamp":"2014-02-11T05:38:56.541Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:39:33.692Z"}
+{"level":"info","message":"All client was deleted","timestamp":"2014-02-11T05:39:33.698Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:39:35.654Z"}
+{"level":"info","message":"All client was deleted","timestamp":"2014-02-11T05:39:35.660Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:41:10.709Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:41:10.764Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:42:09.374Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:42:09.428Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-11T05:42:23.846Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:42:44.948Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:42:44.988Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-11T05:42:46.568Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:43:00.278Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:43:00.329Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:43:03.435Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:43:03.435Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:43:12.113Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:43:12.114Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:43:13.447Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:43:13.447Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:47:04.289Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:47:04.352Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:47:09.892Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:47:10.002Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:47:39.112Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:47:39.172Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:47:40.839Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:47:40.840Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:48:06.394Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:48:06.462Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:48:08.043Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:48:08.043Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:49:04.249Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:49:04.325Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:07.956Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:07.956Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:49:07.960Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:49:18.682Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:49:18.766Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:20.389Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:20.389Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:49:36.764Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:49:36.821Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:38.009Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:38.010Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:49:38.014Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:50.227Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:50.228Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:49:50.232Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:50.756Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:49:50.757Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:50.756Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:50.978Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:50.978Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:49:50.979Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:49:51.179Z"}
+{"level":"info","message":"abc123","timestamp":"2014-02-11T05:49:51.179Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:49:51.185Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:50:08.237Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:50:08.237Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:50:08.240Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:50:09.433Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:50:09.435Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:50:09.437Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:50:09.814Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:50:09.814Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:50:09.817Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:50:09.985Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:50:09.985Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:50:09.988Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:50:14.018Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:50:14.186Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:50:15.327Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:50:15.327Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:50:15.332Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:51:02.733Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:51:02.802Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:51:04.098Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:51:04.098Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:51:04.107Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:51:33.070Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:51:33.138Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:51:34.063Z"}
+{"error":{"name":"AuthorizationError","message":"not authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:51:34.068Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:51:34.064Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:52:23.586Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:52:23.643Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-11T05:52:25.732Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:52:25.730Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:52:44.068Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:52:44.129Z"}
+{"level":"info","message":"autorizaion","timestamp":"2014-02-11T05:52:44.783Z"}
+{"level":"info","message":"hTr5JEHDWqwFQdBkZd5HP","timestamp":"2014-02-11T05:52:44.783Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:52:44.821Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:53:47.597Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:53:47.648Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:49.254Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:49.255Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:51.002Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:51.003Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:51.280Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:51.282Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:51.461Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:51.463Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:51.610Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:51.611Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:51.777Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:51.778Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.056Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.057Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.552Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.554Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.610Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.610Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.681Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.683Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.724Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.724Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.739Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.740Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.768Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.768Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.851Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.852Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.933Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.934Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:52.986Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:52.986Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:53.018Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:53.021Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:53.029Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:53.030Z"}
+{"level":"info","message":"serializeClient","timestamp":"2014-02-11T05:53:53.324Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"clientSecret":"init","clientId":"init","name":"init","__v":"init","_id":"init"},"states":{"default":{},"init":{"__v":true,"_id":true,"clientSecret":true,"clientId":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"__v":0,"_id":{"_bsontype":"ObjectID","id":"Rù· ©\u0019\u0000\u0000\u0001"},"clientSecret":"89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T","clientId":"hTr5JEHDWqwFQdBkZd5HP","name":"Save selected text from browser extension"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-11T05:53:53.325Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:55:23.498Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:55:23.563Z"}
+{"error":{"name":"AuthorizationError","message":"no longer authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:55:32.751Z"}
+{"error":{"name":"AuthorizationError","message":"no longer authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:55:38.768Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:56:09.349Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:56:09.426Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:56:38.642Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:56:38.698Z"}
+{"level":"info","message":"serializeClient: { name: 'Save selected text from browser extension',\n  clientId: 'hTr5JEHDWqwFQdBkZd5HP',\n  clientSecret: '89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T',\n  _id: 52f9b797a08580a919000001,\n  __v: 0 }","timestamp":"2014-02-11T05:56:40.379Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:56:57.634Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:56:57.690Z"}
+{"level":"info","message":"serializeClient: { name: 'Save selected text from browser extension',\n  clientId: 'hTr5JEHDWqwFQdBkZd5HP',\n  clientSecret: '89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T',\n  _id: 52f9b797a08580a919000001,\n  __v: 0 }","timestamp":"2014-02-11T05:56:58.774Z"}
+{"level":"info","message":"deserialize: 52f9b797a08580a919000001","timestamp":"2014-02-11T05:57:02.006Z"}
+{"error":{"name":"AuthorizationError","message":"no longer authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:57:02.014Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:57:33.768Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:57:33.831Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-11T05:57:36.037Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-11T05:57:36.104Z"}
+{"level":"info","message":"serializeClient: { name: 'Save selected text from browser extension',\n  clientId: 'hTr5JEHDWqwFQdBkZd5HP',\n  clientSecret: '89fbz83cGdQPtdny4376ZgfnWgvbBLS6gT5C5Q6T',\n  _id: 52f9b797a08580a919000001,\n  __v: 0 }","timestamp":"2014-02-11T05:57:43.020Z"}
+{"level":"info","message":"deserialize: 52f9b797a08580a919000001","timestamp":"2014-02-11T05:57:46.843Z"}
+{"level":"info","message":"","timestamp":"2014-02-11T05:57:46.854Z"}
+{"error":{"name":"AuthorizationError","message":"no longer authorized","code":"unauthorized_client","status":400},"level":"error","message":"","timestamp":"2014-02-11T05:57:46.855Z"}

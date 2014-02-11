@@ -60,6 +60,7 @@ app.use( require("middleware/publicVariable") );
 //routing
 route(app);
 app.get('/dialog/authorize', oauth2.authorization);
+app.post('/dialog/authorize/decision', oauth2.decision);
 
 //404
 app.use(function(req, res, next){
