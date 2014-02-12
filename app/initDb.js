@@ -1,8 +1,11 @@
 var ClientModel = require('models/auth/client');
+var MemberModel = require('models/member/member');
 var logger = require("libs/log")(module);
 var mongoose = require("mongoose");
+config = require("config");
 require("mongooseDb");
 
+/* delete all clients and save one client for "Save selected text for Chrome extension"  */
 ClientModel.remove({}, function(err) {
     if( err ){
         logger.info("Cannot remove all Clients from db");
@@ -17,3 +20,21 @@ ClientModel.remove({}, function(err) {
     });
 });
 
+/* delete all members and save one user with group admin  */
+MemberModel.remove({}, function(err) {
+    if( err ){
+        logger.info("Cannot remove all Member from db");
+        return false;
+    }
+    logger.info("All members was deleted");
+
+    var member = new MemberModel({ name: "mue", password: config.get("password"), group:"admin" });
+    member.save(function(err, member) {
+        if(err) {
+            logger.info("Cannot save mue member");
+            return log.error(err);
+        }
+
+        logger.info("New member created: name - " + member.name + " member Password - " + member.password + " member group - " + member.group);
+    });
+});

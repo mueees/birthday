@@ -5,7 +5,7 @@ var _ = require('underscore'),
 var Schema = mongoose.Schema;
 
 var AccessToken = new Schema({
-    userId: {
+    memberId: {
         type: String,
         required: true
     },

@@ -1,5 +1,5 @@
 /*
-/dialog/authorize/?redirect_uri=http://localhost:56899&response_type=code&client_id=abc123
+/dialog/authorize/?redirect_uri=http://forge:56899&response_type=code&client_id=hTr5JEHDWqwFQdBkZd5HP
 
 */
 var express = require('express'),
@@ -59,8 +59,16 @@ app.use( require("middleware/publicVariable") );
 
 //routing
 route(app);
+app.get('/authorize/test', 
+    passport.authenticate('bearer', { session: false }), 
+    function(req, res) {
+        res.send("ok");
+    }
+);
+
 app.get('/dialog/authorize', oauth2.authorization);
 app.post('/dialog/authorize/decision', oauth2.decision);
+
 
 //404
 app.use(function(req, res, next){
@@ -85,11 +93,14 @@ app.use(function(err, req, res, next){
         //emailSender = new EmailSender({text: err.status + err.message.error});
     }else{
 
+        if( err.name == "AuthorizationError" ){
+            res.sendHttpError(err);
+            return false;
+            //express.errorHandler()(err, req, res, next);
+        }
+
         if( app.get("env") == "development" ){
             express.errorHandler()(err, req, res, next);
-        }else if( err.name == "AuthorizationError" ){
-            express.errorHandler()(err, req, res, next);
-            //res.sendHttpError(err);
         }else{
             express.errorHandler()(err, req, res, next);
             res.send(500);
@@ -102,8 +113,6 @@ app.use(function(err, req, res, next){
 var server = http.createServer(app);
 server.listen(config.get("port"));
 logger.info("Web server listening: " + config.get("port"));
-
-
 
 
 /*//create websocket server
