@@ -38,7 +38,7 @@ UpdateQueueManager.prototype = {
 
                 _.each(posts, function(post){
                     //add new post to rss_new_feed redis list
-                    clientRedis.rpush(config.get('redis:queue:rss_new_feed'),  JSON.stringify(post));
+                    //clientRedis.rpush(config.get('redis:queue:rss_new_feed'),  JSON.stringify(post));
                 });
 
                 var recalculateUnread = new RecalculateUnread()

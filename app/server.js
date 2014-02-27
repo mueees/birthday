@@ -1,5 +1,5 @@
 /*
-/dialog/authorize/?redirect_uri=http://forge:56899&response_type=code&client_id=hTr5JEHDWqwFQdBkZd5HP
+/dialog/authorize/?redirect_uri=http://localhost:56899&response_type=code&client_id=hTr5JEHDWqwFQdBkZd5HP
 
 */
 var express = require('express'),
@@ -60,11 +60,15 @@ app.use( require("middleware/publicVariable") );
 //routing
 route(app);
 app.get('/authorize/test', 
-    passport.authenticate('bearer', { session: false }), 
+    passport.authenticate('bearer', { session: false }),
     function(req, res) {
+        logger.info('OK');
         res.send("ok");
     }
 );
+
+
+
 
 app.get('/dialog/authorize', oauth2.authorization);
 app.post('/dialog/authorize/decision', oauth2.decision);

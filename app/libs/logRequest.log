@@ -4419,3 +4419,78 @@
 {"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-12T15:41:20.520Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-12T15:41:24.238Z"}
 {"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-12T15:41:27.474Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:03:15.234Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:03:15.431Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:03:37.419Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:03:45.668Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-20T19:06:23.091Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:06:47.126Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:06:48.042Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:06:51.466Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:06:57.941Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:07:27.290Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-20T19:07:30.554Z"}
+{"level":"info","message":"AccessToken created: 299piXjvSwTbEsH/9t3lxJPpxjmdC22nse/1m+z6LLo=","timestamp":"2014-02-20T19:07:30.549Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:08:53.335Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:08:53.478Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:08:55.913Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:09:00.355Z"}
+{"level":"info","message":"AccessToken created: AIBTkyS2vUYQw0MX4hLiOts2Dw1ZPkaU3du3rVRJnM0=","timestamp":"2014-02-20T19:09:09.471Z"}
+{"$__":{"strictMode":true,"getters":{},"wasPopulated":false,"activePaths":{"paths":{"group":"init","password":"init","name":"init","_id":"init"},"states":{"default":{},"init":{"group":true,"_id":true,"password":true,"name":true},"modify":{},"require":{}},"stateNames":["require","modify","init","default"]}},"isNew":false,"_maxListeners":0,"_doc":{"group":"admin","_id":{"_bsontype":"ObjectID","id":"RûM@gïZ.\u0000\u0000\u0002"},"password":"456qwe","name":"mue"},"_pres":{"save":[null,null,null]},"_posts":{"save":[]},"_events":{},"level":"info","message":"","timestamp":"2014-02-20T19:09:09.472Z"}
+{"level":"info","message":"AccessTokenModel for client \"Save selected text from browser extension\" and user \"mue\" was deleted","timestamp":"2014-02-20T19:09:10.209Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:09:12.616Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:09:23.433Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:09:23.842Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:09:29.261Z"}
+{"error":{},"level":"error","message":"","timestamp":"2014-02-20T19:09:36.847Z"}
+{"level":"info","message":"AccessToken created: 3Mi35xWt8uNtTzgwT7d9BxBOcOIslpheEbyb/0B4cXI=","timestamp":"2014-02-20T19:09:36.844Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:09:52.842Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:09:53.082Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:09:56.537Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:10:00.141Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:14:15.629Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:14:21.152Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:14:32.616Z"}
+{"level":"info","message":"AccessToken created: Qmjbg0wvIrBrU1/K4utrRlyYx/BqHZDqJV6IZB1GqWk=","timestamp":"2014-02-20T19:14:55.440Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:14:58.254Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:15:32.927Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:16:55.683Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:17:17.862Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:19:14.848Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:19:14.949Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:19:36.690Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:20:00.659Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:20:10.026Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:20:12.164Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:20:15.293Z"}
+{"level":"info","message":"AccessToken created: JXrwlmqCH7o5bQU6/KK2FHIhfK4wBjNCS4DXcOTNUMs=","timestamp":"2014-02-20T19:20:28.933Z"}
+{"level":"info","message":"AccessTokenModel for client \"Save selected text from browser extension\" and user \"mue\" was deleted","timestamp":"2014-02-20T19:20:28.985Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:20:30.948Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:22:40.684Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:22:49.858Z"}
+{"level":"info","message":"AccessToken created: atL6QpHIR210bYKecyPsEVKoqy1y5zwNWlnlxe0JVl4=","timestamp":"2014-02-20T19:23:09.726Z"}
+{"level":"info","message":"AccessTokenModel for client \"Save selected text from browser extension\" and user \"mue\" was deleted","timestamp":"2014-02-20T19:23:09.761Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:23:11.159Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:28:07.469Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:28:29.135Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:33:25.636Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:33:38.731Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:33:50.648Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:33:50.692Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:33:59.883Z"}
+{"level":"info","message":"LocalStrategy, member_id:52fb8a4d4067ef5a2e000002","timestamp":"2014-02-20T19:34:03.354Z"}
+{"level":"info","message":"AccessToken created: NviMo5nTdFF6l7eBhUzxyGr/49/qf3/flThGx1VJguA=","timestamp":"2014-02-20T19:34:26.163Z"}
+{"level":"info","message":"AccessTokenModel for client \"Save selected text from browser extension\" and user \"mue\" was deleted","timestamp":"2014-02-20T19:34:26.187Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:34:27.937Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:36:57.353Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:48:28.649Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:48:39.794Z"}
+{"level":"info","message":"Web server listening: 56899","timestamp":"2014-02-20T19:50:15.856Z"}
+{"level":"info","message":"Mongoose open connection: mongodb://109.251.151.22/birthday","timestamp":"2014-02-20T19:50:15.923Z"}
+{"status":404,"url":"/js/libs/jquery.min.map","level":"warn","message":"","timestamp":"2014-02-20T19:50:33.543Z"}
+{"level":"info","message":"BearerStrategy","timestamp":"2014-02-20T19:53:25.599Z"}
+{"level":"info","message":"accessToken: NviMo5nTdFF6l7eBhUzxyGr/49/qf3/flThGx1VJguA=","timestamp":"2014-02-20T19:53:25.600Z"}
+{"level":"info","message":"BearerStrategy","timestamp":"2014-02-20T19:53:35.230Z"}
+{"level":"info","message":"accessToken: NviMo5nTdFF6l7eBhUzxyGr/49/qf3/flThGx1VJguA=","timestamp":"2014-02-20T19:53:35.230Z"}
+{"level":"info","message":"BearerStrategy","timestamp":"2014-02-20T19:53:47.953Z"}
+{"level":"info","message":"accessToken: NviMo5nTdFF6l7eBhUzxyGr/49/qf3/flThGx1VJguA=","timestamp":"2014-02-20T19:53:47.953Z"}
