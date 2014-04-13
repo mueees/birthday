@@ -119,7 +119,7 @@ server.listen(config.get("port"));
 logger.info("Web server listening: " + config.get("port"));
 
 
-/*//create websocket server
+//create websocket server
 var socketServer = require('socketServer/socketServer');
 //add routing for client request
 require('routes/websocket')(socketServer);
@@ -166,10 +166,10 @@ socketServer.use(function(err, req, res, next){
     }
 })
 
-socketServer.start(server);*/
+socketServer.start(server);
 
 //start services
 //require('services/rss/index');
 
 //start cron
-//var cron = require('child_process').fork( __dirname + '/cron');
+var cron = require('child_process').fork( __dirname + '/cron');
